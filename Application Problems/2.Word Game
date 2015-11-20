@@ -1,0 +1,169 @@
+/*You are given a rectangular table filled with characters and a word.
+Your task is to count the occurences of the word in the table. The word can be found horizontaly,
+vertically and across both left to right and right to left.
+*/
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main()
+{
+    string wordToFind = "ivan";
+    int const tableRow = 5;
+    int const tableCol = 4;
+    char table[tableRow][tableCol] = {{'i','v','a','n'},{'e','v','n','h'},{'i','n','a','v'},{'m','v','v','n'},{'q','r','i','t'}};
+    int wordCounter = 0;
+
+    //Searching entire table for 1st Letter
+    for(int row = 0 ; row < tableRow ; row++){
+        for(int col = 0 ; col < tableCol ; col++){
+            if(wordToFind.length() == 1 || wordToFind.length() == 2){
+                if(table[row][col] == wordToFind[0]){
+                    wordCounter ++;
+                }
+            }
+            else{
+                        if(table[row][col] == wordToFind[0]){
+                //For Every 1st letter of the word found, search all directions for next letter
+
+                //Right
+                if(table[row][col+1] == wordToFind[1]){
+                    //row and col must be positive or 0 and less then or equal table row and col
+
+                        //replace for loop to test logic
+                    for(int w = 0 ; w < wordToFind.length(); w ++){
+                        if(table[row][col + 2 + w] == wordToFind[w + 2]){
+                            //cout << row << col << q << table[row][col+q + 2] << endl;
+                            if(table[row][col + 2 + w] == wordToFind[wordToFind.length()-1]){
+                                if(row >= 0 && row <= tableRow && (col + 2 + w) >= 0 && (col + 2 + w) <= tableCol){
+                                   //cout << row << col + 2 + w << endl;
+                                    wordCounter ++;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                //Right bottom diagonal
+                if(table[row + 1][col + 1] == wordToFind[1]){
+                    //row and col must be positive or 0 and less then or equal table row and col
+
+                    for(int w = 0 ; w < wordToFind.length() ; w++){
+                        if(table[row + 2 + w][col + 2 + w] ==  wordToFind[w + 2]){
+                            if(table[row + 2 + w][col + 2 + w] == wordToFind[wordToFind.length()-1]){
+                                if((row + 2 + w) >= 0 && (row + 2 + w) <= tableRow && (col + 2 + w) >= 0 && (col + 2 + w) <= tableCol){
+                                    //cout << row + 2 + w << col + 2 + w << endl;
+                                    wordCounter++;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+                //Bottom
+                if(table[row + 1][col] == wordToFind[1]){
+                    //row and col must be positive or 0 and less then or equal table row and col
+
+                    for(int w = 0 ; w < wordToFind.length() ; w++){
+                        if(table[row + 2 + w][col] ==  wordToFind[w + 2]){
+                            if(table[row + 2 + w][col] == wordToFind[wordToFind.length()-1]){
+                                if((row + 2 + w) >= 0 && (row + 2 + w) <= tableRow && col >= 0 && col <= tableCol){
+                                    //cout << row + 2 + w << col << endl;
+                                    wordCounter++;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+                //Left Bottom Diagonal
+                if(table[row + 1][col - 1] == wordToFind[1]){
+                    //row and col must be positive or 0 and less then or equal table row and col
+
+                    for(int w = 0 ; w < wordToFind.length() ; w++){
+                        if(table[row + 2 + w][col - 2 - w] ==  wordToFind[w + 2]){
+                            if(table[row + 2 + w][col - 2 - w] == wordToFind[wordToFind.length()-1]){
+                                if((row + 2 + w) >= 0 && (row + 2 + w) <= tableRow && (col - 2 - w) >= 0 && (col - 2 - w) <= tableCol){
+                                    //cout << row + 2 + w << col - 2 - w << endl ;
+                                    wordCounter++;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+                //Left
+                if(table[row][col - 1] == wordToFind[1]){
+                   //row and col must be positive or 0 and less then or equal table row and col
+
+                    for(int w = 0 ; w < wordToFind.length() ; w++){
+                        if(table[row][col - 2 - w] ==  wordToFind[w + 2]){
+                            if(table[row][col - 2 - w] == wordToFind[wordToFind.length()-1]){
+                                if(row >= 0 && row <= tableRow && (col - 2 - w) >= 0 && (col - 2 - w) <= tableCol){
+                                    //cout << row << col - 2 - w << endl;
+                                    wordCounter++;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+                //Top Left Diagonal
+
+                if(table[row - 1][col - 1] == wordToFind[1]){
+                    //row and col must be positive or 0 and less then or equal table row and col
+
+                    for(int w = 0 ; w < wordToFind.length() ; w++){
+                        if(table[row - 2 - w][col - 2 - w] ==  wordToFind[w + 2]){
+                            if(table[row - 2 - w][col - 2 - w] == wordToFind[wordToFind.length()-1]){
+                                if((row - 2 - w) >= 0 && (row - 2 - w) <= tableRow && (col - 2 - w) >= 0 && (col - 2 - w) <= tableCol){
+                                    //cout << row - 2 - w << col - 2 - w << endl;
+                                    wordCounter++;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+                //Top
+                if(table[row - 1][col] == wordToFind[1]){
+                   //row and col must be positive or 0 and less then or equal table row and col
+
+                    for(int w = 0 ; w < wordToFind.length() ; w++){
+                        if(table[row - 2 - w][col] ==  wordToFind[w + 2]){
+                            if(table[row - 2 - w][col] == wordToFind[wordToFind.length()-1]){
+                                if((row - 2 - w) >= 0 && (row - 2 - w) <= tableRow && col >= 0 && col <= tableCol){
+                                    //cout << row - 2 - w << col << endl;
+                                    wordCounter++;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+                //Top Right Diagonal
+                if(table[row - 1][col + 1] == wordToFind[1]){
+                   //row and col must be positive or 0 and less then or equal table row and col
+
+                    for(int w = 0 ; w < wordToFind.length() ; w++){
+                        if(table[row - 2 - w][col + 2 + w] ==  wordToFind[w + 2]){
+                            if(table[row - 2 - w][col + 2 + w] == wordToFind[wordToFind.length()-1]){
+                                if((row - 2 - w) >= 0 && (row - 2 - w) <= tableRow && (col + 2 + w) >= 0 && (col + 2 + w) <= tableCol){
+                                    //cout << row - 2 - w << col + 2 + w << endl;
+                                    wordCounter++;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            }
+        }
+    }
+
+
+    cout << "Occurrences of the word \"" << wordToFind << "\" are " << wordCounter << endl;
+}
