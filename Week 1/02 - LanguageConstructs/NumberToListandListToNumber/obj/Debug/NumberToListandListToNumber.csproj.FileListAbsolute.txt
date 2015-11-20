@@ -1,0 +1,6 @@
+C:\Users\Viktor\Desktop\GitHub\HackBulgaria-CSharp-master\Week 1\02 - LanguageConstructs\NumberToListandListToNumber\bin\Debug\NumberToListandListToNumber.exe.config
+C:\Users\Viktor\Desktop\GitHub\HackBulgaria-CSharp-master\Week 1\02 - LanguageConstructs\NumberToListandListToNumber\bin\Debug\NumberToListandListToNumber.exe
+C:\Users\Viktor\Desktop\GitHub\HackBulgaria-CSharp-master\Week 1\02 - LanguageConstructs\NumberToListandListToNumber\bin\Debug\NumberToListandListToNumber.pdb
+C:\Users\Viktor\Desktop\GitHub\HackBulgaria-CSharp-master\Week 1\02 - LanguageConstructs\NumberToListandListToNumber\obj\Debug\NumberToListandListToNumber.csprojResolveAssemblyReference.cache
+C:\Users\Viktor\Desktop\GitHub\HackBulgaria-CSharp-master\Week 1\02 - LanguageConstructs\NumberToListandListToNumber\obj\Debug\NumberToListandListToNumber.exe
+C:\Users\Viktor\Desktop\GitHub\HackBulgaria-CSharp-master\Week 1\02 - LanguageConstructs\NumberToListandListToNumber\obj\Debug\NumberToListandListToNumber.pdb

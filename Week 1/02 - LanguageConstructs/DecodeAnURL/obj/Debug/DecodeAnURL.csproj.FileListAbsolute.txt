@@ -1,0 +1,5 @@
+C:\Users\Viktor\Desktop\GitHub\HackBulgaria-CSharp-master\Week 1\02 - LanguageConstructs\DecodeAnURL\bin\Debug\DecodeAnURL.exe.config
+C:\Users\Viktor\Desktop\GitHub\HackBulgaria-CSharp-master\Week 1\02 - LanguageConstructs\DecodeAnURL\bin\Debug\DecodeAnURL.exe
+C:\Users\Viktor\Desktop\GitHub\HackBulgaria-CSharp-master\Week 1\02 - LanguageConstructs\DecodeAnURL\bin\Debug\DecodeAnURL.pdb
+C:\Users\Viktor\Desktop\GitHub\HackBulgaria-CSharp-master\Week 1\02 - LanguageConstructs\DecodeAnURL\obj\Debug\DecodeAnURL.exe
+C:\Users\Viktor\Desktop\GitHub\HackBulgaria-CSharp-master\Week 1\02 - LanguageConstructs\DecodeAnURL\obj\Debug\DecodeAnURL.pdb
