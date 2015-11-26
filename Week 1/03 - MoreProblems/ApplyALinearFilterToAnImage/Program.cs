@@ -51,7 +51,7 @@ namespace ApplyALinearFilterToAnImage
         static void Main(string[] args)
         {
             Bitmap image = (Bitmap)Image.FromFile("linux_inside.bmp");
-            Blur(image, 10);
+            Blur(image, 5);
         }
     }
 }
