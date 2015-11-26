@@ -1,4 +1,13 @@
-﻿using System;
+﻿/*
+When the clock hits 13:37 on December 21st, this is a special time for hackers.
+Write a method which prints how many days, hours, and minutes remain until the next such time comes.
+
+void HackerTime()
+
+The result should be printed on the console in the format dd:hh:mm
+*/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

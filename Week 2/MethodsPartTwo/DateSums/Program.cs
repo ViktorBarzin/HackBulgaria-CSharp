@@ -1,4 +1,11 @@
-﻿using System;
+﻿/*
+Find all dates in a given whose digits of the month number and 
+the day number sum up to a given value. Print each of them on the console in the format dd/mm/yyyy: d+d+m+m=sum.
+
+void PrintDatesWithGivenSum(int year, int sum)
+*/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

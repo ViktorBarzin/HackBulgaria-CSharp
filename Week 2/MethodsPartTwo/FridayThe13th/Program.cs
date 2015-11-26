@@ -1,4 +1,10 @@
-﻿using System;
+﻿/*
+Write a method which given a year range, returns how many Fridays 13ths there are in that range
+
+int UnfortunateFridays(int startYear, int endYear)
+*/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
