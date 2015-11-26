@@ -1,4 +1,10 @@
-﻿using System;
+﻿/*
+Implement a function which takes a string and returns the same in a reversed order.
+
+string ReverseMe(string original)
+*/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

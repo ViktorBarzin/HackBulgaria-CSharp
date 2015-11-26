@@ -1,4 +1,11 @@
-﻿using System;
+﻿/*
+Implement the following functions:
+
+bool IsIncreasing(int[] sequence) which returns true if for every two consecutive elements a and b, a < b holds.
+bool IsDecreasing(int[] sequence) which returns true if for every two consecutive elements a and b, a > b holds.
+*/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

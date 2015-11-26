@@ -1,4 +1,11 @@
-﻿using System;
+﻿/*
+Implement the two functions:
+
+List<int> NumberToList(int n) which takes an integer and returns a list of its digits
+int ListToNumber(string digits) which takes a list of digits and returns the number from those digits
+*/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

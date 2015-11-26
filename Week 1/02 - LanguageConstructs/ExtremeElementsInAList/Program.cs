@@ -1,4 +1,13 @@
-﻿using System;
+﻿/*
+Implement the following functions:
+
+int Min(int[] items) - returns the mininum element in items
+int Max(int[] items) - returns the maximum element in items
+int NthMin(int n, int[] items) - returns the nth minimum element in items
+int NthMax(int n, int[] items) - returns the nth maximum element in items
+*/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

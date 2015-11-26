@@ -1,4 +1,12 @@
-﻿using System;
+﻿/*
+Is an anagram of String A a SUBSEQUENCE in B?
+
+Return whether an anagram of String A can be found in String B.
+
+bool HasAnagramOf(string A,string B)
+*/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,20 +19,25 @@ namespace IsAnAnagramOfStringAASUBSEQUENCEInB
         public static bool HasAnagramOf(string substr, string strToCheck)
         {
             bool hasAnagram = true;
-            for (int i = 0; i < strToCheck.Length; i++)
+            if (!strToCheck.Contains(substr))
             {
-                if (strToCheck[i] == substr[0])
-                {
-                    for (int k = 1; k < substr.Length; k++)
-                    {
-                        if (substr[k] != strToCheck[k + i])
-                        {
-                            hasAnagram = false;
-                        }
-                    }
-                    hasAnagram = true;
-                }
+                hasAnagram = false;
             }
+            //Old way below 
+            //for (int i = 0; i < strToCheck.Length; i++)
+            //{
+            //    if (strToCheck[i] == substr[0])
+            //    {
+            //        for (int k = 1; k < substr.Length; k++)
+            //        {
+            //            if (substr[k] != strToCheck[k + i])
+            //            {
+            //                hasAnagram = false;
+            //            }
+            //        }
+            //        hasAnagram = true;
+            //    }
+            //}
             return hasAnagram;
         }
         static void Main(string[] args)

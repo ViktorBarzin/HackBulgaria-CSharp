@@ -1,4 +1,11 @@
-﻿using System;
+﻿/*
+Implement a function which takes a string and returns a string which has the same
+words but each word is in a reverse order.
+
+string ReverseEveryWord(string sentence)
+*/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

@@ -1,4 +1,10 @@
-﻿using System;
+﻿/*
+string CopyEveryChar(string input, int k)
+
+Example: CopyEveryChar("tldr", 3) => "tttllldddrrr"
+*/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

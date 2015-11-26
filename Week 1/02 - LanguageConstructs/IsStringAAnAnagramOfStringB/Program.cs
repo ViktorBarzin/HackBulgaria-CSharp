@@ -1,4 +1,10 @@
-﻿using System;
+﻿/*
+bool Anagram(string A, string B) See http://en.wikipedia.org/wiki/Anagram
+
+No HashMaps, hashSets, or such stuff allowed : )
+*/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

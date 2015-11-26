@@ -1,4 +1,14 @@
-﻿using System;
+﻿/*
+Write a function which decodes a given URL following these rules:
+
+%20=>' ' %3A=>':' %3D=>'?' %2F=>'/'
+
+Input 'kitten%20pic.jpg' Output 'kitten pic.jpg'
+
+string DecodeUrl(string input)
+*/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
