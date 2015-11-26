@@ -1,4 +1,12 @@
-﻿using System;
+﻿/*
+Make a program which loads a bitmap into memory, then applies a linear filter and saves it into a new file.
+
+You can use the Box Blur Filter
+
+void BlurImage(Bitmap bitmap, string savePath)
+*/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

@@ -1,4 +1,10 @@
-﻿using System;
+﻿/*
+Make a program which loads a bitmap into memory, converts it to a grayscale image and then saves it to a file.
+
+void GreyScaleImage(Bitmap bitmap, string savePath)
+*/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

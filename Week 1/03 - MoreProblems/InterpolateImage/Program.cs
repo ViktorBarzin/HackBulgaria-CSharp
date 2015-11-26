@@ -1,4 +1,11 @@
-﻿using System;
+﻿/*
+Make a program which loads a bitmap into memory, then rescales it into a new bitmap
+using the nearest neighbour interpolation.
+
+void ResampleImage(Bitmap bitmap, Size newSize, string savePath)
+*/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

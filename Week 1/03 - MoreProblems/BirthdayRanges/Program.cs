@@ -1,4 +1,12 @@
-﻿using System;
+﻿/*
+Implement a function List<int> BirthdayRanges(List<int> birthdays, List<KeyValuePair<int, int>> ranges)
+We have a list birthdays and list of ranges. birthdays - range from 0 to 365, ranges - 
+one range is a pair of two numbers - start and end.
+
+We want to calculate, for each range, how many people are born in it (between start and end inclusive).
+*/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

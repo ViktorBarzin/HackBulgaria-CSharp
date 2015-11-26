@@ -1,4 +1,13 @@
-﻿using System;
+﻿/*
+You are given a list of ints.Lets say a span is the numbers between the ocurences of
+the same number.
+
+For example the span in this list : {1,2,4,22,4,1}
+is 6(between the two 1s inclusive).
+Your task is to find the biggest span of numbers.
+*/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
