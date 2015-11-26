@@ -1,4 +1,9 @@
-﻿using System;
+﻿/*
+IsAnagram(A, B) - returns true, if the string A is an anagram of B
+HasAnagramOf(A, B) - returns true, if an anagram of string A can be found in B
+*/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
