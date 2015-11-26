@@ -1,4 +1,10 @@
-﻿using System;
+﻿/*
+Write a method which generates all the factorials of the integers up to n. Use the yield operator.
+
+IEnumerable<int> GenerateFactorials(int n)
+*/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

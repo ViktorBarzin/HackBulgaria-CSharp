@@ -1,4 +1,10 @@
-﻿using System;
+﻿/*
+Write a method which takes an arbitrary number of strings and joins them using the specified separator.
+
+string JoinStrings(string separator, params string[] strings)
+*/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

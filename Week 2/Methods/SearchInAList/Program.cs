@@ -1,4 +1,13 @@
-﻿using System;
+﻿/*
+Write a method which takes a list of strings as an argument and a string to search for.
+If any of the strings in the list contains the searched string (as a substring), 
+the method should return true. Otherwise it should return false. 
+The first index of a string which contains the searched one should be stored in the out parameter.
+
+bool TryFindSubstring(List<string> list, string searched, out foundIndex)
+*/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

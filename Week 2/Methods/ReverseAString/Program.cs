@@ -1,4 +1,12 @@
-﻿using System;
+﻿/*
+Write a method which takes a List as an argument and reverses it internally.
+
+void ReverseList(List<int> list)
+
+The reversed result should be stored inside the same list instance.
+*/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
