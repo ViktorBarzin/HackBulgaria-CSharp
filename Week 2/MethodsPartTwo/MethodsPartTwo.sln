@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calendar", "Calendar\Calend
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PolygonCircumference", "PolygonCircumference\PolygonCircumference.csproj", "{344F7397-1D7B-4426-BC70-235203C5F802}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PolygonArea", "PolygonArea\PolygonArea.csproj", "{2620819A-D2DC-4035-9D55-DA4F58950DFE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{344F7397-1D7B-4426-BC70-235203C5F802}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{344F7397-1D7B-4426-BC70-235203C5F802}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{344F7397-1D7B-4426-BC70-235203C5F802}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2620819A-D2DC-4035-9D55-DA4F58950DFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2620819A-D2DC-4035-9D55-DA4F58950DFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2620819A-D2DC-4035-9D55-DA4F58950DFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2620819A-D2DC-4035-9D55-DA4F58950DFE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

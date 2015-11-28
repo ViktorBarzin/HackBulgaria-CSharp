@@ -41,7 +41,7 @@ namespace SumAllNumbersInAGivenString
             string input = Console.ReadLine();
 
             Console.WriteLine(NumbersToAdd(input));
-            //TODO: works if input ends with char, finish someday
+            //TODO: works if input ends with char
 
         }
     }

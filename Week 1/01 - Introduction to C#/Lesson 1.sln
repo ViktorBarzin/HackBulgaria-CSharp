@@ -31,6 +31,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SumAllNumbersInAGivenString
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Anagram", "Anagram\Anagram.csproj", "{F5BB2917-BC0C-452F-A60A-D1AC898A9B60}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FibonacciWithMemoization", "FibonacciWithMemoization\FibonacciWithMemoization.csproj", "{DBFE0A86-429C-4FF2-A824-FF4A13A461D3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -93,6 +95,10 @@ Global
 		{F5BB2917-BC0C-452F-A60A-D1AC898A9B60}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F5BB2917-BC0C-452F-A60A-D1AC898A9B60}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F5BB2917-BC0C-452F-A60A-D1AC898A9B60}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DBFE0A86-429C-4FF2-A824-FF4A13A461D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBFE0A86-429C-4FF2-A824-FF4A13A461D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBFE0A86-429C-4FF2-A824-FF4A13A461D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBFE0A86-429C-4FF2-A824-FF4A13A461D3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
