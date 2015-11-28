@@ -56,6 +56,7 @@ namespace Transversal
             transversal.Add(2);
             transversal.Add(3);
             transversal.Add(4);
+            
 
             List<List<int>> family = new List<List<int>>();
             //family.Add(new List<int> { 5, 7, 9 });

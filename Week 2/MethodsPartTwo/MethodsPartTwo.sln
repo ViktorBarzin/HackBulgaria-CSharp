@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1337", "1337\1337.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppointmentsIntersection", "AppointmentsIntersection\AppointmentsIntersection.csproj", "{95A5A173-8650-4E8C-9304-9623728386A8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calendar", "Calendar\Calendar.csproj", "{CF85D4B7-0B3D-4BEC-A81F-143EF663D965}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PolygonCircumference", "PolygonCircumference\PolygonCircumference.csproj", "{344F7397-1D7B-4426-BC70-235203C5F802}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{95A5A173-8650-4E8C-9304-9623728386A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{95A5A173-8650-4E8C-9304-9623728386A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{95A5A173-8650-4E8C-9304-9623728386A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF85D4B7-0B3D-4BEC-A81F-143EF663D965}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF85D4B7-0B3D-4BEC-A81F-143EF663D965}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF85D4B7-0B3D-4BEC-A81F-143EF663D965}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF85D4B7-0B3D-4BEC-A81F-143EF663D965}.Release|Any CPU.Build.0 = Release|Any CPU
+		{344F7397-1D7B-4426-BC70-235203C5F802}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{344F7397-1D7B-4426-BC70-235203C5F802}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{344F7397-1D7B-4426-BC70-235203C5F802}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{344F7397-1D7B-4426-BC70-235203C5F802}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

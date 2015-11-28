@@ -31,7 +31,7 @@ namespace FridayThe13th
         }
         static void Main(string[] args)
         {
-            Console.WriteLine(UnfortunateFridays(1, 2011));
+            Console.WriteLine(UnfortunateFridays(2014, 2020));
         }
     }
 }
