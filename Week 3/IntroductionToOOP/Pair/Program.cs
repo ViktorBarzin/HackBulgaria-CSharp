@@ -10,7 +10,7 @@ namespace Pair
     {
         static void Main(string[] args)
         {
-            //TODO :finish 
+            //TODO : add == and != operator
         }
     }
 }
