@@ -17,7 +17,7 @@ namespace PolygonArea
         }
         static void Main(string[] args)
         {
-
+            // TODO : find formula for any random polygon area
         }
     }
 }

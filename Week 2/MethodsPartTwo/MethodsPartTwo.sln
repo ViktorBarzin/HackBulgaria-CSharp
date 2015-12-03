@@ -17,6 +17,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PolygonCircumference", "Pol
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PolygonArea", "PolygonArea\PolygonArea.csproj", "{2620819A-D2DC-4035-9D55-DA4F58950DFE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RandomNumbers", "RandomNumbers\RandomNumbers.csproj", "{A194CED3-6B57-43B6-A8D7-C770DC914E0C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClockAngle", "ClockAngle\ClockAngle.csproj", "{DCF4D524-1580-4050-A54F-0C4D065AB09B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +55,14 @@ Global
 		{2620819A-D2DC-4035-9D55-DA4F58950DFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2620819A-D2DC-4035-9D55-DA4F58950DFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2620819A-D2DC-4035-9D55-DA4F58950DFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A194CED3-6B57-43B6-A8D7-C770DC914E0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A194CED3-6B57-43B6-A8D7-C770DC914E0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A194CED3-6B57-43B6-A8D7-C770DC914E0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A194CED3-6B57-43B6-A8D7-C770DC914E0C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DCF4D524-1580-4050-A54F-0C4D065AB09B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCF4D524-1580-4050-A54F-0C4D065AB09B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCF4D524-1580-4050-A54F-0C4D065AB09B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCF4D524-1580-4050-A54F-0C4D065AB09B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
