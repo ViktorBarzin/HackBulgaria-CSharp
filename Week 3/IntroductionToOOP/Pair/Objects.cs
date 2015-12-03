@@ -31,5 +31,19 @@ namespace Pair
                 return this.value;
             }
         }
+
+        public override string ToString()
+        {
+            string res = this.key + ":" + this.value;
+            return res;
+        }
+        public override bool Equals(object obj)
+        {
+            if (this.value == (obj as Objects).value && this.key == (obj as Objects).key)
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }
