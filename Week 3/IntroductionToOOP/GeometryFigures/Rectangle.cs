@@ -17,10 +17,10 @@ namespace GeometryFigures
 
         public Rectangle(Point p1, Point p2)
         {
-            PointA = p1;
-            PointC = p2;
-            this.B = new Point(Math.Max(PointA.X, PointC.X), Math.Min(PointA.Y, PointC.Y));
-            this.D = new Point(Math.Min(PointA.X, PointC.X), Math.Max(PointA.Y, PointC.Y));
+            PointA = new Point(Math.Min(p1.X,p2.X),Math.Min(p1.Y,p2.Y));
+            PointC = new Point(Math.Max(p1.X, p2.X), Math.Max(p1.Y, p2.Y));
+            PointB = new Point(Math.Max(p1.X, p2.X), Math.Min(p1.Y, p2.Y));
+            PointD = new Point(Math.Min(p1.X, p2.X), Math.Max(p1.Y, p2.Y));
 
             this.AB = new LineSegment(this.A, this.B);
             this.BC = new LineSegment(this.B, this.C);
@@ -34,6 +34,11 @@ namespace GeometryFigures
             {
                 this.A = value;
             }
+        }
+        public Point PointB
+        {
+            get { return this.B; }
+            set { this.B = value; }
         }
         public Point PointC
         {
@@ -49,6 +54,11 @@ namespace GeometryFigures
                      throw new ArgumentException("Invalid Point");
                 }
             }
+        }
+        public Point PointD
+        {
+            get { return this.D; }
+            set { this.D = value; }
         }
 
         public Point DisplayA
