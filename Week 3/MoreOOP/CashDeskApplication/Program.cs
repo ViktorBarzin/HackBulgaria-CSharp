@@ -4,29 +4,121 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CashDesk;
-namespace CashDeskApplication
+namespace CashDesk
 {
     class Program
     {
+        public static bool IsInputLenghtLessThan2(string[] strin)
+        {
+            if (strin.Length < 2)
+            {
+                return false;
+            }
+            return true;
+        }
         static void Main(string[] args)
         {
-            Bill newBill1 = new Bill(5);
-            Bill newBill2 = new Bill(10);
-            Bill newBill3 = new Bill(5);
-            //newBill1.ToString();
-            //Console.WriteLine(newBill.Value);
-            //Console.WriteLine((int)newBill);
-            //Console.WriteLine(newBill1 == newBill3);
-            List<Bill> billList = new List<Bill> { newBill1, newBill2, newBill3 };
-            BatchBill Batch = new BatchBill(billList);
-            //Console.WriteLine(Batch.Total);
-            //Console.WriteLine(Batch.ToString());
-            //foreach (var item in Batch)
-            //{
-            //    Console.WriteLine(item);
-            //}
+            CashDesk obj = new CashDesk();
+            while (true)
+            {
+                string wholeCommand = Console.ReadLine();
+                string[] command = wholeCommand.Split(' ');
+                switch (command[0])
+                {
+                    case "takebill":
+                        if (IsInputLenghtLessThan2(command))
+                        {
+                            if (command.Length < 3)
+                            {
+                                obj.TakeMoney(new Bill(int.Parse(command[1])));
+                            }
+                            else
+                            {
+                                Console.WriteLine("ERROR: takebill command takes only 1 parameter");
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("Input Command lenght too short");
+                        }
+                        break;
+                    case "takebatch":
+                        if (IsInputLenghtLessThan2(command))
+                        {
+                            List<Bill> billList = new List<Bill>();
+                            for (int i = 1; i < command.Length; i++)
+                            {
+                                billList.Add(new Bill(int.Parse(command[i])));
+                            }
+                            BatchBill batch = new BatchBill(billList);
+                            obj.TakeMoney(batch);
+                            
+                        }
+                        break;
 
-            //TODO : continue CashDEsk class
+                    case "takecoin":
+                        if (IsInputLenghtLessThan2(command))
+                        {
+                            if (command.Length < 3)
+                            {
+                                obj.TakeMoney(new Coin(int.Parse(command[1])));
+                                
+                            }
+                            else
+                            {
+                                Console.WriteLine("ERROR: Takecoin command takes only 1 parameter !");
+                            }
+                        }
+                        break;
+                    case "takebatchcoin":
+                        if (IsInputLenghtLessThan2(command))
+                        {
+                            List<Coin> coinlist = new List<Coin>();
+                            for (int i = 1; i < command.Length; i++)
+                            {
+                                coinlist.Add(new Coin(int.Parse(command[i])));
+                            }
+                            BatchCoin coinBatch = new BatchCoin(coinlist);
+                            obj.TakeMoney(coinBatch);
+                            Console.WriteLine("SUCCESS: added new batch of coins !");
+                        }
+                        break;
+                    case "total":
+                        if (command.Length < 2)
+                        {
+                            Console.WriteLine(obj.Total());
+                        }
+                        else
+                        {
+                            Console.WriteLine("ERROR: total command takes no parameters !");
+                        }
+                        break;
+                    case "inspect":
+                        if (command.Length < 2)
+                        {
+                            obj.Inspect();
+                        }
+                        else
+                        {
+                            Console.WriteLine("ERROR: inspect commands takes no parameters !");
+                        }
+                        break;
+                    case "exit":
+                        if (command.Length < 2)
+                        {
+                            Environment.Exit(0);
+                        }
+                        else
+                        {
+                            Console.WriteLine("did you mean \"exit\" ?");
+                        }
+                        break;
+                    default:
+                        Console.WriteLine("Unknown Command " + command);
+                        break;
+                }
+            }
         }
     }
+    //TODO: give change
 }

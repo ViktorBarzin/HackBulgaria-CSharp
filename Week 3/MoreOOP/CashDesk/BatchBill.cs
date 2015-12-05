@@ -4,14 +4,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CashDesk;
-namespace CashDeskApplication
+
+namespace CashDesk
 {
-    class BatchBill : IEnumerable
+    public class BatchBill : IEnumerable
     {
         private int count;
         private int total;
         private List<Bill> billValues = new List<Bill>();
+
         public BatchBill(List<Bill> billList)
         {
             this.Count = billList.Count;
@@ -51,7 +52,6 @@ namespace CashDeskApplication
         IEnumerator IEnumerable.GetEnumerator()
         {
             return billValues.GetEnumerator();
-
         }
 
         public Bill this[int i]

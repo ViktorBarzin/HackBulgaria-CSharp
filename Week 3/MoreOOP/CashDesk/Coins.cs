@@ -7,11 +7,12 @@ using System.Globalization;
 
 namespace CashDesk
 {
-    public class Bill
+    public class Coin
     {
-        public List<int> ValidBillValues = new List<int> { 2, 5, 10, 20, 50, 100 };
+        public const string STOTINKI = "";
+        public List<int> ValidCoinValues = new List<int> { 1, 2, 5, 10, 20, 50, 100 };
         private int value;
-        public Bill(int value)
+        public Coin(int value)
         {
             this.Value = value;
         }
@@ -20,9 +21,9 @@ namespace CashDesk
             get { return value; }
             set
             {
-                if (!ValidBillValues.Contains(value))
+                if (!ValidCoinValues.Contains(value))
                 {
-                    Console.WriteLine("ERROR: Invalid Value for bill!");
+                    Console.WriteLine("ERROR: Invalid Value for coin!");
                 }
                 else
                 {
@@ -33,38 +34,38 @@ namespace CashDesk
         public override string ToString()
         {
             var ri = new RegionInfo(System.Threading.Thread.CurrentThread.CurrentCulture.LCID);
-            string res = this.value.ToString() + " " + ri.ISOCurrencySymbol;
+            string res = this.value.ToString() + " " + STOTINKI;
             return res;
         }
         public override bool Equals(object obj)
         {
-            if (obj is Bill && this.value == (obj as Bill).value)
+            if (obj is Coin && this.value == (obj as Coin).value)
             {
                 return true;
             }
             return false;
         }
 
-        public static bool operator ==(Bill bill1, Bill bill2)
+        public static bool operator ==(Coin coin1, Coin coin2)
         {
-            if (bill1.value == bill2.value)
+            if (coin1.value == coin2.value)
             {
                 return true;
             }
             return false;
         }
-        public static bool operator !=(Bill bill1, Bill bill2)
+        public static bool operator !=(Coin coin1, Coin coin2)
         {
-            if (bill1.value != bill2.value)
+            if (coin1.value != coin2.value)
             {
                 return true;
             }
             return false;
         }
 
-        public static explicit operator int(Bill bill)
+        public static explicit operator int(Coin coin)
         {
-            int value = (int)bill.value;
+            int value = (int)coin.value;
             return value;
         }
     }
