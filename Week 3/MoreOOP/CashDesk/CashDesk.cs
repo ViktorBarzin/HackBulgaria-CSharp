@@ -177,13 +177,13 @@ namespace CashDesk
         {
             if (coins.Keys.Contains(singleCoin.Value))
             {
-                bills.Remove(singleCoin.Value);
-                this.BillTotalProp -= singleCoin.Value;
-                Console.WriteLine("SUCCES: removed {0} bill !", singleCoin.ToString());
+                coins.Remove(singleCoin.Value);
+                this.CoinTotalProp -= singleCoin.Value;
+                Console.WriteLine("SUCCES: removed {0} coin !", singleCoin.ToString());
             }
             else
             {
-                Console.WriteLine("ERROR: coins list does not contain a {0} bill !", singleCoin.ToString());
+                Console.WriteLine("ERROR: coins list does not contain a {0} coin !", singleCoin.ToString());
             }
             return this;
         }
@@ -191,7 +191,7 @@ namespace CashDesk
         {
             foreach (Coin coin in batchCoin)
             {
-                if (!bills.ContainsKey(coin.Value))
+                if (!coins.ContainsKey(coin.Value))
                 {
                     Console.WriteLine("ERROR: could not find a {0} coin to remove !", coin.ToString());
                 }
