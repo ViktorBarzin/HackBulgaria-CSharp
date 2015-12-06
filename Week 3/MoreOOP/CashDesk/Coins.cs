@@ -9,7 +9,7 @@ namespace CashDesk
 {
     public class Coin
     {
-        public const string STOTINKI = "";
+        public const string STOTINKI = "st";
         public List<int> ValidCoinValues = new List<int> { 1, 2, 5, 10, 20, 50, 100 };
         private int value;
         public Coin(int value)

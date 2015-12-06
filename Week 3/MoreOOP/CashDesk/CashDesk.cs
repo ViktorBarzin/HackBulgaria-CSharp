@@ -88,8 +88,38 @@ namespace CashDesk
         {
             if (bills.Keys.Contains(singleBill.Value))
             {
-
+                bills.Remove(singleBill.Value);
+                this.BillTotalProp -= singleBill.Value;
+                Console.WriteLine("SUCCES: removed {0} bill !", singleBill.ToString());
             }
+            else
+            {
+                Console.WriteLine("ERROR: bills list does not contain a {0} bill !", singleBill.ToString());
+            }
+            return this;
+        }
+        public CashDesk RemoveMoney(BatchBill batchList)
+        {
+            foreach (Bill bill in batchList)
+            {
+                if (!bills.ContainsKey(bill.Value))
+                {
+                    Console.WriteLine("ERROR: could not find a {0} bill to remove !", bill.ToString());
+                }
+                else
+                {
+                    bills.Remove(bill.Value);
+                    this.BillTotalProp -= bill.Value;
+                    Console.WriteLine("SUCCES: Removed {0} !",bill.Value);
+                }
+            }
+
+            return this;
+        }
+        public CashDesk RemoveAllBills()
+        {
+            this.bills = new Dictionary<int, int>();
+            this.BillTotalProp = 0;
             return this;
         }
         
@@ -137,10 +167,48 @@ namespace CashDesk
                     else
                     {
                         coins[coin.Value]++;
-                        this.CoinTotalProp += coin.Value ;
+                        this.CoinTotalProp += coin.Value;
                     }
                 }
             }
+            return this;
+        }
+        public CashDesk RemoveMoney(Coin singleCoin)
+        {
+            if (coins.Keys.Contains(singleCoin.Value))
+            {
+                bills.Remove(singleCoin.Value);
+                this.BillTotalProp -= singleCoin.Value;
+                Console.WriteLine("SUCCES: removed {0} bill !", singleCoin.ToString());
+            }
+            else
+            {
+                Console.WriteLine("ERROR: coins list does not contain a {0} bill !", singleCoin.ToString());
+            }
+            return this;
+        }
+        public CashDesk RemoveMoney(BatchCoin batchCoin)
+        {
+            foreach (Coin coin in batchCoin)
+            {
+                if (!bills.ContainsKey(coin.Value))
+                {
+                    Console.WriteLine("ERROR: could not find a {0} coin to remove !", coin.ToString());
+                }
+                else
+                {
+                    coins.Remove(coin.Value);
+                    this.CoinTotalProp -= coin.Value;
+                    Console.WriteLine("SUCCES: Removed {0} !", coin.Value);
+                }
+            }
+
+            return this;
+        }
+        public CashDesk RemoveAllCoins()
+        {
+            this.CoinTotalProp = 0;
+            this.coins = new Dictionary<int, int>();
             return this;
         }
 
@@ -151,15 +219,39 @@ namespace CashDesk
         }
         public CashDesk Inspect()
         {
-            foreach (var item in bills)
+            if (bills.Count == 0 && coins.Count == 0)
             {
-                Console.WriteLine("{0} bills - {1}", new Bill(item.Key), item.Value);
+                Console.WriteLine("You dont have any money !");
             }
-            foreach (var coin in coins)
+            else
             {
-                Console.WriteLine("{0} coins - {1}",new Coin(coin.Key),coin.Value);
+                foreach (var item in bills)
+                {
+                    Console.WriteLine("{0} bills - {1}", new Bill(item.Key), item.Value);
+                }
+                foreach (var coin in coins)
+                {
+                    Console.WriteLine("{0} coins - {1}", new Coin(coin.Key), coin.Value);
+                }
             }
             return this;
         }
+        //public BatchBill GiveChange(BatchCoin coinList)
+        //{
+        //    this.TakeMoney(coinList);
+        //    double coinsSum = coinList.Total;
+        //    List<Bill> billToReturn = new List<Bill>();
+        //    while (coinsSum > 0)
+        //    {
+        //        if (ValidBillValues.Contains((int)coinsSum))
+        //        {
+        //            billToReturn.Add(new Bill((int)coinsSum));
+        //        }
+        //        coinsSum -= ValidCoinValues[0];
+        //    }
+        //    //knapsack problem ?
+        //    return 
+        //}
+
     }
 }
