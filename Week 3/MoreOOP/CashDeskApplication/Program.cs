@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CashDesk;
-namespace CashDesk
+﻿namespace CashDesk
 {
-    class Program
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+
+    public class Program
     {
         public static bool IsInputLenghtLessThan2(string[] strin)
         {
@@ -14,13 +14,16 @@ namespace CashDesk
             {
                 return false;
             }
+
             return true;
         }
-        static void Main(string[] args)
+
+        public static void Main(string[] args)
         {
             CashDesk obj = new CashDesk();
             while (true)
             {
+                // Split input command
                 string wholeCommand = Console.ReadLine();
                 string[] command = wholeCommand.Split(' ');
                 switch (command[0])
@@ -41,7 +44,9 @@ namespace CashDesk
                         {
                             Console.WriteLine("Input Command lenght too short");
                         }
+
                         break;
+
                     case "takebatch":
                         if (IsInputLenghtLessThan2(command))
                         {
@@ -50,10 +55,11 @@ namespace CashDesk
                             {
                                 billList.Add(new Bill(int.Parse(command[i])));
                             }
+
                             BatchBill batch = new BatchBill(billList);
                             obj.TakeMoney(batch);
-                            
                         }
+
                         break;
 
                     case "takecoin":
@@ -62,14 +68,15 @@ namespace CashDesk
                             if (command.Length < 3)
                             {
                                 obj.TakeMoney(new Coin(int.Parse(command[1])));
-                                
                             }
                             else
                             {
                                 Console.WriteLine("ERROR: Takecoin command takes only 1 parameter !");
                             }
                         }
+
                         break;
+
                     case "takebatchcoin":
                         if (IsInputLenghtLessThan2(command))
                         {
@@ -78,25 +85,29 @@ namespace CashDesk
                             {
                                 coinlist.Add(new Coin(int.Parse(command[i])));
                             }
+
                             BatchCoin coinBatch = new BatchCoin(coinlist);
                             obj.TakeMoney(coinBatch);
                             Console.WriteLine("SUCCESS: added new batch of coins !");
                         }
+
                         break;
+
                     case "removebill":
                         if (IsInputLenghtLessThan2(command))
                         {
                             if (command.Length < 3)
                             {
                                 obj.RemoveMoney(new Bill(int.Parse(command[1])));
-
                             }
                             else
                             {
                                 Console.WriteLine("ERROR: removebill command takes only 1 parameter !");
                             }
                         }
+
                         break;
+
                     case "removebatch":
                         if (IsInputLenghtLessThan2(command))
                         {
@@ -105,10 +116,13 @@ namespace CashDesk
                             {
                                 billList.Add(new Bill(int.Parse(command[i])));
                             }
+
                             BatchBill batch = new BatchBill(billList);
                             obj.RemoveMoney(batch);
                         }
+
                         break;
+
                     case "removeallbills":
                         if (command.Length < 2)
                         {
@@ -119,21 +133,24 @@ namespace CashDesk
                         {
                             Console.WriteLine("ERROR: removeallbills command takes no parameters !");
                         }
+
                         break;
+
                     case "removecoin":
                         if (IsInputLenghtLessThan2(command))
                         {
                             if (command.Length < 3)
                             {
                                 obj.RemoveMoney(new Coin(int.Parse(command[1])));
-
                             }
                             else
                             {
                                 Console.WriteLine("ERROR: removecoin command takes only 1 parameter !");
                             }
                         }
+
                         break;
+
                     case "removebatchcoin":
                         if (IsInputLenghtLessThan2(command))
                         {
@@ -142,10 +159,13 @@ namespace CashDesk
                             {
                                 coinList.Add(new Coin(int.Parse(command[i])));
                             }
+
                             BatchCoin batch = new BatchCoin(coinList);
                             obj.RemoveMoney(batch);
                         }
+
                         break;
+
                     case "removeallcoins":
                         if (command.Length < 2)
                         {
@@ -156,12 +176,8 @@ namespace CashDesk
                         {
                             Console.WriteLine("ERROR: removeallcoins command takes no parameters !");
                         }
+
                         break;
-
-
-
-
-
 
                     case "total":
                         if (command.Length < 2)
@@ -172,7 +188,9 @@ namespace CashDesk
                         {
                             Console.WriteLine("ERROR: total command takes no parameters !");
                         }
+
                         break;
+
                     case "inspect":
                         if (command.Length < 2)
                         {
@@ -182,7 +200,9 @@ namespace CashDesk
                         {
                             Console.WriteLine("ERROR: inspect commands takes no parameters !");
                         }
+
                         break;
+
                     case "exit":
                         if (command.Length < 2)
                         {
@@ -192,7 +212,9 @@ namespace CashDesk
                         {
                             Console.WriteLine("did you mean \"exit\" ?");
                         }
+
                         break;
+
                     default:
                         Console.WriteLine("Unknown Command " + command);
                         break;
@@ -200,5 +222,6 @@ namespace CashDesk
             }
         }
     }
-    //TODO: give change
+
+    // TODO: give change and buy stuff
 }
