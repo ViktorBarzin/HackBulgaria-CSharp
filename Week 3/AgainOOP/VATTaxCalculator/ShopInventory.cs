@@ -56,7 +56,7 @@ namespace VATTaxCalculator
                     //Possible conflicts
                     if (prod.ProductId == id )
                     {
-                        //Console.WriteLine(order.ProductQuantities.ToList()[prod.ProductId - 1]);
+                        //&& order.ProductQuantities[order.ProductIds.IndexOf(id)] <= productsList.Values.ToList()[order.ProductIds.IndexOf(id)]
                         sum += prod.PriceWithTax * order.ProductQuantities[order.ProductIds.IndexOf(id)];
                     }
                 }
