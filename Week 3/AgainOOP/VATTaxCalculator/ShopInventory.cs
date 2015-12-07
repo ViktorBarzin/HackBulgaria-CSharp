@@ -54,12 +54,18 @@ namespace VATTaxCalculator
                 foreach (Product prod in productsList.Keys)
                 {
                     //Possible conflicts
-                    if (prod.ProductId == id )
+                    if (prod.ProductId == id && order.ProductQuantities[order.ProductIds.IndexOf(id)] <= prod.Quantity)
                     {
+                        //<= productsList.Values.ToList()[productsList.Keys.ToList().IndexOf(prod)]
                         //Console.WriteLine(order.ProductQuantities.ToList()[prod.ProductId - 1]);
                         sum += prod.PriceWithTax * order.ProductQuantities[order.ProductIds.IndexOf(id)];
                     }
                 }
+            }
+            if (sum == 0)
+            {
+                Console.WriteLine("ERROR: None of the items you ordered are available in the requested quantities !");
+                return 0;
             }
             return sum;
             //throw new ArgumentException(string.Format("ERROR: Too few or none products with id {0} left in inventory !"));
