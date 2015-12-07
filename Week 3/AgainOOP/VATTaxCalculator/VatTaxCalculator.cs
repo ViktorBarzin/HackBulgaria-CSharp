@@ -29,7 +29,7 @@
             {
                 if (country.CountryId == countryId)
                 {
-                    return price + price * (country.VatTax / 100);
+                    return price + (price * (country.VatTax / 100));
                 }
             }
 
@@ -44,7 +44,7 @@
             {
                 if (country.IsDefault)
                 {
-                    return price + price * (country.VatTax / 100);
+                    return price + (price * (country.VatTax / 100));
                 }
             }
 
