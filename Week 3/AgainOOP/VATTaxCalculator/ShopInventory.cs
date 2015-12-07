@@ -70,7 +70,7 @@
             if (sum == 0)
             {
                 Console.WriteLine("ERROR: None of the items you ordered are available in the requested quantities !");
-                return 0;
+                return -1;
             }
 
             return sum;

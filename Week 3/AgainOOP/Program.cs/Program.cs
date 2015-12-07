@@ -1,4 +1,4 @@
-﻿namespace Program.cs
+﻿namespace Program
 {
     using System;
     using System.Collections.Generic;
@@ -6,21 +6,22 @@
     using System.Text;
     using System.Threading.Tasks;
     using VATTaxCalculator;
-    class Program
+
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             // Add CountryVatTax countries - id, vat, isDefault
-            CountryVatTax bg = new CountryVatTax(1, 20,true);
+            CountryVatTax bg = new CountryVatTax(1, 20, true);
 
             // Add countries to list
-            List<CountryVatTax> countriesList = new List<CountryVatTax>() {bg };
+            List<CountryVatTax> countriesList = new List<CountryVatTax>() { bg };
 
             // Initialise VatTaxCalculator with the countries list
             VatTaxCalculator calc = new VatTaxCalculator(countriesList);
 
             // Add products - id, name, quantity, price, country
-            Product prod1 = new Product(0, "prod1", 5, 10, bg);
+            Product prod1 = new Product(0, "prod", 5, 10, bg);
 
             // Add products to list
             List<Product> productsList = new List<Product>() { prod1 };
@@ -30,9 +31,9 @@
 
             // Add product id and quantity to orderdict 
             Dictionary<int, int> orderdict = new Dictionary<int, int>();
-            
+            orderdict.Add(0, 2);
+
             Order newOrder = new Order(orderdict);
-            
         }
     }
 }
