@@ -48,7 +48,7 @@
                 }
             }
 
-            Console.WriteLine("No Default Country se");
+            Console.WriteLine("No Default Country set");
             return -1;
         }
     }
