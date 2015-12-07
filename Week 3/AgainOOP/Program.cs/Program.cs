@@ -30,12 +30,11 @@ namespace Program.cs
 
             //order - id,quantity
             Dictionary<int, int> orderdict = new Dictionary<int, int>();
-            orderdict.Add(0, 2);
+            orderdict.Add(0, 6);
             //orderdict.Add(2, 2);
             Order newOrder = new Order(orderdict);
             Console.WriteLine(newInventory.RequestOrder(newOrder));
-
-            //finish quantity check for order
+            
         }
     }
 }
