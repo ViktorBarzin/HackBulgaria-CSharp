@@ -1,35 +1,39 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Drawing;
-
-namespace BallGame
+﻿namespace BallGame
 {
-    class BouncingBall
+    using System;
+    using System.Collections.Generic;
+    using System.Drawing;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using System.Windows;
+    public class BouncingBall
     {
         private double diameter;
-        private KeyValuePair<int, int> positionOfCenter;
-        private double speed;
+        public double speed;
         private Color color;
-        private KeyValuePair<int, int> direction;
+        public Vector positionOfCenter;
+        public Vector direction = new Vector();
 
-        public BouncingBall()
+        public BouncingBall(double d,double sp,Color col, Vector positionOfOrigin,Vector dir)
         {
-
+            this.Diameter = d;
+            this.Speed = sp;
+            this.Color = col;
+            this.PositionOfCenter = positionOfOrigin;
+            this.Direction = dir;
         }
         public double Diameter
         {
             get { return this.diameter; }
             set { this.diameter = value; }
         }
-        public KeyValuePair<int, int> PositionOfCenter
+        public Vector PositionOfCenter
         {
             get { return this.positionOfCenter; }
             set { this.positionOfCenter = value; }
         }
-        public double Speec
+        public double Speed
         {
             get { return this.speed; }
             set { this.speed = value; }
@@ -39,16 +43,10 @@ namespace BallGame
             get { return this.color; }
             set { this.color = value; }
         }
-        public KeyValuePair<int, int> Direction
+        public Vector Direction
         {
             get { return this.direction; }
             set { this.direction = value; }
-        }
-
-        public BouncingBall Move()
-        {
-            // move ?
-            return this;
         }
     }
 }

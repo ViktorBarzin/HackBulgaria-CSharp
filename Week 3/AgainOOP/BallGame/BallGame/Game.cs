@@ -1,13 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BallGame
+﻿namespace BallGame
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using System.Windows;
     class Game
     {
+        
         private List<BouncingBall> listOfBalls = new List<BouncingBall>();
         private int width;
         private int height;
@@ -30,6 +31,13 @@ namespace BallGame
         {
             get { return this.listOfBalls; }
             set { this.listOfBalls = value; }
+        }
+
+
+        public BouncingBall Move(BouncingBall ball)
+        {
+            ball.positionOfCenter += ball.direction * ball.speed;
+            return ball;
         }
     }
 }
