@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CashDesk
+﻿namespace CashDesk
 {
+    using System;
+    using System.Collections;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+
     public class BatchBill : IEnumerable
     {
         private int count;
@@ -16,23 +16,33 @@ namespace CashDesk
         public BatchBill(List<Bill> billList)
         {
             this.Count = billList.Count;
-            this.Total = Sum(billList);
+            this.Total = this.Sum(billList);
             this.billValues = billList;
         }
+
         public List<Bill> BillValues
         {
             get { return this.billValues; }
         }
+
         public int Count
         {
             get { return this.count; }
             set { this.count = value; }
         }
+
         public int Total
         {
             get { return this.total; }
             private set { this.total = value; }
         }
+
+        public Bill this[int i]
+        {
+            get { return this.billValues[i]; }
+            set { this.billValues[i] = value; }
+        }
+
         public int Sum(List<Bill> billList)
         {
             int sum = 0;
@@ -40,6 +50,7 @@ namespace CashDesk
             {
                 sum += billList[i].Value;
             }
+
             return sum;
         }
 
@@ -48,16 +59,9 @@ namespace CashDesk
             return string.Format("Number of bills : {0}, \nTotal value of bills : {1}", this.Count, this.Total);
         }
 
-
         IEnumerator IEnumerable.GetEnumerator()
         {
-            return billValues.GetEnumerator();
-        }
-
-        public Bill this[int i]
-        {
-            get { return billValues[i]; }
-            set { this.billValues[i] = value; }
+            return this.billValues.GetEnumerator();
         }
     }
 }
