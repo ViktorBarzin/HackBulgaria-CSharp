@@ -10,6 +10,7 @@ namespace BallGame
     {
         static void Main(string[] args)
         {
+            // Implement game structure
         }
     }
 }
