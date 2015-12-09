@@ -6,16 +6,16 @@
     using System.Text;
     using System.Threading.Tasks;
     using System.Windows;
-    class Game
+    
+    public class Game
     {
-        
         private List<BouncingBall> listOfBalls = new List<BouncingBall>();
         private int width;
         private int height;
+        private Rectangle gameRectangle;
         public Game(int w,int h)
         {
-            this.Width = w;
-            this.Height = h;
+            this.gameRectangle = new Rectangle(new Point(0, 0), new Point(w, h));
         }
         public int Width
         {
@@ -33,11 +33,27 @@
             set { this.listOfBalls = value; }
         }
 
-
-        public BouncingBall Move(BouncingBall ball)
+        public void MoveAll(ref List<BouncingBall> listOfBalls)
         {
-            ball.positionOfCenter += ball.direction * ball.speed;
-            return ball;
+            foreach (BouncingBall ball in listOfBalls)
+            {
+                if (this.gameRectangle.IsInsideOfRect(new Point(ball.positionOfCenter.X + ball.direction.X,ball.positionOfCenter.Y + ball.direction.Y)))
+                {
+                    ball.Move(ball);
+                }
+                else if (this.gameRectangle.IsInsideOfRect(new Point(ball.positionOfCenter.X - ball.direction.X, ball.positionOfCenter.Y + ball.direction.Y)))
+                {
+
+                }
+                else if (this.gameRectangle.IsInsideOfRect(new Point(ball.positionOfCenter.X - ball.direction.X, ball.positionOfCenter.Y - ball.direction.Y)))
+                {
+
+                }
+                else if(this.gameRectangle.IsInsideOfRect(new Point(ball.positionOfCenter.X + ball.direction.X, ball.positionOfCenter.Y - ball.direction.Y)))
+                {
+
+                }
+            }
         }
     }
 }

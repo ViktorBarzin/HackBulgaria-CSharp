@@ -48,5 +48,10 @@
             get { return this.direction; }
             set { this.direction = value; }
         }
+        public BouncingBall Move(BouncingBall ball)
+        {
+            ball.positionOfCenter += ball.direction * ball.speed;
+            return ball;
+        }
     }
 }
