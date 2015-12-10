@@ -9,6 +9,7 @@
 
     public class Bill
     {
+        // TODO : implement generics support
         private List<int> validBillValues = new List<int> { 2, 5, 10, 20, 50, 100 };
         private int value;
 
