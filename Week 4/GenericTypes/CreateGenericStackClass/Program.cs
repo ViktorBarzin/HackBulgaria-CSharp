@@ -17,8 +17,6 @@ namespace CreateGenericStackClass
             //TotoGame toto2 = new TotoGame(listTwo);
 
             //Console.WriteLine(toto1 == toto2);
-            
-
         }
     }
 }
