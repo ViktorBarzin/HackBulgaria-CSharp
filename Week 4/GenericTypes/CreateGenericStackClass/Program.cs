@@ -10,13 +10,13 @@ namespace CreateGenericStackClass
     {
         static void Main(string[] args)
         {
-            //List<object> listOne = new List<object>() { 3.20, 'v',1,"as" };
-            //TotoGame toto1 = new TotoGame(listOne);
+            List<object> listOne = new List<object>() { 3.20, 'v', 1, "as" };
+            LottoGame<object> toto1 = new LottoGame<object>(listOne);
 
-            //List<object> listTwo = new List<object>() { 3.20, 'v',1 ,"ass"};
-            //TotoGame toto2 = new TotoGame(listTwo);
+            List<object> listTwo = new List<object>() { 3.20, 'v', 1, "ass" };
+            LottoGame<object> toto2 = new LottoGame<object>(listTwo);
 
-            //Console.WriteLine(toto1 == toto2);
+            Console.WriteLine(toto1 == toto2);
         }
     }
 }

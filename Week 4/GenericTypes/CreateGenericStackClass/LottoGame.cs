@@ -6,26 +6,42 @@ using System.Threading.Tasks;
 
 namespace CreateGenericStackClass
 {
-    public class TotoGame
+    public class LottoGame<T> : IComparable<T>
     {
-        private List<object> genericList = new List<object>();
+        private List<T> genericList = new List<T>();
 
-        public TotoGame(List<object> listOne)
+        public LottoGame(List<T> listOne)
         {
             this.GenericList = listOne;
         }
-        public List<object> GenericList
+        public List<T> GenericList
         {
-            get { return this.genericList; }
-            set { this.genericList = value; }
+            get { return this.GenericList1; }
+            set { this.GenericList1 = value; }
         }
 
+        public List<T> GenericList1
+        {
+            get
+            {
+                return genericList;
+            }
 
+            set
+            {
+                genericList = value;
+            }
+        }
 
-        public static bool operator ==(TotoGame obj1, TotoGame obj2)
+        public int CompareTo(T other)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static bool operator ==(LottoGame<T> obj1, LottoGame<T> obj2)
         {
             bool objOneEqualsObjTwo = true;
-            foreach (object item in obj1.genericList)
+            foreach (T item in obj1.genericList)
             {
                 if (!obj2.genericList.Contains(item))
                 {
@@ -34,7 +50,7 @@ namespace CreateGenericStackClass
                 }
             }
             bool objTwoEqualsObjOne = true;
-            foreach (object item in obj2.genericList)
+            foreach (T item in obj2.genericList)
             {
                 if (!obj1.genericList.Contains(item))
                 {
@@ -52,10 +68,10 @@ namespace CreateGenericStackClass
             }
         }
 
-        public static bool operator !=(TotoGame obj1, TotoGame obj2)
+        public static bool operator !=(LottoGame<T> obj1, LottoGame<T> obj2)
         {
             bool objOneEqualsObjTwo = true;
-            foreach (object item in obj1.genericList)
+            foreach (T item in obj1.genericList)
             {
                 if (!obj2.genericList.Contains(item))
                 {
@@ -63,7 +79,7 @@ namespace CreateGenericStackClass
                 }
             }
             bool objTwoEqualsObjOne = true;
-            foreach (object item in obj2.genericList)
+            foreach (T item in obj2.genericList)
             {
                 if (!obj1.genericList.Contains(item))
                 {
@@ -77,6 +93,25 @@ namespace CreateGenericStackClass
             else
             {
                 return true;
+            }
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (this.Equals(obj as LottoGame<T>))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 17;
+                hash = hash * 23 + this.genericList.GetHashCode();
+                return hash;
             }
         }
     }
