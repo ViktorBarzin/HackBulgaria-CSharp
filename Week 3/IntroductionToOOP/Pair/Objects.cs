@@ -45,5 +45,15 @@ namespace Pair
             }
             return false;
         }
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 17;
+                hash = hash * 23 + this.key.GetHashCode();
+                hash = hash * 23 + this.value.GetHashCode();
+                return hash;
+            }
+        }
     }
 }
