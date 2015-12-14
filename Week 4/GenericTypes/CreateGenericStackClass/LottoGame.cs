@@ -9,35 +9,39 @@ namespace CreateGenericStackClass
     public class LottoGame<T> : IComparable<T>
     {
         private List<T> genericList = new List<T>();
+        public List<List<T>> userCombinations = new List<List<T>>();
 
         public LottoGame(List<T> listOne)
         {
-            this.GenericList = listOne;
+            this.userCombinations.Add(listOne);
         }
         public List<T> GenericList
         {
-            get { return this.GenericList1; }
-            set { this.GenericList1 = value; }
+            get { return this.GenericList; }
+            set { this.GenericList = value; }
         }
 
-        public List<T> GenericList1
+        public void AddUserCombination(List<T> list)
         {
-            get
+            if (!combinationExists(list))
             {
-                return genericList;
+                // lotto lists
+                this.userCombinations.Add(list);
             }
-
-            set
+            else
             {
-                genericList = value;
+                Console.WriteLine("ERROR: Combination exists !");
             }
         }
-
-        public int CompareTo(T other)
+        private bool combinationExists(List<T> l)
         {
-            throw new NotImplementedException();
+            LottoGame<T> lot = new LottoGame<T>(l);
+            if (this == lot)
+            {
+                return true;
+            }
+            return false;
         }
-
         public static bool operator ==(LottoGame<T> obj1, LottoGame<T> obj2)
         {
             bool objOneEqualsObjTwo = true;
@@ -113,6 +117,11 @@ namespace CreateGenericStackClass
                 hash = hash * 23 + this.genericList.GetHashCode();
                 return hash;
             }
+        }
+
+        public int CompareTo(T other)
+        {
+            throw new NotImplementedException();
         }
     }
 }
