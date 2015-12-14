@@ -14,17 +14,17 @@ IsHack(n) -> checks if n is a hack number
 NextHack(n) -> returns the next hack number, that is bigger than n
 */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace Hack_Numbers
 {
-    class Program
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+
+    public class Program
     {
-        public static bool isHack(int number)
+        public static bool IsHack(int number)
         {
             string numberAsBinary = Convert.ToString(number, 2);
             for (int i = 0, q = numberAsBinary.Length - 1; i < numberAsBinary.Length; i++, q--)
@@ -34,6 +34,7 @@ namespace Hack_Numbers
                     return false;
                 }
             }
+
             return true;
         }
 
@@ -41,20 +42,21 @@ namespace Hack_Numbers
         {
             for (int i = number + 1; i < number * number; i++)
             {
-                if (isHack(i))
+                if (IsHack(i))
                 {
                     return i;
                 }
             }
+
             return 1;
         }
 
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             Console.WriteLine("Enter a number to see if it is \"hacked\": ");
             int input = int.Parse(Console.ReadLine());
-            Console.WriteLine("The number {0} is hacked : {1}", input, isHack(input));
-            Console.WriteLine("The next \"Hacked\" number is : {0}",NextHack(input));
+            Console.WriteLine("The number {0} is hacked : {1}", input, IsHack(input));
+            Console.WriteLine("The next \"Hacked\" number is : {0}", NextHack(input));
         }
     }
 }

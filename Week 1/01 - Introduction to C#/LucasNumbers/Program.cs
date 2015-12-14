@@ -5,39 +5,39 @@ NthLucas(n) -> returns the nth Lucas number
 FirstNLucas(n) -> returns a list of the first n Lucas numbers
 */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace LucasNumbers
 {
-    class Program
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+
+    public class Program
     {
-        public static int nthLucasNumbers(int n)
+        public static int NthLucasNumbers(int n)
         {
             if (n == 0)
             {
                 return 2;
             }
+
             if (n == 1)
             {
                 return 1;
             }
             else
             {
-                return nthLucasNumbers(n - 1) + nthLucasNumbers(n - 2);
+                return NthLucasNumbers(n - 1) + NthLucasNumbers(n - 2);
             }
         }
 
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             Console.WriteLine("Enter the Lucas number number");
             int l = int.Parse(Console.ReadLine());
-            Console.WriteLine("The {0}th Lucas numbers is : {1}", l, nthLucasNumbers(l));
-
-
+            Console.WriteLine("The {0}th Lucas numbers is : {1}", l, NthLucasNumbers(l));
+            
             int a = 2, b = 1, c = 0;
             Console.Write("{0} {1}", a, b);
 
@@ -51,4 +51,3 @@ namespace LucasNumbers
         }
     }
 }
-

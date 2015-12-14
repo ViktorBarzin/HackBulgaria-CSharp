@@ -22,19 +22,17 @@ The function should return the maximum damage we can inflict by bombing a single
 The damage in each cell is calculated as the difference between the old value and value after bombing.
 */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace MatrixBombing
 {
-    class Program
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+
+    public class Program
     {
-
-
-        static int MatrixBombing(int[,] m)
+        public static int MatrixBombing(int[,] m)
         {
             int rows = m.GetLength(0);
             int cols = m.GetLength(1);
@@ -57,26 +55,26 @@ namespace MatrixBombing
                                 {
                                     curDamage += m[i, j] < m[k, l] ? m[i, j] : m[k, l];
                                 }
-                                catch (IndexOutOfRangeException) { }
+                                catch (IndexOutOfRangeException exp)
+                                {
+                                    Console.WriteLine(exp.Message);
+                                }
                             }
                         }
                     }
-                    if (maxDamage < curDamage) maxDamage = curDamage;
+
+                    if (maxDamage < curDamage)
+                    {
+                        maxDamage = curDamage;
+                    }
                 }
             }
 
             return maxDamage;
         }
 
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            int[,] m = new int[,] {{9, 9, 9, 9},
-                                   {9, 1, 9, 9},
-                                   {9, 9, 9, 9}};
-
-            Console.WriteLine(MatrixBombing(m));
-            Console.ReadKey();
         }
     }
 }
-

@@ -18,15 +18,15 @@ P(363) = 1.
 When we return from the recursion, we get 3.
 */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace PalindromeScore
 {
-    class Program
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+
+    public class Program
     {
         public static int PScore(int number)
         {
@@ -36,13 +36,15 @@ namespace PalindromeScore
             }
             else
             {
-                return (1 + PScore(number + ReverseNumber(number)));
+                return 1 + PScore(number + ReverseNumber(number));
             }
         }
+
         public static int ReverseNumber(int number)
         {
-            return number.ToString().Reverse().Aggregate(0, (b, x) => 10 * b + x - '0');
+            return number.ToString().Reverse().Aggregate(0, (b, x) => (10 * b) + x - '0');
         }
+
         public static bool IsPalindrom(int number)
         {
             string numberAsString = number.ToString();
@@ -53,9 +55,11 @@ namespace PalindromeScore
                     return false;
                 }
             }
+
             return true;
         }
-        static void Main(string[] args)
+
+        public static void Main(string[] args)
         {
             Console.WriteLine("Enter a number to find its Palindrome Score :");
             int input = int.Parse(Console.ReadLine());

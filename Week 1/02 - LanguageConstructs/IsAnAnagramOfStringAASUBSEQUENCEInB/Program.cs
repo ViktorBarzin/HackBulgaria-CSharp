@@ -6,15 +6,15 @@ Return whether an anagram of String A can be found in String B.
 bool HasAnagramOf(string A,string B)
 */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace IsAnAnagramOfStringAASUBSEQUENCEInB
 {
-    class Program
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+
+    public class Program
     {
         public static bool HasAnagramOf(string substr, string strToCheck)
         {
@@ -23,24 +23,11 @@ namespace IsAnAnagramOfStringAASUBSEQUENCEInB
             {
                 hasAnagram = false;
             }
-            //Old way below 
-            //for (int i = 0; i < strToCheck.Length; i++)
-            //{
-            //    if (strToCheck[i] == substr[0])
-            //    {
-            //        for (int k = 1; k < substr.Length; k++)
-            //        {
-            //            if (substr[k] != strToCheck[k + i])
-            //            {
-            //                hasAnagram = false;
-            //            }
-            //        }
-            //        hasAnagram = true;
-            //    }
-            //}
+
             return hasAnagram;
         }
-        static void Main(string[] args)
+
+        public static void Main(string[] args)
         {
             Console.WriteLine("Enter substring to check if exeist :");
             string subStr = Console.ReadLine();

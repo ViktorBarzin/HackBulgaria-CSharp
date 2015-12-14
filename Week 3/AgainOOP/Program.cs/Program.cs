@@ -17,7 +17,7 @@
             // Add countries to list
             List<CountryVatTax> countriesList = new List<CountryVatTax>() { bg };
 
-            // Initialise VatTaxCalculator with the countries list
+            // Initialise VatTaxCalculator with the countries list 
             VatTaxCalculator calc = new VatTaxCalculator(countriesList);
 
             // Add products - id, name, quantity, price, country

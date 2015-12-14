@@ -4,15 +4,15 @@ Implement a function which takes a string and returns the same in a reversed ord
 string ReverseMe(string original)
 */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace ReverseAString
 {
-    class Program
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+
+    public class Program
     {
         public static string ReverseMe(string original)
         {
@@ -20,11 +20,12 @@ namespace ReverseAString
             Array.Reverse(charArray);
             return new string(charArray);
         }
-        static void Main(string[] args)
+
+        public static void Main(string[] args)
         {
             Console.WriteLine("Enter a string to reverse :");
             string input = Console.ReadLine();
-            Console.WriteLine("Reversed of \"{0}\" is : \"{1}\"",input,ReverseMe(input));
+            Console.WriteLine("Reversed of \"{0}\" is : \"{1}\"", input, ReverseMe(input));
         }
     }
 }

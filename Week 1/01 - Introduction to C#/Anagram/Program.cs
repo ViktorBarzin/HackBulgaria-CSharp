@@ -3,52 +3,55 @@ IsAnagram(A, B) - returns true, if the string A is an anagram of B
 HasAnagramOf(A, B) - returns true, if an anagram of string A can be found in B
 */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace Anagram
 {
-    class Program
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+
+    public class Program
     {
-        public static bool IsAnagram(string A, string B)
+        public static bool IsAnagram(string a, string b)
         {
-            Dictionary<char, int> aDictionary = new Dictionary<char, int>();
-            foreach (var letter in A)
+            Dictionary<char, int> dictA = new Dictionary<char, int>();
+            foreach (var letter in a)
             {
-                if (aDictionary.ContainsKey(letter))
+                if (dictA.ContainsKey(letter))
                 {
-                    aDictionary[letter] += 1;
+                    dictA[letter] += 1;
                 }
                 else
                 {
-                    aDictionary.Add(letter, 1);
+                    dictA.Add(letter, 1);
                 }
             }
-            Dictionary<char, int> bDictionary = new Dictionary<char, int>();
-            foreach (var letter in B)
+
+            Dictionary<char, int> dictB = new Dictionary<char, int>();
+            foreach (var letter in b)
             {
-                if (bDictionary.ContainsKey(letter))
+                if (dictB.ContainsKey(letter))
                 {
-                    bDictionary[letter] += 1;
+                    dictB[letter] += 1;
                 }
                 else
                 {
-                    bDictionary.Add(letter, 1);
+                    dictB.Add(letter, 1);
                 }
             }
-            bool IsEqual = aDictionary.OrderBy(r => r.Key).SequenceEqual(bDictionary.OrderBy(r => r.Key));
-            return IsEqual;
-        } 
-        static void Main(string[] args)
+
+            bool isEqual = dictA.OrderBy(r => r.Key).SequenceEqual(dictB.OrderBy(r => r.Key));
+            return isEqual;
+        }
+
+        public static void Main(string[] args)
         {
             Console.WriteLine("Enter first string :");
             string firstInput = Console.ReadLine();
             Console.WriteLine("Enter second string :");
             string secondInput = Console.ReadLine();
-            Console.WriteLine("String \"{0}\" and string \"{1}\" are anagrams : {2}  ",firstInput,secondInput,IsAnagram(firstInput, secondInput));
+            Console.WriteLine("String \"{0}\" and string \"{1}\" are anagrams : {2}  ", firstInput, secondInput, IsAnagram(firstInput, secondInput));
         }
     }
 }

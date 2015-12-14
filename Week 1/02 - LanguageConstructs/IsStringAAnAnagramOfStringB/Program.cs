@@ -4,15 +4,15 @@ bool Anagram(string A, string B) See http://en.wikipedia.org/wiki/Anagram
 No HashMaps, hashSets, or such stuff allowed : )
 */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace IsStringAAnAnagramOfStringB
 {
-    class Program
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+
+    public class Program
     {
         public static string StringSort(string input)
         {
@@ -20,19 +20,21 @@ namespace IsStringAAnAnagramOfStringB
             Array.Sort(inputAsCharArr);
             return new string(inputAsCharArr);
         }
-        public static bool Anagram(string A, string B)
+
+        public static bool Anagram(string a, string b)
         {
-            string SortedA = StringSort(A);
-            string SortedB = StringSort(B);
-            if (A.Length == B.Length)
+            string sortedA = StringSort(a);
+            string sortedB = StringSort(b);
+            if (a.Length == b.Length)
             {
-                for (int i = 0; i < A.Length; i++)
+                for (int i = 0; i < a.Length; i++)
                 {
-                    if (SortedA[i] != SortedB[i])
+                    if (sortedA[i] != sortedB[i])
                     {
                         return false;
                     }
                 }
+
                 return true;
             }
             else
@@ -40,7 +42,8 @@ namespace IsStringAAnAnagramOfStringB
                 return false;
             }
         }
-        static void Main(string[] args)
+
+        public static void Main(string[] args)
         {
             Console.WriteLine("Enter the tow strings you want to check :");
             string input1 = Console.ReadLine();
