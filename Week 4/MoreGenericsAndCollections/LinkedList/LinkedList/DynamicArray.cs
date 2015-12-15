@@ -87,21 +87,7 @@ namespace DataStructures
 
         public bool Remove(T value)
         {
-            for (int i = 0; i < this.array.Length; i++)
-            {
-                if (this.array[i].Equals(value))
-                {
-                    this.array[i] = default(T);
-                    if (this.count <= (1 / 3 * this.array.Length))
-                    {
-                        T[] arr = this.array;
-                        this.array = new T[this.array.Length / 2];
-                        this.array = arr;
-                    }
-
-                    return true;
-                }
-            }
+            //DynamicArray<T> newArr = this.array.
             return false;
         }
 

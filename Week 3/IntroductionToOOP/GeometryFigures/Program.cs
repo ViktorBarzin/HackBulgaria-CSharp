@@ -32,9 +32,13 @@ namespace GeometryFigures
             //Console.WriteLine(rect.DisplayB);
             Rectangle rect2 = new Rectangle(point3, point4);
             //Console.WriteLine(rect.Equals(rect2));
-            Console.WriteLine(rect == rect2);
-            
+            //Console.WriteLine(rect == rect2);
+
             //TODO : properties for edges;
+
+            Vector vect1 = new Vector(1, 2, 3);
+            Vector vect2 = new Vector(4, 5, 6);
+            Console.WriteLine(vect1 * vect2);
         }
     }
 }
