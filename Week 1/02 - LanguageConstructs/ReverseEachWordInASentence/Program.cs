@@ -5,15 +5,15 @@ words but each word is in a reverse order.
 string ReverseEveryWord(string sentence)
 */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace ReverseEachWordInASentence
 {
-    class Program
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+
+    public class Program
     {
         public static string ReverseMe(string original)
         {
@@ -31,14 +31,16 @@ namespace ReverseEachWordInASentence
                 reversedWords.Add(ReverseMe(word));
             }
 
-            string result = "";
+            string result = string.Empty;
             foreach (var reversedWord in reversedWords)
             {
                 result = result + reversedWord + " ";
             }
+
             return result;
         }
-        static void Main(string[] args)
+
+        public static void Main(string[] args)
         {
             string input = "Ab Cd Ef Gh";
             Console.WriteLine(ReverseEveryWord(input));

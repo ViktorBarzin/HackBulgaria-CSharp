@@ -6,15 +6,15 @@ one range is a pair of two numbers - start and end.
 We want to calculate, for each range, how many people are born in it (between start and end inclusive).
 */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace BirthdayRanges
 {
-    class Program
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+
+    public class Program
     {
         public static List<int> BirthdayRanges(List<int> birthdays, List<KeyValuePair<int, int>> ranges)
         {
@@ -29,11 +29,14 @@ namespace BirthdayRanges
                         counter++;
                     }
                 }
+
                 birthdayCounter.Add(counter);
             }
+
             return birthdayCounter;
         }
-        static void Main(string[] args)
+
+        public static void Main(string[] args)
         {
             List<int> birthdays = new List<int> { 5, 10, 6, 7, 3, 4, 5, 11, 21, 300, 15 };
             List<KeyValuePair<int, int>> ranges = new List<KeyValuePair<int, int>>();
@@ -46,11 +49,8 @@ namespace BirthdayRanges
             {
                 Console.Write(item + " ");
             }
-            Console.WriteLine();
 
-            //Birthdays - { 5, 10, 6, 7, 3, 4, 5, 11, 21, 300, 15}
-            //Ranges - { (4, 9), (6, 7), (200, 225), (300, 365)}
-            // res : {5, 2, 0, 1}
+            Console.WriteLine();
         }
     }
 }

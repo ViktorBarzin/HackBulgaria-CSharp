@@ -8,15 +8,15 @@ Input 'kitten%20pic.jpg' Output 'kitten pic.jpg'
 string DecodeUrl(string input)
 */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace DecodeAnURL
 {
-    class Program
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+
+    public class Program
     {
         public static string DecodeUrl(string url)
         {
@@ -27,9 +27,11 @@ namespace DecodeAnURL
                 url = url.Replace("%3D", "?");
                 url = url.Replace("%2f", "/");
             }
+
             return url;
         }
-        static void Main(string[] args)
+
+        public static void Main(string[] args)
         {
             Console.WriteLine("Enter URL to decode :");
             string inputUrl = Console.ReadLine();

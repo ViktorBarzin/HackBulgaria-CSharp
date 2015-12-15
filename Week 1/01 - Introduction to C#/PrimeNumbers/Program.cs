@@ -7,15 +7,15 @@ Check if number is prime -> IsPrime(n)
 List the first n prime numbers -> ListFirstPrimes(n)
 */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace PrimeNumbers
 {
-    class Program
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+
+    public class Program
     {
         public static bool IsPrime(int number)
         {
@@ -26,8 +26,10 @@ namespace PrimeNumbers
                     return false;
                 }
             }
+
             return true;
         }
+
         public static int ReturnPrime(int number)
         {
             int i;
@@ -38,22 +40,25 @@ namespace PrimeNumbers
                     return 0;
                 }
             }
+
             return i;
         }
+
         public static List<int> ListFirstPrimes(int number)
         {
-            List<int> PrimesList = new List<int>();
+            List<int> primesList = new List<int>();
             for (int i = 0; i < number; i++)
             {
                 if (IsPrime(i))
                 {
-                    PrimesList.Add(i);
-                    //Console.WriteLine(i);
+                    primesList.Add(i);
                 }
             }
-            return PrimesList;
+
+            return primesList;
         }
-        static void Main(string[] args)
+
+        public static void Main(string[] args)
         {
             Console.WriteLine("Enter the number to check and the list of prime numbers smaller than yours :");
             int input = int.Parse(Console.ReadLine());
@@ -62,8 +67,8 @@ namespace PrimeNumbers
             foreach (int number in ListFirstPrimes(input))
             {
                 Console.Write(number + " ");
-
             }
+
             Console.WriteLine();
         }
     }
