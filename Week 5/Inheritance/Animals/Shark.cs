@@ -4,13 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Bubble_Sort
+namespace Animals
 {
-    class Program
+    class Shark : Animals
     {
-        static void Main(string[] args)
-        {
-            
-        }
     }
 }
