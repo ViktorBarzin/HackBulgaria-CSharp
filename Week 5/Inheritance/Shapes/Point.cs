@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Shapes
+﻿namespace Shapes
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+
     public class Point : IMoveable
     {
         public double X;
@@ -22,6 +22,5 @@ namespace Shapes
             this.X += x;
             this.Y += y;
         }
-
     }
 }

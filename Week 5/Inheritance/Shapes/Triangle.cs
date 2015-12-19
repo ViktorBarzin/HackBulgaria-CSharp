@@ -1,11 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace Shapes
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+
     class Triangle : Shape
     {
         public Triangle(Point vertex1, Point vertex2, Point vertex3)
@@ -19,7 +20,9 @@ namespace Shapes
         }
 
         protected Point Vertex1 { get; set; }
+
         protected Point Vertex2 { get; set; }
+
         protected Point Vertex3 { get; set; }
 
         public override double GetArea()
