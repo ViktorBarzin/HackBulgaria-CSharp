@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Time
+﻿namespace Time
 {
-    class Program
+    using System;
+
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            //hh: mm: ss dd.MM.YY
+            // hh: mm: ss dd.MM.YY
             Console.WriteLine("Enter the date in the following format \" hh:mm:ss dd.MM.YY\"");
             string dateTime = Console.ReadLine();
             Time timeobj = new Time(dateTime);

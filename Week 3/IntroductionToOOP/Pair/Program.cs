@@ -1,18 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Pair
+﻿namespace Pair
 {
-    class Program
+    using System;
+
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            Objects obj1 = new Objects("gosho",1);
+            Objects obj1 = new Objects("gosho", 1);
             Console.WriteLine(obj1.ToString());
-            //TODO : add == and != operator
+
+            // TODO : add == and != operator
         }
     }
 }

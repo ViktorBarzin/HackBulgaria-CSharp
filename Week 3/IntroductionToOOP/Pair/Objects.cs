@@ -1,57 +1,39 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Pair
+﻿namespace Pair
 {
-    class Objects
+    public class Objects
     {
-        private object key;
-        private object value;
-
         public Objects(object key, object value)
         {
-            this.key = key;
-            this.value = value;
+            this.Key = key;
+            this.Value = value;
         }
 
-        public object Key
-        {
-            get
-            {
-                return this.key;
-            }
-        }
-        public object Value
-        {
-            get
-            {
-                return this.value;
-            }
-        }
+        public object Key { get; }
+
+        public object Value { get; }
 
         public override string ToString()
         {
-            string res = this.key + ":" + this.value;
-            return res;
+            return string.Format(this.Key + ":" + this.Value);
         }
+
         public override bool Equals(object obj)
         {
-            if (this.value == (obj as Objects).value && this.key == (obj as Objects).key)
+            if (this.Value == (obj as Objects).Value && this.Key == (obj as Objects).Key)
             {
                 return true;
             }
+
             return false;
         }
+
         public override int GetHashCode()
         {
             unchecked
             {
                 int hash = 17;
-                hash = hash * 23 + this.key.GetHashCode();
-                hash = hash * 23 + this.value.GetHashCode();
+                hash = (hash * 23) + this.Key.GetHashCode();
+                hash = (hash * 23) + this.Value.GetHashCode();
                 return hash;
             }
         }

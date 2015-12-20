@@ -1,41 +1,35 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Time
+﻿namespace Time
 {
-    class Time
+    using System;
+
+    public class Time
     {
-        private int year;
-        private int month;
-        private int day;
-        private int hour;
-        private int minute;
-        private int second;
-        //hh:mm:ss dd.MM.YY
+        private readonly int _year;
+        private readonly int _month;
+        private readonly int _day;
+        private readonly int _hour;
+        private readonly int _minute;
+        private readonly int _second;
+
         public Time(string time)
         {
-        // char [] timeAsCharArr = time.ToCharArray();
-            string[] splitedTime = time.Split(':',' ','.');
-            hour = int.Parse(splitedTime[0]);
-            minute = int.Parse(splitedTime[1]);
-            second = int.Parse(splitedTime[2]);
-            day = int.Parse(splitedTime[3]);
-            month = int.Parse(splitedTime[4]);
-            year = int.Parse(splitedTime[5]);
+            string[] splitedTime = time.Split(':', ' ', '.');
+            this._hour = int.Parse(splitedTime[0]);
+            this._minute = int.Parse(splitedTime[1]);
+            this._second = int.Parse(splitedTime[2]);
+            this._day = int.Parse(splitedTime[3]);
+            this._month = int.Parse(splitedTime[4]);
+            this._year = int.Parse(splitedTime[5]);
         }
+
         public override string ToString()
         {
-            string res = "";
-            Console.WriteLine("{0}:{1}:{2} {3}.{4}.{5}",hour,minute,second,day,month,year);
-            return res;
+            return string.Format("{0}:{1}:{2} {3}.{4}.{5}", this._hour, this._minute, this._second, this._day, this._month, this._year);
         }
+
         public void Now()
         {
             Console.WriteLine(DateTime.Now);
         }
-
     }
 }

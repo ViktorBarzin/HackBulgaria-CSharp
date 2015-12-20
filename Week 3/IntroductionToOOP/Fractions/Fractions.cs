@@ -1,68 +1,107 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Fractions
+﻿namespace Fractions
 {
-    class Fractions
+    using System;
+
+    public class Fractions
     {
-        private double denominator;
-        private double numerator;
+        private double _denominator;
 
         public Fractions(int num, int denom)
         {
-            Numerator = num;
-            Denominator = denom;
+            this.Numerator = num;
+            this.Denominator = denom;
         }
-        public double Numerator
-        {
-            get { return numerator; }
-            set { this.numerator = value; }
-        }
+
+        public double Numerator { get; set; }
+
         public double Denominator
         {
-            get { return denominator; }
+            get
+            {
+                return this._denominator;
+            }
+
             set
             {
-                if (value == 0)
+                if (Math.Abs(value) < 0.00001)
                 {
                     throw new ArgumentException("Denominator can't be 0 and your an idiot");
                 }
-                this.denominator = value;
+
+                this._denominator = value;
             }
         }
+
+        public static bool operator ==(Fractions obj, Fractions obj1)
+        {
+            return obj.Numerator == obj1.Numerator && obj._denominator == obj1._denominator;
+        }
+
+        public static bool operator !=(Fractions obj, Fractions obj1)
+        {
+            return !(obj.Numerator == obj1.Numerator) || !(obj._denominator == obj1._denominator);
+        }
+
+        public static double operator +(Fractions obj1, Fractions obj2)
+        {
+            double lcm = obj1._denominator * obj2._denominator;
+            obj1.Numerator *= obj2._denominator;
+            obj2.Numerator *= obj1._denominator;
+            return (obj1.Numerator + obj2.Numerator) / lcm;
+        }
+
+        public static double operator -(Fractions obj1, Fractions obj2)
+        {
+            double lcm = obj1._denominator * obj2._denominator;
+            obj1.Numerator *= obj2._denominator;
+            obj2.Numerator *= obj1._denominator;
+            return (obj1.Numerator - obj2.Numerator) / lcm;
+        }
+
+        public static double operator /(Fractions obj1, Fractions obj2)
+        {
+            return (obj1.Numerator / obj1._denominator) / (obj2.Numerator / obj2._denominator);
+        }
+
+        public static double operator *(Fractions obj1, Fractions obj2)
+        {
+            return (obj1.Numerator / obj1._denominator) * (obj2.Numerator / obj2._denominator);
+        }
+
+        public static double operator +(Fractions obj1, double num)
+        {
+            double fractionRes = obj1.Numerator / obj1._denominator;
+            return fractionRes + num;
+        }
+
+        public static double operator -(Fractions obj1, double num)
+        {
+            return (obj1.Numerator / obj1._denominator) - num;
+        }
+
+        public static double operator *(Fractions obj1, double num)
+        {
+            return obj1.Numerator / obj1._denominator * num;
+        }
+
+        public static double operator /(Fractions obj1, double num)
+        {
+            return (obj1.Numerator / obj1._denominator) / num;
+        }
+
         public override string ToString()
         {
-            string res = numerator.ToString() + "/" + denominator.ToString();
-            Console.WriteLine(res);
-            return res;
+            return string.Format(this.Numerator + "/" + this._denominator);
         }
 
         public override bool Equals(object obj)
         {
-            if (this.denominator.Equals((obj as Fractions).denominator) && this.numerator.Equals((obj as Fractions).numerator))
+            if (this._denominator.Equals((obj as Fractions)._denominator) && this.Numerator.Equals((obj as Fractions).Numerator))
             {
                 return true;
             }
+
             return false;
-        }
-        public static bool operator ==(Fractions obj, Fractions obj1)
-        {
-            if (obj.numerator == obj1.numerator && obj.denominator == obj1.denominator)
-            {
-                return true;
-            }
-            return false;
-        }
-        public static bool operator !=(Fractions obj, Fractions obj1)
-        {
-            if (obj.numerator == obj1.numerator && obj.denominator == obj1.denominator)
-            {
-                return false;
-            }
-            return true;
         }
 
         public override int GetHashCode()
@@ -70,51 +109,10 @@ namespace Fractions
             unchecked
             {
                 int hash = 17;
-                hash = hash * 23 + numerator.GetHashCode();
-                hash = hash * 23 + denominator.GetHashCode();
+                hash = (hash * 23) + this.Numerator.GetHashCode();
+                hash = (hash * 23 )+ this._denominator.GetHashCode();
                 return hash;
             }
-        }
-        public static double operator +(Fractions obj1, Fractions obj2)
-        {
-            double lcm = obj1.denominator * obj2.denominator;
-            obj1.numerator *= obj2.denominator;
-            obj2.numerator *= obj1.denominator;
-            return (obj1.numerator + obj2.numerator) / lcm;            
-        }
-        public static double operator -(Fractions obj1, Fractions obj2)
-        {
-            double lcm = obj1.denominator * obj2.denominator;
-            obj1.numerator *= obj2.denominator;
-            obj2.numerator *= obj1.denominator;
-            return (obj1.numerator - obj2.numerator) / lcm;
-        }
-        public static double operator /(Fractions obj1, Fractions obj2)
-        {
-            return (obj1.numerator / obj1.denominator) / (obj2.numerator / obj2.denominator);
-        }
-        public static double operator *(Fractions obj1, Fractions obj2)
-        {
-            return (obj1.numerator / obj1.denominator) * (obj2.numerator / obj2.denominator);
-        }
-
-        public static double operator +(Fractions obj1, double num)
-        {
-            double fractionRes = obj1.numerator / obj1.denominator;
-            return fractionRes + num;
-            
-        }
-        public static double operator -(Fractions obj1, double num)
-        {
-            return obj1.numerator / obj1.denominator - num;
-        }
-        public static double operator *(Fractions obj1, double num)
-        {
-            return obj1.numerator / obj1.denominator * num;
-        }
-        public static double operator /(Fractions obj1, double num)
-        {
-            return obj1.numerator / obj1.denominator / num;
         }
     }
 }
