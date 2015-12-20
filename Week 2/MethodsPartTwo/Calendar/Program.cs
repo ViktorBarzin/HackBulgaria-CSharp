@@ -11,31 +11,27 @@ Example:
 PrintCalendar(11,2015, new CultureInfo("bg-BG")):
 */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Globalization;
-
 namespace Calendar
 {
-    class Program
+    using System;
+    using System.Globalization;
+
+    public class Program
     {
         public static void PrintCalendar(int month, int year, CultureInfo culture)
         {
-            DateTime date = new DateTime(year, month, 1);
-
             Console.WriteLine(new CultureInfo(culture.ToString()).DateTimeFormat.GetMonthName(month));
             for (int i = 0; i < 7; i++)
             {
-                Console.Write(new CultureInfo(culture.ToString()).DateTimeFormat.GetDayName((DayOfWeek)i ) + " ");
+                Console.Write(new CultureInfo(culture.ToString()).DateTimeFormat.GetDayName((DayOfWeek)i) + " ");
             }
         }
-        static void Main(string[] args)
+
+        public static void Main(string[] args)
         {
             PrintCalendar(11, 2015, new CultureInfo("bg-BG"));
-            //TODO : finish later
+
+            // TODO : finish later
         }
     }
 }

@@ -7,15 +7,15 @@ The first index of a string which contains the searched one should be stored in 
 bool TryFindSubstring(List<string> list, string searched, out foundIndex)
 */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace SearchInAList
 {
-    class Program
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+
+    public class Program
     {
         public static bool TryFindSubstring(List<string> list, string searched, out int foundIndex)
         {
@@ -28,9 +28,11 @@ namespace SearchInAList
                     return true;
                 }
             }
+
             return false;
         }
-        static void Main(string[] args)
+
+        public static void Main(string[] args)
         {
             List<string> input = new List<string>() { "abc", "bca", "cab", "cba" };
             string searched = "cba";

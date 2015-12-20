@@ -7,15 +7,11 @@ void HackerTime()
 The result should be printed on the console in the format dd:hh:mm
 */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace _1337
 {
-    class Program
+    using System;
+
+    public class Program
     {
         public static void HackerTime()
         {
@@ -33,7 +29,8 @@ namespace _1337
                 Console.WriteLine("{0} days, {1} hours, {2} minutes", span.Days, span.Hours, span.Minutes);
             }
         }
-        static void Main(string[] args)
+
+        public static void Main(string[] args)
         {
             HackerTime();
         }

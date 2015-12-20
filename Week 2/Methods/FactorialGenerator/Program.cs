@@ -4,15 +4,12 @@ Write a method which generates all the factorials of the integers up to n. Use t
 IEnumerable<int> GenerateFactorials(int n)
 */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace FactorialGenerator
 {
-    class Program
+    using System;
+    using System.Collections.Generic;
+
+    public class Program
     {
         public static int FactorialGenerator(int n)
         {
@@ -21,24 +18,27 @@ namespace FactorialGenerator
             {
                 fact *= i;
             }
+
             return fact;
         }
+
         public static IEnumerable<int> GenerateFactorials(int n)
         {
             for (int i = 1; i <= n; i++)
             {
                 yield return FactorialGenerator(i);
-
             }
         }
-        static void Main(string[] args)
+
+        public static void Main(string[] args)
         {
             int input = 5;
             foreach (var item in GenerateFactorials(input))
             {
                 Console.WriteLine(item);
             }
-            //Console.WriteLine(string.Join("\n", GenerateFactorials(input)));
+
+            // Console.WriteLine(string.Join("\n", GenerateFactorials(input)));
         }
     }
 }

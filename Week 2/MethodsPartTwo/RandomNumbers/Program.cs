@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace RandomNumbers
+﻿namespace RandomNumbers
 {
-    class Program
+    using System;
+
+    public class Program
     {
         public static void GenerateRandomMatrix(int rows, int columns, string fileName)
         {
@@ -14,7 +10,6 @@ namespace RandomNumbers
             double[,] matrix = new double[rows, columns];
             for (int r = 0; r < rows; r++)
             {
-                bool offset = false;
                 for (int c = 0; c < columns; c++)
                 {
                     matrix[r, c] = rand.NextDouble() * 1000;
@@ -31,15 +26,16 @@ namespace RandomNumbers
                         Console.Write("{0:f2}".PadRight(8), matrix[r, c]);
                     }
                 }
+
                 Console.WriteLine();
             }
-
-
         }
-        static void Main(string[] args)
+
+        public static void Main()
         {
             GenerateRandomMatrix(4, 4, "22");
-            //TODO : Finish formatting
+
+            // TODO : Finish formatting
         }
     }
 }

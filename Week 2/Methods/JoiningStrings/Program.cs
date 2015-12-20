@@ -4,39 +4,37 @@ Write a method which takes an arbitrary number of strings and joins them using t
 string JoinStrings(string separator, params string[] strings)
 */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace JoiningStrings
 {
-    class Program
+    using System;
+    using System.Text;
+
+    public class Program
     {
         public static string JoinStrings(string separator, params string[] strings)
         {
             StringBuilder result = new StringBuilder();
-            for (int i = 0; i < strings.Length; i++)
+            foreach (string t in strings)
             {
-                if (strings[i] != strings[strings.Length - 1])
+                if (t != strings[strings.Length - 1])
                 {
-                    result.Append(strings[i]);
+                    result.Append(t);
                     result.Append(separator);
                 }
                 else
                 {
-                    result.Append(strings[i]);
+                    result.Append(t);
                 }
-                
             }
+
             return result.ToString();
         }
-        static void Main(string[] args)
+
+        public static void Main(string[] args)
         {
-            string separator = ",";
+            const string SEPARATOR = ",";
             string[] strings = { "a", "b", "c" };
-            Console.WriteLine(JoinStrings(separator, strings));
+            Console.WriteLine(JoinStrings(SEPARATOR, strings));
         }
     }
 }
