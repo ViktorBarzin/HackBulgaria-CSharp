@@ -8,11 +8,7 @@ void ResampleImage(Bitmap bitmap, Size newSize, string savePath)
 namespace InterpolateImage
 {
     using System;
-    using System.Collections.Generic;
     using System.Drawing;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
 
     public class Program
     {
@@ -25,7 +21,7 @@ namespace InterpolateImage
             {
                 for (int k = 0; k < newPic.Height; k++)
                 {
-                    Color pixel = bitmap.GetPixel((int)Math.Round((float)i / ratioW), (int)Math.Round((float)k / ratioH));
+                    Color pixel = bitmap.GetPixel((int)Math.Round(i / ratioW), (int)Math.Round(k / ratioH));
                     newPic.SetPixel(i, k, pixel);
                 }
             }

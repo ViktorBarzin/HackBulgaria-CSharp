@@ -7,10 +7,6 @@ No HashMaps, hashSets, or such stuff allowed : )
 namespace IsStringAAnAnagramOfStringB
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
 
     public class Program
     {
@@ -37,10 +33,8 @@ namespace IsStringAAnAnagramOfStringB
 
                 return true;
             }
-            else
-            {
-                return false;
-            }
+
+            return false;
         }
 
         public static void Main(string[] args)

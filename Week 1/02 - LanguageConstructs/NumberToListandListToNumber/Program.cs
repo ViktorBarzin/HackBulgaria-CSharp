@@ -30,13 +30,7 @@ namespace NumberToListandListToNumber
 
         public static int ListToNumber(string digits)
         {
-            int digitCounter = 0;
-            foreach (var digit in digits)
-            {
-                digitCounter++;
-            }
-
-            return digitCounter;
+            return digits.Count();
         }
 
         public static void Main(string[] args)

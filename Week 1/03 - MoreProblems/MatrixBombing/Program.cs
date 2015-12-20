@@ -25,10 +25,6 @@ The damage in each cell is calculated as the difference between the old value an
 namespace MatrixBombing
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
 
     public class Program
     {

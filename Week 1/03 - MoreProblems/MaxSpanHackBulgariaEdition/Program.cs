@@ -13,9 +13,6 @@ namespace MaxSpanHackBulgariaEdition
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
 
     public class Program
     {
@@ -24,11 +21,10 @@ namespace MaxSpanHackBulgariaEdition
             List<int> spanCounters = new List<int>();
             for (int i = 0; i < numbers.Count; i++)
             {
-                int spanCounter = 0;
                 int lastindexof = numbers.LastIndexOf(numbers[i]);
                 if (lastindexof != -1)
                 {
-                    spanCounter = (lastindexof - i) + 1;
+                    var spanCounter = (lastindexof - i) + 1;
                     spanCounters.Add(spanCounter);
                 }
             }

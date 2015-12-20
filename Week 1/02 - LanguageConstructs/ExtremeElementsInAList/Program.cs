@@ -10,10 +10,7 @@ int NthMax(int n, int[] items) - returns the nth maximum element in items
 namespace ExtremeElementsInAList
 {
     using System;
-    using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
 
     public class Program
     {

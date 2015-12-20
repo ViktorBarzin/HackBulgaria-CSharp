@@ -7,21 +7,18 @@ Example: CopyEveryChar("tldr", 3) => "tttllldddrrr"
 namespace CopyEveryCharacterKTimes
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
     using System.Text;
-    using System.Threading.Tasks;
 
     public class Program
     {
         public static string CopyEveryChar(string input, int k)
         {
             StringBuilder result = new StringBuilder(string.Empty);
-            for (int i = 0; i < input.Length; i++)
+            foreach (char t in input)
             {
                 for (int q = 0; q < k; q++)
                 {
-                    result.Append(input[i]);
+                    result.Append(t);
                 }
             }
 

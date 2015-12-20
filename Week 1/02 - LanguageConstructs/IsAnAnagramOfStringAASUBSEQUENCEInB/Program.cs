@@ -9,22 +9,12 @@ bool HasAnagramOf(string A,string B)
 namespace IsAnAnagramOfStringAASUBSEQUENCEInB
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
 
     public class Program
     {
         public static bool HasAnagramOf(string substr, string strToCheck)
         {
-            bool hasAnagram = true;
-            if (!strToCheck.Contains(substr))
-            {
-                hasAnagram = false;
-            }
-
-            return hasAnagram;
+            return strToCheck.Contains(substr); ;
         }
 
         public static void Main(string[] args)

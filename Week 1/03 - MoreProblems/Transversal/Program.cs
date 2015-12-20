@@ -16,8 +16,6 @@ namespace Transversal
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
 
     public class Program
     {
@@ -26,15 +24,7 @@ namespace Transversal
             bool isTrans = false;
             foreach (List<int> sublist in family)
             {
-                isTrans = false;
-                for (int i = 0; i < transversal.Count; i++)
-                {
-                    if (sublist.Contains(transversal[i]))
-                    {
-                        isTrans = true;
-                        break;
-                    }
-                }
+                isTrans = transversal.Any(t => sublist.Contains(t));
 
                 if (!isTrans)
                 {
@@ -47,15 +37,9 @@ namespace Transversal
 
         public static void Main(string[] args)
         {
-            List<int> transversal = new List<int>();
-            transversal.Add(2);
-            transversal.Add(3);
-            transversal.Add(4);
-            
-            List<List<int>> family = new List<List<int>>();
-            family.Add(new List<int> { 1, 7 });
-            family.Add(new List<int> { 2, 3, 5 });
-            family.Add(new List<int> { 4, 8 });
+            List<int> transversal = new List<int> { 2, 3, 4 };
+
+            List<List<int>> family = new List<List<int>> { new List<int> { 1, 7 }, new List<int> { 2, 3, 5 }, new List<int> { 4, 8 } };
 
             Console.WriteLine(IsTransversal(transversal, family));
         }
