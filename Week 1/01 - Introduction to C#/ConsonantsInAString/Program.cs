@@ -6,10 +6,7 @@ which returns the count of all consonants in the string str.
 namespace ConsonantsInAString
 {
     using System;
-    using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
 
     public class Program
     {

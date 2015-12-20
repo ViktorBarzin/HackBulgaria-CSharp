@@ -13,8 +13,6 @@ namespace WorkingWithDigits
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
 
     public class Program
     {
@@ -27,14 +25,8 @@ namespace WorkingWithDigits
         public static int SumOfDigits(int number)
         {
             string stringNumber = number.ToString();
-            int sumOfDigits = 0;
-            for (int i = 0; i < stringNumber.Length; i++)
-            {
-                int stringNumberToAdd = int.Parse(stringNumber[i].ToString());
-                sumOfDigits += stringNumberToAdd;
-            }
 
-            return sumOfDigits;
+            return stringNumber.Sum(t => int.Parse(t.ToString()));
         }
 
         public static int SumOfDigitsWithoutString(int number)
