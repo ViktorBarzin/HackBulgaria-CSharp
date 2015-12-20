@@ -215,5 +215,18 @@
       </Rules>
       <AnalyzerSettings />
     </Analyzer>
+    <Analyzer AnalyzerId="StyleCop.CSharp.NamingRules">
+      <AnalyzerSettings>
+        <CollectionProperty Name="Hungarian">
+          <Value>xc</Value>
+          <Value>xC</Value>
+          <Value>xo</Value>
+          <Value>xO</Value>
+          <Value>yc</Value>
+          <Value>yC</Value>
+          <Value>yO</Value>
+        </CollectionProperty>
+      </AnalyzerSettings>
+    </Analyzer>
   </Analyzers>
 </StyleCopSettings>
