@@ -4,28 +4,26 @@
 
     public class Program
     {
-        private static long[] memo = new long[1000000];
+        private static readonly long[] Memo = new long[1000000];
 
         public static long Fib(int n)
         {
-            if (memo[n] != 0)
+            if (Memo[n] != 0)
             {
-                return memo[n];
+                return Memo[n];
             }
 
-            if (n == 0)
+            switch (n)
             {
-                return 0;
+                case 0:
+                    return 0;
+                case 1:
+                    return 1;
             }
 
-            if (n == 1)
-            {
-                return 1;
-            }
+            Memo[n] = Fib(n - 1) + Fib(n - 2);
 
-            memo[n] = Fib(n - 1) + Fib(n - 2);
-
-            return memo[n];
+            return Memo[n];
         }
 
         public static void Main(string[] args)

@@ -3,14 +3,11 @@
     using System;
     using System.Collections.Generic;
     using System.Globalization;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
 
     public class Bill
     {
         // TODO : implement generics support
-        private List<int> validBillValues = new List<int> { 2, 5, 10, 20, 50, 100 };
+        private readonly List<int> validBillValues = new List<int> { 2, 5, 10, 20, 50, 100 };
         private int value;
 
         public Bill(int value)
@@ -27,7 +24,6 @@
 
             set
             {
-                // Check if bill is valid
                 if (!this.validBillValues.Contains(value))
                 {
                     Console.WriteLine("ERROR: Invalid Value for bill!");
@@ -41,22 +37,12 @@
 
         public static bool operator ==(Bill bill1, Bill bill2)
         {
-            if (bill1.value == bill2.value)
-            {
-                return true;
-            }
-
-            return false;
+            return bill2 != null && (bill1 != null && bill1.value == bill2.value);
         }
 
         public static bool operator !=(Bill bill1, Bill bill2)
         {
-            if (bill1.value != bill2.value)
-            {
-                return true;
-            }
-
-            return false;
+            return bill2 != null && (bill1 != null && bill1.value != bill2.value);
         }
 
         public static explicit operator int(Bill bill)
@@ -68,9 +54,7 @@
         public override string ToString()
         {
             var ri = new RegionInfo(System.Threading.Thread.CurrentThread.CurrentCulture.LCID);
-            string res = this.value.ToString() + " " + ri.ISOCurrencySymbol;
-
-            return res;
+            return string.Format(this.value.ToString() + " " + ri.ISOCurrencySymbol);
         }
 
         public override bool Equals(object obj)

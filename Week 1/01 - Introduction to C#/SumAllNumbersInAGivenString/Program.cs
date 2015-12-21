@@ -14,11 +14,11 @@ namespace SumAllNumbersInAGivenString
         {
             int temp = 0;
             int sum = 0;
-            for (int i = 0; i < input.Length; i++)
+            foreach (char t in input)
             {
-                if (char.IsDigit(input[i]))
+                if (char.IsDigit(t))
                 {
-                    int digit = input[i] - '0';
+                    int digit = t - '0';
                     temp = (temp * 10) + digit;
                 }
                 else

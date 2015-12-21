@@ -3,12 +3,10 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
 
     public class ShopInventory
     {
-        private Dictionary<Product, int> productsList = new Dictionary<Product, int>();
+        private readonly Dictionary<Product, int> productsList = new Dictionary<Product, int>();
 
         public ShopInventory(Product productToAdd)
         {
@@ -23,7 +21,7 @@
             }
         }
 
-        public ShopInventory(List<Product> listOfProducts)
+        public ShopInventory(IEnumerable<Product> listOfProducts)
         {
             // Adds each product via the aforementioned logic
             foreach (Product prod in listOfProducts)
@@ -38,7 +36,7 @@
                 }
             }
         }
-        
+
         public double Audit()
         {
             // Sums all the product values times their quantity
@@ -54,26 +52,18 @@
         public double RequestOrder(Order order)
         {
             // Takes an order and returns the order price
-            double sum = 0;
-            foreach (int id in order.ProductIds)
+            double sum = (from id in order.ProductIds
+                          from prod in this.productsList.Keys
+                          where prod.ProductId == id && order.ProductQuantities[order.ProductIds.IndexOf(id)] <= prod.Quantity
+                          select prod.PriceWithTax * order.ProductQuantities[order.ProductIds.IndexOf(id)]).Sum();
+
+            if (Math.Abs(sum) > 0.001)
             {
-                foreach (Product prod in this.productsList.Keys)
-                {
-                    // Finds the product via its ID and returns its price times the requested quantity
-                    if (prod.ProductId == id && order.ProductQuantities[order.ProductIds.IndexOf(id)] <= prod.Quantity)
-                    {
-                        sum += prod.PriceWithTax * order.ProductQuantities[order.ProductIds.IndexOf(id)];
-                    }
-                }
+                return sum;
             }
 
-            if (sum == 0)
-            {
-                Console.WriteLine("ERROR: None of the items you ordered are available in the requested quantities !");
-                return -1;
-            }
-
-            return sum;
+            Console.WriteLine("ERROR: None of the items you ordered are available in the requested quantities !");
+            return -1;
         }
     }
 }
