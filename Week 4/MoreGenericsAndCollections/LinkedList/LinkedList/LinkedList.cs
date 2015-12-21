@@ -1,131 +1,136 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DataStructures
+﻿namespace DataStructures
 {
+    using System;
+
     public class LinkedList<T>
     {
-        private class Node
-        {
-            public Node(T value, Node next)
-            {
-                this.Value = value;
-                this.Next = Next;
-            }
-            public T Value { get; set; }
-            public Node Next { get; set; }
-        }
         private Node Head { get; set; }
-
-        private class LinkedListIterator
-        {
-        }
-            
 
         public LinkedList<T> Add(T value)
         {
-            if (Head.Equals(null))
+            if (this.Head.Equals(null))
             {
-                Head = new Node(value, null);
+                this.Head = new Node(value, null);
                 return this;
             }
 
-            Node next = Head;
+            Node next = this.Head;
             while (!next.Next.Equals(null))
             {
                 next = next.Next;
             }
 
-            Node nodeToAdd = next;
             return this;
         }
 
         public LinkedList<T> InsertAfter(T key, T value)
         {
-            Node insert = Head;
+            Node insert = this.Head;
             insert.Value = value;
             while (!insert.Equals(null) && !insert.Value.Equals(key))
             {
                 insert = insert.Next;
             }
-            if (insert != null)
-                insert.Next = new Node(value, insert.Next);
+
+            insert.Next = new Node(value, insert.Next);
             return this;
         }
 
         public LinkedList<T> InsertBefore(T key, T value)
         {
-            if (Head.Equals(null))
+            if (this.Head.Equals(null))
             {
-                Head = new Node(value,null);
+                this.Head = new Node(value, null);
             }
 
             Node prev = null;
-            Node curr = Head;
+            Node curr = this.Head;
             while (curr != null && !curr.Value.Equals(key))
             {
                 prev = curr;
                 curr = curr.Next;
             }
 
-            if (curr != null)
+            if (curr == null)
+            {
+                return this;
+            }
+
+            if (prev != null)
             {
                 prev.Next = new Node(value, curr);
             }
+
             return this;
         }
 
         public LinkedList<T> InsertAt(T index, T value)
         {
             throw new NotImplementedException();
-            
         }
 
         public LinkedList<T> Remove(T value)
         {
-            if (Head.Equals(null))
+            if (this.Head.Equals(null))
             {
                 throw new ArgumentException("Head is null");
             }
-            Node curr = Head;
+
+            Node curr = this.Head;
             Node prev = null;
             while (curr != null && !curr.Value.Equals(value))
             {
                 prev = curr;
                 curr = curr.Next;
             }
-            if (curr.Equals(null))
+
+            if (curr != null && curr.Equals(null))
             {
                 throw new ArgumentException("Cannot delete");
             }
-            prev.Next = curr.Next;
-            return this;
-        }
 
-        //public Iterator<T> iterator()
-        //{
-        //    return new LinkedListIterator();
-        //}
-
-        public LinkedList<T> Clear()
-        {
-            if (Head.Equals(null))
+            if (prev == null)
             {
                 return this;
             }
 
-            Node prev = null;
-            Node curr = Head;
+            if (curr != null)
+            {
+                prev.Next = curr.Next;
+            }
+
+            return this;
+        }
+
+        public LinkedList<T> Clear()
+        {
+            if (this.Head.Equals(null))
+            {
+                return this;
+            }
+
+            Node curr = this.Head;
             while (curr != null && !curr.Value.Equals(null))
             {
-                prev = curr;
+                Node prev = curr;
                 curr = curr.Next;
                 prev.Next = null;
             }
+
             return this;
+        }
+
+        private class Node
+        {
+            public Node(T value, Node next)
+            {
+                this.Value = value;
+                this.Next = next;
+            }
+
+            public T Value { get; set; }
+
+            public Node Next { get; set; }
         }
     }
 }
