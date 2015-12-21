@@ -1,11 +1,6 @@
-﻿
-namespace Shapes
+﻿namespace Shapes
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
 
     public class Circle : Ellipse
     {
@@ -20,9 +15,10 @@ namespace Shapes
             {
                 this.SemiAxesY = this.SemiAxesX;
             }
-            this.Area = Math.PI * Math.Pow(Radius, 2);
+
+            this.Area = Math.PI * Math.Pow(this.Radius, 2);
             this.Perimeter = 2 * Math.PI * this.Radius;
-            this.Center = new Point(Radius, Radius);
+            this.Center = new Point(this.Radius, this.Radius);
         }
 
         protected double Radius { get; set; }

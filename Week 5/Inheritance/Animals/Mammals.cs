@@ -1,12 +1,8 @@
 ﻿namespace Animals
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
 
-    class Mammals : Animals, ILandAnimals
+    public class Mammals : Animals, ILandAnimals
     {
         public override void Move()
         {

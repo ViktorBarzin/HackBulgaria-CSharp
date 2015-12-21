@@ -1,18 +1,12 @@
 ﻿namespace Shapes
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-
     public abstract class Shape : IMoveable
     {
+        public Point Center { get; protected set; }
+
         protected double Perimeter { get; set; }
 
         protected double Area { get; set; }
-
-        public Point Center { get; protected set; }
 
         public virtual double GetPerimeter()
         {
