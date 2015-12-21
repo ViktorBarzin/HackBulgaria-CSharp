@@ -1,65 +1,55 @@
 ﻿namespace CreateGenericStackClass
 {
-    using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    class Dequeue<T>
+
+    public class Dequeue<T>
     {
         private LinkedList<T> list = new LinkedList<T>();
-        public Dequeue()
-        {
-
-        }
 
         public LinkedList<T> Clear()
         {
             this.list = new LinkedList<T>();
-            return list;
+            return this.list;
         }
 
         public bool Contains(T item)
         {
-            if (list.Contains(item))
-            {
-                return true;
-            }
-            return false;
+            return this.list.Contains(item);
         }
 
         public LinkedList<T> RemoveFromFront()
         {
-            list.RemoveFirst();
-            return list;
+            this.list.RemoveFirst();
+            return this.list;
         }
 
         public LinkedList<T> RemoveFromEnd()
         {
-            list.RemoveLast();
-            return list;
+            this.list.RemoveLast();
+            return this.list;
         }
 
         public LinkedList<T> AddToFront(T item)
         {
-            list.AddFirst(item);
-            return list;
+            this.list.AddFirst(item);
+            return this.list;
         }
 
         public LinkedList<T> AddToEnd(T item)
         {
-            list.AddLast(item);
-            return list;
+            this.list.AddLast(item);
+            return this.list;
         }
 
         public T PeekFromFront()
         {
-            return list.ToList()[list.ToList().Count - 1];
+            return this.list.ToList()[this.list.ToList().Count - 1];
         }
 
         public T PeekFromEnd()
         {
-            return list.ToList()[list.ToList().Count - 1];
+            return this.list.ToList()[this.list.ToList().Count - 1];
         }
     }
 }

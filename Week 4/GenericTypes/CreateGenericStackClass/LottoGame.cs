@@ -1,103 +1,47 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CreateGenericStackClass
+﻿namespace CreateGenericStackClass
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+
     public class LottoGame<T> : IComparable<T>
     {
-        private List<T> genericList = new List<T>();
-        public List<List<T>> userCombinations = new List<List<T>>();
+        public List<List<T>> UserCombinations { get; } = new List<List<T>>();
 
         public LottoGame(List<T> listOne)
         {
-            this.userCombinations.Add(listOne);
-        }
-        public List<T> GenericList
-        {
-            get { return this.GenericList; }
-            set { this.GenericList = value; }
+            this.UserCombinations.Add(listOne);
         }
 
-        public void AddUserCombination(List<T> list)
-        {
-            if (!combinationExists(list))
-            {
-                // lotto lists
-                this.userCombinations.Add(list);
-            }
-            else
-            {
-                Console.WriteLine("ERROR: Combination exists !");
-            }
-        }
-        private bool combinationExists(List<T> l)
-        {
-            LottoGame<T> lot = new LottoGame<T>(l);
-            if (this == lot)
-            {
-                return true;
-            }
-            return false;
-        }
+        public List<T> GenericList { get; set; } = new List<T>();
+
         public static bool operator ==(LottoGame<T> obj1, LottoGame<T> obj2)
         {
-            bool objOneEqualsObjTwo = true;
-            foreach (T item in obj1.genericList)
-            {
-                if (!obj2.genericList.Contains(item))
-                {
-                    objOneEqualsObjTwo = false;
-                    break;
-                }
-            }
-            bool objTwoEqualsObjOne = true;
-            foreach (T item in obj2.genericList)
-            {
-                if (!obj1.genericList.Contains(item))
-                {
-                    objTwoEqualsObjOne = false;
-                    break;
-                }
-            }
-            if (objOneEqualsObjTwo && objTwoEqualsObjOne)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            bool objOneEqualsObjTwo = obj1 != null && obj1.GenericList.All(item => obj2 != null && obj2.GenericList.Contains(item));
+            bool objTwoEqualsObjOne = obj2 != null && obj2.GenericList.All(item => obj1 != null && obj1.GenericList.Contains(item));
+            return objOneEqualsObjTwo && objTwoEqualsObjOne;
         }
 
         public static bool operator !=(LottoGame<T> obj1, LottoGame<T> obj2)
         {
             bool objOneEqualsObjTwo = true;
-            foreach (T item in obj1.genericList)
+            foreach (T item in obj1.GenericList.Where(item => obj2 != null && !obj2.GenericList.Contains(item)))
             {
-                if (!obj2.genericList.Contains(item))
-                {
-                    objOneEqualsObjTwo = false;
-                }
+                objOneEqualsObjTwo = false;
             }
+
             bool objTwoEqualsObjOne = true;
-            foreach (T item in obj2.genericList)
+            if (!(obj2 != null))
             {
-                if (!obj1.genericList.Contains(item))
-                {
-                    objTwoEqualsObjOne = false;
-                }
+                return !objOneEqualsObjTwo;
             }
-            if (objOneEqualsObjTwo && objTwoEqualsObjOne)
+
+            foreach (T item in obj2.GenericList.Where(item => !obj1.GenericList.Contains(item)))
             {
-                return false;
+                objTwoEqualsObjOne = false;
             }
-            else
-            {
-                return true;
-            }
+
+            return !objOneEqualsObjTwo || !objTwoEqualsObjOne;
         }
 
         public override bool Equals(object obj)
@@ -106,6 +50,7 @@ namespace CreateGenericStackClass
             {
                 return true;
             }
+
             return false;
         }
 
@@ -114,7 +59,7 @@ namespace CreateGenericStackClass
             unchecked
             {
                 int hash = 17;
-                hash = hash * 23 + this.genericList.GetHashCode();
+                hash = (hash * 23) + this.GenericList.GetHashCode();
                 return hash;
             }
         }
@@ -122,6 +67,25 @@ namespace CreateGenericStackClass
         public int CompareTo(T other)
         {
             throw new NotImplementedException();
+        }
+
+        public void AddUserCombination(List<T> list)
+        {
+            if (!this.CombinationExists(list))
+            {
+                // lotto lists
+                this.UserCombinations.Add(list);
+            }
+            else
+            {
+                Console.WriteLine("ERROR: Combination exists !");
+            }
+        }
+
+        private bool CombinationExists(List<T> l)
+        {
+            LottoGame<T> lot = new LottoGame<T>(l);
+            return this == lot;
         }
     }
 }
