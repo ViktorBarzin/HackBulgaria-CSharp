@@ -1,30 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Person
+﻿namespace Person
 {
-    class Toy
-    {
-        protected Color Color;
-        protected int Size;
+    using System.Drawing;
 
+    public class Toy
+    {
         public Toy(Color color, int size)
         {
-            this.Color = color;
-            this.Size = size;
+            this.Color1 = color;
+            this.Size1 = size;
         }
 
         public Toy()
         {
         }
 
+        public Color Color1 { get; }
+
+        public int Size1 { get; }
+
         public override string ToString()
         {
-            return string.Format("{0} color, {1} big", this.Color, this.Size);
+            return string.Format("{0} color, {1} big", this.Color1, this.Size1);
         }
     }
 }

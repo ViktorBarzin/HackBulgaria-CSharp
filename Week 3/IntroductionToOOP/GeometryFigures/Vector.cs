@@ -7,47 +7,47 @@
 
     public class Vector
     {
-        private readonly List<double> _coordinates = new List<double>();
+        private readonly List<double> coordinates = new List<double>();
 
         public Vector(params int[] coor)
         {
             foreach (int t in coor)
             {
-                this._coordinates.Add(t);
+                this.coordinates.Add(t);
             }
         }
 
         public Vector(Vector vect)
         {
-            this._coordinates = vect._coordinates;
+            this.coordinates = vect.coordinates;
         }
 
         public int Dimensionality
         {
-            get { return this._coordinates.Count; }
+            get { return this.coordinates.Count; }
         }
 
         public List<double> Coordinates
         {
-            get { return this._coordinates; }
+            get { return this.coordinates; }
         }
 
         public double this[int index]
         {
             get
             {
-                return this._coordinates[index];
+                return this.coordinates[index];
             }
 
             set
             {
-                this._coordinates[index] = value;
+                this.coordinates[index] = value;
             }
         }
 
         public static bool operator ==(Vector vect1, Vector vect2)
         {
-            if (vect1.Dimensionality == vect2.Dimensionality && vect1._coordinates == vect2._coordinates)
+            if (vect2 != null && (vect1 != null && (vect1.Dimensionality == vect2.Dimensionality && vect1.coordinates == vect2.coordinates)))
             {
                 return true;
             }
@@ -57,7 +57,7 @@
 
         public static bool operator !=(Vector vect1, Vector vect2)
         {
-            return !(vect1.Dimensionality == vect2.Dimensionality) || vect1._coordinates != vect2._coordinates;
+            return vect2 != null && (vect1 != null && (vect1.Dimensionality != vect2.Dimensionality || vect1.coordinates != vect2.coordinates));
         }
 
         public static Vector operator +(Vector vect1, Vector vect2)
@@ -68,9 +68,9 @@
             }
 
             Vector result = vect1;
-            for (int i = 0; i < vect1._coordinates.Count; i++)
+            for (int i = 0; i < vect1.coordinates.Count; i++)
             {
-                result[i] += vect2._coordinates[i];
+                result[i] += vect2.coordinates[i];
             }
 
             return result;
@@ -84,9 +84,9 @@
             }
 
             Vector result = vect1;
-            for (int i = 0; i < vect1._coordinates.Count; i++)
+            for (int i = 0; i < vect1.coordinates.Count; i++)
             {
-                result[i] -= vect2._coordinates[i];
+                result[i] -= vect2.coordinates[i];
             }
 
             return result;
@@ -100,20 +100,20 @@
             }
 
             Vector result = vect1;
-            for (int i = 0; i < vect1._coordinates.Count; i++)
+            for (int i = 0; i < vect1.coordinates.Count; i++)
             {
-                result[i] *= vect2._coordinates[i];
+                result[i] *= vect2.coordinates[i];
             }
 
-            return result._coordinates.Sum();
+            return result.coordinates.Sum();
         }
 
         public static Vector operator +(Vector vect1, double scal)
         {
             Vector result = new Vector();
-            for (int i = 0; i < vect1._coordinates.Count; i++)
+            for (int i = 0; i < vect1.coordinates.Count; i++)
             {
-                result[i] = vect1._coordinates[i] + scal;
+                result[i] = vect1.coordinates[i] + scal;
             }
 
             return result;
@@ -122,9 +122,9 @@
         public static Vector operator -(Vector vect1, double scal)
         {
             Vector result = new Vector();
-            for (int i = 0; i < vect1._coordinates.Count; i++)
+            for (int i = 0; i < vect1.coordinates.Count; i++)
             {
-                result[i] = vect1._coordinates[i] - scal;
+                result[i] = vect1.coordinates[i] - scal;
             }
 
             return result;
@@ -133,9 +133,9 @@
         public static Vector operator *(Vector vect1, double scal)
         {
             Vector result = new Vector();
-            for (int i = 0; i < vect1._coordinates.Count; i++)
+            for (int i = 0; i < vect1.coordinates.Count; i++)
             {
-                result[i] = vect1._coordinates[i] * scal;
+                result[i] = vect1.coordinates[i] * scal;
             }
 
             return result;
@@ -144,9 +144,9 @@
         public static Vector operator /(Vector vect1, double scal)
         {
             Vector result = new Vector();
-            for (int i = 0; i < vect1._coordinates.Count; i++)
+            for (int i = 0; i < vect1.coordinates.Count; i++)
             {
-                result[i] = vect1._coordinates[i] / scal;
+                result[i] = vect1.coordinates[i] / scal;
             }
 
             return result;
@@ -154,21 +154,21 @@
 
         public double Lenght()
         {
-            return Math.Sqrt(this._coordinates.Sum(t => Math.Pow(t, 2)));
+            return Math.Sqrt(this.coordinates.Sum(t => Math.Pow(t, 2)));
         }
 
         public override string ToString()
         {
             StringBuilder dimensions = new StringBuilder();
-            for (int i = 0; i < this._coordinates.Count; i++)
+            for (int i = 0; i < this.coordinates.Count; i++)
             {
-                if (i != this._coordinates.Count - 1)
+                if (i != this.coordinates.Count - 1)
                 {
-                    dimensions.Append(this._coordinates[i] + ":");
+                    dimensions.Append(this.coordinates[i] + ":");
                 }
                 else
                 {
-                    dimensions.Append(this._coordinates[i]);
+                    dimensions.Append(this.coordinates[i]);
                 }
             }
 
@@ -177,7 +177,7 @@
 
         public override bool Equals(object obj)
         {
-            if (this._coordinates == (obj as Vector)._coordinates && this.Dimensionality == (obj as Vector).Dimensionality)
+            if (this.coordinates == (obj as Vector).coordinates && this.Dimensionality == (obj as Vector).Dimensionality)
             {
                 return true;
             }
@@ -190,7 +190,7 @@
             unchecked
             {
                 int hash = 17;
-                hash = (hash * 23) + this._coordinates.GetHashCode();
+                hash = (hash * 23) + this.coordinates.GetHashCode();
                 hash = (hash * 23) + this.Dimensionality.GetHashCode();
                 return hash;
             }

@@ -28,12 +28,12 @@
 
         public static bool operator ==(Point point1, Point point2)
         {
-            return point1.X == point2.X && point1.Y == point2.Y;
+            return point2 != null && (point1 != null && (Math.Abs(point1.X - point2.X) < 0.001 && Math.Abs(point1.Y - point2.Y) < 0.001));
         }
 
         public static bool operator !=(Point point1, Point point2)
         {
-            return point1.X == point2.X ^ point1.Y == point2.Y;
+            return point2 != null && (point1 != null && Math.Abs(point1.X - point2.X) < 0.001 ^ Math.Abs(point1.Y - point2.Y) < 0.001);
         }
 
         public static LineSegment operator +(Point p1, Point p2)

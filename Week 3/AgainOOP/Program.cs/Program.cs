@@ -1,10 +1,6 @@
 ﻿namespace Program
 {
-    using System;
     using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
     using VATTaxCalculator;
 
     public class Program
@@ -30,8 +26,7 @@
             ShopInventory newInventory = new ShopInventory(productsList);
 
             // Add product id and quantity to orderdict 
-            Dictionary<int, int> orderdict = new Dictionary<int, int>();
-            orderdict.Add(0, 2);
+            Dictionary<int, int> orderdict = new Dictionary<int, int> { { 0, 2 } };
 
             Order newOrder = new Order(orderdict);
         }

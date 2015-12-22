@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Animals
+﻿namespace Animals
 {
-    class Fish : Animals
+    using System;
+
+    public class Fish : Animals
     {
         public override void Move()
         {

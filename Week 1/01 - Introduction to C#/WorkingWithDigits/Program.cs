@@ -50,13 +50,7 @@ namespace WorkingWithDigits
                 number = number / 10;
             }
 
-            int sumOfFactorials = 0;
-            for (int i = 0; i < listNumbers.Count; i++)
-            {
-                sumOfFactorials += Factorial(listNumbers[i]);
-            }
-
-            return sumOfFactorials;
+            return listNumbers.Sum(t => Factorial(t));
         }
 
         public static int Factorial(int n)

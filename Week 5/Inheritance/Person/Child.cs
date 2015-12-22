@@ -1,22 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Person
+﻿namespace Person
 {
-    class Child : Person
+    public class Child : Person
     {
-        protected Toy Toy = new Toy();
+        private Toy toy = new Toy();
+
         public Child(string gender) : base(gender)
         {
             this.DayiyStuff = "play";
         }
-        public Child(string gender,Toy toy) : base(gender)
+
+        public Child(string gender, Toy toy) : base(gender)
         {
             this.DayiyStuff = "play";
-            this.Toy = toy;
+            this.toy = toy;
         }
     }
 }

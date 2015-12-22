@@ -1,10 +1,8 @@
-﻿namespace CashDesk
+﻿namespace CashDeskApplication
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
+    using CashDesk;
 
     public class Program
     {
@@ -25,6 +23,11 @@
             {
                 // Split input command
                 string wholeCommand = Console.ReadLine();
+                if (wholeCommand == null)
+                {
+                    continue;
+                }
+
                 string[] command = wholeCommand.Split(' ');
                 switch (command[0])
                 {

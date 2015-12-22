@@ -8,12 +8,12 @@
         public static void IterateDirectory(string dir)
         {
             DirectoryInfo directory = new DirectoryInfo(dir);
-            foreach (var file in directory.GetFiles())
+            foreach (FileInfo file in directory.GetFiles())
             {
                 Console.WriteLine(file.Name);
             }
 
-            foreach (var item in directory.GetDirectories())
+            foreach (DirectoryInfo item in directory.GetDirectories())
             {
                 Console.WriteLine(item.Name);
                 IterateDirectory(item.FullName);

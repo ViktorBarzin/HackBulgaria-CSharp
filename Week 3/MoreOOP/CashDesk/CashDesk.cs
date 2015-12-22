@@ -3,17 +3,13 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
 
     public class CashDesk
     {
-        private int billTotal;
-        private double coinTotal;
+        private readonly List<int> validBillValues = new List<int> { 2, 5, 10, 20, 50, 100 };
+        private readonly List<int> validCoinValues = new List<int> { 1, 2, 5, 10, 20, 50, 100 };
         private Dictionary<int, int> bills = new Dictionary<int, int>();
         private Dictionary<int, int> coins = new Dictionary<int, int>();
-        private List<int> validBillValues = new List<int> { 2, 5, 10, 20, 50, 100 };
-        private List<int> validCoinValues = new List<int> { 1, 2, 5, 10, 20, 50, 100 };
 
         public CashDesk()
         {
@@ -21,17 +17,9 @@
             this.CoinTotalProp = this.coins.Keys.Sum();
         }
 
-        private int BillTotalProp
-        {
-            get { return this.billTotal; }
-            set { this.billTotal = value; }
-        }
+        private int BillTotalProp { get; set; }
 
-        private double CoinTotalProp
-        {
-            get { return this.coinTotal; }
-            set { this.coinTotal = value; }
-        }
+        private double CoinTotalProp { get; set; }
 
         public CashDesk TakeMoney(Bill singleBill)
         {
@@ -58,29 +46,23 @@
         {
             // Remove the following code to add all but the not legit bill
             bool isLegit = true;
-            foreach (Bill billToAdd in batchList)
+            foreach (Bill billToAdd in batchList.Cast<Bill>().Where(billToAdd => !this.validBillValues.Contains(billToAdd.Value)))
             {
-                if (!this.validBillValues.Contains(billToAdd.Value))
-                {
-                    isLegit = false;
-                }
+                isLegit = false;
             }
 
             ////
-            foreach (Bill bill in batchList)
+            foreach (Bill bill in batchList.Cast<Bill>().Where(bill => isLegit))
             {
-                if (isLegit)
+                if (!this.bills.ContainsKey(bill.Value))
                 {
-                    if (!this.bills.ContainsKey(bill.Value))
-                    {
-                        this.bills.Add(bill.Value, 1);
-                        this.BillTotalProp += bill.Value;
-                    }
-                    else
-                    {
-                        this.bills[bill.Value]++;
-                        this.BillTotalProp += bill.Value;
-                    }
+                    this.bills.Add(bill.Value, 1);
+                    this.BillTotalProp += bill.Value;
+                }
+                else
+                {
+                    this.bills[bill.Value]++;
+                    this.BillTotalProp += bill.Value;
                 }
             }
 
@@ -160,31 +142,20 @@
         public CashDesk TakeMoney(BatchCoin batchCoin)
         {
             // Remove the following code to add all but the not legit bill
-            bool isLegit = true;
-            foreach (Coin coinToAdd in batchCoin)
-            {
-                if (!this.validCoinValues.Contains(coinToAdd.Value))
-                {
-                    isLegit = false;
-                    break;
-                }
-            }
+            bool isLegit = batchCoin.Cast<Coin>().All(coinToAdd => this.validCoinValues.Contains(coinToAdd.Value));
 
             // Adds all coins if valid
-            foreach (Coin coin in batchCoin)
+            foreach (Coin coin in batchCoin.Cast<Coin>().Where(coin => isLegit))
             {
-                if (isLegit)
+                if (!this.coins.ContainsKey(coin.Value))
                 {
-                    if (!this.coins.ContainsKey(coin.Value))
-                    {
-                        this.coins.Add(coin.Value, 1);
-                        this.CoinTotalProp += coin.Value;
-                    }
-                    else
-                    {
-                        this.coins[coin.Value]++;
-                        this.CoinTotalProp += coin.Value;
-                    }
+                    this.coins.Add(coin.Value, 1);
+                    this.CoinTotalProp += coin.Value;
+                }
+                else
+                {
+                    this.coins[coin.Value]++;
+                    this.CoinTotalProp += coin.Value;
                 }
             }
 
@@ -237,7 +208,7 @@
 
         public double Total()
         {
-            return this.billTotal + (this.coinTotal / 100);
+            return this.BillTotalProp + (this.CoinTotalProp / 100);
         }
 
         public CashDesk Inspect()
@@ -264,21 +235,5 @@
 
             return this;
         }
-        //// public BatchBill GiveChange(BatchCoin coinList)
-        //// {
-        ////    this.TakeMoney(coinList);
-        ////    double coinsSum = coinList.Total;
-        ////    List<Bill> billToReturn = new List<Bill>();
-        ////    while (coinsSum > 0)
-        ////    {
-        ////        if (ValidBillValues.Contains((int)coinsSum))
-        ////        {
-        ////            billToReturn.Add(new Bill((int)coinsSum));
-        ////        }
-        ////        coinsSum -= ValidCoinValues[0];
-        ////    }
-        ////    //knapsack problem ?
-        ////    return 
-        ////}
     }
 }

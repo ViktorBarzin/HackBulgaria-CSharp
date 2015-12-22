@@ -1,17 +1,11 @@
 ﻿namespace DataStructures
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
 
     public class Map<T, U>
     {
-        private T key;
-        private U value;
-        private DynamicArray<T> keys = new DynamicArray<T>();
-        private DynamicArray<U> values = new DynamicArray<U>();
+        private readonly DynamicArray<T> keys = new DynamicArray<T>();
+        private readonly DynamicArray<U> values = new DynamicArray<U>();
 
         public Map(T k, U val)
         {
@@ -19,17 +13,9 @@
             this.Value = val;
         }
 
-        public T Key
-        {
-            get { return this.key; }
-            set { this.key = value; }
-        }
+        public T Key { get; set; }
 
-        public U Value
-        {
-            get { return this.value; }
-            set { this.value = value; }
-        }
+        public U Value { get; set; }
 
         public T this[T i]
         {
@@ -39,16 +25,21 @@
                 {
                     throw new ArgumentOutOfRangeException();
                 }
+
                 return i;
             }
 
             set
             {
+                if (value == null)
+                {
+                    throw new ArgumentNullException("value");
+                }
+
                 if (this.keys.Contains(i))
                 {
                     throw new ArgumentException("Element already exists");
                 }
-                i = value;
             }
         }
 
@@ -58,10 +49,12 @@
             {
                 throw new ArgumentNullException();
             }
-            if (keys.Contains(key))
+
+            if (this.keys.Contains(key))
             {
                 throw new ArgumentException("An element with the same key already exists");
             }
+
             this.keys.Add(key);
             this.values.Add(value);
             return this;
@@ -73,6 +66,7 @@
             {
                 return true;
             }
+
             return false;
         }
 
@@ -82,6 +76,7 @@
             {
                 return true;
             }
+
             return false;
         }
 
@@ -91,6 +86,7 @@
             {
                 throw new ArgumentNullException();
             }
+
             // TODO : implement remove operation
             throw new NotImplementedException();
         }

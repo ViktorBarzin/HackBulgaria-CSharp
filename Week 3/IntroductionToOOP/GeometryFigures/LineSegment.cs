@@ -4,14 +4,14 @@
 
     public class LineSegment
     {
-        private Point _end;
-        private double _length;
+        private Point end;
+        private double length;
 
         public LineSegment(Point start, Point end)
         {
             this.Start = start;
             this.End = end;
-            this._length = this.GetLength();
+            this.length = this.GetLength();
         }
 
         public Point Start { get; }
@@ -20,7 +20,7 @@
         {
             get
             {
-                return this._end;
+                return this.end;
             }
 
             set
@@ -30,70 +30,70 @@
                     throw new ArgumentException("Cannot have a line with 0 lenght");
                 }
 
-                this._end = value;
+                this.end = value;
             }
         }
 
         public static bool operator ==(LineSegment line1, LineSegment line2)
         {
-            return line1._length == line2._length;
+            return line1 != null && (line2 != null && Math.Abs(line1.length - line2.length) < 0.001);
         }
 
         public static bool operator !=(LineSegment line1, LineSegment line2)
         {
-            return line1._length != line2._length;
+            return line2 != null && (line1 != null && Math.Abs(line1.length - line2.length) > 0.001);
         }
 
         public static bool operator <(LineSegment line1, LineSegment line2)
         {
-            return line1._length < line2._length;
+            return line1.length < line2.length;
         }
 
         public static bool operator <=(LineSegment line1, LineSegment line2)
         {
-            return line1._length <= line2._length;
+            return line1.length <= line2.length;
         }
 
         public static bool operator >(LineSegment line1, LineSegment line2)
         {
-            return line1._length > line2._length;
+            return line1.length > line2.length;
         }
 
         public static bool operator >=(LineSegment line1, LineSegment line2)
         {
-            return line1._length >= line2._length;
+            return line1.length >= line2.length;
         }
 
         public static bool operator <(LineSegment line1, double len)
         {
-            return line1._length < len;
+            return line1.length < len;
         }
 
         public static bool operator <=(LineSegment line1, double len)
         {
-            return line1._length <= len;
+            return line1.length <= len;
         }
 
         public static bool operator >(LineSegment line1, double len)
         {
-            return line1._length > len;
+            return line1.length > len;
         }
 
         public static bool operator >=(LineSegment line1, double len)
         {
-            return line1._length >= len;
+            return line1.length >= len;
         }
 
         public double GetLength()
         {
-            this._length = Math.Pow(Math.Max(this.Start.X, this._end.X) - Math.Min(this.Start.X, this._end.X), 2)
-                + Math.Pow(Math.Max(this.Start.Y, this._end.Y) - Math.Min(this.Start.Y, this._end.Y), 2);
-            return Math.Sqrt(this._length);
+            this.length = Math.Pow(Math.Max(this.Start.X, this.end.X) - Math.Min(this.Start.X, this.end.X), 2)
+                + Math.Pow(Math.Max(this.Start.Y, this.end.Y) - Math.Min(this.Start.Y, this.end.Y), 2);
+            return Math.Sqrt(this.length);
         }
 
         public override string ToString()
         {
-            return string.Format("Line[(" + this.Start.X + ", " + this.Start.Y + "), (" + this._end.X + ", " + this._end.Y + ")]");
+            return string.Format("Line[(" + this.Start.X + ", " + this.Start.Y + "), (" + this.end.X + ", " + this.end.Y + ")]");
         }
 
         public override bool Equals(object obj)
@@ -120,8 +120,8 @@
         {
             unchecked
             {
-                var hashCode = this._end != null ? this._end.GetHashCode() : 0;
-                hashCode = (hashCode * 397) ^ this._length.GetHashCode();
+                var hashCode = this.end != null ? this.end.GetHashCode() : 0;
+                hashCode = (hashCode * 397) ^ this.length.GetHashCode();
                 hashCode = (hashCode * 397) ^ (this.Start?.GetHashCode() ?? 0);
                 return hashCode;
             }

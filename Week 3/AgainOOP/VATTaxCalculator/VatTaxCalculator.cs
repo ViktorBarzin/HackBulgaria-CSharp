@@ -2,33 +2,24 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
 
     public class VatTaxCalculator
     {
-        private List<CountryVatTax> countriesList = new List<CountryVatTax>();
-
         public VatTaxCalculator(List<CountryVatTax> countryList)
         {
             this.CountriesList = countryList;
         }
 
-        public List<CountryVatTax> CountriesList
-        {
-            get { return this.countriesList; }
-
-            set { this.countriesList = value; }
-        }
+        public List<CountryVatTax> CountriesList { get; set; }
 
         public double CalculateTax(double price, int countryId)
         {
             // Calculates the price with VAT of the country with id - countryId
-            foreach (CountryVatTax country in this.countriesList)
+            foreach (CountryVatTax country in this.CountriesList)
             {
                 if (country.CountryId == countryId)
                 {
+                    // ReSharper disable once PossibleLossOfFraction
                     return price + (price * (country.VatTax / 100));
                 }
             }
@@ -40,10 +31,11 @@
         public double CalculateTax(double price)
         {
             // Calculates the prive with VAT for default country tax
-            foreach (CountryVatTax country in this.countriesList)
+            foreach (CountryVatTax country in this.CountriesList)
             {
                 if (country.IsDefault)
                 {
+                    // ReSharper disable once PossibleLossOfFraction
                     return price + (price * (country.VatTax / 100));
                 }
             }

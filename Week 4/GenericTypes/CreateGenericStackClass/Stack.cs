@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CreateGenericStackClass
+﻿namespace CreateGenericStackClass
 {
-    class Stack<T>
+    using System;
+    using System.Collections.Generic;
+
+    public class Stack<T>
     {
         private List<T> items = new List<T>();
 
@@ -15,19 +12,18 @@ namespace CreateGenericStackClass
             // TODO : implement chaining
             try
             {
-                Console.WriteLine(this.items[items.Count - 1]);
+                Console.WriteLine(this.items[this.items.Count - 1]);
             }
             catch (ArgumentOutOfRangeException exp)
             {
                 Console.WriteLine(exp.Message);
                 Console.WriteLine("Stack empty");
             }
-
         }
 
         public T Pop()
         {
-            T pop = this.items[items.Count - 1];
+            T pop = this.items[this.items.Count - 1];
             this.items.Remove(pop);
             return pop;
         }
@@ -53,6 +49,7 @@ namespace CreateGenericStackClass
                     return true;
                 }
             }
+
             return false;
         }
     }

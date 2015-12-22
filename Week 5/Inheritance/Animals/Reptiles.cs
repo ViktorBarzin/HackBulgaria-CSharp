@@ -1,17 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Animals
+﻿namespace Animals
 {
-    class Reptiles : Animals, ILandAnimals
+    using System;
+
+    public class Reptiles : Animals, ILandAnimals
     {
+        public int Temp { get; set; }
+
         public override string Greet()
         {
             return string.Format("I am a Reptile !");
         }
+
         public override void Move()
         {
             Console.Write("Reptile ");
@@ -29,7 +28,5 @@ namespace Animals
             Console.Write("Reptile ");
             base.GiveBirth();
         }
-
-        public int Temp { get; set; }
     }
 }

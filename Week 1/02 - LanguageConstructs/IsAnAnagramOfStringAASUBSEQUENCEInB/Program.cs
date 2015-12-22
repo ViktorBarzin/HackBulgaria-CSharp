@@ -14,7 +14,7 @@ namespace IsAnAnagramOfStringAASUBSEQUENCEInB
     {
         public static bool HasAnagramOf(string substr, string strToCheck)
         {
-            return strToCheck.Contains(substr); ;
+            return strToCheck.Contains(substr);
         }
 
         public static void Main(string[] args)

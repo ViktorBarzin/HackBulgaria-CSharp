@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Animals
+﻿namespace Animals
 {
-    class Owl : Bird,ILandAnimals
+    public class Owl : Bird
     {
         public override string Greet()
         {

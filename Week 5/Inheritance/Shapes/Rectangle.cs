@@ -1,11 +1,5 @@
 ﻿namespace Shapes
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-
     public class Rectangle : Shape
     {
         public Rectangle(double width, double height)
@@ -19,7 +13,6 @@
 
         public double Width { get; protected set; }
 
-        public double Height { get; protected set; }
-        
+        public double Height { get; protected set; }   
     }
 }

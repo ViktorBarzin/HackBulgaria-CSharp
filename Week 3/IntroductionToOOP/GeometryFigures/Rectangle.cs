@@ -4,9 +4,9 @@
 
     public class Rectangle
     {
-        private readonly LineSegment _ab;
-        private readonly LineSegment _bc;
-        private Point _c;
+        private readonly LineSegment ab;
+        private readonly LineSegment bc;
+        private Point c;
 
         public Rectangle(Point p1, Point p2)
         {
@@ -15,8 +15,8 @@
             this.PointB = new Point(Math.Max(p1.X, p2.X), Math.Min(p1.Y, p2.Y));
             this.PointD = new Point(Math.Min(p1.X, p2.X), Math.Max(p1.Y, p2.Y));
 
-            this._ab = new LineSegment(this.PointA, this.PointB);
-            this._bc = new LineSegment(this.PointB, this._c);
+            this.ab = new LineSegment(this.PointA, this.PointB);
+            this.bc = new LineSegment(this.PointB, this.c);
         }
 
         public Point PointA { get; }
@@ -27,14 +27,14 @@
         {
             get
             {
-                return this._c;
+                return this.c;
             }
 
             set
             {
                 if (value.X != this.PointA.X && value.Y != this.PointA.Y)
                 {
-                    this._c = value;
+                    this.c = value;
                 }
                 else
                 {
@@ -57,7 +57,7 @@
 
         public Point DisplayC
         {
-            get { return this._c; }
+            get { return this.c; }
         }
 
         public Point DisplayD
@@ -82,32 +82,22 @@
         
         public static bool operator ==(Rectangle rect1, Rectangle rect2)
         {
-            if (rect1.Width == rect2.Width && rect1.Height == rect2.Height && rect1.GetArea() == rect2.GetArea() && rect1.GetPerimeter() == rect2.GetPerimeter())
-            {
-                return true;
-            }
-
-            return false;
+            return rect2 != null && (rect1 != null && (Math.Abs(rect1.Width - rect2.Width) < 0.001 && Math.Abs(rect1.Height - rect2.Height) < 0.001 && Math.Abs(rect1.GetArea() - rect2.GetArea()) < 0.001 && Math.Abs(rect1.GetPerimeter() - rect2.GetPerimeter()) < 0.001));
         }
 
         public static bool operator !=(Rectangle rect1, Rectangle rect2)
         {
-            if (rect1.Width == rect2.Width && rect1.Height == rect2.Height && rect1.GetArea() == rect2.GetArea() && rect1.GetPerimeter() == rect2.GetPerimeter())
-            {
-                return false;
-            }
-
-            return true;
+            return rect2 != null && (rect1 != null && (Math.Abs(rect1.Width - rect2.Width) > 0.001 || !(Math.Abs(rect1.Height - rect2.Height) < 0.001) || !(Math.Abs(rect1.GetArea() - rect2.GetArea()) < 0.001) || !(Math.Abs(rect1.GetPerimeter() - rect2.GetPerimeter()) < 0.001)));
         }
 
         public double GetPerimeter()
         {
-            return 2 * (this._ab.GetLength() + this._bc.GetLength());
+            return 2 * (this.ab.GetLength() + this.bc.GetLength());
         }
 
         public double GetArea()
         {
-            return this._ab.GetLength() * this._bc.GetLength();
+            return this.ab.GetLength() * this.bc.GetLength();
         }
 
         public override string ToString()
@@ -142,17 +132,17 @@
             {
                 var hashCode = this.PointA?.GetHashCode() ?? 0;
                 hashCode = (hashCode * 397) ^ (this.PointB?.GetHashCode() ?? 0);
-                hashCode = (hashCode * 397) ^ (this._c?.GetHashCode() ?? 0);
+                hashCode = (hashCode * 397) ^ (this.c?.GetHashCode() ?? 0);
                 hashCode = (hashCode * 397) ^ (this.PointD?.GetHashCode() ?? 0);
-                hashCode = (hashCode * 397) ^ (this._ab?.GetHashCode() ?? 0);
-                hashCode = (hashCode * 397) ^ (this._bc?.GetHashCode() ?? 0);
+                hashCode = (hashCode * 397) ^ (this.ab?.GetHashCode() ?? 0);
+                hashCode = (hashCode * 397) ^ (this.bc?.GetHashCode() ?? 0);
                 return hashCode;
             }
         }
 
         protected bool Equals(Rectangle other)
         {
-            return Equals(this.PointA, other.PointA) && Equals(this.PointB, other.PointB) && Equals(this._c, other._c) && Equals(this.PointD, other.PointD) && Equals(this._ab, other._ab) && Equals(this._bc, other._bc);
+            return Equals(this.PointA, other.PointA) && Equals(this.PointB, other.PointB) && Equals(this.c, other.c) && Equals(this.PointD, other.PointD) && Equals(this.ab, other.ab) && Equals(this.bc, other.bc);
         }
     }
 }

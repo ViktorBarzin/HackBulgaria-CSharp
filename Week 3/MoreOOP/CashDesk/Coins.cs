@@ -2,16 +2,12 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Globalization;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
 
     public class Coin
     {
         private const string STOTINKI = "st";
+        private readonly List<int> validCoinValues = new List<int> { 1, 2, 5, 10, 20, 50, 100 };
         private int value;
-        private List<int> validCoinValues = new List<int> { 1, 2, 5, 10, 20, 50, 100 };
 
         public Coin(int value)
         {
@@ -41,22 +37,12 @@
 
         public static bool operator ==(Coin coin1, Coin coin2)
         {
-            if (coin1.value == coin2.value)
-            {
-                return true;
-            }
-
-            return false;
+            return coin2 != null && (coin1 != null && coin1.value == coin2.value);
         }
 
         public static bool operator !=(Coin coin1, Coin coin2)
         {
-            if (coin1.value != coin2.value)
-            {
-                return true;
-            }
-
-            return false;
+            return coin2 != null && (coin1 != null && coin1.value != coin2.value);
         }
 
         public static explicit operator int(Coin coin)
@@ -67,9 +53,8 @@
 
         public override string ToString()
         {
-            var ri = new RegionInfo(System.Threading.Thread.CurrentThread.CurrentCulture.LCID);
-            string res = this.value.ToString() + " " + STOTINKI;
-            return res;
+            // var ri = new RegionInfo(System.Threading.Thread.CurrentThread.CurrentCulture.LCID);
+            return string.Format(this.value + " " + STOTINKI);
         }
 
         public override bool Equals(object obj)

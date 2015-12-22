@@ -218,22 +218,10 @@
     <Analyzer AnalyzerId="StyleCop.CSharp.NamingRules">
       <AnalyzerSettings>
         <CollectionProperty Name="Hungarian">
-          <Value>xC</Value>
-          <Value>xO</Value>
-          <Value>yC</Value>
-          <Value>yO</Value>
+          <Value>im</Value>
+          <Value>iM</Value>
         </CollectionProperty>
       </AnalyzerSettings>
-    </Analyzer>
-    <Analyzer AnalyzerId="StyleCop.CSharp.ReadabilityRules">
-      <Rules>
-        <Rule Name="DoNotUseRegions">
-          <RuleSettings>
-            <BooleanProperty Name="Enabled">True</BooleanProperty>
-          </RuleSettings>
-        </Rule>
-      </Rules>
-      <AnalyzerSettings />
     </Analyzer>
   </Analyzers>
 </StyleCopSettings>
