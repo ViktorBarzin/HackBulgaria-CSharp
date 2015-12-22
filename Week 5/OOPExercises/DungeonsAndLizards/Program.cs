@@ -10,7 +10,10 @@
     {
         public static void Main(string[] args)
         {
-
+            var h = new Hero("Bron", "Dragonslayer", 100, 100, 2);
+            var w = new Weapon("The Axe of Destiny", 20);
+            h.Equip(w);
+            // TODO : continue from map
         }
     }
 }
