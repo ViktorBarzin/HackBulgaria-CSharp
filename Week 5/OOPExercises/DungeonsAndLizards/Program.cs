@@ -14,6 +14,10 @@
             var w = new Weapon("The Axe of Destiny", 20);
             h.Equip(w);
             // TODO : continue from map
+
+            string text = System.IO.File.ReadAllText(@"C:\Users\Viktor\Desktop\GitHub\HackBulgaria-CSharp-master\Week 5\OOPExercises\DungeonsAndLizards\map.txt");
+            var map = new Dungeon(text);
+            map.MoveHero(direction: Direction.Down);
         }
     }
 }
