@@ -16,12 +16,13 @@ namespace DungeonsAndLizards
         Left,
         Right
     };
-
+    
     public class Dungeon
     {
         private StringBuilder map;
         private char[,] matrix = new char[5, 10];
         private KeyValuePair<int, int> currPosition;
+        protected List<object> TreasureList = new List<object>() {}; 
 
         public Dungeon(string map)
         {
@@ -75,7 +76,7 @@ namespace DungeonsAndLizards
             switch (direction)
             {
                 case Direction.Down:
-                    if (currPosition.Key + 1 <= matrix.GetLength(0))
+                    if (currPosition.Key + 1 <= matrix.GetLength(0) && this.matrix[currPosition.Key+1,currPosition.Value] != '#')
                     {
                         currPosition = new KeyValuePair<int, int>(currPosition.Key + 1, currPosition.Value);
                         this.matrix[currPosition.Key, currPosition.Value] = 'H';
@@ -83,7 +84,7 @@ namespace DungeonsAndLizards
                     }
                     return false;
                 case Direction.Up:
-                    if (currPosition.Key - 1 >= matrix.GetLength(0))
+                    if (currPosition.Key - 1 >= matrix.GetLength(0) && this.matrix[currPosition.Key + 1, currPosition.Value] != '#')
                     {
                         currPosition = new KeyValuePair<int, int>(currPosition.Key - 1, currPosition.Value);
                         this.matrix[currPosition.Key, currPosition.Value] = 'H';
@@ -91,7 +92,7 @@ namespace DungeonsAndLizards
                     }
                     return false;
                 case Direction.Right:
-                    if (currPosition.Value + 1 <= matrix.GetLength(1))
+                    if (currPosition.Value + 1 <= matrix.GetLength(1) && this.matrix[currPosition.Key + 1, currPosition.Value] != '#')
                     {
                         currPosition = new KeyValuePair<int, int>(currPosition.Key, currPosition.Value + 1);
                         this.matrix[currPosition.Key, currPosition.Value] = 'H';
@@ -99,7 +100,7 @@ namespace DungeonsAndLizards
                     }
                     return false;
                 case Direction.Left:
-                    if (currPosition.Value - 1 >= matrix.GetLength(1))
+                    if (currPosition.Value - 1 >= matrix.GetLength(1) && this.matrix[currPosition.Key + 1, currPosition.Value] != '#')
                     {
                         currPosition = new KeyValuePair<int, int>(currPosition.Key, currPosition.Value - 1);
                         this.matrix[currPosition.Key, currPosition.Value] = 'H';
