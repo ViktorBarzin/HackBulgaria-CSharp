@@ -23,7 +23,7 @@
             map.MoveHero(Direction.Up);
             Console.WriteLine("--------------------");
             map.PrintMap();
-            // TODO : check what cell you move in and do stuff
+            // TODO : check what cell you move in and do stuff...
         }
     }
 }
