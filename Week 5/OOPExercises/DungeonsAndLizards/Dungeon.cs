@@ -21,9 +21,9 @@
         private readonly int[] defaultSpellStats = new int[] { 100, 50, 2 };
         private readonly int[] enemyStats = new int[] { 100, 100, 20 };
         private readonly char[,] matrix = new char[5, 10];
+        private readonly Dictionary<KeyValuePair<int, int>, Enemy> enemiesList = new Dictionary<KeyValuePair<int, int>, Enemy>();
         private KeyValuePair<int, int> currPosition;
         private Hero hero;
-        private Dictionary<KeyValuePair<int, int>, Enemy> enemiesList;
 
         public Dungeon(string map)
         {
@@ -38,6 +38,7 @@
                     {
                         this.enemiesList.Add(new KeyValuePair<int, int>(row, column), new Enemy(this.enemyStats[0], this.enemyStats[1], this.enemyStats[2]));
                     }
+
                     this.matrix[row, column] = character;
                     column++;
                 }
@@ -45,7 +46,7 @@
                 row++;
             }
         }
-
+        
         public void PrintCurrentCell()
         {
             switch (this.matrix[this.currPosition.Key, this.currPosition.Value])
@@ -215,7 +216,7 @@
             }
             else if (by == "spell")
             {
-                if (this.hero.HasSpell && InRange(this.matrix, this.currPosition, this.hero.Spell.CastRange))
+                if (this.hero.HasSpell && this.InRange(this.matrix, this.currPosition, this.hero.Spell.CastRange))
                 {
                     foreach (var enemy in this.enemiesList)
                     {
@@ -226,6 +227,7 @@
                         }
                     }
                 }
+
                 Console.WriteLine("ERROR: Nothing in casting range {0}",this.hero.Spell.CastRange);
             }
 
@@ -241,6 +243,7 @@
             return result;
         }
 
+        // TODO : check if InRange functons works legit
         private bool InRange(char[,] map, KeyValuePair<int, int> currLocation, int range)
         {
             for (int i = 1; i <= range; i++)

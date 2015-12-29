@@ -177,7 +177,7 @@
                         if (!isSpawned)
                         {
                             dungeon.Spawn(defaultHero);
-                            Console.WriteLine("SUCCES: {0} spawned !", defaultHero);
+                            Console.WriteLine("SUCCES: {0} spawned !", defaultHero.Name);
                             isSpawned = true;
                         }
                         else
