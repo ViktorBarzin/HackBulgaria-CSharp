@@ -19,6 +19,16 @@
             this.map = map;
 
             Console.WriteLine("A fight has been started between {0}({1} health, {2} mana) and Enemy({3} health, {4} mana, {5} damage)");
+            this.Combat();
+        }
+
+        private void Combat()
+        {
+            while (this.hero.Health.Value >= 0 || this.enemy.Health.Value >= 0)
+            {
+                Console.Write("Choose your fight move : ");
+
+            }
         }
     }
 }
