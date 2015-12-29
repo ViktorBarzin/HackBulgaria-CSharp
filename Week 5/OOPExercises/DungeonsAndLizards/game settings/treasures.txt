@@ -1,0 +1,4 @@
+mana
+health
+weapon
+spell

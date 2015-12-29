@@ -12,11 +12,11 @@
         {
             this.Name = name;
             this.Class = @class;
-            this.Health = health;
-            this.Mana = mana;
+            this.Health = new Health(health);
+            this.Mana = new Mana(mana);
             this.ManaRegenerationRate = manaRegenerationRate;
-            this.MaxHealth = health;
-            this.MaxMana = mana;
+            this.MaxHealth = new Health(health);
+            this.MaxMana =new Mana(mana);
             this.HasSpell = false;
             this.HasWeapon = false;
         }
@@ -30,13 +30,13 @@
 
         public void TakeMana(int manaPoints)
         {
-            if (this.Mana + manaPoints < this.MaxMana && this.Mana + this.ManaRegenerationRate < this.MaxMana)
+            if (this.Mana.Value + manaPoints < this.MaxMana.Value && this.Mana.Value + this.ManaRegenerationRate < this.MaxMana.Value)
             {
-                this.Mana += manaPoints + this.ManaRegenerationRate;
+                this.Mana.Value += manaPoints + this.ManaRegenerationRate;
             }
             else
             {
-            this.Mana = this.MaxMana;
+            this.Mana.Value = this.MaxMana.Value;
             }
         }
     }

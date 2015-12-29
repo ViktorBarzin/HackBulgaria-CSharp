@@ -1,10 +1,6 @@
 ﻿namespace DungeonsAndLizards
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
 
     public abstract class Characters
     {
@@ -12,46 +8,46 @@
 
         public string Class { get; protected set; }
 
-        public int Health { get; protected set; }
+        public Health Health { get; protected set; }
 
-        public int Mana { get; protected set; }
+        public Mana Mana { get; protected set; }
 
-        public Weapon Weapon { get; protected set; }
+        public Weapon Weapon { get; set; }
 
-        public Spell Spell { get; protected set; }
+        public Spell Spell { get; set; }
 
         public bool HasWeapon { get; set; }
 
-        protected bool HasSpell { get; set; }
+        public bool HasSpell { get; set; }
 
-        protected int MaxHealth { get; set; }
+        public Health MaxHealth { get; protected set; }
 
-        protected int MaxMana { get; set; }
+        public Mana MaxMana { get; protected set; }
 
-        public int GetHealth()
+        public Health GetHealth()
         {
             return this.Health;
         }
 
-        public int GetMana()
+        public Mana GetMana()
         {
             return this.Mana;
         }
 
         public bool IsAlive()
         {
-            return this.Health > 0;
+            return this.Health.Value > 0;
         }
 
         public bool CanCast(Spell spell)
         {
-            if (!HasSpell)
+            if (!this.HasSpell)
             {
                 Console.WriteLine("ERROR: Spell {0} is not equiped!", spell.Name);
                 return false;
             }
 
-            if (this.Mana < spell.ManaCost)
+            if (this.Mana.Value < spell.ManaCost)
             {
                 Console.WriteLine("ERROR: You dont have enough mana to cast {0}", spell.Name);
                 return false;
@@ -62,13 +58,13 @@
 
         public void TakeDamage(float damage)
         {
-            if (this.Health > damage)
+            if (this.Health.Value > damage)
             {
-                this.Health -= (int)Math.Floor(damage);
+                this.Health.Value -= (int)Math.Floor(damage);
             }
             else
             {
-                this.Health = 0;
+                this.Health.Value = 0;
             }
         }
 
@@ -79,13 +75,13 @@
                 return false;
             }
 
-            if (this.Health + healingPoints > this.MaxHealth)
+            if (this.Health.Value + healingPoints > this.MaxHealth.Value)
             {
-                this.Health = this.MaxHealth;
+                this.Health.Value = this.MaxHealth.Value;
             }
             else
             {
-                this.Health += healingPoints;
+                this.Health.Value += healingPoints;
             }
 
             return true;
@@ -98,7 +94,7 @@
 
         public int Attack(Spell spell)
         {
-            if (!CanCast(spell))
+            if (!this.CanCast(spell))
             {
                 return -1;
             }
@@ -108,7 +104,7 @@
 
         public void Equip(Weapon weapon)
         {
-            if (HasWeapon)
+            if (this.HasWeapon)
             {
                 return;
             }
@@ -119,7 +115,7 @@
 
         public void Learn(Spell spell)
         {
-            if (HasSpell)
+            if (this.HasSpell)
             {
                 return;
             }

@@ -12,8 +12,8 @@
 
         public Enemy(int health, int mana, int damage)
         {
-            this.Health = health;
-            this.Mana = mana;
+            this.Health = new Health(health);
+            this.Mana = new Mana(mana);
             // damage += weapon + spell damage
             this.Damage = damage;
         }
