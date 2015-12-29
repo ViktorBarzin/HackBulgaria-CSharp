@@ -215,11 +215,21 @@
             }
             else if (by == "spell")
             {
-                if (this.hero.HasSpell && )
+                if (this.hero.HasSpell && InRange(this.matrix, this.currPosition, this.hero.Spell.CastRange))
                 {
-                    
+                    foreach (var enemy in this.enemiesList)
+                    {
+                        if (enemy.Key.Key == this.currPosition.Key && enemy.Key.Value == this.currPosition.Value)
+                        {
+                            new Fight(this.hero, enemy.Value, this.matrix);
+                            return true;
+                        }
+                    }
                 }
+                Console.WriteLine("ERROR: Nothing in casting range {0}",this.hero.Spell.CastRange);
             }
+
+            return false;
         }
 
         private int DiceRoll(int maxValue)
@@ -231,9 +241,65 @@
             return result;
         }
 
-        private bool InRange(char[,] map,KeyValuePair<int,int> currLocation , int range)
+        private bool InRange(char[,] map, KeyValuePair<int, int> currLocation, int range)
         {
+            for (int i = 1; i <= range; i++)
+            {
+                try
+                {
+                    if (map[currLocation.Key - i, currLocation.Value] == 'E')
+                    {
+                        return true;
+                    }
+                }
+                catch (IndexOutOfRangeException)
+                {
+                }
+            }
 
+            for (int i = 1; i <= range; i++)
+            {
+                try
+                {
+                    if (map[currLocation.Key + i, currLocation.Value] == 'E')
+                    {
+                        return true;
+                    }
+                }
+                catch (IndexOutOfRangeException)
+                {
+                }
+            }
+
+            for (int i = 1; i <= range; i++)
+            {
+                try
+                {
+                    if (map[currLocation.Key, currLocation.Value - i] == 'E')
+                    {
+                        return true;
+                    }
+                }
+                catch (IndexOutOfRangeException)
+                {
+                }
+            }
+
+            for (int i = 1; i <= range; i++)
+            {
+                try
+                {
+                    if (map[currLocation.Key, currLocation.Value + i] == 'E')
+                    {
+                        return true;
+                    }
+                }
+                catch (IndexOutOfRangeException)
+                {
+                }
+            }
+
+            return false;
         }
     }
 }

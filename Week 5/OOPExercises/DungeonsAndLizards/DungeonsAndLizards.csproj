@@ -46,6 +46,7 @@
     <Compile Include="Characters.cs" />
     <Compile Include="Dungeon.cs" />
     <Compile Include="Enemy.cs" />
+    <Compile Include="Fight.cs" />
     <Compile Include="Health.cs" />
     <Compile Include="Hero.cs" />
     <Compile Include="Mana.cs" />
