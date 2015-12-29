@@ -58,6 +58,12 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Validation.cs\Validation.cs.csproj">
+      <Project>{a0df25b1-1a98-4f40-9bdc-f1a4cc81d9a6}</Project>
+      <Name>Validation.cs</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

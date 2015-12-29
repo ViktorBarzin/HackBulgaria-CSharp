@@ -2,11 +2,8 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Globalization;
     using System.IO;
     using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
 
     public enum Direction
     {
@@ -14,25 +11,22 @@
         Down,
         Left,
         Right
-    };
+    }
 
     public class Dungeon
     {
         private const string ERRORWHILEMOVING = "ERROR: moving in this direction is not possible";
         private const int WEAPON_DAMAGE = 69;
-        private const char WALKABLE_PATH = '.'; 
-        private readonly int[] defaultSpellStats = new int[3] { 100, 50, 2 };
-        private StringBuilder map;
-        private char[,] matrix = new char[5, 10];
-        private readonly char[,] matrixCopy;
+        private const char WALKABLE_PATH = '.';
+        private readonly int[] defaultSpellStats = new int[] { 100, 50, 2 };
+        private readonly int[] enemyStats = new int[] { 100, 100, 20 };
+        private readonly char[,] matrix = new char[5, 10];
         private KeyValuePair<int, int> currPosition;
-        protected List<object> TreasureList = new List<object>();
-        protected Hero Hero;
+        private Hero hero;
+        private Dictionary<KeyValuePair<int, int>, Enemy> enemiesList;
 
         public Dungeon(string map)
         {
-            this.map = new StringBuilder(map);
-
             string[] lines = map.Split(new[] { "\r\n", "\n" }, StringSplitOptions.None);
             int row = 0;
             foreach (string line in lines)
@@ -40,19 +34,21 @@
                 int column = 0;
                 foreach (char character in line)
                 {
+                    if (character == 'E')
+                    {
+                        this.enemiesList.Add(new KeyValuePair<int, int>(row, column), new Enemy(this.enemyStats[0], this.enemyStats[1], this.enemyStats[2]));
+                    }
                     this.matrix[row, column] = character;
                     column++;
                 }
 
                 row++;
             }
-
-            this.matrixCopy = this.matrix;
         }
 
         public void PrintCurrentCell()
         {
-            switch (this.matrix[currPosition.Key, currPosition.Value])
+            switch (this.matrix[this.currPosition.Key, this.currPosition.Value])
             {
                 case 'T':
                     Console.Write("You found a treasure - ");
@@ -69,16 +65,6 @@
             }
         }
 
-        private int DiceRoll(int maxValue)
-        {
-            Random rnd = new Random();
-
-            // TODO : check random number legitimacy
-            int result = rnd.Next(0, maxValue);
-            return result;
-
-        }
-
         public void PrintMap()
         {
             for (int row = 0; row < this.matrix.GetLength(0); row++)
@@ -91,20 +77,21 @@
             }
         }
 
-        public bool Spawn(Hero hero)
+        public bool Spawn(Hero heroToSpawn)
         {
             for (int row = 0; row < this.matrix.GetLength(0); row++)
             {
                 for (int col = 0; col < this.matrix.GetLength(1); col++)
                 {
-                    if (matrix[row, col] == 'S')
+                    if (this.matrix[row, col] == 'S')
                     {
                         this.matrix[row, col] = 'H';
                         this.currPosition = new KeyValuePair<int, int>(row, col);
-                        this.Hero = hero;
+                        this.hero = heroToSpawn;
                     }
                 }
             }
+
             return false;
         }
 
@@ -113,49 +100,48 @@
             switch (direction)
             {
                 case Direction.Down:
-                    if (currPosition.Key + 1 <= matrix.GetLength(0) && this.matrix[currPosition.Key + 1, currPosition.Value] != '#')
+                    if (this.currPosition.Key + 1 <= this.matrix.GetLength(0) && this.matrix[this.currPosition.Key + 1, this.currPosition.Value] != '#')
                     {
-                        this.matrix[currPosition.Key, currPosition.Value] = WALKABLE_PATH;
-                        currPosition = new KeyValuePair<int, int>(currPosition.Key + 1, currPosition.Value);
-                        PrintCurrentCell();
-                        this.matrix[currPosition.Key, currPosition.Value] = 'H';
+                        this.matrix[this.currPosition.Key, this.currPosition.Value] = WALKABLE_PATH;
+                        this.currPosition = new KeyValuePair<int, int>(this.currPosition.Key + 1, this.currPosition.Value);
+                        this.PrintCurrentCell();
+                        this.matrix[this.currPosition.Key, this.currPosition.Value] = 'H';
                         return true;
                     }
 
                     Console.WriteLine(ERRORWHILEMOVING);
                     return false;
                 case Direction.Up:
-                    if (currPosition.Key - 1 >= matrix.GetLength(0) && this.matrix[currPosition.Key - 1, currPosition.Value] != '#')
+                    if (this.currPosition.Key - 1 >= 0 && this.matrix[this.currPosition.Key - 1, this.currPosition.Value] != '#')
                     {
-                        this.matrix[currPosition.Key, currPosition.Value] = WALKABLE_PATH;
-                        currPosition = new KeyValuePair<int, int>(currPosition.Key - 1, currPosition.Value);
-                        PrintCurrentCell();
-                        this.matrix[currPosition.Key, currPosition.Value] = 'H';
+                        this.matrix[this.currPosition.Key, this.currPosition.Value] = WALKABLE_PATH;
+                        this.currPosition = new KeyValuePair<int, int>(this.currPosition.Key - 1, this.currPosition.Value);
+                        this.PrintCurrentCell();
+                        this.matrix[this.currPosition.Key, this.currPosition.Value] = 'H';
                         return true;
                     }
 
                     Console.WriteLine(ERRORWHILEMOVING);
                     return false;
                 case Direction.Right:
-                    if (currPosition.Value + 1 <= matrix.GetLength(1) && this.matrix[currPosition.Key, currPosition.Value + 1] != '#')
+                    if (this.currPosition.Value + 1 <= this.matrix.GetLength(1) && this.matrix[this.currPosition.Key, this.currPosition.Value + 1] != '#')
                     {
-                        this.matrix[currPosition.Key, currPosition.Value] = WALKABLE_PATH;
-                        currPosition = new KeyValuePair<int, int>(currPosition.Key, currPosition.Value + 1);
-                        PrintCurrentCell();
-                        this.matrix[currPosition.Key, currPosition.Value] = 'H';
+                        this.matrix[this.currPosition.Key, this.currPosition.Value] = WALKABLE_PATH;
+                        this.currPosition = new KeyValuePair<int, int>(this.currPosition.Key, this.currPosition.Value + 1);
+                        this.PrintCurrentCell();
+                        this.matrix[this.currPosition.Key, this.currPosition.Value] = 'H';
                         return true;
                     }
 
                     Console.WriteLine(ERRORWHILEMOVING);
                     return false;
                 case Direction.Left:
-                    if (currPosition.Value - 1 >= matrix.GetLength(1) &&
-                        this.matrix[currPosition.Key, currPosition.Value - 1] != '#')
+                    if (this.currPosition.Value - 1 >= 0 && this.matrix[this.currPosition.Key, this.currPosition.Value - 1] != '#')
                     {
-                        this.matrix[currPosition.Key, currPosition.Value] = WALKABLE_PATH;
-                        currPosition = new KeyValuePair<int, int>(currPosition.Key, currPosition.Value - 1);
-                        PrintCurrentCell();
-                        this.matrix[currPosition.Key, currPosition.Value] = 'H';
+                        this.matrix[this.currPosition.Key, this.currPosition.Value] = WALKABLE_PATH;
+                        this.currPosition = new KeyValuePair<int, int>(this.currPosition.Key, this.currPosition.Value - 1);
+                        this.PrintCurrentCell();
+                        this.matrix[this.currPosition.Key, this.currPosition.Value] = 'H';
                         return true;
                     }
 
@@ -173,45 +159,81 @@
             switch (this.DiceRoll(maxValue: linesCount))
             {
                 case 0:
-                    this.Hero.TakeMana(this.Hero.Mana.Value / 10);
-                    if(this.Hero.Mana.Value >= this.Hero.MaxMana.Value)
+                    this.hero.TakeMana(this.hero.Mana.Value / 10);
+                    if (this.hero.Mana.Value >= this.hero.MaxMana.Value)
                     {
-                    Console.WriteLine("Mana potion. Hero mana is max");
+                        Console.WriteLine("Mana potion. Hero mana is max");
                     }
                     else
                     {
-                    Console.WriteLine("Mana potion. Hero mana is now {0}",this.Hero.Mana.Value);
+                        Console.WriteLine("Mana potion. Hero mana is now {0}", this.hero.Mana.Value);
                     }
 
                     break;
                 case 1:
-                    this.Hero.TakeHealing(Hero.Health.Value / 10);
-                    if (this.Hero.Health.Value >= this.Hero.MaxHealth.Value)
+                    this.hero.TakeHealing(this.hero.Health.Value / 10);
+                    if (this.hero.Health.Value >= this.hero.MaxHealth.Value)
                     {
                         Console.WriteLine("Health potion. Hero health is max");
                     }
                     else
                     {
-                        Console.WriteLine("Health potion. Hero health is now {0}", this.Hero.Health.Value);
+                        Console.WriteLine("Health potion. Hero health is now {0}", this.hero.Health.Value);
                     }
 
                     break;
                 case 2:
-                    this.Hero.Weapon = new Weapon("Treasure Sword", WEAPON_DAMAGE);
+                    this.hero.Weapon = new Weapon("Treasure Sword", WEAPON_DAMAGE);
                     Console.WriteLine("Treasure Sword with {0} damage", WEAPON_DAMAGE);
                     break;
                 case 3:
-                    this.Hero.Spell = new Spell(
-                        "Treasure Spell",
-                        this.defaultSpellStats[0],
-                        this.defaultSpellStats[1],
-                        this.defaultSpellStats[2]);
+                    this.hero.Spell = new Spell(
+                       "Treasure Spell",
+                       this.defaultSpellStats[0],
+                       this.defaultSpellStats[1],
+                       this.defaultSpellStats[2]);
                     Console.WriteLine("Treasure Spell with {0} damage", this.defaultSpellStats[0]);
                     break;
                 default:
                     Console.WriteLine("Random numbers function broke :-(");
                     break;
             }
+        }
+
+        public bool HeroAttack(string by)
+        {
+            if (by == "weapon" && this.matrix[this.currPosition.Key, this.currPosition.Value] == 'E')
+            {
+                foreach (var enemy in this.enemiesList)
+                {
+                    if (enemy.Key.Key == this.currPosition.Key && enemy.Key.Value == this.currPosition.Value)
+                    {
+                        new Fight(this.hero, enemy.Value, this.matrix);
+                        return true;
+                    }
+                }
+            }
+            else if (by == "spell")
+            {
+                if (this.hero.HasSpell && )
+                {
+                    
+                }
+            }
+        }
+
+        private int DiceRoll(int maxValue)
+        {
+            Random rnd = new Random();
+
+            // TODO : check random number legitimacy
+            int result = rnd.Next(0, maxValue);
+            return result;
+        }
+
+        private bool InRange(char[,] map,KeyValuePair<int,int> currLocation , int range)
+        {
+
         }
     }
 }
