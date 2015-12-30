@@ -8,8 +8,8 @@
 
     public class Fight
     {
-        private Hero hero;
-        private Enemy enemy;
+        private readonly Hero hero;
+        private readonly Enemy enemy;
         private char[,] map;
 
         public Fight(Hero hero, Enemy enemy, char[,] map)
@@ -24,10 +24,9 @@
 
         private void Combat()
         {
-            while (this.hero.Health.Value >= 0 || this.enemy.Health.Value >= 0)
+            while (this.hero.Health.Value >= 0 && this.enemy.Health.Value >= 0)
             {
-                Console.Write("Choose your fight move : ");
-
+                
             }
         }
     }

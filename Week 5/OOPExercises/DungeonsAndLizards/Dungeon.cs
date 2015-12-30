@@ -62,6 +62,7 @@
                     break;
                 case 'E':
                     Console.WriteLine("You found an enemy.A fight is imminent !");
+                    this.HeroAttack(this.BiggerDamage());
                     break;
             }
         }
@@ -303,6 +304,11 @@
             }
 
             return false;
+        }
+
+        private string BiggerDamage()
+        {
+            return this.hero.Weapon.Damage > this.hero.Spell.Damage ? "weapon" : "spell";
         }
     }
 }

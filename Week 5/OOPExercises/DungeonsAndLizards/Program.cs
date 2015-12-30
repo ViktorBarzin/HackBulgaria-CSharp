@@ -134,11 +134,11 @@
                         {
                             case "hero":
                                 defaultHero.Learn(spellsList[0]);
-                                Console.WriteLine("SUCCESS: {0} learned {1} spell", defaultHero, spellsList[0]);
+                                Console.WriteLine("SUCCESS: {0} learned {1} spell", defaultHero.Name, spellsList[0].Name);
                                 break;
                             case "enemy":
                                 enemiesList[0].Learn(spellsList[0]);
-                                Console.WriteLine("SUCCESS: {0} learned {1} spell", enemiesList[0], spellsList[0]);
+                                Console.WriteLine("SUCCESS: {0} learned {1} spell", enemiesList[0].Name, spellsList[0].Name);
                                 break;
                             default:
                                 Console.WriteLine("ERROR: Command \"learn\" takes \"hero\" or \"enemy\" as parameters !");
@@ -163,8 +163,19 @@
 
                         break;
                     case "attack":
-                        // attack method
+                        switch(word[1])
+                        {
+                            case "weapon":
+                            case "spell":
+                                dungeon.HeroAttack(word[1]);
+                                break;
+                            default:
+                                Console.WriteLine("ERROR: Command \"attack\" takes \"weapon\" or \"spell\" as parameters");
+                                break;
+                        }
+
                         break;
+
                     case "print":
                     case "printmap":
                         dungeon.PrintMap();
