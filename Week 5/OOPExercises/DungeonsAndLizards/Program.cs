@@ -46,7 +46,7 @@
                 switch (word[0])
                 {
                     case "help":
-                        Console.WriteLine("List of commands :");
+                        Console.WriteLine("List of commands : ");
                         Console.WriteLine("Replace \"<>\" with desired stats");
                         Console.WriteLine("----------------------------------------");
                         Console.WriteLine("create hero <hero name> <hero class> <hero heatlh> <hero mana> <hero mana regeneration>");
