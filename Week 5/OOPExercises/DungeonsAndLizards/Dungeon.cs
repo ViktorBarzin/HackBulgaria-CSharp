@@ -24,6 +24,7 @@
         private readonly List<Enemy> enemiesList = new List<Enemy>();
         private KeyValuePair<int, int> currPosition;
         private Hero hero;
+        private Enemy enemyToFight;
 
         public Dungeon(string map)
         {
@@ -36,15 +37,9 @@
                 {
                     if (character == 'E')
                     {
-                        this.enemiesList.Add(new Enemy(this.enemyStats[0], this.enemyStats[1], this.enemyStats[2]));
-                        foreach (var enemy in this.enemiesList)
-                        {
-                            if (enemy.CurrentPosition.Equals(null))
-                            {
-                                enemy.CurrentPosition = new KeyValuePair<int, int>(row, column);
-                                Console.WriteLine("key: {0}, value {1}", row, column);
-                            }
-                        }
+                        Enemy newEnemy = new Enemy(this.enemyStats[0], this.enemyStats[1], this.enemyStats[2]);
+                        this.enemiesList.Add(newEnemy);
+                        newEnemy.CurrentPosition = new KeyValuePair<int, int>(row, column);
                     }
 
                     this.matrix[row, column] = character;
@@ -83,6 +78,7 @@
                 {
                     Console.Write(this.matrix[row, col]);
                 }
+
                 Console.WriteLine();
             }
         }
@@ -164,9 +160,8 @@
 
         public void PickTreasure()
         {
-            string treasure = File.ReadAllText(@"C:\Users\Viktor\Desktop\GitHub\HackBulgaria-CSharp\Week 5\OOPExercises\DungeonsAndLizards\game settings\treasures.txt");
-            int linesCount = File.ReadLines(@"C:\Users\Viktor\Desktop\GitHub\HackBulgaria-CSharp\Week 5\OOPExercises\DungeonsAndLizards\game settings\treasures.txt").Count();
-            switch (this.DiceRoll(maxValue: linesCount))
+            int treasuresCount = File.ReadLines(@"C:\Users\Viktor\Desktop\GitHub\HackBulgaria-CSharp\Week 5\OOPExercises\DungeonsAndLizards\game settings\treasures.txt").Count();
+            switch (this.DiceRoll(maxValue: treasuresCount))
             {
                 case 0:
                     this.hero.TakeMana(this.hero.Mana.Value / 10);
@@ -225,20 +220,13 @@
             }
             else if (by == "spell")
             {
-                if (this.hero.HasSpell && this.InRange(this.currPosition, this.FirstAlivePosition(), this.hero.Spell.CastRange))
+                if (this.hero.HasSpell && this.InRange())
                 {
-                    foreach (var enemy in this.enemiesList)
-                    {
-                        if (enemy.CurrentPosition.Key == this.currPosition.Key && enemy.CurrentPosition.Value == this.currPosition.Value)
-                        {
-                            Console.WriteLine("EBI SE SHTE TE SPUKAM SQ OT DALECHE .!.");
-                            new Fight(this.hero, enemy, this.matrix);
-                            return true;
-                        }
-                    }
+                    new Fight(this.hero, this.enemyToFight, this.matrix);
+                    return true;
                 }
 
-                Console.WriteLine("ERROR: Nothing in casting range {0}", this.hero.Spell.CastRange);
+                Console.WriteLine("Nothing in casting range {0}", this.hero.Spell.CastRange);
             }
 
             return false;
@@ -253,14 +241,72 @@
             return result;
         }
 
-        // TODO : check if InRange functons works legit
-        private bool InRange(KeyValuePair<int, int> heroPosition, KeyValuePair<int, int> enemyPosition, int range)
+        private bool InRange()
         {
-            for (int i = 0; i < range; i++)
+            for (int i = 0; i <= this.hero.Spell.CastRange; i++)
             {
-                if (heroPosition.Key + i == enemyPosition.Key || heroPosition.Key - i == enemyPosition.Key || heroPosition.Value + i == enemyPosition.Value || heroPosition.Value - i == enemyPosition.Value)
+                if (this.currPosition.Key + i < this.matrix.GetLength(0))
                 {
-                    return true;
+                    if (this.matrix[this.currPosition.Key + i, this.currPosition.Value] == 'E')
+                    {
+                        foreach (var enemy in this.enemiesList)
+                        {
+                            if (enemy.CurrentPosition.Key == this.currPosition.Key + i && enemy.CurrentPosition.Value == this.currPosition.Value)
+                            {
+                                this.enemyToFight = enemy;
+                            }
+                        }
+
+                        return true;
+                    }
+                }
+
+                if (this.currPosition.Key - i >= 0)
+                {
+                    if (this.matrix[this.currPosition.Key - i, this.currPosition.Value] == 'E')
+                    {
+                        foreach (var enemy in this.enemiesList)
+                        {
+                            if (enemy.CurrentPosition.Key == this.currPosition.Key - i && enemy.CurrentPosition.Value == this.currPosition.Value)
+                            {
+                                this.enemyToFight = enemy;
+                            }
+                        }
+
+                        return true;
+                    }
+                }
+
+                if (this.currPosition.Value + i < this.matrix.GetLength(1))
+                {
+                    if (this.matrix[this.currPosition.Key, this.currPosition.Value + i] == 'E')
+                    {
+                        foreach (var enemy in this.enemiesList)
+                        {
+                            if (enemy.CurrentPosition.Key == this.currPosition.Key && enemy.CurrentPosition.Value + i == this.currPosition.Value)
+                            {
+                                this.enemyToFight = enemy;
+                            }
+                        }
+
+                        return true;
+                    }
+                }
+
+                if (this.currPosition.Value - i >= 0)
+                {
+                    if (this.matrix[this.currPosition.Key, this.currPosition.Value - i] == 'E')
+                    {
+                        foreach (var enemy in this.enemiesList)
+                        {
+                            if (enemy.CurrentPosition.Key == this.currPosition.Key && enemy.CurrentPosition.Value - i == this.currPosition.Value)
+                            {
+                                this.enemyToFight = enemy;
+                            }
+                        }
+
+                        return true;
+                    }
                 }
             }
 
@@ -270,19 +316,6 @@
         private string BiggerDamage()
         {
             return this.hero.Weapon.Damage > this.hero.Spell.Damage ? "weapon" : "spell";
-        }
-
-        private KeyValuePair<int, int> FirstAlivePosition()
-        {
-            foreach (Enemy enemy in this.enemiesList)
-            {
-                if (enemy.IsAlive())
-                {
-                    return enemy.CurrentPosition;
-                }
-            }
-
-            throw new ArgumentException("ERROR: No Alive enemies found !");
         }
     }
 }

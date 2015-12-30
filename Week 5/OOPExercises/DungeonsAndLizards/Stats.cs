@@ -17,6 +17,7 @@
             {
                 return this.value;
             }
+
             set
             {
                 if (value > 0 && value < int.MaxValue)

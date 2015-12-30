@@ -1,11 +1,5 @@
 ﻿namespace DungeonsAndLizards
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-
     public class Hero : Characters
     {
         public Hero(string name, string @class, int health, int mana, int manaRegenerationRate)
@@ -16,7 +10,7 @@
             this.Mana = new Mana(mana);
             this.ManaRegenerationRate = manaRegenerationRate;
             this.MaxHealth = new Health(health);
-            this.MaxMana =new Mana(mana);
+            this.MaxMana = new Mana(mana);
             this.HasSpell = false;
             this.HasWeapon = false;
         }
@@ -36,7 +30,7 @@
             }
             else
             {
-            this.Mana.Value = this.MaxMana.Value;
+                this.Mana.Value = this.MaxMana.Value;
             }
         }
     }

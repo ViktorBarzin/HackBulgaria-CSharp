@@ -2,7 +2,6 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Diagnostics.CodeAnalysis;
     using System.IO;
     using System.Linq;
 
@@ -11,7 +10,7 @@
         public static void Main(string[] args)
         {
             // TODO : add fights feature
-                // TODO : attack by method 
+                // TODO : combat method for fights
             // TODO : enemy adding order ?
             // TODO : check addition of new characters, weapons and spells in the game
             // TODO : add validation
@@ -19,20 +18,20 @@
             // TODO : remove magic numbers
             // TODO : bugfixing
             // TODO : dungeon class violates SRP ?
-            // check how to update map to default when moving ?
             var defaultHero = new Hero("John", "Smith", 100, 100, 2);
             var defaultWeapon = new Weapon("Default weapon", 100);
             var defaultSpell = new Spell("Default spell", 120, 50, 2);
+            List<Enemy> enemiesList = new List<Enemy>();
+            bool isSpawned = false;
             
             defaultHero.Learn(defaultSpell);
             defaultHero.Equip(defaultWeapon);
 
             string text = File.ReadAllText(@"C:\Users\Viktor\Desktop\GitHub\HackBulgaria-CSharp\Week 5\OOPExercises\DungeonsAndLizards\game settings\map.txt");
             var dungeon = new Dungeon(text);
+
             Console.WriteLine("Welcome to Dungeons and Lizards Game !");
             Console.WriteLine("To check game rules enter \"help\"");
-            List<Enemy> enemiesList = new List<Enemy>();
-            bool isSpawned = false;
 
             // TODO : equip enemies/heroes with different spells and weapons?
             int enemiesCounter = text.Count(character => character == 'E');
@@ -194,10 +193,9 @@
                         {
                             Console.WriteLine("ERROR: You have already spawned a hero !");
                         }
+
                         break;
                     case "move":
-                        //try
-                        //{
                             if (isSpawned)
                             {
                                 switch (word[1])
@@ -223,11 +221,6 @@
                             {
                                 Console.WriteLine("ERROR: Hero not spawned !");
                             }
-                        //}
-                        //catch (NullReferenceException)
-                        //{
-                        //    Console.WriteLine("ERROR : Please create and spawn your hero before you make any moves");
-                        //}
 
                         break;
                     case "exit":
