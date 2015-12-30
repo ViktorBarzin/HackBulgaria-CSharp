@@ -96,7 +96,7 @@
         {
             if (!this.CanCast(spell))
             {
-                return -1;
+                return 0;
             }
 
             return this.Spell.Damage;
