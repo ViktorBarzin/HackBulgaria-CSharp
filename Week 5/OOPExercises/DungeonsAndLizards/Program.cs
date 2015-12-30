@@ -11,7 +11,7 @@
         public static void Main(string[] args)
         {
             // TODO : add fights feature
-                // TODO : attack by method
+                // TODO : attack by method 
             // TODO : enemy adding order ?
             // TODO : check addition of new characters, weapons and spells in the game
             // TODO : add validation
