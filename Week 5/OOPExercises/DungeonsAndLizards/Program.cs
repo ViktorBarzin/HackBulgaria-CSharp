@@ -11,31 +11,30 @@
         public static void Main(string[] args)
         {
             // TODO : add fights feature
-                // TODO : enemy adding order ?
+                // TODO : attack by method
+            // TODO : enemy adding order ?
             // TODO : check addition of new characters, weapons and spells in the game
             // TODO : add validation
+            // TODO : refactor with build methods (take damage, take healing etc)
             // TODO : remove magic numbers
             // TODO : bugfixing
             // TODO : dungeon class violates SRP ?
             // check how to update map to default when moving ?
-            var h = new Hero("John", "Smith", 100, 100, 2);
-            var w = new Weapon("Default weapon", 100);
-            var s = new Spell("Default spell", 120, 50, 2);
-
+            var defaultHero = new Hero("John", "Smith", 100, 100, 2);
+            var defaultWeapon = new Weapon("Default weapon", 100);
+            var defaultSpell = new Spell("Default spell", 120, 50, 2);
+            
+            defaultHero.Learn(defaultSpell);
+            defaultHero.Equip(defaultWeapon);
 
             string text = File.ReadAllText(@"C:\Users\Viktor\Desktop\GitHub\HackBulgaria-CSharp\Week 5\OOPExercises\DungeonsAndLizards\game settings\map.txt");
             var dungeon = new Dungeon(text);
             Console.WriteLine("Welcome to Dungeons and Lizards Game !");
             Console.WriteLine("To check game rules enter \"help\"");
             List<Enemy> enemiesList = new List<Enemy>();
-            List<Spell> spellsList = new List<Spell>();
-            List<Weapon> weaponsList = new List<Weapon>();
             bool isSpawned = false;
-            Hero defaultHero = h;
 
             // TODO : equip enemies/heroes with different spells and weapons?
-            spellsList.Add(s);
-            weaponsList.Add(w);
             int enemiesCounter = text.Count(character => character == 'E');
 
             while (true)
@@ -98,12 +97,12 @@
                         {
                             case "weapon":
                                 Weapon weapon = new Weapon(word[2], int.Parse(word[3]));
-                                weaponsList[0] = weapon;
+                                defaultWeapon = weapon;
                                 Console.WriteLine("SUCCESS: Weapon added !");
                                 break;
                             case "spell":
                                 Spell spell = new Spell(word[2], int.Parse(word[3]), int.Parse(word[4]), int.Parse(word[5]));
-                                spellsList[0] = spell;
+                                defaultSpell = spell;
                                 Console.WriteLine("SUCCESS: Spell added !");
                                 break;
                             default:
@@ -116,11 +115,11 @@
                         switch (word[1])
                         {
                             case "hero":
-                                defaultHero.Equip(weaponsList[0]);
+                                defaultHero.Equip(defaultWeapon);
                                 Console.WriteLine("SUCCESS: Hero equipped !");
                                 break;
                             case "enemy":
-                                enemiesList[0].Equip(weaponsList[0]);
+                                enemiesList[0].Equip(defaultWeapon);
                                 Console.WriteLine("SUCCESS: Enemy equipped !");
                                 break;
                             default:
@@ -133,12 +132,12 @@
                         switch (word[1])
                         {
                             case "hero":
-                                defaultHero.Learn(spellsList[0]);
-                                Console.WriteLine("SUCCESS: {0} learned {1} spell", defaultHero.Name, spellsList[0].Name);
+                                defaultHero.Learn(defaultSpell);
+                                Console.WriteLine("SUCCESS: {0} learned {1} spell", defaultHero.Name, defaultSpell.Name);
                                 break;
                             case "enemy":
-                                enemiesList[0].Learn(spellsList[0]);
-                                Console.WriteLine("SUCCESS: {0} learned {1} spell", enemiesList[0].Name, spellsList[0].Name);
+                                enemiesList[0].Learn(defaultSpell);
+                                Console.WriteLine("SUCCESS: {0} learned {1} spell", enemiesList[0].Name, defaultSpell.Name);
                                 break;
                             default:
                                 Console.WriteLine("ERROR: Command \"learn\" takes \"hero\" or \"enemy\" as parameters !");
@@ -158,12 +157,12 @@
                     case "can":
                         if (word[1] == "cast")
                         {
-                            Console.WriteLine("Hero can cast {0} : {1}", spellsList[0], defaultHero.CanCast(spellsList[0]));
+                            Console.WriteLine("Hero can cast {0} : {1}", defaultSpell, defaultHero.CanCast(defaultSpell));
                         }
 
                         break;
                     case "attack":
-                        switch(word[1])
+                        switch (word[1])
                         {
                             case "weapon":
                             case "spell":
@@ -181,10 +180,10 @@
                         dungeon.PrintMap();
                         break;
                     case "spawn":
-                        if (defaultHero.Equals(h))
-                        {
-                            Console.WriteLine("WARNING: You are using the default hero");
-                        }
+                        // if (defaultHero.Equals(defaultHero))
+                        // {
+                        //    Console.WriteLine("WARNING: You are using the default hero");
+                        // }
                         if (!isSpawned)
                         {
                             dungeon.Spawn(defaultHero);
@@ -197,8 +196,8 @@
                         }
                         break;
                     case "move":
-                        try
-                        {
+                        //try
+                        //{
                             if (isSpawned)
                             {
                                 switch (word[1])
@@ -222,13 +221,13 @@
                             }
                             else
                             {
-                                Console.WriteLine("ERROR: Spawn a hero before you make any moves !");
+                                Console.WriteLine("ERROR: Hero not spawned !");
                             }
-                        }
-                        catch (NullReferenceException)
-                        {
-                            Console.WriteLine("ERROR : Please create and spawn your hero before you make any moves");
-                        }
+                        //}
+                        //catch (NullReferenceException)
+                        //{
+                        //    Console.WriteLine("ERROR : Please create and spawn your hero before you make any moves");
+                        //}
 
                         break;
                     case "exit":

@@ -1,6 +1,7 @@
 ﻿namespace DungeonsAndLizards
 {
     using System;
+    using System.Collections.Generic;
 
     public abstract class Characters
     {
@@ -23,6 +24,8 @@
         public Health MaxHealth { get; protected set; }
 
         public Mana MaxMana { get; protected set; }
+
+        public KeyValuePair<int, int> CurrentPosition { get; set; }
 
         public Health GetHealth()
         {
@@ -115,11 +118,6 @@
 
         public void Learn(Spell spell)
         {
-            if (this.HasSpell)
-            {
-                return;
-            }
-
             this.HasSpell = true;
             this.Spell = spell;
         }

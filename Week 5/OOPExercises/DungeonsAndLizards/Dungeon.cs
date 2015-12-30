@@ -21,7 +21,7 @@
         private readonly int[] defaultSpellStats = new int[] { 100, 50, 2 };
         private readonly int[] enemyStats = new int[] { 100, 100, 20 };
         private readonly char[,] matrix = new char[5, 10];
-        private readonly Dictionary<KeyValuePair<int, int>, Enemy> enemiesList = new Dictionary<KeyValuePair<int, int>, Enemy>();
+        private readonly List<Enemy> enemiesList = new List<Enemy>();
         private KeyValuePair<int, int> currPosition;
         private Hero hero;
 
@@ -36,7 +36,15 @@
                 {
                     if (character == 'E')
                     {
-                        this.enemiesList.Add(new KeyValuePair<int, int>(row, column), new Enemy(this.enemyStats[0], this.enemyStats[1], this.enemyStats[2]));
+                        this.enemiesList.Add(new Enemy(this.enemyStats[0], this.enemyStats[1], this.enemyStats[2]));
+                        foreach (var enemy in this.enemiesList)
+                        {
+                            if (enemy.CurrentPosition.Equals(null))
+                            {
+                                enemy.CurrentPosition = new KeyValuePair<int, int>(row, column);
+                                Console.WriteLine("key: {0}, value {1}", row, column);
+                            }
+                        }
                     }
 
                     this.matrix[row, column] = character;
@@ -46,7 +54,7 @@
                 row++;
             }
         }
-        
+
         public void PrintCurrentCell()
         {
             switch (this.matrix[this.currPosition.Key, this.currPosition.Value])
@@ -208,28 +216,29 @@
             {
                 foreach (var enemy in this.enemiesList)
                 {
-                    if (enemy.Key.Key == this.currPosition.Key && enemy.Key.Value == this.currPosition.Value)
+                    if (enemy.CurrentPosition.Key == this.currPosition.Key && enemy.CurrentPosition.Value == this.currPosition.Value)
                     {
-                        new Fight(this.hero, enemy.Value, this.matrix);
+                        new Fight(this.hero, enemy, this.matrix);
                         return true;
                     }
                 }
             }
             else if (by == "spell")
             {
-                if (this.hero.HasSpell && this.InRange(this.matrix, this.currPosition, this.hero.Spell.CastRange))
+                if (this.hero.HasSpell && this.InRange(this.currPosition, this.FirstAlivePosition(), this.hero.Spell.CastRange))
                 {
                     foreach (var enemy in this.enemiesList)
                     {
-                        if (enemy.Key.Key == this.currPosition.Key && enemy.Key.Value == this.currPosition.Value)
+                        if (enemy.CurrentPosition.Key == this.currPosition.Key && enemy.CurrentPosition.Value == this.currPosition.Value)
                         {
-                            new Fight(this.hero, enemy.Value, this.matrix);
+                            Console.WriteLine("EBI SE SHTE TE SPUKAM SQ OT DALECHE .!.");
+                            new Fight(this.hero, enemy, this.matrix);
                             return true;
                         }
                     }
                 }
 
-                Console.WriteLine("ERROR: Nothing in casting range {0}",this.hero.Spell.CastRange);
+                Console.WriteLine("ERROR: Nothing in casting range {0}", this.hero.Spell.CastRange);
             }
 
             return false;
@@ -245,61 +254,13 @@
         }
 
         // TODO : check if InRange functons works legit
-        private bool InRange(char[,] map, KeyValuePair<int, int> currLocation, int range)
+        private bool InRange(KeyValuePair<int, int> heroPosition, KeyValuePair<int, int> enemyPosition, int range)
         {
-            for (int i = 1; i <= range; i++)
+            for (int i = 0; i < range; i++)
             {
-                try
+                if (heroPosition.Key + i == enemyPosition.Key || heroPosition.Key - i == enemyPosition.Key || heroPosition.Value + i == enemyPosition.Value || heroPosition.Value - i == enemyPosition.Value)
                 {
-                    if (map[currLocation.Key - i, currLocation.Value] == 'E')
-                    {
-                        return true;
-                    }
-                }
-                catch (IndexOutOfRangeException)
-                {
-                }
-            }
-
-            for (int i = 1; i <= range; i++)
-            {
-                try
-                {
-                    if (map[currLocation.Key + i, currLocation.Value] == 'E')
-                    {
-                        return true;
-                    }
-                }
-                catch (IndexOutOfRangeException)
-                {
-                }
-            }
-
-            for (int i = 1; i <= range; i++)
-            {
-                try
-                {
-                    if (map[currLocation.Key, currLocation.Value - i] == 'E')
-                    {
-                        return true;
-                    }
-                }
-                catch (IndexOutOfRangeException)
-                {
-                }
-            }
-
-            for (int i = 1; i <= range; i++)
-            {
-                try
-                {
-                    if (map[currLocation.Key, currLocation.Value + i] == 'E')
-                    {
-                        return true;
-                    }
-                }
-                catch (IndexOutOfRangeException)
-                {
+                    return true;
                 }
             }
 
@@ -309,6 +270,19 @@
         private string BiggerDamage()
         {
             return this.hero.Weapon.Damage > this.hero.Spell.Damage ? "weapon" : "spell";
+        }
+
+        private KeyValuePair<int, int> FirstAlivePosition()
+        {
+            foreach (Enemy enemy in this.enemiesList)
+            {
+                if (enemy.IsAlive())
+                {
+                    return enemy.CurrentPosition;
+                }
+            }
+
+            throw new ArgumentException("ERROR: No Alive enemies found !");
         }
     }
 }
