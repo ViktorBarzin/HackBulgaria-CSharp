@@ -2,9 +2,15 @@
 {
     using System;
 
+    /// <summary>
+    /// Main Method Class.
+    /// </summary>
     public class Program
     {
-        public static void Main(string[] args)
+        /// <summary>
+        /// Main Method.
+        /// </summary>
+        public static void Main()
         {
             Point point = new Point(0, 0);
             Point point2 = new Point(4, 4);

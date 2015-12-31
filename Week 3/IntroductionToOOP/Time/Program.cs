@@ -2,9 +2,15 @@
 {
     using System;
 
+    /// <summary>
+    /// Main Method Class.
+    /// </summary>
     public class Program
     {
-        public static void Main(string[] args)
+        /// <summary>
+        /// Main Method.
+        /// </summary>
+        public static void Main()
         {
             // hh: mm: ss dd.MM.YY
             Console.WriteLine("Enter the date in the following format \" hh:mm:ss dd.MM.YY\"");
