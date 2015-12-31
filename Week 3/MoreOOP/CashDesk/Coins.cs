@@ -3,9 +3,19 @@
     using System;
     using System.Collections.Generic;
 
+    /// <summary>
+    /// Coin class.
+    /// </summary>
     public class Coin
     {
+        /// <summary>
+        /// todo : documentation for coins and cash desk
+        /// </summary>
         private const string STOTINKI = "st";
+
+        /// <summary>
+        /// List of valid bill values.
+        /// </summary>
         private readonly List<int> validCoinValues = new List<int> { 1, 2, 5, 10, 20, 50, 100 };
         private int value;
 
@@ -47,8 +57,7 @@
 
         public static explicit operator int(Coin coin)
         {
-            int value = (int)coin.value;
-            return value;
+            return coin.value;
         }
 
         public override string ToString()

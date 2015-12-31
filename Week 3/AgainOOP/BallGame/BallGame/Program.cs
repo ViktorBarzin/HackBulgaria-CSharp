@@ -10,7 +10,8 @@ namespace BallGame
     {
         static void Main(string[] args)
         {
-            // Implement game structure
+            // TODO : Implement game structure
+            // TODO : fix documentation
         }
     }
 }
