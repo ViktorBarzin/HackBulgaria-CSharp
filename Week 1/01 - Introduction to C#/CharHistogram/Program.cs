@@ -1,16 +1,21 @@
-﻿/*
-Implement a funcion, called CharHistogram(string), which takes a string and returns a dictionary,
-where each key is a character from string and
-its value is the number of occurrences of that char in string.
-*/
-
-namespace CharHistogram
+﻿namespace CharHistogram
 {
     using System;
     using System.Collections.Generic;
 
+    /// <summary>
+    /// Implement a function, called CharHistogram(string),
+    ///  which takes a string and returns a dictionary, 
+    /// where each key is a character from string and 
+    /// its value is the number of occurrences of that char in string.
+    /// </summary>
     public class Program
     {
+        /// <summary>
+        /// Calculates occurrences of a letter in a string input.
+        /// </summary>
+        /// <param name="input">Input string.</param>
+        /// <returns>A dictionary of letters and their count.</returns>
         public static Dictionary<char, int> CharHistogram(string input)
         {
             Dictionary<char, int> charHistogramDic = new Dictionary<char, int>();
@@ -34,7 +39,10 @@ namespace CharHistogram
             return charHistogramDic;
         }
 
-        public static void Main(string[] args)
+        /// <summary>
+        /// Main Method.
+        /// </summary>
+        public static void Main()
         {
             Console.WriteLine("Enter a string to see the occurences of the letter in it :");
             string input = Console.ReadLine();

@@ -1,16 +1,20 @@
-﻿/*
-IsAnagram(A, B) - returns true, if the string A is an anagram of B
-HasAnagramOf(A, B) - returns true, if an anagram of string A can be found in B
-*/
-
-namespace Anagram
+﻿namespace Anagram
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
 
+    /// <summary>
+    /// Task - IsAnagram(A, B) - returns true, if the string A is an anagram of B.
+    /// </summary>
     public class Program
     {
+        /// <summary>
+        /// Checks if string a is Anagram of string b.
+        /// </summary>
+        /// <param name="a">First input string.</param>
+        /// <param name="b">Second input string.</param>
+        /// <returns>Returns if both strings are anagrams.</returns>
         public static bool IsAnagram(string a, string b)
         {
             Dictionary<char, int> dictA = new Dictionary<char, int>();
@@ -43,7 +47,10 @@ namespace Anagram
             return isEqual;
         }
 
-        public static void Main(string[] args)
+        /// <summary>
+        /// Main function.
+        /// </summary>
+        public static void Main()
         {
             Console.WriteLine("Enter first string :");
             string firstInput = Console.ReadLine();

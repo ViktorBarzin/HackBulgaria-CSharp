@@ -1,21 +1,22 @@
-﻿/*
-Implement the following function: int MaxSpan(List<int> numbers) where numbers is a list of numbers.
-
-Consider the leftmost and rightmost appearances of some value in the list.
-
-We'll say that the "span" is the number of elements between the two inclusive.
-A single value has a span of 1.
-
-Returns the largest span found in the given array.
-*/
-
-namespace MaxSpanHackBulgariaEdition
+﻿namespace MaxSpanHackBulgariaEdition
 {
     using System;
     using System.Collections.Generic;
 
+    /// <summary>
+    /// Implement the following function: <![CDATA[int]]> MaxSpan(List<![CDATA[<int>]]> numbers) where numbers is a list of numbers.
+    /// Consider the leftmost and rightmost appearances of some value in the list.
+    /// We'll say that the "span" is the number of elements between the two inclusive.
+    /// A single value has a span of 1.
+    /// Returns the largest span found in the given array.
+    /// </summary>
     public class Program
     {
+        /// <summary>
+        /// Finds the biggest span between a leftmost and rightmost appearance of some value.
+        /// </summary>
+        /// <param name="numbers">List input.</param>
+        /// <returns>Biggest span.</returns>
         public static int MaxSpan(List<int> numbers)
         {
             List<int> spanCounters = new List<int>();
@@ -33,7 +34,10 @@ namespace MaxSpanHackBulgariaEdition
             return spanCounters[0];
         }
 
-        public static void Main(string[] args)
+        /// <summary>
+        /// Main Method.
+        /// </summary>
+        public static void Main()
         {
             List<int> input = new List<int> { 1, 4, 2, 1, 4, 1, 4 };
             Console.WriteLine("Result : {0}", MaxSpan(input));

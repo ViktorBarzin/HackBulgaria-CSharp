@@ -1,17 +1,20 @@
-﻿/*
-Make a program which loads a bitmap into memory, then applies a linear filter and saves it into a new file.
-
-You can use the Box Blur Filter
-
-void BlurImage(Bitmap bitmap, string savePath)
-*/
-
-namespace ApplyALinearFilterToAnImage
+﻿namespace ApplyALinearFilterToAnImage
 {
     using System.Drawing;
 
+    /// <summary>
+    /// Make a program which loads a bitmap into memory, then applies a linear filter and saves it into a new file.
+    /// You can use the Box Blur Filter
+    /// void BlurImage(Bitmap bitmap, string savePath).
+    /// </summary>
     public class Program
     {
+        /// <summary>
+        /// Blurs an image with a specified amount.
+        /// </summary>
+        /// <param name="image">Bitmap image.</param>
+        /// <param name="blurSize">Integer amount.</param>
+        /// <returns>Returns a new bitmap image.</returns>
         public static Bitmap Blur(Bitmap image, int blurSize)
         {
             Bitmap blurred = new Bitmap(image.Width, image.Height);
@@ -58,7 +61,10 @@ namespace ApplyALinearFilterToAnImage
             return blurred;
         }
 
-        public static void Main(string[] args)
+        /// <summary>
+        /// Main Method.
+        /// </summary>
+        public static void Main()
         {
             Bitmap image = (Bitmap)Image.FromFile("linux_inside.bmp");
             Blur(image, 5);

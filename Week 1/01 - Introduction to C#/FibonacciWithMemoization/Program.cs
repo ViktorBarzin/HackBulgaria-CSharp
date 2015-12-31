@@ -2,10 +2,21 @@
 {
     using System;
 
+    /// <summary>
+    /// Print Fibonacci numbers via recursion effectively.
+    /// </summary>
     public class Program
     {
+        /// <summary>
+        /// An array to save already calculated numbers.
+        /// </summary>
         private static readonly long[] Memo = new long[1000000];
 
+        /// <summary>
+        /// Fibonacci number generator.
+        /// </summary>
+        /// <param name="n">Nth Fibonacci number.</param>
+        /// <returns>Returns the nth Fibonacci number.</returns>
         public static long Fib(int n)
         {
             if (Memo[n] != 0)
@@ -26,7 +37,10 @@
             return Memo[n];
         }
 
-        public static void Main(string[] args)
+        /// <summary>
+        /// Main Method.
+        /// </summary>
+        public static void Main()
         {
             Console.WriteLine(Fib(500));
         }

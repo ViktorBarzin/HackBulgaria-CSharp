@@ -1,17 +1,21 @@
-﻿/*
-Make a program which loads a bitmap into memory, then rescales it into a new bitmap
-using the nearest neighbour interpolation.
-
-void ResampleImage(Bitmap bitmap, Size newSize, string savePath)
-*/
-
-namespace InterpolateImage
+﻿namespace InterpolateImage
 {
     using System;
     using System.Drawing;
 
+    /// <summary>
+    /// Make a program which loads a bitmap into memory, then rescales it into a new bitmap
+    /// using the nearest <![CDATA[neighbour]]> interpolation.
+    /// void ResampleImage(Bitmap bitmap, Size newSize, string savePath).
+    /// </summary>
     public class Program
     {
+        /// <summary>
+        /// Resizes a bitmap image.
+        /// </summary>
+        /// <param name="bitmap">Bitmap image to be resized.</param>
+        /// <param name="newSize">New Size of the bitmap image.</param>
+        /// <param name="savePath">String save path.</param>
         public static void ResampleImage(Bitmap bitmap, Size newSize, string savePath)
         {
             Bitmap newPic = new Bitmap(newSize.Width, newSize.Height);
@@ -29,7 +33,10 @@ namespace InterpolateImage
             newPic.Save(savePath);
         }
 
-        public static void Main(string[] args)
+        /// <summary>
+        /// Main Method.
+        /// </summary>
+        public static void Main()
         {
             Bitmap bmp = (Bitmap)Image.FromFile("linux_inside.bmp");
             Size size = new Size(1000, 500);

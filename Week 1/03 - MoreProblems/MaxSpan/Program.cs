@@ -1,19 +1,22 @@
-﻿/*
-You are given a list of ints.Lets say a span is the numbers between the ocurences of
-the same number.
-
-For example the span in this list : {1,2,4,22,4,1}
-is 6(between the two 1s inclusive).
-Your task is to find the biggest span of numbers.
-*/
-
-namespace MaxSpan
+﻿namespace MaxSpan
 {
     using System;
     using System.Collections.Generic;
 
+    /// <summary>
+    /// You are given a list of <![CDATA[ints]]>.Lets say a span is the numbers between the occurrence of
+    /// the same number.
+    /// For example the span in this list : {1,2,4,22,4,1}
+    /// is 6(between the two 1s inclusive).
+    /// Your task is to find the biggest span of numbers.
+    /// </summary>
     public class Program
     {
+        /// <summary>
+        /// Finds the biggest span between 2 equal integers in a list.
+        /// </summary>
+        /// <param name="numbers">List input.</param>
+        /// <returns>The biggest span between 2 equal integers.</returns>
         public static int MaxSpan(List<int> numbers)
         {
             int spanCounter = 0;
@@ -50,7 +53,10 @@ namespace MaxSpan
             return spanCounters[0];
         }
 
-        public static void Main(string[] args)
+        /// <summary>
+        /// Main Method.
+        /// </summary>
+        public static void Main()
         {
             List<int> numbers = new List<int> { 1, 2, 3, 1, 1, 1, 1, 2, 4, 2 };
             Console.WriteLine("Max Span is : {0}", MaxSpan(numbers));

@@ -1,25 +1,33 @@
-﻿/*
-Sum all numbers in a given string
-
-You are given a string, where there can be numbers.
-Return the sum of all numbers in that string (not digits, numbers)
-*/
-namespace SumAllNumbersInAGivenString
+﻿namespace SumAllNumbersInAGivenString
 {
     using System;
 
+    /// <summary>
+    /// Sum all numbers in a given string
+    /// You are given a string, where there can be numbers.
+    /// Return the sum of all numbers in that string (not digits, numbers).
+    /// </summary>
     public class Program
     {
+        /// <summary>
+        /// Gets all the integers from a string.
+        /// </summary>
+        /// <param name="input">Input string.</param>
+        /// <returns>The sum of all integers.</returns>
         public static int NumbersToAdd(string input)
         {
             int temp = 0;
             int sum = 0;
-            foreach (char t in input)
+            for (int i = 0; i < input.Length; i++)
             {
-                if (char.IsDigit(t))
+                if (char.IsDigit(input[i]))
                 {
-                    int digit = t - '0';
+                    int digit = input[i] - '0';
                     temp = (temp * 10) + digit;
+                    if (i + 1 == input.Length)
+                    {
+                        sum += temp;
+                    }
                 }
                 else
                 {
@@ -31,14 +39,15 @@ namespace SumAllNumbersInAGivenString
             return sum;
         }
 
-        public static void Main(string[] args)
+        /// <summary>
+        /// Main Method.
+        /// </summary>
+        public static void Main()
         {
             Console.WriteLine("Enter string :");
             string input = Console.ReadLine();
 
             Console.WriteLine(NumbersToAdd(input));
-
-            // TODO: works if input ends with char
         }
     }
 }

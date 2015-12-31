@@ -1,27 +1,33 @@
-﻿/*
-Working with digits
-
-Those are classic problems for using module division:
-
-Given an integer n, return the number of digits in n -> CountDigits(n)
-Given an integer n, return the sum of all digits in n -> SumDigits(n)
-FactorialDigits(n) -> for example, if we have 145, we need to calculate 1! + 4! + 5!
-*/
-
-namespace WorkingWithDigits
+﻿namespace WorkingWithDigits
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
 
+    /// <summary>
+    /// Working with digits
+    /// Given an integer n, return the number of digits in n -> CountDigits(n)
+    /// Given an integer n, return the sum of all digits in n -> SumDigits(n)
+    /// FactorialDigits(n) -> for example, if we have 145, we need to calculate 1! + 4! + 5!.
+    /// </summary>
     public class Program
     {
+        /// <summary>
+        /// Counts the digits in a number.
+        /// </summary>
+        /// <param name="number">Input integer.</param>
+        /// <returns>The number of the digits.</returns>
         public static int CountDigits(int number)
         {
             string stringNumber = number.ToString();
             return stringNumber.Length;
         }
 
+        /// <summary>
+        /// Sums all the digits.
+        /// </summary>
+        /// <param name="number">Input integer.</param>
+        /// <returns>The sum of the input's number digits.</returns>
         public static int SumOfDigits(int number)
         {
             string stringNumber = number.ToString();
@@ -29,6 +35,11 @@ namespace WorkingWithDigits
             return stringNumber.Sum(t => int.Parse(t.ToString()));
         }
 
+        /// <summary>
+        /// Another way to sum the digits.
+        /// </summary>
+        /// <param name="number">Input integer.</param>
+        /// <returns>The sum of the input's number digits.</returns>
         public static int SumOfDigitsWithoutString(int number)
         {
             int sum = 0;
@@ -41,6 +52,11 @@ namespace WorkingWithDigits
             return sum;
         }
 
+        /// <summary>
+        /// Factorial of digits.
+        /// </summary>
+        /// <param name="number">Input number.</param>
+        /// <returns>The factorial of the digits on the number.</returns>
         public static int FactorialOfDigits(int number)
         {
             List<int> listNumbers = new List<int>();
@@ -53,6 +69,11 @@ namespace WorkingWithDigits
             return listNumbers.Sum(t => Factorial(t));
         }
 
+        /// <summary>
+        /// Factorial of a number.
+        /// </summary>
+        /// <param name="n">Input integer.</param>
+        /// <returns>The factorial of the input integer.</returns>
         public static int Factorial(int n)
         {
             int factorial = 1;
@@ -64,7 +85,10 @@ namespace WorkingWithDigits
             return factorial;
         }
 
-        public static void Main(string[] args)
+        /// <summary>
+        /// Main Method.
+        /// </summary>
+        public static void Main()
         {
             Console.WriteLine("Enter an integer :");
             int input = int.Parse(Console.ReadLine());

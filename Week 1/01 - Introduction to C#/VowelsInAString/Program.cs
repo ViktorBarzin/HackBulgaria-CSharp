@@ -1,17 +1,20 @@
-﻿/*
-Implement a function, called CountVowels(str),
-which returns the count of all vowels in the string str.
-
-Count uppercase vowels aswell!
-*/
-
-namespace VowelsInAString
+﻿namespace VowelsInAString
 {
     using System;
     using System.Linq;
 
+    /// <summary>
+    /// Implement a function, called CountVowels(string),
+    /// which returns the count of all vowels in the string.
+    /// Count uppercase vowels as well.
+    /// </summary>
     public class Program
     {
+        /// <summary>
+        /// Counts vowels in a string.
+        /// </summary>
+        /// <param name="input">Input string.</param>
+        /// <returns>The count of vowels in a string.</returns>
         public static int CountVowels(string input)
         {
             char[] vowels = { 'a', 'e', 'i', 'o', 'u' };
@@ -19,7 +22,10 @@ namespace VowelsInAString
             return vowelCounter;
         }
 
-        public static void Main(string[] args)
+        /// <summary>
+        /// Main Method.
+        /// </summary>
+        public static void Main()
         {
             Console.WriteLine("Enter a string to count the vowels :");
             string input = Console.ReadLine();
