@@ -1,11 +1,18 @@
 ﻿namespace Program
 {
     using System.Collections.Generic;
+
     using VATTaxCalculator;
 
-    public class Program
+    /// <summary>
+    /// Application Layer Class.
+    /// </summary>
+    public class ApplicationLayer
     {
-        public static void Main(string[] args)
+        /// <summary>
+        /// Main Method.
+        /// </summary>
+        public static void Main()
         {
             // Add CountryVatTax countries - id, vat, isDefault
             CountryVatTax bg = new CountryVatTax(1, 20, true);
@@ -15,7 +22,7 @@
 
             // Initialise VatTaxCalculator with the countries list 
             VatTaxCalculator calc = new VatTaxCalculator(countriesList);
-
+            
             // Add products - id, name, quantity, price, country
             Product prod1 = new Product(0, "prod", 5, 10, bg);
 
