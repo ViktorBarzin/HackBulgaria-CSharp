@@ -2,8 +2,20 @@
 {
     using System;
 
+    /// <summary>
+    /// Write a method which outputs a matrix of random floating point numbers to a file. 
+    /// The dimensions of the matrix are given as arguments. The numbers should be in the range 0-1000 
+    /// and should be printed with exactly two digits after the decimal point. The numbers should be separated by at least one space
+    ///  and should be right aligned to the size of their column (which you can consider to be fixed at 8 characters).
+    /// </summary>
     public class Program
     {
+        /// <summary>
+        /// Generates a random matrix.
+        /// </summary>
+        /// <param name="rows">Matrix rows.</param>
+        /// <param name="columns">Matrix columns.</param>
+        /// <param name="fileName">String file name where the matrix should be saved.</param>
         public static void GenerateRandomMatrix(int rows, int columns, string fileName)
         {
             Random rand = new Random();
@@ -31,6 +43,9 @@
             }
         }
 
+        /// <summary>
+        /// Main Method.
+        /// </summary>
         public static void Main()
         {
             GenerateRandomMatrix(4, 4, "22");

@@ -1,18 +1,18 @@
-﻿/*
-When the clock hits 13:37 on December 21st, this is a special time for hackers.
-Write a method which prints how many days, hours, and minutes remain until the next such time comes.
-
-void HackerTime()
-
-The result should be printed on the console in the format dd:hh:mm
-*/
-
-namespace _1337
+﻿namespace _1337
 {
     using System;
 
+    /// <summary>
+    /// When the clock hits 13:37 on December 21st, this is a special time for hackers.
+    /// Write a method which prints how many days, hours, and minutes remain until the next such time comes.
+    /// void HackerTime()
+    /// The result should be printed on the console in the format <![CDATA[dd:hh:mm]]>.
+    /// </summary>
     public class Program
     {
+        /// <summary>
+        /// Prints the time until the next Hacker time.
+        /// </summary>
         public static void HackerTime()
         {
             DateTime now = DateTime.Now;
@@ -30,7 +30,10 @@ namespace _1337
             }
         }
 
-        public static void Main(string[] args)
+        /// <summary>
+        /// Main Method.
+        /// </summary>
+        public static void Main()
         {
             HackerTime();
         }
