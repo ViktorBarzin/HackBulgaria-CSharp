@@ -4,9 +4,17 @@
     using System.Collections.Generic;
     using CashDesk;
 
+    /// <summary>
+    /// CashDesk Application class.
+    /// </summary>
     public class Program
     {
-        public static bool IsInputLenghtLessThan2(string[] strin)
+        /// <summary>
+        /// Checks if user input is longer than 2 words.
+        /// </summary>
+        /// <param name="strin">Input to check.</param>
+        /// <returns>True if input is longer than 2.</returns>
+        public static bool IsInputLenghtLongerThan2(string[] strin)
         {
             if (strin.Length < 2)
             {
@@ -16,7 +24,10 @@
             return true;
         }
 
-        public static void Main(string[] args)
+        /// <summary>
+        /// Main Method.
+        /// </summary>
+        public static void Main()
         {
             CashDesk obj = new CashDesk();
             while (true)
@@ -32,7 +43,7 @@
                 switch (command[0])
                 {
                     case "takebill":
-                        if (IsInputLenghtLessThan2(command))
+                        if (IsInputLenghtLongerThan2(command))
                         {
                             if (command.Length < 3)
                             {
@@ -51,7 +62,7 @@
                         break;
 
                     case "takebatch":
-                        if (IsInputLenghtLessThan2(command))
+                        if (IsInputLenghtLongerThan2(command))
                         {
                             List<Bill> billList = new List<Bill>();
                             for (int i = 1; i < command.Length; i++)
@@ -66,7 +77,7 @@
                         break;
 
                     case "takecoin":
-                        if (IsInputLenghtLessThan2(command))
+                        if (IsInputLenghtLongerThan2(command))
                         {
                             if (command.Length < 3)
                             {
@@ -81,7 +92,7 @@
                         break;
 
                     case "takebatchcoin":
-                        if (IsInputLenghtLessThan2(command))
+                        if (IsInputLenghtLongerThan2(command))
                         {
                             List<Coin> coinlist = new List<Coin>();
                             for (int i = 1; i < command.Length; i++)
@@ -97,7 +108,7 @@
                         break;
 
                     case "removebill":
-                        if (IsInputLenghtLessThan2(command))
+                        if (IsInputLenghtLongerThan2(command))
                         {
                             if (command.Length < 3)
                             {
@@ -112,7 +123,7 @@
                         break;
 
                     case "removebatch":
-                        if (IsInputLenghtLessThan2(command))
+                        if (IsInputLenghtLongerThan2(command))
                         {
                             List<Bill> billList = new List<Bill>();
                             for (int i = 1; i < command.Length; i++)
@@ -140,7 +151,7 @@
                         break;
 
                     case "removecoin":
-                        if (IsInputLenghtLessThan2(command))
+                        if (IsInputLenghtLongerThan2(command))
                         {
                             if (command.Length < 3)
                             {
@@ -155,7 +166,7 @@
                         break;
 
                     case "removebatchcoin":
-                        if (IsInputLenghtLessThan2(command))
+                        if (IsInputLenghtLongerThan2(command))
                         {
                             List<Coin> coinList = new List<Coin>();
                             for (int i = 1; i < command.Length; i++)

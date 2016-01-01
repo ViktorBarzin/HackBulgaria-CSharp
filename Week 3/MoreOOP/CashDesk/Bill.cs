@@ -9,7 +9,6 @@
     /// </summary>
     public class Bill
     {
-        // TODO : implement generics support
         /// <summary>
         /// List of valid bill values.
         /// </summary>
@@ -30,7 +29,7 @@
         }
 
         /// <summary>
-        /// Gets or sets the Value of the bill.
+        /// Gets the Value of the bill.
         /// </summary>
         /// <value>Private setter.Bill value set in constructor.</value>
         public int Value
@@ -54,7 +53,7 @@
         }
 
         /// <summary>
-        /// Opertor == for two Bill objects.
+        /// Operator == for two Bill objects.
         /// </summary>
         /// <param name="bill1">Bill object one.</param>
         /// <param name="bill2">Bill object two.</param>
@@ -65,7 +64,7 @@
         }
 
         /// <summary>
-        /// Opertor != for two Bill objects.
+        /// Operator != for two Bill objects.
         /// </summary>
         /// <param name="bill1">Bill object one.</param>
         /// <param name="bill2">Bill object two.</param>
@@ -76,9 +75,9 @@
         }
 
         /// <summary>
-        /// Explicit casting Bill objects to int.
+        /// Explicit casting Bill objects to integer.
         /// </summary>
-        /// <param name="bill">A bill to be cast to int.</param>
+        /// <param name="bill">A bill to be cast to integer.</param>
         public static explicit operator int(Bill bill)
         {
             int value = (int)bill.value;
@@ -88,7 +87,7 @@
         /// <summary>
         /// Bill object as a string.
         /// </summary>
-        /// <returns>Bill oject as String</returns>
+        /// <returns>Bill object as String.</returns>
         public override string ToString()
         {
             var ri = new RegionInfo(System.Threading.Thread.CurrentThread.CurrentCulture.LCID);

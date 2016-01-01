@@ -4,24 +4,57 @@
     using System.Collections.Generic;
     using System.Linq;
 
+    /// <summary>
+    /// CashDesk class.
+    /// </summary>
     public class CashDesk
     {
+        /// <summary>
+        /// List of valid bill values.
+        /// </summary>
         private readonly List<int> validBillValues = new List<int> { 2, 5, 10, 20, 50, 100 };
+
+        /// <summary>
+        /// List of valid coin values.
+        /// </summary>
         private readonly List<int> validCoinValues = new List<int> { 1, 2, 5, 10, 20, 50, 100 };
+
+        /// <summary>
+        /// List of bill values and their respective count.
+        /// </summary>
         private Dictionary<int, int> bills = new Dictionary<int, int>();
+
+        /// <summary>
+        /// List of coin values and their respective count.
+        /// </summary>
         private Dictionary<int, int> coins = new Dictionary<int, int>();
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CashDesk"/> class.
+        /// </summary>
         public CashDesk()
         {
             this.BillTotalProp = this.bills.Keys.Sum();
             this.CoinTotalProp = this.coins.Keys.Sum();
         }
 
-        private int BillTotalProp { get; set; }
+        /// <summary>
+        /// Gets the total value of the Bill values in the CashDesk object.
+        /// </summary>
+        /// <value>Value is set after adding new Bill objects.</value>
+        public int BillTotalProp { get; private set; }
 
-        private double CoinTotalProp { get; set; }
+        /// <summary>
+        /// Gets the total value of the Coin values in the CashDesk object.
+        /// </summary>
+        /// <value>Value is set after adding new Coin objects.</value>
+        public double CoinTotalProp { get; private set; }
 
-        public CashDesk TakeMoney(Bill singleBill)
+        /// <summary>
+        /// Adds a Bill object to the CashDesk object.
+        /// </summary>
+        /// <param name="singleBill">Bill object to add.</param>
+        public void TakeMoney(Bill singleBill)
         {
             // Check if bill is valid then add it to CashDesk
             if (this.validBillValues.Contains(singleBill.Value))
@@ -38,11 +71,13 @@
 
                 Console.WriteLine("SUCCESS: added {0} bill !", new Bill(singleBill.Value));
             }
-
-            return this;
         }
 
-        public CashDesk TakeMoney(BatchBill batchList)
+        /// <summary>
+        /// Adds multiple Bill objects to the CashDesk object.
+        /// </summary>
+        /// <param name="batchList">Multiple bills to add.</param>
+        public void TakeMoney(BatchBill batchList)
         {
             // Remove the following code to add all but the not legit bill
             bool isLegit = true;
@@ -70,11 +105,13 @@
             {
                 Console.WriteLine("SUCCESS: added new batch of bills !");
             }
-
-            return this;
         }
 
-        public CashDesk RemoveMoney(Bill singleBill)
+        /// <summary>
+        /// Removes a single bill from the CashDesk object.
+        /// </summary>
+        /// <param name="singleBill">Bill to remove.</param>
+        public void RemoveMoney(Bill singleBill)
         {
             // If bill exists, removes it from CashDesk
             if (this.bills.Keys.Contains(singleBill.Value))
@@ -87,13 +124,14 @@
             {
                 Console.WriteLine("ERROR: bills list does not contain a {0} bill !", singleBill.ToString());
             }
-
-            return this;
         }
 
-        public CashDesk RemoveMoney(BatchBill batchList)
+        /// <summary>
+        /// Removes a list of bills if they exist in the CashDesk object.
+        /// </summary>
+        /// <param name="batchList">List of bills to remove.</param>
+        public void RemoveMoney(BatchBill batchList)
         {
-            // Removes a list of Bills
             foreach (Bill bill in batchList)
             {
                 if (!this.bills.ContainsKey(bill.Value))
@@ -107,18 +145,22 @@
                     Console.WriteLine("SUCCES: Removed {0} !", bill.Value);
                 }
             }
-
-            return this;
         }
 
-        public CashDesk RemoveAllBills()
+        /// <summary>
+        /// Removes all the bills from the CashDesk object.
+        /// </summary>
+        public void RemoveAllBills()
         {
             this.bills = new Dictionary<int, int>();
             this.BillTotalProp = 0;
-            return this;
         }
 
-        public CashDesk TakeMoney(Coin singleCoin)
+        /// <summary>
+        /// Adds a Coin object to the CashDesk object.
+        /// </summary>
+        /// <param name="singleCoin">Single Coin object to add if valid.</param>
+        public void TakeMoney(Coin singleCoin)
         {
             // Adds single coin to CashDesk if coin is valid
             if (this.validCoinValues.Contains(singleCoin.Value))
@@ -135,11 +177,13 @@
 
                 Console.WriteLine("SUCCESS: added {0} coin !", new Coin(singleCoin.Value));
             }
-
-            return this;
         }
 
-        public CashDesk TakeMoney(BatchCoin batchCoin)
+        /// <summary>
+        /// Adds a list of Coin objects to the CashDesk object.
+        /// </summary>
+        /// <param name="batchCoin">List of Coin objects to add if valid.</param>
+        public void TakeMoney(BatchCoin batchCoin)
         {
             // Remove the following code to add all but the not legit bill
             bool isLegit = batchCoin.Cast<Coin>().All(coinToAdd => this.validCoinValues.Contains(coinToAdd.Value));
@@ -158,11 +202,13 @@
                     this.CoinTotalProp += coin.Value;
                 }
             }
-
-            return this;
         }
 
-        public CashDesk RemoveMoney(Coin singleCoin)
+        /// <summary>
+        /// Removes a single Coin object from the CashDesk object.
+        /// </summary>
+        /// <param name="singleCoin">Single Coin object to remove.</param>
+        public void RemoveMoney(Coin singleCoin)
         {
             // If coin exists in CashDesk, removes it
             if (this.coins.Keys.Contains(singleCoin.Value))
@@ -175,11 +221,13 @@
             {
                 Console.WriteLine("ERROR: coins list does not contain a {0} coin !", singleCoin.ToString());
             }
-
-            return this;
         }
 
-        public CashDesk RemoveMoney(BatchCoin batchCoin)
+        /// <summary>
+        /// Removes a list of Coin objects from the CashDesk object if they exist.
+        /// </summary>
+        /// <param name="batchCoin">List of coin objects to remove.</param>
+        public void RemoveMoney(BatchCoin batchCoin)
         {
             // Removes a list of Coins if all coins are present in the CashDesk
             foreach (Coin coin in batchCoin)
@@ -195,23 +243,30 @@
                     Console.WriteLine("SUCCES: Removed {0} !", coin.Value);
                 }
             }
-
-            return this;
         }
 
-        public CashDesk RemoveAllCoins()
+        /// <summary>
+        /// Removes all Coin objects from the CashDesk object.
+        /// </summary>
+        public void RemoveAllCoins()
         {
             this.CoinTotalProp = 0;
             this.coins = new Dictionary<int, int>();
-            return this;
         }
 
+        /// <summary>
+        /// Shows the total Amount of money in the CashDesk object.
+        /// </summary>
+        /// <returns>The sum of all Bill values and Coin value.</returns>
         public double Total()
         {
             return this.BillTotalProp + (this.CoinTotalProp / 100);
         }
 
-        public CashDesk Inspect()
+        /// <summary>
+        /// Displays the current amount of values in the CashDesk object in sorted manner.
+        /// </summary>
+        public void Inspect()
         {
             // List CashDesk money in sorted manner
             if (this.bills.Count == 0 && this.coins.Count == 0)
@@ -232,8 +287,6 @@
                     Console.WriteLine("{0} coins - {1}", new Coin(coin.Key), coin.Value);
                 }
             }
-
-            return this;
         }
     }
 }
