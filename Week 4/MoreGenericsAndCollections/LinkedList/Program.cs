@@ -2,9 +2,15 @@
 {
     using System;
 
+    /// <summary>
+    /// Application class.
+    /// </summary>
     public class Program
     {
-        public static void Main(string[] args)
+        /// <summary>
+        /// Main method.
+        /// </summary>
+        public static void Main()
         {
             // TODO : linked list indexer
             // TODO : potential bugfixing required

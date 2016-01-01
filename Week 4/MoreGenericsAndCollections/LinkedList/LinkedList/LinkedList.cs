@@ -2,10 +2,23 @@
 {
     using System;
 
+    /// <summary>
+    /// Generic class Linked List.
+    /// </summary>
+    /// <typeparam name="T">Generic type.</typeparam>
     public class LinkedList<T>
     {
+        /// <summary>
+        /// Gets or sets the Head of the linked-list.
+        /// </summary>
+        /// <value>Setter is private.</value>
         private Node Head { get; set; }
 
+        /// <summary>
+        /// Adds a new value to the LinkedList.
+        /// </summary>
+        /// <param name="value">Value to add.</param>
+        /// <returns>The current instance of the class.</returns>
         public LinkedList<T> Add(T value)
         {
             if (this.Head.Equals(null))
@@ -23,6 +36,12 @@
             return this;
         }
 
+        /// <summary>
+        /// Inserts a value after a specified key.
+        /// </summary>
+        /// <param name="key">Key element.</param>
+        /// <param name="value">Value to insert.</param>
+        /// <returns>The current instance of the class.</returns>
         public LinkedList<T> InsertAfter(T key, T value)
         {
             Node insert = this.Head;
@@ -36,6 +55,12 @@
             return this;
         }
 
+        /// <summary>
+        /// Inserts a value before a specified key.
+        /// </summary>
+        /// <param name="key">Key element.</param>
+        /// <param name="value">Value to insert.</param>
+        /// <returns>The current instance of the class.</returns>
         public LinkedList<T> InsertBefore(T key, T value)
         {
             if (this.Head.Equals(null))
@@ -64,11 +89,22 @@
             return this;
         }
 
+        /// <summary>
+        /// Inserts a value at the specified index.
+        /// </summary>
+        /// <param name="index">Index to insert at.</param>
+        /// <param name="value">Value to insert.</param>
+        /// <returns>The current instance of the class.</returns>
         public LinkedList<T> InsertAt(T index, T value)
         {
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Removes a value.
+        /// </summary>
+        /// <param name="value">Value to remove.</param>
+        /// <returns>The current instance of the class.</returns>
         public LinkedList<T> Remove(T value)
         {
             if (this.Head.Equals(null))
@@ -102,6 +138,10 @@
             return this;
         }
 
+        /// <summary>
+        /// Removes all elements.
+        /// </summary>
+        /// <returns>The current instance of the class.</returns>
         public LinkedList<T> Clear()
         {
             if (this.Head.Equals(null))
@@ -120,16 +160,32 @@
             return this;
         }
 
+        /// <summary>
+        /// Class Node to keep track of each node in the list.
+        /// </summary>
         private class Node
         {
+            /// <summary>
+            /// Initializes a new instance of the <see cref="Node"/> class.
+            /// </summary>
+            /// <param name="value">Value to hold.</param>
+            /// <param name="next">Next item in the list.</param>
             public Node(T value, Node next)
             {
                 this.Value = value;
                 this.Next = next;
             }
 
+            /// <summary>
+            /// Gets or sets the generic value of the item.
+            /// </summary>
+            /// <value>Value for the Node element.</value>
             public T Value { get; set; }
 
+            /// <summary>
+            /// Gets or sets the next Node in the list.
+            /// </summary>
+            /// <value>Sets the next node in the list.</value>
             public Node Next { get; set; }
         }
     }
