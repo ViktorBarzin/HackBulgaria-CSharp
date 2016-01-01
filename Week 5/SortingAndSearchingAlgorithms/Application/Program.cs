@@ -4,8 +4,14 @@
     using System.Collections.Generic;
     using SortAndSearchExtensions;
 
+    /// <summary>
+    /// Application class.
+    /// </summary>
     public class Program
     {
+        /// <summary>
+        /// Main method.
+        /// </summary>
         public static void Main()
         {
             int[] arr = new int[5] { 1, 2, 6, 3, 0 };

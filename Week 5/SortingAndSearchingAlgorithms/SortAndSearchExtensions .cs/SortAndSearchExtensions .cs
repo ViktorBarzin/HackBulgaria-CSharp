@@ -3,8 +3,19 @@
     using System;
     using System.Collections.Generic;
 
+    /// <summary>
+    /// SortAndSearchExtensions containing extension methods for sorting and searching.
+    /// </summary>
     public static class SortAndSearchExtensions
     {
+        /// <summary>
+        /// IList extension method for swapping 2 elements.
+        /// </summary>
+        /// <typeparam name="T">Generic type.</typeparam>
+        /// <param name="list">List of generic items.</param>
+        /// <param name="indexA">First index to swap.</param>
+        /// <param name="indexB">Second index to swap.</param>
+        /// <returns>The IList with swapped elements.</returns>
         public static IList<T> Swap<T>(this IList<T> list, int indexA, int indexB)
         {
             T tmp = list[indexA];
@@ -13,6 +24,12 @@
             return list;
         }
 
+        /// <summary>
+        /// Implements the Bubble sort algorithm.
+        /// </summary>
+        /// <typeparam name="T">Generic type.</typeparam>
+        /// <param name="list">List of generic items.</param>
+        /// <returns>The IList sorted in ascending order.</returns>
         public static IList<T> BubbleSort<T>(this IList<T> list)
             where T : IComparable
         {
@@ -30,6 +47,12 @@
             return list;
         }
 
+        /// <summary>
+        /// Implements the Selection sort algorithm.
+        /// </summary>
+        /// <typeparam name="T">Generic type.</typeparam>
+        /// <param name="list">List to be sorted.</param>
+        /// <returns>The IList sorted in ascending order.</returns>
         public static IList<T> SelectionSort<T>(this IList<T> list)
             where T : IComparable
         {
@@ -50,6 +73,15 @@
             return list;
         }
 
+        /// <summary>
+        /// Implements binary search algorithm.
+        /// </summary>
+        /// <typeparam name="T">Generic type.</typeparam>
+        /// <param name="list">List to be searched in.</param>
+        /// <param name="search">Integer to search.</param>
+        /// <param name="min">Beginning of the list.</param>
+        /// <param name="max">End of the list.</param>
+        /// <returns>The searched integer.</returns>
         public static int BinarySearch<T>(this IList<T> list, int search, int min, int max)
         {
             if (min > max)
