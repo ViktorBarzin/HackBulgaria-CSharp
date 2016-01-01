@@ -2,8 +2,14 @@
 {
     using System.Collections.Generic;
 
+    /// <summary>
+    /// Application class.
+    /// </summary>
     public class Program
     {
+        /// <summary>
+        /// Main method.
+        /// </summary>
         public static void Main()
         {
             // List<List<object>> lottoGamesList = new List<List<object>>();
