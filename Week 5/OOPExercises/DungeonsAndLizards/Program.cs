@@ -5,9 +5,15 @@
     using System.IO;
     using System.Linq;
 
+    /// <summary>
+    /// Application Class.
+    /// </summary>
     public class Program
     {
-        public static void Main(string[] args)
+        /// <summary>
+        /// Main method.
+        /// </summary>
+        public static void Main()
         {
             // TODO : add fights feature
                 // TODO : combat method for fights

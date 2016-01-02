@@ -5,27 +5,91 @@
     using System.IO;
     using System.Linq;
 
+    /// <summary>
+    /// Moving direction.
+    /// </summary>
     public enum Direction
     {
+        /// <summary>
+        /// Reduces rows by 1.
+        /// </summary>
         Up,
+
+        /// <summary>
+        /// Increases rows by 1.
+        /// </summary>
         Down,
+
+        /// <summary>
+        /// Reduces cols by 1.
+        /// </summary>
         Left,
+
+        /// <summary>
+        /// Increases cols by 1.
+        /// </summary>
         Right
     }
 
+    /// <summary>
+    /// The main part of the application.
+    /// </summary>
     public class Dungeon
     {
+        /// <summary>
+        /// Error while moving constant.
+        /// </summary>
         private const string ERRORWHILEMOVING = "ERROR: moving in this direction is not possible";
-        private const int WEAPON_DAMAGE = 69;
-        private const char WALKABLE_PATH = '.';
+
+        /// <summary>
+        /// Weapon damage constant.
+        /// </summary>
+        private const int WEAPONDAMAGE = 69;
+
+        /// <summary>
+        /// Walkable path char symbol.
+        /// </summary>
+        private const char WALKABLEPATH = '.';
+
+        /// <summary>
+        /// Default Spell stats.
+        /// </summary>
         private readonly int[] defaultSpellStats = new int[] { 100, 50, 2 };
+
+        /// <summary>
+        /// Default enemy stats.
+        /// </summary>
         private readonly int[] enemyStats = new int[] { 100, 100, 20 };
+
+        /// <summary>
+        /// Matrix size.
+        /// </summary>
         private readonly char[,] matrix = new char[5, 10];
+
+        /// <summary>
+        /// List of enemies on the map.
+        /// </summary>
         private readonly List<Enemy> enemiesList = new List<Enemy>();
+
+        /// <summary>
+        /// Holds the current position of the Hero.
+        /// </summary>
         private KeyValuePair<int, int> currPosition;
+
+        /// <summary>
+        /// Hero instance used for the game.
+        /// </summary>
         private Hero hero;
+
+        /// <summary>
+        /// Enemy instance to fight.
+        /// </summary>
         private Enemy enemyToFight;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Dungeon"/> class.
+        /// </summary>
+        /// <param name="map">String which holds the map of the dungeon.</param>
         public Dungeon(string map)
         {
             string[] lines = map.Split(new[] { "\r\n", "\n" }, StringSplitOptions.None);
@@ -50,6 +114,9 @@
             }
         }
 
+        /// <summary>
+        /// Checks the current cell and does action upon it.
+        /// </summary>
         public void PrintCurrentCell()
         {
             switch (this.matrix[this.currPosition.Key, this.currPosition.Value])
@@ -70,6 +137,9 @@
             }
         }
 
+        /// <summary>
+        /// Prints the map.
+        /// </summary>
         public void PrintMap()
         {
             for (int row = 0; row < this.matrix.GetLength(0); row++)
@@ -83,6 +153,11 @@
             }
         }
 
+        /// <summary>
+        /// Spawns a Hero at the first spawn location.
+        /// </summary>
+        /// <param name="heroToSpawn">Hero to spawn.</param>
+        /// <returns>True if successful spawn.</returns>
         public bool Spawn(Hero heroToSpawn)
         {
             for (int row = 0; row < this.matrix.GetLength(0); row++)
@@ -94,6 +169,7 @@
                         this.matrix[row, col] = 'H';
                         this.currPosition = new KeyValuePair<int, int>(row, col);
                         this.hero = heroToSpawn;
+                        return true;
                     }
                 }
             }
@@ -101,6 +177,11 @@
             return false;
         }
 
+        /// <summary>
+        /// Moves hero in the desired direction if valid.
+        /// </summary>
+        /// <param name="direction">Direction to move in.</param>
+        /// <returns>True if move was successful.</returns>
         public bool MoveHero(Direction direction)
         {
             switch (direction)
@@ -108,7 +189,7 @@
                 case Direction.Down:
                     if (this.currPosition.Key + 1 <= this.matrix.GetLength(0) && this.matrix[this.currPosition.Key + 1, this.currPosition.Value] != '#')
                     {
-                        this.matrix[this.currPosition.Key, this.currPosition.Value] = WALKABLE_PATH;
+                        this.matrix[this.currPosition.Key, this.currPosition.Value] = WALKABLEPATH;
                         this.currPosition = new KeyValuePair<int, int>(this.currPosition.Key + 1, this.currPosition.Value);
                         this.PrintCurrentCell();
                         this.matrix[this.currPosition.Key, this.currPosition.Value] = 'H';
@@ -120,7 +201,7 @@
                 case Direction.Up:
                     if (this.currPosition.Key - 1 >= 0 && this.matrix[this.currPosition.Key - 1, this.currPosition.Value] != '#')
                     {
-                        this.matrix[this.currPosition.Key, this.currPosition.Value] = WALKABLE_PATH;
+                        this.matrix[this.currPosition.Key, this.currPosition.Value] = WALKABLEPATH;
                         this.currPosition = new KeyValuePair<int, int>(this.currPosition.Key - 1, this.currPosition.Value);
                         this.PrintCurrentCell();
                         this.matrix[this.currPosition.Key, this.currPosition.Value] = 'H';
@@ -132,7 +213,7 @@
                 case Direction.Right:
                     if (this.currPosition.Value + 1 <= this.matrix.GetLength(1) && this.matrix[this.currPosition.Key, this.currPosition.Value + 1] != '#')
                     {
-                        this.matrix[this.currPosition.Key, this.currPosition.Value] = WALKABLE_PATH;
+                        this.matrix[this.currPosition.Key, this.currPosition.Value] = WALKABLEPATH;
                         this.currPosition = new KeyValuePair<int, int>(this.currPosition.Key, this.currPosition.Value + 1);
                         this.PrintCurrentCell();
                         this.matrix[this.currPosition.Key, this.currPosition.Value] = 'H';
@@ -144,7 +225,7 @@
                 case Direction.Left:
                     if (this.currPosition.Value - 1 >= 0 && this.matrix[this.currPosition.Key, this.currPosition.Value - 1] != '#')
                     {
-                        this.matrix[this.currPosition.Key, this.currPosition.Value] = WALKABLE_PATH;
+                        this.matrix[this.currPosition.Key, this.currPosition.Value] = WALKABLEPATH;
                         this.currPosition = new KeyValuePair<int, int>(this.currPosition.Key, this.currPosition.Value - 1);
                         this.PrintCurrentCell();
                         this.matrix[this.currPosition.Key, this.currPosition.Value] = 'H';
@@ -158,6 +239,9 @@
             }
         }
 
+        /// <summary>
+        /// Picks a randomly-selected treasure from the treasure list.
+        /// </summary>
         public void PickTreasure()
         {
             int treasuresCount = File.ReadLines(@"C:\Users\Viktor\Desktop\GitHub\HackBulgaria-CSharp\Week 5\OOPExercises\DungeonsAndLizards\game settings\treasures.txt").Count();
@@ -188,8 +272,8 @@
 
                     break;
                 case 2:
-                    this.hero.Weapon = new Weapon("Treasure Sword", WEAPON_DAMAGE);
-                    Console.WriteLine("Treasure Sword with {0} damage", WEAPON_DAMAGE);
+                    this.hero.Weapon = new Weapon("Treasure Sword", WEAPONDAMAGE);
+                    Console.WriteLine("Treasure Sword with {0} damage", WEAPONDAMAGE);
                     break;
                 case 3:
                     this.hero.Spell = new Spell(
@@ -205,6 +289,11 @@
             }
         }
 
+        /// <summary>
+        /// Hero attacks if in range of an enemy.
+        /// </summary>
+        /// <param name="by">Hero can attack either by weapon or by spell.</param>
+        /// <returns>Returns true if in range to attack.</returns>
         public bool HeroAttack(string by)
         {
             if (by == "weapon" && this.matrix[this.currPosition.Key, this.currPosition.Value] == 'E')
@@ -232,15 +321,23 @@
             return false;
         }
 
+        /// <summary>
+        /// Random number generator.
+        /// </summary>
+        /// <param name="maxValue">Generates random numbers from 0 to maxValue.</param>
+        /// <returns>A random generated number from 0 to input value including.</returns>
         private int DiceRoll(int maxValue)
         {
             Random rnd = new Random();
-
-            // TODO : check random number legitimacy
+            
             int result = rnd.Next(0, maxValue);
             return result;
         }
 
+        /// <summary>
+        /// Checks if hero is in range with spell.
+        /// </summary>
+        /// <returns>True if Hero is in range to attack with spell.</returns>
         private bool InRange()
         {
             for (int i = 0; i <= this.hero.Spell.CastRange; i++)
@@ -313,9 +410,28 @@
             return false;
         }
 
+        /// <summary>
+        /// Returns the weapon that has more damage.
+        /// </summary>
+        /// <returns>Either weapon or spell as strings.</returns>
         private string BiggerDamage()
         {
-            return this.hero.Weapon.Damage > this.hero.Spell.Damage ? "weapon" : "spell";
+            if (this.hero.HasWeapon && this.hero.HasSpell)
+            {
+                return this.hero.Weapon.Damage > this.hero.Spell.Damage ? "weapon" : "spell";
+            }
+
+            if (this.hero.HasWeapon ^ this.hero.HasSpell)
+            {
+                if (this.hero.HasWeapon)
+                {
+                    return "weapon";
+                }
+
+                return "spell";
+            }
+
+            throw new ArgumentNullException();
         }
     }
 }
