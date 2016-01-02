@@ -4,17 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E604DF9F-437A-492C-BBA1-3A4DC95D3190}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{5B5FB5C7-8B35-44AE-9159-10D1CDD815D1}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DungeonsAndLizards</RootNamespace>
-    <AssemblyName>DungeonsAndLizards</AssemblyName>
+    <RootNamespace>Validation.cs</RootNamespace>
+    <AssemblyName>Validation.cs</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -43,27 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Characters.cs" />
-    <Compile Include="Dungeon.cs" />
-    <Compile Include="Enemy.cs" />
-    <Compile Include="Fight.cs" />
-    <Compile Include="Health.cs" />
-    <Compile Include="Hero.cs" />
-    <Compile Include="Mana.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="CharacterValidation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Spell.cs" />
     <Compile Include="Stats.cs" />
-    <Compile Include="Weapon.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Validation.cs\Validation.cs.csproj">
-      <Project>{5b5fb5c7-8b35-44ae-9159-10d1cdd815d1}</Project>
-      <Name>Validation.cs</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

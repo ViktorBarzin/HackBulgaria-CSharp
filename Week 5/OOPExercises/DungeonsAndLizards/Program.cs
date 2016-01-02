@@ -16,7 +16,7 @@
         public static void Main()
         {
             // TODO : add fights feature
-                // TODO : combat method for fights
+            // TODO : combat method for fights
             // TODO : enemy adding order ?
             // TODO : check addition of new characters, weapons and spells in the game
             // TODO : add validation
@@ -24,16 +24,16 @@
             // TODO : remove magic numbers
             // TODO : bugfixing
             // TODO : dungeon class violates SRP ?
-            var defaultHero = new Hero("John", "Smith", 100, 100, 2);
+            var defaultHero = new Hero("John", "Jedi", 100, 100, 2);
             var defaultWeapon = new Weapon("Default weapon", 100);
             var defaultSpell = new Spell("Default spell", 120, 50, 2);
             List<Enemy> enemiesList = new List<Enemy>();
             bool isSpawned = false;
-            
+
             defaultHero.Learn(defaultSpell);
             defaultHero.Equip(defaultWeapon);
 
-            string text = File.ReadAllText(@"C:\Users\Viktor\Desktop\GitHub\HackBulgaria-CSharp\Week 5\OOPExercises\DungeonsAndLizards\game settings\map.txt");
+            string text = File.ReadAllText(@"C:\Users\Victor\Desktop\GitHub\HackBulgaria-CSharp\Week 5\OOPExercises\DungeonsAndLizards\game settings\map.txt");
             var dungeon = new Dungeon(text);
 
             Console.WriteLine("Welcome to Dungeons and Lizards Game !");
@@ -47,161 +47,152 @@
                 Console.Write("Enter a command: ");
                 string input = Console.ReadLine();
                 string[] word = input.Split(' ');
-                switch (word[0])
+                if (Validation.cs.CharacterValidation.IsInputLongerThan2Words(input))
                 {
-                    case "help":
-                        Console.WriteLine("List of commands : ");
-                        Console.WriteLine("Replace \"<>\" with desired stats");
-                        Console.WriteLine("----------------------------------------");
-                        Console.WriteLine("create hero <hero name> <hero class> <hero heatlh> <hero mana> <hero mana regeneration>");
-                        Console.WriteLine("create enemy <enemy health> <enemy mana> <enemy damage>");
-                        Console.WriteLine("add weapon <weapon name> <weapon damage>");
-                        Console.WriteLine("add spell <spell name> <spell damage> <spell manacost> <spell range>");
-                        Console.WriteLine("equip hero");
-                        Console.WriteLine("equip enemy");
-                        Console.WriteLine("learn hero");
-                        Console.WriteLine("learn enemy");
-                        Console.WriteLine("known as");
-                        Console.WriteLine("is alive");
-                        Console.WriteLine("can cast");
-                        Console.WriteLine("attack");
-                        Console.WriteLine("print map");
-                        Console.WriteLine("move <any of the 4 directions>");
-                        Console.WriteLine("exit/quit");
-                        Console.WriteLine("----------------------------------------");
-                        break;
-                    case "create":
-                        switch (word[1])
-                        {
-                            case "hero":
-                                Hero hero = new Hero(word[2], word[3], int.Parse(word[4]), int.Parse(word[5]), int.Parse(word[6]));
-                                defaultHero = hero;
-                                Console.WriteLine("SUCCESS: Hero created !");
-                                break;
-                            case "enemy":
-                                if (enemiesCounter > enemiesList.Count)
-                                {
-                                    Enemy enemy = new Enemy(int.Parse(word[2]), int.Parse(word[3]), int.Parse(word[4]));
-                                    enemiesList.Add(enemy);
-                                    Console.WriteLine("SUCCESS: Enemy created !");
-                                }
-                                else
-                                {
-                                    Console.WriteLine("ERROR: You cannot add more enemies because there are too few on the map !");
-                                }
+                    switch (word[0])
+                    {
+                        case "print":
+                            switch(word[1])
+                            {
+                                case "map":
+                                    dungeon.PrintMap();
+                                    break;
+                                default:
+                                    Console.WriteLine("Did you mean \"print map\"?");
+                                    break;
+                            }
+                            break;
+                        case "create":
+                            switch (word[1])
+                            {
+                                case "hero":
+                                    if (Validation.cs.CharacterValidation.IsLengthWordsLong(input, 7)
+                                        && Validation.cs.CharacterValidation.IsWordParsableToInt(input, new[] { 4, 5, 6 })
+                                        && Validation.cs.Stats.IsValuePositive(new[] { int.Parse(word[4]), int.Parse(word[5]), int.Parse(word[6]) }))
+                                    {
+                                        Hero hero = new Hero(word[2], word[3], int.Parse(word[4]), int.Parse(word[5]), int.Parse(word[6]));
+                                        defaultHero = hero;
+                                        Console.WriteLine("SUCCESS: Hero created !");
+                                    }
 
-                                break;
-                            default:
-                                Console.WriteLine("ERROR: Command \"create\" take \"hero\" or \"enemy\" as parameters !");
-                                break;
-                        }
+                                    break;
+                                case "enemy":
+                                    if (Validation.cs.CharacterValidation.IsLengthWordsLong(input, 5)
+                                        && Validation.cs.CharacterValidation.IsWordParsableToInt(input, new[] { 2, 3, 4 })
+                                        && Validation.cs.Stats.IsValuePositive(new[] { int.Parse(word[2]), int.Parse(word[3]), int.Parse(word[4]) }))
+                                    {
+                                        if (enemiesCounter > enemiesList.Count)
+                                        {
+                                            Enemy enemy = new Enemy(int.Parse(word[2]), int.Parse(word[3]), int.Parse(word[4]));
+                                            enemiesList.Add(enemy);
+                                            Console.WriteLine("SUCCESS: Enemy created !");
+                                        }
+                                        else
+                                        {
+                                            Console.WriteLine("ERROR: You cannot add more enemies because there are too few on the map !");
+                                        }
+                                    }
 
-                        break;
-                    case "add":
-                        switch (word[1])
-                        {
-                            case "weapon":
-                                Weapon weapon = new Weapon(word[2], int.Parse(word[3]));
-                                defaultWeapon = weapon;
-                                Console.WriteLine("SUCCESS: Weapon added !");
-                                break;
-                            case "spell":
-                                Spell spell = new Spell(word[2], int.Parse(word[3]), int.Parse(word[4]), int.Parse(word[5]));
-                                defaultSpell = spell;
-                                Console.WriteLine("SUCCESS: Spell added !");
-                                break;
-                            default:
-                                Console.WriteLine("ERROR: Command \"add\" takes \"weapon\" or \"spell\" as parameters !");
-                                break;
-                        }
+                                    break;
+                                default:
+                                    Console.WriteLine("ERROR: Command \"create\" take \"hero\" or \"enemy\" as parameters !");
+                                    break;
+                            }
 
-                        break;
-                    case "equip":
-                        switch (word[1])
-                        {
-                            case "hero":
-                                defaultHero.Equip(defaultWeapon);
-                                Console.WriteLine("SUCCESS: Hero equipped !");
-                                break;
-                            case "enemy":
-                                enemiesList[0].Equip(defaultWeapon);
-                                Console.WriteLine("SUCCESS: Enemy equipped !");
-                                break;
-                            default:
-                                Console.WriteLine("ERROR: Command \"equip\" takes \"hero\" or \"enemy\" as parameters !");
-                                break;
-                        }
+                            break;
+                        case "add":
+                            switch (word[1])
+                            {
+                                case "weapon":
+                                    if (Validation.cs.CharacterValidation.IsLengthWordsLong(input, 4)
+                                        && Validation.cs.CharacterValidation.IsWordParsableToInt(input, new[] { 3 })
+                                        && Validation.cs.Stats.IsValuePositive(int.Parse(word[3])))
+                                    {
+                                        Weapon weapon = new Weapon(word[2], int.Parse(word[3]));
+                                        defaultWeapon = weapon;
+                                        Console.WriteLine("SUCCESS: Weapon added !");
+                                    }
 
-                        break;
-                    case "learn":
-                        switch (word[1])
-                        {
-                            case "hero":
-                                defaultHero.Learn(defaultSpell);
-                                Console.WriteLine("SUCCESS: {0} learned {1} spell", defaultHero.Name, defaultSpell.Name);
-                                break;
-                            case "enemy":
-                                enemiesList[0].Learn(defaultSpell);
-                                Console.WriteLine("SUCCESS: {0} learned {1} spell", enemiesList[0].Name, defaultSpell.Name);
-                                break;
-                            default:
-                                Console.WriteLine("ERROR: Command \"learn\" takes \"hero\" or \"enemy\" as parameters !");
-                                break;
-                        }
+                                    break;
+                                case "spell":
+                                    if (Validation.cs.CharacterValidation.IsLengthWordsLong(input, 6)
+                                        && Validation.cs.CharacterValidation.IsWordParsableToInt(input, new[] { 3, 4, 5 })
+                                        && Validation.cs.Stats.IsValuePositive(new[] { int.Parse(word[3]), int.Parse(word[4]), int.Parse(word[4]) }))
+                                    {
+                                        Spell spell = new Spell(word[2], int.Parse(word[3]), int.Parse(word[4]), int.Parse(word[5]));
+                                        defaultSpell = spell;
+                                        Console.WriteLine("SUCCESS: Spell added !");
+                                    }
+                                    break;
+                                default:
+                                    Console.WriteLine("ERROR: Command \"add\" takes \"weapon\" or \"spell\" as parameters !");
+                                    break;
+                            }
 
-                        break;
-                    case "known":
-                    case "knownAs":
-                    case "knownas":
-                        Console.WriteLine(defaultHero.KnownAs());
-                        break;
-                    case "isalive":
-                    case "isAlive":
-                        Console.WriteLine("Hero is alive : {0}", defaultHero.IsAlive());
-                        break;
-                    case "can":
-                        if (word[1] == "cast")
-                        {
-                            Console.WriteLine("Hero can cast {0} : {1}", defaultSpell, defaultHero.CanCast(defaultSpell));
-                        }
+                            break;
+                        case "equip":
+                            switch (word[1])
+                            {
+                                case "hero":
+                                    if (Validation.cs.CharacterValidation.IsLengthWordsLong(input, 2))
+                                    {
+                                        defaultHero.Equip(defaultWeapon);
+                                        Console.WriteLine("SUCCESS: Hero equipped !");
+                                    }
 
-                        break;
-                    case "attack":
-                        switch (word[1])
-                        {
-                            case "weapon":
-                            case "spell":
-                                dungeon.HeroAttack(word[1]);
-                                break;
-                            default:
-                                Console.WriteLine("ERROR: Command \"attack\" takes \"weapon\" or \"spell\" as parameters");
-                                break;
-                        }
+                                    break;
+                                case "enemy":
+                                    if (Validation.cs.CharacterValidation.IsLengthWordsLong(input, 2))
+                                    {
+                                        enemiesList[0].Equip(defaultWeapon);
+                                        Console.WriteLine("SUCCESS: Enemy equipped !");
+                                    }
 
-                        break;
+                                    break;
+                                default:
+                                    Console.WriteLine("ERROR: Command \"equip\" takes \"hero\" or \"enemy\" as parameters !");
+                                    break;
+                            }
 
-                    case "print":
-                    case "printmap":
-                        dungeon.PrintMap();
-                        break;
-                    case "spawn":
-                        // if (defaultHero.Equals(defaultHero))
-                        // {
-                        //    Console.WriteLine("WARNING: You are using the default hero");
-                        // }
-                        if (!isSpawned)
-                        {
-                            dungeon.Spawn(defaultHero);
-                            Console.WriteLine("SUCCES: {0} spawned !", defaultHero.Name);
-                            isSpawned = true;
-                        }
-                        else
-                        {
-                            Console.WriteLine("ERROR: You have already spawned a hero !");
-                        }
+                            break;
+                        case "learn":
+                            switch (word[1])
+                            {
+                                case "hero":
+                                    defaultHero.Learn(defaultSpell);
+                                    Console.WriteLine("SUCCESS: {0} learned {1} spell", defaultHero.Name, defaultSpell.Name);
+                                    break;
+                                case "enemy":
+                                    enemiesList[0].Learn(defaultSpell);
+                                    Console.WriteLine("SUCCESS: {0} learned {1} spell", enemiesList[0].Name, defaultSpell.Name);
+                                    break;
+                                default:
+                                    Console.WriteLine("ERROR: Command \"learn\" takes \"hero\" or \"enemy\" as parameters !");
+                                    break;
+                            }
 
-                        break;
-                    case "move":
+                            break;
+                        case "can":
+                            if (word[1] == "cast")
+                            {
+                                Console.WriteLine("Hero can cast {0} : {1}", defaultSpell, defaultHero.CanCast(defaultSpell));
+                            }
+
+                            break;
+                        case "attack":
+                            switch (word[1])
+                            {
+                                case "weapon":
+                                case "spell":
+                                    dungeon.HeroAttack(word[1]);
+                                    break;
+                                default:
+                                    Console.WriteLine("ERROR: Command \"attack\" takes \"weapon\" or \"spell\" as parameters");
+                                    break;
+                            }
+
+                            break;
+                        case "move":
                             if (isSpawned)
                             {
                                 switch (word[1])
@@ -228,14 +219,76 @@
                                 Console.WriteLine("ERROR: Hero not spawned !");
                             }
 
-                        break;
-                    case "exit":
-                    case "quit":
-                        Environment.Exit(0);
-                        break;
-                    default:
-                        Console.WriteLine("ERROR: Unknown command \"{0}\"", input);
-                        break;
+                            break;
+                        default:
+                            Console.WriteLine("ERROR: Unknown command \"{0}\"", input);
+                            break;
+                    }
+                }
+                else
+                {
+                    switch (word[0])
+                    {
+                        case "help":
+                            Console.WriteLine("List of commands : ");
+                            Console.WriteLine("Replace \"<>\" with desired stats");
+                            Console.WriteLine("----------------------------------------");
+                            Console.WriteLine("create hero <hero name> <hero class> <hero heatlh> <hero mana> <hero mana regeneration>");
+                            Console.WriteLine("create enemy <enemy health> <enemy mana> <enemy damage>");
+                            Console.WriteLine("add weapon <weapon name> <weapon damage>");
+                            Console.WriteLine("add spell <spell name> <spell damage> <spell manacost> <spell range>");
+                            Console.WriteLine("equip hero");
+                            Console.WriteLine("equip enemy");
+                            Console.WriteLine("learn hero");
+                            Console.WriteLine("learn enemy");
+                            Console.WriteLine("known as");
+                            Console.WriteLine("is alive");
+                            Console.WriteLine("can cast");
+                            Console.WriteLine("attack");
+                            Console.WriteLine("print map");
+                            Console.WriteLine("move <any of the 4 directions>");
+                            Console.WriteLine("exit/quit");
+                            Console.WriteLine("----------------------------------------");
+                            break;
+                        case "spawn":
+                            // if (defaultHero.Equals(defaultHero))
+                            // {
+                            //    Console.WriteLine("WARNING: You are using the default hero");
+                            // }
+                            if (!isSpawned)
+                            {
+                                dungeon.Spawn(defaultHero);
+                                Console.WriteLine("SUCCES: {0} spawned !", defaultHero.Name);
+                                isSpawned = true;
+                            }
+                            else
+                            {
+                                Console.WriteLine("ERROR: You have already spawned a hero !");
+                            }
+
+                            break;
+                        case "known":
+                        case "knownAs":
+                        case "knownas":
+                            Console.WriteLine(defaultHero.KnownAs());
+                            break;
+                        case "isalive":
+                        case "isAlive":
+                            Console.WriteLine("Hero is alive : {0}", defaultHero.IsAlive());
+                            break;
+                        case "print":
+                        case "printmap":
+                            dungeon.PrintMap();
+                            break;
+                        case "exit":
+                        case "quit":
+                            Environment.Exit(0);
+                            break;
+                        default:
+                            Console.WriteLine("ERROR: Unknown command \"{0}\"", input);
+                            break;
+
+                    }
                 }
 
                 Console.WriteLine();

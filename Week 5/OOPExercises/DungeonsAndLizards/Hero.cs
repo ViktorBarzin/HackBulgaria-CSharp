@@ -13,7 +13,7 @@
         /// <param name="health">Sets Hero health and max health.</param>
         /// <param name="mana">Sets Hero mana and max mana.</param>
         /// <param name="manaRegenerationRate">Sets hero mana regeneration rate.</param>
-        public Hero(string name, string @class, int health, int mana, int manaRegenerationRate)
+        public Hero(string name = "John", string @class = "Jedi", int health = 100, int mana = 100, int manaRegenerationRate = 2)
         {
             this.Name = name;
             this.Class = @class;

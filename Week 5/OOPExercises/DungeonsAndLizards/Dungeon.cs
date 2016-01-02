@@ -244,7 +244,7 @@
         /// </summary>
         public void PickTreasure()
         {
-            int treasuresCount = File.ReadLines(@"C:\Users\Viktor\Desktop\GitHub\HackBulgaria-CSharp\Week 5\OOPExercises\DungeonsAndLizards\game settings\treasures.txt").Count();
+            int treasuresCount = File.ReadLines(@"C:\Users\Victor\Desktop\GitHub\HackBulgaria-CSharp\Week 5\OOPExercises\DungeonsAndLizards\game settings\treasures.txt").Count();
             switch (this.DiceRoll(maxValue: treasuresCount))
             {
                 case 0:
