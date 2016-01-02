@@ -1,8 +1,14 @@
 ﻿namespace FastAndFurious
 {
+    /// <summary>
+    /// Application Class.
+    /// </summary>
     public class Application
     {
-        public static void Main(string[] args)
+        /// <summary>
+        /// Main method.
+        /// </summary>
+        public static void Main()
         { 
         }
     }

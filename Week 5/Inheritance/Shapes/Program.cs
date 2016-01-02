@@ -1,10 +1,15 @@
 ﻿namespace Shapes
 {
+    /// <summary>
+    /// Application Class.
+    /// </summary>
     public class Program
     {
-        public static void Main(string[] args)
+        /// <summary>
+        /// Main method.
+        /// </summary>
+        public static void Main()
         {
-            // StyleCop
             // TODO: possible center point issue (especially triangle)
         }
     }
