@@ -33,7 +33,7 @@
             defaultHero.Learn(defaultSpell);
             defaultHero.Equip(defaultWeapon);
 
-            string text = File.ReadAllText(@"C:\Users\Victor\Desktop\GitHub\HackBulgaria-CSharp\Week 5\OOPExercises\DungeonsAndLizards\game settings\map.txt");
+            string text = File.ReadAllText(@"C:\Users\Viktor\Desktop\GitHub\HackBulgaria-CSharp\Week 5\OOPExercises\DungeonsAndLizards\game settings\map.txt");
             var dungeon = new Dungeon(text);
 
             Console.WriteLine("Welcome to Dungeons and Lizards Game !");

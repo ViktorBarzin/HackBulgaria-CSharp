@@ -74,6 +74,31 @@
         }
 
         /// <summary>
+        /// Implements the Insertion sort algorithm.
+        /// </summary>
+        /// <typeparam name="T">Generic type.</typeparam>
+        /// <param name="list">List to be sorted.</param>
+        /// <returns>The IList sorted in ascending order.</returns>
+        public static IList<T> InsertionSort<T>(this IList<T> list)
+            where T : IComparable
+        {
+            // 5, 2, 4, 6, 1, 3
+            for (int j = 1; j < list.Count; j++)
+            {
+                T key = list[j];
+                int i = j - 1;
+                while (i >= 0 && list[i].CompareTo(key) > 0)
+                {
+                    list[i + 1] = list[i];
+                    i -= 1;
+                }
+                list[i + 1] = key;
+            }
+
+            return list;
+        }
+
+        /// <summary>
         /// Implements binary search algorithm.
         /// </summary>
         /// <typeparam name="T">Generic type.</typeparam>
