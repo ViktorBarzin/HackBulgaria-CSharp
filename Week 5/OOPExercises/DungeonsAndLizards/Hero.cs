@@ -11,8 +11,8 @@
         /// <param name="name">Sets Hero name.</param>
         /// <param name="class">Sets Hero class.</param>
         /// <param name="health">Sets Hero health and max health.</param>
-        /// <param name="mana">Sets Hero mana and max mana.</param>
-        /// <param name="manaRegenerationRate">Sets hero mana regeneration rate.</param>
+        /// <param name="mana">Sets Hero <![CDATA[mana]]> and max <![CDATA[mana]]>.</param>
+        /// <param name="manaRegenerationRate">Sets hero <![CDATA[mana]]> regeneration rate.</param>
         public Hero(string name = "John", string @class = "Jedi", int health = 100, int mana = 100, int manaRegenerationRate = 2)
         {
             this.Name = name;
@@ -27,9 +27,9 @@
         }
 
         /// <summary>
-        /// Gets or sets Hero Mana regeneration rate.
+        /// Gets or sets Hero <![CDATA[mana]]> regeneration rate.
         /// </summary>
-        /// <value>Value is set in the constructor.No game features to increase mana regeneration rate.</value>
+        /// <value>Value is set in the constructor.No game features to increase <![CDATA[mana]]> regeneration rate.</value>
         public int ManaRegenerationRate { get; protected set; }
 
         /// <summary>
@@ -42,9 +42,9 @@
         }
 
         /// <summary>
-        /// Increases Hero mana value.
+        /// Increases Hero <![CDATA[mana]]> value.
         /// </summary>
-        /// <param name="manaPoints">Value of mana the Hero will gain.</param>
+        /// <param name="manaPoints">Value of <![CDATA[mana]]> the Hero will gain.</param>
         public void TakeMana(int manaPoints)
         {
             if (this.Mana.Value + manaPoints < this.MaxMana.Value && this.Mana.Value + this.ManaRegenerationRate < this.MaxMana.Value)

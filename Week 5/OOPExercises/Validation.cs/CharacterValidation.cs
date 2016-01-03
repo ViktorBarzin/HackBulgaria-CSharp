@@ -15,8 +15,8 @@
         /// Checks if input is specified value words long.
         /// </summary>
         /// <param name="input">Input command to check.</param>
-        /// <param name="length">Lenght to check.</param>
-        /// <returns>True if input is "lenght" words long.</returns>
+        /// <param name="length">Length to check.</param>
+        /// <returns>True if input is "length" words long.</returns>
         public static bool IsLengthWordsLong(string input, int length)
         {
             string[] words = input.Split(' ');
@@ -36,7 +36,7 @@
         }
 
         /// <summary>
-        /// Checks if words from the input at specified indexes are parsable to integer.
+        /// Checks if words from the input at specified indexes can be parsed to integer.
         /// </summary>
         /// <param name="input">Input string.</param>
         /// <param name="indexesToBeParsable">Array of indexes to check.</param>
@@ -56,9 +56,13 @@
             }
 
             return true;
-
         }
 
+        /// <summary>
+        /// Checks if an input string sentence is longer than 2 words.
+        /// </summary>
+        /// <param name="input">Input sentence to check.</param>
+        /// <returns>True if sentence contains 2 or more words.</returns>
         public static bool IsInputLongerThan2Words(string input)
         {
             string[] words = input.Split(' ');

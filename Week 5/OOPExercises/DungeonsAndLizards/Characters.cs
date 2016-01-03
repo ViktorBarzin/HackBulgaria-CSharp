@@ -27,7 +27,7 @@
         public Health Health { get; protected set; }
 
         /// <summary>
-        /// Gets or sets the Mana property of a Character.
+        /// Gets or sets the <![CDATA[Mana]]> property of a Character.
         /// </summary>
         /// <value>Protected setter.</value>
         public Mana Mana { get; protected set; }
@@ -63,7 +63,7 @@
         public Health MaxHealth { get; protected set; }
 
         /// <summary>
-        /// Gets or sets the max mana for a Character.
+        /// Gets or sets the max <![CDATA[mana]]> for a Character.
         /// </summary>
         /// <value>Set in the constructor.</value>
         public Mana MaxMana { get; protected set; }
@@ -84,9 +84,9 @@
         }
 
         /// <summary>
-        /// Gets Character mana.
+        /// Gets Character <![CDATA[mana]]>.
         /// </summary>
-        /// <returns>Character Mana property.</returns>
+        /// <returns>Character <![CDATA[Mana]]> property.</returns>
         public Mana GetMana()
         {
             return this.Mana;
@@ -102,10 +102,10 @@
         }
 
         /// <summary>
-        /// Checks if Character has a spell and has enough mana to cast it.
+        /// Checks if Character has a spell and has enough <![CDATA[mana]]> to cast it.
         /// </summary>
         /// <param name="spell">Spell to cast.</param>
-        /// <returns>True if Character has the spell and has mana for it.</returns>
+        /// <returns>True if Character has the spell and has <![CDATA[mana]]> for it.</returns>
         public bool CanCast(Spell spell)
         {
             if (!this.HasSpell)

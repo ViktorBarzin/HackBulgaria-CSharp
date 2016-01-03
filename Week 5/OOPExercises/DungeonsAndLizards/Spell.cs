@@ -10,7 +10,7 @@
         /// </summary>
         /// <param name="name">Sets the name of the Spell.</param>
         /// <param name="damage">Sets the Spell damage.</param>
-        /// <param name="manaCost">Sets Spell mana cost.</param>
+        /// <param name="manaCost">Sets Spell <![CDATA[mana]]> cost.</param>
         /// <param name="castRange">Sets Spell casting range.</param>
         public Spell(string name, int damage, int manaCost, int castRange)
         {
@@ -33,7 +33,7 @@
         public int Damage { get; protected set; }
 
         /// <summary>
-        /// Gets or sets Spell mana cost.
+        /// Gets or sets Spell <![CDATA[mana]]> cost.
         /// </summary>
         /// <value>Value set in constructor.</value>
         public int ManaCost { get; protected set; }

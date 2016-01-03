@@ -9,7 +9,7 @@
         /// Initializes a new instance of the <see cref="Enemy"/> class.
         /// </summary>
         /// <param name="health">Sets Enemy health.</param>
-        /// <param name="mana">Sets Enemy mana.</param>
+        /// <param name="mana">Sets Enemy <![CDATA[mana]]>.</param>
         /// <param name="damage">Sets enemy damage.</param>
         public Enemy(int health, int mana, int damage)
         {

@@ -52,7 +52,7 @@
                     switch (word[0])
                     {
                         case "print":
-                            switch(word[1])
+                            switch (word[1])
                             {
                                 case "map":
                                     dungeon.PrintMap();
@@ -61,6 +61,7 @@
                                     Console.WriteLine("Did you mean \"print map\"?");
                                     break;
                             }
+
                             break;
                         case "create":
                             switch (word[1])
@@ -123,6 +124,7 @@
                                         defaultSpell = spell;
                                         Console.WriteLine("SUCCESS: Spell added !");
                                     }
+
                                     break;
                                 default:
                                     Console.WriteLine("ERROR: Command \"add\" takes \"weapon\" or \"spell\" as parameters !");
@@ -287,7 +289,6 @@
                         default:
                             Console.WriteLine("ERROR: Unknown command \"{0}\"", input);
                             break;
-
                     }
                 }
 
