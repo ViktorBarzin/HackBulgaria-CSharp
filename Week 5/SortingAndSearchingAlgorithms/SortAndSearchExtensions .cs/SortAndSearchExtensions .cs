@@ -33,15 +33,18 @@
         public static IList<T> BubbleSort<T>(this IList<T> list)
             where T : IComparable
         {
-            for (int i = 0; i < list.Count - 1; i++)
+            bool sorted = false;
+            while (!sorted)
             {
-                if (list[i].CompareTo(list[i + 1]) <= 0)
+                sorted = true;
+                for (int i = 0; i < list.Count - 1; i++)
                 {
-                    continue;
+                    if (list[i].CompareTo(list[i + 1]) > 0)
+                    {
+                        Swap(list, i, i + 1);
+                        sorted = false;
+                    }
                 }
-
-                list.Swap(i, i + 1);
-                i = 0;
             }
 
             return list;
@@ -82,17 +85,18 @@
         public static IList<T> InsertionSort<T>(this IList<T> list)
             where T : IComparable
         {
-            // 5, 2, 4, 6, 1, 3
-            for (int j = 1; j < list.Count; j++)
+            for (int i = 1; i < list.Count; i++)
             {
-                T key = list[j];
-                int i = j - 1;
-                while (i >= 0 && list[i].CompareTo(key) > 0)
+                T key = list[i];
+                int j = i - 1;
+
+                // check why list[i] != key
+                while (j>= 0 && list[j].CompareTo(key) > 0)
                 {
-                    list[i + 1] = list[i];
-                    i -= 1;
+                    list[j + 1] = list[j];
+                    j -= 1;
                 }
-                list[i + 1] = key;
+                list[j + 1] = key;
             }
 
             return list;
