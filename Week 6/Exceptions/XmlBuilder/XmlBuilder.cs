@@ -20,7 +20,12 @@
                 throw new ArgumentNullException();
             }
 
+            for(int i = 0; i < this.openedTags.Count; i++)
+            {
+                this.xml.Append("    ");
+            }
             this.xml.Append(string.Format("<{0}>", name));
+            this.xml.AppendLine();
             this.Tag = name;
             this.openedTags.Push(this.Tag);
             return this;
@@ -50,7 +55,13 @@
         public XmlBuilder CloseTag()
         {
             this.Tag = this.openedTags.Peek();
+            for (int i = 0; i < this.openedTags.Count - 1; i++)
+            {
+                this.xml.Append("    ");
+            }
             this.xml.Append(string.Format("</{0}>", this.openedTags.Pop()));
+            this.xml.AppendLine();
+            //this.xml.Append("    ");
             return this;
         }
 

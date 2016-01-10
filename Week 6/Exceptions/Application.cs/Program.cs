@@ -13,7 +13,8 @@
         {
             XmlBuilder newXml = new XmlBuilder();
             //Console.WriteLine(
-                newXml.OpenTag("");
+            Console.WriteLine(newXml.OpenTag("tagName").OpenTag("tagName2").AddAttr("atrr","value").OpenTag("tageName3").Finish().GetResult());
+            
 
             //.AddText("text")
 
