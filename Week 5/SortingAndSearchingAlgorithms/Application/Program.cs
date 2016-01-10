@@ -17,10 +17,11 @@
         /// </summary>
         public static void Main()
         {
-            int[] arr = { 5, 2, 4, 6, 1, 3 };
+            int[] arr = { 5, 2, 4, 6, 1, 3,0 };
             char[] charArr = { 'q', 'b', 'e', 'a' };
-            arr.InsertionSort();
-            //Console.WriteLine(string.Join(", ", arr));
+            //arr.(0,arr.Length);
+            SortAndSearchExtensions.Mergesort(arr,0,arr.Length-1);
+            Console.WriteLine(string.Join(", ", arr));
 
             // Console.WriteLine(arr.BinarySearch(6, 0, arr.Length));
 

@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BubbleSortWithAPredicate
+﻿namespace BubbleSortWithAPredicate
 {
-    public delegate bool ReturnBigger<T>(T a, T b);
+    using System;
+    using System.Collections.Generic;
+
+    public delegate bool ReturnBigger<in T>(T a, T b);
+
     class Program
     {
         public static List<T> Swap<T>(List<T> list, int indexA, int indexB)
@@ -40,7 +38,7 @@ namespace BubbleSortWithAPredicate
         public static bool GetBigger<T>(T a, T b)
             where T : IComparable
         {
-            return a.CompareTo(b) < 0;
+            return a.CompareTo(b) > 0;
         }
 
         static void Main(string[] args)

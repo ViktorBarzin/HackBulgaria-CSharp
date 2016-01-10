@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
 
     /// <summary>
     /// SortAndSearchExtensions containing extension methods for sorting and searching.
@@ -16,7 +17,7 @@
         /// <param name="indexA">First index to swap.</param>
         /// <param name="indexB">Second index to swap.</param>
         /// <returns>The IList with swapped elements.</returns>
-        public static IList<T> Swap<T>(this IList<T> list, int indexA, int indexB)
+        private static IList<T> Swap<T>(this IList<T> list, int indexA, int indexB)
         {
             T tmp = list[indexA];
             list[indexA] = list[indexB];
@@ -70,7 +71,7 @@
                     }
                 }
 
-                list.Swap(i, min);
+                Swap(list, i, min);
             }
 
             return list;
@@ -91,7 +92,7 @@
                 int j = i - 1;
 
                 // check why list[i] != key
-                while (j>= 0 && list[j].CompareTo(key) > 0)
+                while (j >= 0 && list[j].CompareTo(key) > 0)
                 {
                     list[j + 1] = list[j];
                     j -= 1;
@@ -100,6 +101,73 @@
             }
 
             return list;
+        }
+
+        /* Procedure for merging two sorted array. 
+        *Note that both array are part of single array. arr1[start.....mid] and arr2[mid+1 ... end]*/
+        private static void Merge<T>(IList<T> list, int start, int mid, int end)
+            where T : IComparable
+        {
+            /* Create a temporary array for stroing merged array (Length of temp array will be 
+             * sum of size of both array to be merged)*/
+            T[] temp = new T[end - start + 1];
+
+            int i = start, 
+                j = mid + 1,
+                k = 0;
+            // Now traverse both array simultaniously and store the smallest element of both to temp array
+            while (i <= mid && j <= end)
+            {
+                if (list[i].CompareTo(list[j]) < 0)
+                {
+                    temp[k] = list[i];
+                    k++;
+                    i++;
+                }
+                else
+                {
+                    temp[k] = list[j];
+                    k++;
+                    j++;
+                }
+            }
+            // If there is any element remain in first array then add it to temp array
+            while (i <= mid)
+            {
+                temp[k] = list[i];
+                k++;
+                i++;
+            }
+            // If any element remain in second array then add it to temp array
+            while (j <= end)
+            {
+                temp[k] = list[j];
+                k++;
+                j++;
+            }
+            // Now temp has merged sorted element of both array
+
+            // Traverse temp array and store element of temp array to original array
+            k = 0;
+            i = start;
+            while (k < temp.Length && i <= end)
+            {
+                list[i] = temp[k];
+                i++;
+                k++;
+            }
+        }
+        // Recursive Merge Procedure
+        public static void Mergesort<T>(IList<T> arr, int start, int end)
+            where T : IComparable
+        {
+            if (start < end)
+            {
+                int mid = (end + start) / 2;
+                Mergesort(arr, start, mid);
+                Mergesort(arr, mid + 1, end);
+                Merge(arr, start, mid, end);
+            }
         }
 
         /// <summary>
