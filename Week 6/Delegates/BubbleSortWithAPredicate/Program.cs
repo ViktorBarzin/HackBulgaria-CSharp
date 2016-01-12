@@ -2,9 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
-
-    public delegate bool ReturnBigger<in T>(T a, T b);
-
+    
     class Program
     {
         public static List<T> Swap<T>(List<T> list, int indexA, int indexB)
@@ -15,7 +13,7 @@
             return list;
         }
 
-        public static List<T> BubbleSort<T>(List<T> list, ReturnBigger<T> del)
+        public static List<T> BubbleSort<T>(List<T> list, Func<T ,T,bool> del)
             where T : IComparable
         {
             bool sorted = false;
@@ -41,7 +39,13 @@
             return a.CompareTo(b) > 0;
         }
 
-        static void Main(string[] args)
+        private static bool GetSmaller<T>(T a, T b)
+            where T: IComparable
+        {
+            return a.CompareTo(b) < 0;
+        }
+
+        static void Main()
         {
             List<decimal> numbers = new List<decimal> { 5, 4, 2, 7, 1 };
             BubbleSort(numbers, GetBigger);
