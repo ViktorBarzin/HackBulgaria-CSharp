@@ -1,18 +1,59 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AverageAggregator
+﻿namespace AverageAggregator
 {
-    public class AverageAggregator
-    {
-        public decimal Average { get; private set; }
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
 
-        private void AddNumber(int number)
+    /// <summary>
+    /// Average aggregator.
+    /// </summary>
+    public class AverageAggregator : INotifyPropertyChanged
+    {
+        /// <summary>
+        /// Property changed.
+        /// </summary>
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        /// <summary>
+        /// Current average.
+        /// </summary>
+        private double average;
+
+        /// <summary>
+        /// Number count.
+        /// </summary>
+        private readonly List<int> numbers = new List<int>();
+
+        /// <summary>
+        /// Gets the average for the current instance.
+        /// </summary>
+        public double Average
         {
-            this.Average = (this.Average + number) / 2;
+            get
+            {
+                return this.average;
+            }
+            private set
+            {
+                if (this.average != value && this.PropertyChanged != null)
+                {
+                    this.PropertyChanged.Invoke(this, new PropertyChangedEventArgs("Average"));
+                }
+                this.average = value;
+            }
+        }
+
+        /// <summary>
+        /// Adds new number to the current instance.
+        /// </summary>
+        /// <param name="number">Number to add.</param>
+        public void AddNumber(int number)
+        {
+            this.numbers.Add(number);
+            this.Average = this.numbers.Average();
         }
     }
 }
