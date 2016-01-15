@@ -4,11 +4,11 @@
     using System.Collections.Generic;
 
     /// <summary>
-    /// 
+    /// Filter delegate
     /// </summary>
-    /// <typeparam name="T"></typeparam>
-    /// <param name="number"></param>
-    /// <returns></returns>
+    /// <typeparam name="T">Type of parameter.</typeparam>
+    /// <param name="number">Numbers to filter.</param>
+    /// <returns>True if number meets a condition.</returns>
     public delegate bool FilterDelegate<in T>(T number);
 
     /// <summary>
@@ -20,9 +20,9 @@
         /// Filters collection
         /// </summary>
         /// <typeparam name="T">Type of elements in the list.</typeparam>
-        /// <param name="original">List in the begining.</param>
+        /// <param name="original">List in the beginning.</param>
         /// <param name="filter">How to filter the list.</param>
-        /// <returns>New Ilist of filtered elements.</returns>
+        /// <returns>New <![CDATA[Ilist]]> of filtered elements.</returns>
         public static IList<T> FilterCollection<T>(IList<T> original, FilterDelegate<T> filter)
         {
             List<T> filtered = new List<T>();
@@ -61,12 +61,12 @@
         /// <summary>
         /// Main method.
         /// </summary>
-        static void Main()
+        public static void Main()
         {
-            List<string> numbers = new List<string> { "as","a","tr","a" };
+            List<string> numbers = new List<string> { "as", "a", "tr", "a" };
             var filtered = FilterCollection<string>(numbers, LenghtLongerThan2);
 
-            Console.WriteLine(string.Join(",",filtered));
+            Console.WriteLine(string.Join(",", filtered));
         }
     }
 }

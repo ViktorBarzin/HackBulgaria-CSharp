@@ -1,18 +1,20 @@
 ﻿namespace Network_Recieve_Buffer
 {
     using System;
-    using System.Text;
 
+    /// <summary>
+    /// Application class
+    /// </summary>
     public class Application
     {
         /// <summary>
         /// Main method.
         /// </summary>
-        static void Main()
+        public static void Main()
         {
-            // Check functionality ?
+            // TODO : Check functionality ?
             // decode message one byt at the time or entire byte[] message
-            // byte[2] ?
+            //// byte[2] ?
 
             string message = "zzr 2";
             var packetGen = new PacketGenerator(message);
@@ -21,7 +23,6 @@
             buffer.MessageReceived += BufferMessageReceived;
             
             buffer.BytesReceived(packetGen.Encoded);
-
         }
 
         /// <summary>

@@ -5,10 +5,10 @@
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using XmlBuilder;
 
-    [TestClass()]
+    [TestClass]
     public class XmlBuilderTests
     {
-        [TestMethod()]
+        [TestMethod]
         public void OpenTagTest()
         {
             var xml = new XmlBuilder();
@@ -16,7 +16,7 @@
             Assert.AreEqual(xml.GetResult(), "<gosho>");
         }
 
-        [TestMethod()]
+        [TestMethod]
         public void AddAttrTest()
         {
             var xml = new XmlBuilder();
@@ -25,7 +25,7 @@
             Assert.AreEqual(xml.GetResult(), "<gosho AtrName=\"AtrValue\">");
         }
 
-        [TestMethod()]
+        [TestMethod]
         public void AddTextTest()
         {
             var xml = new XmlBuilder();
@@ -34,7 +34,7 @@
             Assert.AreEqual(xml.GetResult(), "<gosho>text");
         }
 
-        [TestMethod()]
+        [TestMethod]
         public void CloseTagTest()
         {
             var xml = new XmlBuilder();
@@ -43,7 +43,7 @@
             Assert.AreEqual(xml.GetResult(), "<gosho></gosho>");
         }
 
-        [TestMethod()]
+        [TestMethod]
         public void FinishTest()
         {
             var xml = new XmlBuilder();
@@ -52,7 +52,7 @@
             Assert.AreEqual(xml.GetResult(), "<gosho></gosho>");
         }
 
-        [TestMethod()]
+        [TestMethod]
         public void GetResultTest()
         {
             var xml = new XmlBuilder();
@@ -81,6 +81,5 @@
             var xml = new XmlBuilder();
             xml.OpenTag("a").Finish().CloseTag();
         }
-
     }
 }

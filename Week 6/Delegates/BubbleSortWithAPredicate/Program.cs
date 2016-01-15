@@ -2,7 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
-    
+
     /// <summary>
     /// Application class.
     /// </summary>
@@ -12,10 +12,10 @@
         /// Swaps 2 elements from a list.
         /// </summary>
         /// <typeparam name="T">Type of the elements in the list.</typeparam>
-        /// <param name="list">List in thich to make changes</param>
+        /// <param name="list">List in which to make changes</param>
         /// <param name="indexA">First index to swap.</param>
         /// <param name="indexB">Second index to swap.</param>
-        /// <returns></returns>
+        /// <returns>The list with swapped elements.</returns>
         public static List<T> Swap<T>(List<T> list, int indexA, int indexB)
         {
             T temp = list[indexA];
@@ -31,7 +31,7 @@
         /// <param name="list">List to sort.</param>
         /// <param name="del">Delegate which shows how to sort the list.</param>
         /// <returns>Sorted list.</returns>
-        public static List<T> BubbleSort<T>(List<T> list, Func<T ,T,bool> del)
+        public static List<T> BubbleSort<T>(List<T> list, Func<T, T, bool> del)
             where T : IComparable
         {
             bool sorted = false;
@@ -57,7 +57,7 @@
         /// <typeparam name="T">Type of the variables.</typeparam>
         /// <param name="a">First variable.</param>
         /// <param name="b">Second variable.</param>
-        /// <returns></returns>
+        /// <returns>True if a is bigger than b.</returns>
         public static bool GetBigger<T>(T a, T b)
             where T : IComparable
         {
@@ -70,9 +70,9 @@
         /// <typeparam name="T">Type of the variables.</typeparam>
         /// <param name="a">First variable.</param>
         /// <param name="b">Second variable.</param>
-        /// <returns></returns>
-        private static bool GetSmaller<T>(T a, T b)
-            where T: IComparable
+        /// <returns>True if a is smaller than b.</returns>
+        public static bool GetSmaller<T>(T a, T b)
+            where T : IComparable
         {
             return a.CompareTo(b) < 0;
         }
@@ -80,7 +80,7 @@
         /// <summary>
         /// Main method.
         /// </summary>
-        static void Main()
+        public static void Main()
         {
             List<decimal> numbers = new List<decimal> { 5, 4, 2, 7, 1 };
             BubbleSort(numbers, GetBigger);

@@ -10,14 +10,9 @@
     public class PacketGenerator
     {
         /// <summary>
-        /// Containts the encoded message.
+        /// Contains the encoded message.
         /// </summary>
         private byte[] encoded;
-
-        /// <summary>
-        /// Listens if message is changed.
-        /// </summary>
-        public event PropertyChangedEventHandler EncodedMessage;
 
         /// <summary>
         /// Initializes a new instance of the PacketGenerator class.
@@ -29,13 +24,13 @@
             this.Encoded = UTF8Encoding.UTF8.GetBytes(message);
         }
 
-        private void PacketGeneratorEncodedMessage(object sender, PropertyChangedEventArgs e)
-        {
-            Console.WriteLine(e.PropertyName);
-        }
+        /// <summary>
+        /// Listens if message is changed.
+        /// </summary>
+        public event PropertyChangedEventHandler EncodedMessage;
 
         /// <summary>
-        /// Gets packet property.
+        /// Gets or sets packet property.
         /// </summary>
         public byte[] Encoded
         {
@@ -43,6 +38,7 @@
             {
                 return this.encoded;
             }
+
             set
             {
                 if (this.EncodedMessage != null)
@@ -57,6 +53,16 @@
 
                 this.encoded = value;
             }
+        }
+
+        /// <summary>
+        /// Prints property arguments property name.
+        /// </summary>
+        /// <param name="sender">Invoker of the event.</param>
+        /// <param name="e">Arguments of the property changed event.</param>
+        private void PacketGeneratorEncodedMessage(object sender, PropertyChangedEventArgs e)
+        {
+            Console.WriteLine(e.PropertyName);
         }
     }
 }

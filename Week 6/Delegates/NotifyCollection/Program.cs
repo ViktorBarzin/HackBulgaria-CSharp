@@ -12,10 +12,8 @@
         /// <summary>
         /// Main method.
         /// </summary>
-        static void Main()
+        public static void Main()
         {
-            // Check person propert changes
-
             NotifyCollection<Person> col = new NotifyCollection<Person>();
             var person1 = new Person(1);
             var person2 = new Person(2);
@@ -23,21 +21,11 @@
             List<Person> people = new List<Person> { person1, person2, person3 };
 
             col.Items = people;
-            col.CollectionChanged += CollectionChanged;
-            col.Remove(person1);
+            col.CollectionChanged += (o, e) => { Console.WriteLine(e.PropertyName); };
+            col.AddNumber(person1);
             person1.Age = 10;
-
-            //Console.WriteLine(string.Join(",", col.Items));
-        }
-
-        /// <summary>
-        /// Action when collection changes.
-        /// </summary>
-        /// <param name="sender">Sender who invoked the event.</param>
-        /// <param name="e">Event arguments.</param>
-        private static void CollectionChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
-        {
-            Console.WriteLine("{0}", e.PropertyName);
+            col.Remove(person1);
+            person1.Age = 5;
         }
 
         /// <summary>
@@ -45,20 +33,35 @@
         /// </summary>
         private class Person : INotifyPropertyChanged
         {
+            /// <summary>
+            /// Person Age.
+            /// </summary>
             private int age;
-            public event PropertyChangedEventHandler PropertyChanged;
 
+            /// <summary>
+            /// Initializes a new instance of the <see cref="Person"/> class.
+            /// </summary>
+            /// <param name="age">Sets person age.</param>
             public Person(int age)
             {
                 this.age = age;
             }
 
+            /// <summary>
+            /// Property changed event handler.
+            /// </summary>
+            public event PropertyChangedEventHandler PropertyChanged;
+
+            /// <summary>
+            /// Gets or sets person age.
+            /// </summary>
             public int Age
             {
                 get
                 {
                     return this.age;
                 }
+
                 set
                 {
                     if (this.PropertyChanged != null)

@@ -8,18 +8,18 @@
     /// Notify collection change.
     /// </summary>
     /// <typeparam name="T">Type of the elements.</typeparam>
-    public class NotifyCollection<T> 
+    public class NotifyCollection<T>
         where T : INotifyPropertyChanged
     {
-        /// <summary>
-        /// Event listening if the collection changes.
-        /// </summary>
-        public event PropertyChangedEventHandler CollectionChanged;
-
         /// <summary>
         /// List of items.
         /// </summary>
         private IList<T> items = new List<T>();
+
+        /// <summary>
+        /// Event listening if the collection changes.
+        /// </summary>
+        public event PropertyChangedEventHandler CollectionChanged;
 
         /// <summary>
         /// Gets or sets the items.
@@ -30,6 +30,7 @@
             {
                 return this.items;
             }
+
             set
             {
                 if (this.CollectionChanged != null && this.items != value)
@@ -44,10 +45,11 @@
         /// <summary>
         /// Adds a new item.
         /// </summary>
-        /// <param name="item"></param>
+        /// <param name="item">Item to add.</param>
         public void AddNumber(T item)
         {
             this.items.Add(item);
+            item.PropertyChanged += this.CollectionChanged;
             if (this.CollectionChanged != null)
             {
                 this.CollectionChanged(this, new PropertyChangedEventArgs(string.Format("Added a number {0} at index {1}", item, this.items.Count)));
@@ -60,13 +62,16 @@
         /// <param name="item">Item to remove.</param>
         public void Remove(T item)
         {
+            item.PropertyChanged -= this.CollectionChanged;
+
             if (!this.items.Contains(item))
             {
                 throw new ArgumentException(string.Format("{0} is not present in the collection", item));
             }
+
             if (this.CollectionChanged != null)
             {
-                this.CollectionChanged(this, new PropertyChangedEventArgs(string.Format("Removed element {0} at index {1}", item, this.items.IndexOf(item))));
+                this.CollectionChanged(this, new PropertyChangedEventArgs(string.Format("Removed element {0} at index {1}", item.ToString(), this.items.IndexOf(item))));
             }
 
             this.items.Remove(item);
@@ -83,6 +88,7 @@
             {
                 throw new ArgumentException(string.Format("Collection does not contain {0}", itemToReplace));
             }
+
             if (this.CollectionChanged != null && this.items.Contains(itemToReplace))
             {
                 this.CollectionChanged(this, new PropertyChangedEventArgs(string.Format("Replace item {0} with {1}", itemToReplace, replacement)));
@@ -90,7 +96,7 @@
 
             int index = this.items.IndexOf(itemToReplace);
             this.items.Remove(itemToReplace);
-            this.items.Insert(index,replacement);
+            this.items.Insert(index, replacement);
         }
     }
 }

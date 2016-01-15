@@ -8,11 +8,6 @@
     public class Person : INotifyPropertyChanged
     {
         /// <summary>
-        /// Event handler for property changed.
-        /// </summary>
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        /// <summary>
         /// Person name.
         /// </summary>
         private string name = string.Empty;
@@ -23,6 +18,11 @@
         private int age;
 
         /// <summary>
+        /// Event handler for property changed.
+        /// </summary>
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        /// <summary>
         /// Gets or sets person name.
         /// </summary>
         public string Name
@@ -31,6 +31,7 @@
             {
                 return this.name;
             }
+
             set
             {
                 if (this.PropertyChanged != null && this.name != null && value != this.name)
@@ -51,6 +52,7 @@
             {
                 return this.age;
             }
+
             set
             {
                 if (this.PropertyChanged != null && value != this.age)
@@ -60,7 +62,6 @@
 
                 this.age = value;
             }
-
         }
 
         /// <summary>
@@ -69,7 +70,7 @@
         /// <returns>Hash code.</returns>
         public override int GetHashCode()
         {
-            return this.name.GetHashCode() * 23 + this.age.GetHashCode() * 17;
+            return (this.name.GetHashCode() * 23) + (this.age.GetHashCode() * 17);
         }
     }
 }

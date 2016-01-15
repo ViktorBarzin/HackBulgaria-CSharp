@@ -1,27 +1,29 @@
 ﻿namespace Application.cs
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
     using XmlBuilder;
 
+    /// <summary>
+    /// Application class.
+    /// </summary>
     public class Appliction
     {
-        public static void Main(string[] args)
+        /// <summary>
+        /// Main method.
+        /// </summary>
+        public static void Main()
         {
             XmlBuilder newXml = new XmlBuilder();
-            //Console.WriteLine(
-            Console.WriteLine(newXml.OpenTag("tagName").OpenTag("tagName2").AddAttr("atrr","value").OpenTag("tageName3").Finish().GetResult());
-            
 
-            //.AddText("text")
+            // Console.WriteLine(
+            Console.WriteLine(newXml.OpenTag("tagName").OpenTag("tagName2").AddAttr("atrr", "value").OpenTag("tageName3").Finish().GetResult());
 
-            //.AddAttr("AtributeName", "AtributeValue")
-            //.CloseTag()
-            //.Finish()
-            //.GetResult());
+            // .AddText("text")
+
+            // .AddAttr("AtributeName", "AtributeValue")
+            // .CloseTag()
+            // .Finish()
+            // .GetResult());
         }
     }
 }

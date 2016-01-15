@@ -12,10 +12,10 @@
     /// </summary>
     public class AverageAggregator : INotifyPropertyChanged
     {
-        /// <summary>
-        /// Property changed.
+       /// <summary>
+        /// Number count.
         /// </summary>
-        public event PropertyChangedEventHandler PropertyChanged;
+        private readonly List<int> numbers = new List<int>();
 
         /// <summary>
         /// Current average.
@@ -23,9 +23,9 @@
         private double average;
 
         /// <summary>
-        /// Number count.
+        /// Property changed.
         /// </summary>
-        private readonly List<int> numbers = new List<int>();
+        public event PropertyChangedEventHandler PropertyChanged;
 
         /// <summary>
         /// Gets the average for the current instance.
@@ -36,12 +36,14 @@
             {
                 return this.average;
             }
+
             private set
             {
                 if (this.average != value && this.PropertyChanged != null)
                 {
                     this.PropertyChanged.Invoke(this, new PropertyChangedEventArgs("Average"));
                 }
+
                 this.average = value;
             }
         }
