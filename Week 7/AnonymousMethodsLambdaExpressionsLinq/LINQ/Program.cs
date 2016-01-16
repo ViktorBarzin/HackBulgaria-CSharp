@@ -3,19 +3,19 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Security.Cryptography.X509Certificates;
-    using System.Text;
-    using System.Threading.Tasks;
 
-    public class Program
+    /// <summary>
+    /// Application class.
+    /// </summary>
+    public class Application
     {
-        static void Main(string[] args)
+        /// <summary>
+        /// Main method.
+        /// </summary>
+        public static void Main()
         {
-            // TODO : Create linq query which returns all categories together with their products
-            // TODO : Create linq query which selects all orders together with their products and then print it to the screen.
-            // TODO : For every product print its category name as well. Sort the result by orderDate.
             var pr1 = new Product("Chai1", -1, 5);
-            var pr2 = new Product("Chai2", 99, 125);
+            var pr2 = new Product("Chai2", 99, 5);
             var pr3 = new Product("Chai3", 100, 124);
             var pr4 = new Product("Chai4", 4, 102);
             var pr5 = new Product("Chai5", 5, 101);
@@ -34,7 +34,7 @@
             List<int> prl3 = new List<int>() { 99, 4, 5 };
             List<int> prl4 = new List<int>() { 100, 91, 5 };
 
-            var or1 = new Order(1, prl1, new DateTime(2000, 1, 1));
+            var or1 = new Order(1, prl1, new DateTime(2001, 1, 1));
             var or2 = new Order(2, prl2, new DateTime(2000, 1, 2));
             var or3 = new Order(3, prl3, new DateTime(2000, 1, 3));
             var or4 = new Order(4, prl4, new DateTime(2000, 1, 8));
@@ -49,35 +49,42 @@
             var or13 = new Order(44, prl4, new DateTime(2000, 3, 4));
             var or14 = new Order(54, prl4, new DateTime(2000, 2, 4));
             var or15 = new Order(64, prl4, new DateTime(2000, 2, 4));
-            List<Order> orders = new List<Order>() { or1, or2, or3, or4, or5, or6, or7, or8, or9, or10, or11, or12, or13, or14 };
+            List<Order> orders = new List<Order>() { or1, or2, or3, or4, or5, or6, or7, or8, or9, or10, or11, or12, or13, or14, or15 };
 
             DataStore ds1 = new DataStore(orders, categories, products);
+
+            // returns all products with ids between 15 and 30
             var prods = ds1.GetProducts().Where(x => x.CategoryId > 15 && x.CategoryId < 30).ToList();
+
+            // returns all categories with ids between 105 and 125
             var cats = ds1.GetCategories().Where(x => x.CategoryId > 105 && x.CategoryId < 125).ToList();
+
+            // returns first 15 orders sorted by order name
             var ords = ds1.GetOrders().OrderBy(x => x.OrderDate).Take(15);
+
+            // returns first 3 orders which contains a specific productId 
             var newprods = ds1.GetOrders().Where(x => x.Products.Contains(-1)).OrderBy(x => x.OrderDate).ToList();
+
+            // returns all product with the name of the category which they belong to
             var prodCats = from prod in ds1.GetProducts() orderby prod.Name select new { Name = prod.Name };
 
-            //var catsAndProd = categories.Select(x => x).ToList();
-            //catsAndProd.AddRange(products.Select(x => x).Where(x => x.CategoryId == )
+            // returns all categories together with their products
+            var catsAndProds = from cat in categories
+                               join prod in products on cat.CategoryId equals prod.CategoryId
+                               select new { Category = cat.CategoryName, Prod = prod.Name };
 
-            var catsAndProds = new Dictionary<Category,Product>();
-            foreach (var cat in categories)
-            {
-                foreach (var prod in products)
-                {
-                    if (prod.CategoryId == cat.CategoryId)
-                    {
-                        catsAndProds.Add(cat,prod);
-                    }
-                }
-            }
+            // All orders together with their products and then print it to the screen.
+            // For every product print its category name as well. Sort the result by orderDate.
+            var ress = orders.OrderBy(x => x.OrderDate).SelectMany(
+                x => x.Products.Select(
+                    y => products.Where(
+                        z => z.Id == y).Select(
+                        z => new
+                                 {
+                                     Order = x.Id, Product = z.Name
+                                 }).FirstOrDefault())).Where(x => x != null).ToList();
 
-            Console.WriteLine(string.Join(",",catsAndProds));
-
-            //var catAndProds = from cat in categories 
-            //                  join pro in products
-            //                  on pro.CategoryId equals cat.
+            // Console.WriteLine(string.Join(",", ress[0]));
         }
     }
 }
