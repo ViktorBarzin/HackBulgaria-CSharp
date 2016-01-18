@@ -11,14 +11,16 @@
         /// <summary>
         /// Initializes a new instance of the <see cref="Order"/> class.
         /// </summary>
+        /// <param name="name">Sets order name.</param>
         /// <param name="id">Sets order id.</param>
         /// <param name="products">Sets order products.</param>
         /// <param name="orderDate">Sets order date.</param>
-        public Order(int id, List<int> products, DateTime orderDate)
+        public Order(string name, int id, List<int> products, DateTime orderDate)
         {
             this.Id = id;
             this.Products = products;
             this.OrderDate = orderDate;
+            this.Name = name;
         }
 
         /// <summary>
@@ -35,5 +37,10 @@
         /// Gets or sets order date.
         /// </summary>
         public DateTime OrderDate { get; set; }
+
+        /// <summary>
+        /// Gets or sets name property.
+        /// </summary>
+        public string Name { get; set; }
     }
 }

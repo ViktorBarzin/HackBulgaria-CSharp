@@ -34,21 +34,21 @@
             List<int> prl3 = new List<int>() { 99, 4, 5 };
             List<int> prl4 = new List<int>() { 100, 91, 5 };
 
-            var or1 = new Order(1, prl1, new DateTime(2001, 1, 1));
-            var or2 = new Order(2, prl2, new DateTime(2000, 1, 2));
-            var or3 = new Order(3, prl3, new DateTime(2000, 1, 3));
-            var or4 = new Order(4, prl4, new DateTime(2000, 1, 8));
-            var or5 = new Order(5, prl4, new DateTime(2000, 1, 7));
-            var or6 = new Order(6, prl4, new DateTime(2000, 1, 6));
-            var or7 = new Order(7, prl4, new DateTime(2000, 1, 14));
-            var or8 = new Order(8, prl4, new DateTime(2000, 1, 24));
-            var or9 = new Order(9, prl4, new DateTime(2000, 6, 4));
-            var or10 = new Order(14, prl4, new DateTime(2000, 2, 4));
-            var or11 = new Order(24, prl4, new DateTime(2000, 6, 4));
-            var or12 = new Order(34, prl4, new DateTime(2000, 1, 5));
-            var or13 = new Order(44, prl4, new DateTime(2000, 3, 4));
-            var or14 = new Order(54, prl4, new DateTime(2000, 2, 4));
-            var or15 = new Order(64, prl4, new DateTime(2000, 2, 4));
+            var or1 = new Order("order 1", 1, prl1, new DateTime(2001, 1, 1));
+            var or2 = new Order("order 2", 2, prl2, new DateTime(2000, 1, 2));
+            var or3 = new Order("order 3", 3, prl3, new DateTime(2000, 1, 3));
+            var or4 = new Order("order 4", 4, prl4, new DateTime(2000, 1, 8));
+            var or5 = new Order("order 5", 5, prl4, new DateTime(2000, 1, 7));
+            var or6 = new Order("order 6", 6, prl4, new DateTime(2000, 1, 6));
+            var or7 = new Order("order 7", 7, prl4, new DateTime(2000, 1, 14));
+            var or8 = new Order("order 8", 8, prl4, new DateTime(2000, 1, 24));
+            var or9 = new Order("order 9", 9, prl4, new DateTime(2000, 6, 4));
+            var or10 = new Order("order 14", 14, prl4, new DateTime(2000, 2, 4));
+            var or11 = new Order("order 24", 24, prl4, new DateTime(2000, 6, 4));
+            var or12 = new Order("order 34", 34, prl4, new DateTime(2000, 1, 5));
+            var or13 = new Order("order 44", 44, prl4, new DateTime(2000, 3, 4));
+            var or14 = new Order("order 54", 54, prl4, new DateTime(2000, 2, 4));
+            var or15 = new Order("order 64", 64, prl4, new DateTime(2000, 2, 4));
             List<Order> orders = new List<Order>() { or1, or2, or3, or4, or5, or6, or7, or8, or9, or10, or11, or12, or13, or14, or15 };
 
             DataStore ds1 = new DataStore(orders, categories, products);
@@ -60,9 +60,9 @@
             var cats = ds1.GetCategories().Where(x => x.CategoryId > 105 && x.CategoryId < 125).ToList();
 
             // returns first 15 orders sorted by order name
-            var ords = ds1.GetOrders().OrderBy(x => x.OrderDate).Take(15);
+            var ords = ds1.GetOrders().OrderBy(x => x.Name).Take(15);
 
-            // returns first 3 orders which contains a specific productId 
+            // returns first 3 orders which contains a specific productId  (-1)
             var newprods = ds1.GetOrders().Where(x => x.Products.Contains(-1)).OrderBy(x => x.OrderDate).ToList();
 
             // returns all product with the name of the category which they belong to
@@ -80,11 +80,10 @@
                     y => products.Where(
                         z => z.Id == y).Select(
                         z => new
-                                 {
-                                     Order = x.Id, Product = z.Name
-                                 }).FirstOrDefault())).Where(x => x != null).ToList();
-
-            // Console.WriteLine(string.Join(",", ress[0]));
+                        {
+                            Order = x.Id,
+                            Product = z.Name
+                        }).FirstOrDefault())).Where(x => x != null).ToList();
         }
     }
 }
