@@ -1,13 +1,15 @@
 ﻿namespace PartialClass
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
 
+    /// <summary>
+    /// Application class.
+    /// </summary>
     public class Application
     {
+        /// <summary>
+        /// Main method.
+        /// </summary>
         static void Main()
         {
             Employee emp = new Employee();

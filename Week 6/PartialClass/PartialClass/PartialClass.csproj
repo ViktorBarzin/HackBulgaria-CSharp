@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B4A05B86-F39C-41EA-A79A-DB85C47078D1}</ProjectGuid>
+    <ProjectGuid>{A81C779B-C0A8-4923-8A91-AC60CC624A32}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>PartialClass</RootNamespace>
