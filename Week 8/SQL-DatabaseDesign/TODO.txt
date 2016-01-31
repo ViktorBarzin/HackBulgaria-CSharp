@@ -1,2 +1,1 @@
-Double discount query
 Stored Procedures
