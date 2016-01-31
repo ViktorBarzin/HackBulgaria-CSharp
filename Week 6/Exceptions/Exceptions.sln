@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XmlBuilder", "XmlBuilder\Xm
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XmlBuilderTests", "XmlBuilderTests\XmlBuilderTests.csproj", "{D6EA55D9-6849-451A-B6EF-23183CDF5713}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject1", "UnitTestProject1\UnitTestProject1.csproj", "{138F23E3-544F-4B92-B71B-BF6FC09B8834}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{D6EA55D9-6849-451A-B6EF-23183CDF5713}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D6EA55D9-6849-451A-B6EF-23183CDF5713}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D6EA55D9-6849-451A-B6EF-23183CDF5713}.Release|Any CPU.Build.0 = Release|Any CPU
+		{138F23E3-544F-4B92-B71B-BF6FC09B8834}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{138F23E3-544F-4B92-B71B-BF6FC09B8834}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{138F23E3-544F-4B92-B71B-BF6FC09B8834}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{138F23E3-544F-4B92-B71B-BF6FC09B8834}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

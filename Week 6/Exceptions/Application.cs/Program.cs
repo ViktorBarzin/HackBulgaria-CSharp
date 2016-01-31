@@ -16,7 +16,14 @@
             XmlBuilder newXml = new XmlBuilder();
 
             // Console.WriteLine(
-            Console.WriteLine(newXml.OpenTag("tagName").OpenTag("tagName2").AddAttr("atrr", "value").OpenTag("tageName3").Finish().GetResult());
+            Console.WriteLine(newXml.OpenTag("gosho")
+                .CloseTag()
+                //.OpenTag("gosho")
+                //.AddAttr("atrr", "value")
+                //.OpenTag("tageName3")
+                //.CloseTag()
+                //.Finish()
+                .GetResult());
 
             // .AddText("text")
 

@@ -42,7 +42,7 @@
             }
 
             this.xml.Append(string.Format("<{0}>", name));
-            this.xml.AppendLine();
+            //this.xml.AppendLine();
             this.Tag = name;
             this.openedTags.Push(this.Tag);
             return this;
@@ -63,12 +63,14 @@
 
             // StringBuilder newTag = new StringBuilder(this.openedTags.Peek());
             // newTag.Insert(newTag.Length, string.Format(" {0}=\"{1}\"", attrName, attrValue));
+            string temp = this.Tag.ToString();
             this.Tag = new StringBuilder(this.openedTags.Peek()).Insert(
                 this.Tag.Length,
                 string.Format(" {0}=\"{1}\"", attrName, attrValue))
                 .ToString();
-            this.xml.Replace(this.openedTags.Pop(), this.Tag);
-            this.openedTags.Push(this.Tag);
+            this.xml.Replace(this.openedTags.Peek(), this.Tag);
+            this.Tag = temp;
+            //this.openedTags.Push(this.Tag);
             return this;
         }
 
@@ -96,7 +98,7 @@
             }
 
             this.xml.Append(string.Format("</{0}>", this.openedTags.Pop()));
-            this.xml.AppendLine();
+            //this.xml.AppendLine();
 
             // this.xml.Append("    ");
             return this;
