@@ -8,6 +8,12 @@
 
     public class DepartmentManager
     {
+        public DepartmentManager(int departmentId, int managerId)
+        {
+            this.DepartmentId = departmentId;
+            this.ManagerId = managerId;
+        }
+
         public int DepartmentId { get; set; }
 
         public int ManagerId { get; set; }

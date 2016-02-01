@@ -8,6 +8,16 @@
 
     public class Employee
     {
+        public Employee(int id, string name, string email, DateTime dateOfBirth, int? managerId, int? departmentId)
+        {
+            this.Id = id;
+            this.Name = name;
+            this.Email = email;
+            this.DateOfBirth = dateOfBirth;
+            this.ManagerId = managerId;
+            this.DepartmentId = departmentId;
+        }
+
         public int Id { get; set; }
 
         public string Name { get; set; }

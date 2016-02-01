@@ -8,6 +8,14 @@
 
     public class Order
     {
+        public Order(int id, DateTime date, int customerId, double totalPrice)
+        {
+            this.Id = id;
+            this.Date = date;
+            this.CustomerId = customerId;
+            this.TotalPrice = totalPrice;
+        }
+
         public int Id { get; set; }
 
         public DateTime Date { get; set; }

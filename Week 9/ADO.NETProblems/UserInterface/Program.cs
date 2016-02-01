@@ -8,24 +8,48 @@ using System.Threading.Tasks;
 namespace UserInterface
 {
     using System.Data.SqlClient;
+    using System.Globalization;
+
+    using HackCompany;
 
     class Program
     {
         static void Main(string[] args)
         {
-            // TODO : Check how connection works
+            // TODO : Code reuse on queries?
+            // TODO : Remove magic string from queries
             string connectionString = ConfigurationManager.ConnectionStrings["HackCompany"].ConnectionString;
-            string query = @"SELECT TOP 1 *
-                            FROM HackCompany.dbo.Customer";
+            DbCommunication.Insert(connectionString, new Category("ABC", "abc"));
 
-            using (var connection = new SqlConnection(connectionString))
+            //string query = @"SELECT TOP 10 *
+            //                FROM HackCompany.dbo.Customer c
+            //                WHERE c.Id=2";
+
+            //using (var connection = new SqlConnection(connectionString))
+            //{
+            //    connection.Open();
+            //    var command = new SqlCommand(query, connection);
+
+            //    using (var reader = command.ExecuteReader())
+            //    {
+            //        while (reader.Read())
+            //        {
+            //            string name = StringOrNull(reader["Name"]);
+            //            string email = StringOrNull(reader["Email"]);
+            //            Console.WriteLine(string.Format(name + email));
+            //        }
+            //    }
+            //}
+
+        }
+
+        private static string StringOrNull(object value)
+        {
+            if (value is DBNull)
             {
-                connection.Open();
-                var command = new SqlCommand(query, connection);
-                string res = (string)command.ExecuteScalar();
-                Console.WriteLine(res);
+                return null;
             }
-
+            return (string)value;
         }
     }
 }

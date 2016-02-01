@@ -8,6 +8,12 @@
 
     public class Category
     {
+        public Category(string code, string name)
+        {
+            this.Code = code;
+            this.Name = name; 
+        }
+
         public string Code { get; set; }
 
         public string Name { get; set; }
