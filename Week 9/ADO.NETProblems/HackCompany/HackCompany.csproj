@@ -42,10 +42,11 @@
   <ItemGroup>
     <Compile Include="Category.cs" />
     <Compile Include="Customer.cs" />
-    <Compile Include="DbCommunication.cs" />
+    <Compile Include="DbConnection.cs" />
     <Compile Include="Department.cs" />
     <Compile Include="DepartmentManager.cs" />
     <Compile Include="Employee.cs" />
+    <Compile Include="IDbCommunication.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="OrderProduct.cs" />
     <Compile Include="Product.cs" />

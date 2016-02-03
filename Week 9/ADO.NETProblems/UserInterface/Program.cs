@@ -16,10 +16,12 @@ namespace UserInterface
     {
         static void Main(string[] args)
         {
-            // TODO : Code reuse on queries?
-            // TODO : Remove magic string from queries
+            // TODO : insert model is customer
+            // TODO : bugfigx
             string connectionString = ConfigurationManager.ConnectionStrings["HackCompany"].ConnectionString;
-            DbCommunication.Insert(connectionString, new Category("ABC", "abc"));
+            DbConnection dbConnection = new DbConnection(connectionString);
+            var c1 = new Customer(44,"jj44", "penka@goshomail.com", "madrid street 69", null);
+            dbConnection.Insert(c1);
 
             //string query = @"SELECT TOP 10 *
             //                FROM HackCompany.dbo.Customer c
@@ -41,15 +43,6 @@ namespace UserInterface
             //    }
             //}
 
-        }
-
-        private static string StringOrNull(object value)
-        {
-            if (value is DBNull)
-            {
-                return null;
-            }
-            return (string)value;
         }
     }
 }

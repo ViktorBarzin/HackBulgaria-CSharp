@@ -8,7 +8,7 @@
 
     public class Customer
     {
-        public Customer(int id, string name, string email, string address, int? discount)
+        public Customer(int id,string name, string email, string address, int? discount)
         {
             this.Id = id;
             this.Name = name;
