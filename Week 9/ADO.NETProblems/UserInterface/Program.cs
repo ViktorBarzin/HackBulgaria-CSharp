@@ -16,11 +16,10 @@ namespace UserInterface
     {
         static void Main(string[] args)
         {
-            // TODO : insert model is customer
-            // TODO : bugfigx
+            // TODO : finish when ADO.NET gets useful if ever does
             string connectionString = ConfigurationManager.ConnectionStrings["HackCompany"].ConnectionString;
             DbConnection dbConnection = new DbConnection(connectionString);
-            var c1 = new Customer(44,"jj44", "penka@goshomail.com", "madrid street 69", null);
+            var c1 = new Product(1,"prod 1",100,"SFT");
             dbConnection.Insert(c1);
 
             //string query = @"SELECT TOP 10 *
