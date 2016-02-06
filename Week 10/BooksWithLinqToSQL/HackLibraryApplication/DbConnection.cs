@@ -125,6 +125,7 @@ namespace HackLibraryApplication
                 }
 
                 this.context.Loans.InsertOnSubmit(loan);
+                loan.User.TakenBooks += 1;
                 this.context.SubmitChanges();
             }
             catch (SqlException e)
@@ -165,6 +166,7 @@ namespace HackLibraryApplication
                 }
                 this.context.Histories.InsertOnSubmit(loanHistory);
                 this.context.Loans.DeleteOnSubmit(loan);
+                loan.User.TakenBooks -= 1;
                 this.context.SubmitChanges();
             }
             catch (SqlException e)
