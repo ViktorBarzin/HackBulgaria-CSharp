@@ -811,6 +811,8 @@ namespace HackLibraryApplication
 		
 		private int _Pages;
 		
+		private int _Copies;
+		
 		private EntitySet<AuthorBook> _AuthorBooks;
 		
 		private EntitySet<BookGenre> _BookGenres;
@@ -837,6 +839,8 @@ namespace HackLibraryApplication
     partial void OnGenreIdChanged();
     partial void OnPagesChanging(int value);
     partial void OnPagesChanged();
+    partial void OnCopiesChanging(int value);
+    partial void OnCopiesChanged();
     #endregion
 		
 		public Book()
@@ -984,6 +988,26 @@ namespace HackLibraryApplication
 					this._Pages = value;
 					this.SendPropertyChanged("Pages");
 					this.OnPagesChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Copies", DbType="Int NOT NULL")]
+		public int Copies
+		{
+			get
+			{
+				return this._Copies;
+			}
+			set
+			{
+				if ((this._Copies != value))
+				{
+					this.OnCopiesChanging(value);
+					this.SendPropertyChanging();
+					this._Copies = value;
+					this.SendPropertyChanged("Copies");
+					this.OnCopiesChanged();
 				}
 			}
 		}

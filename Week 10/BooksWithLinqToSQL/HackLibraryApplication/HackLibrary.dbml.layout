@@ -2,108 +2,108 @@
 <ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 11.125" name="HackLibrary">
   <DataContextMoniker Name="/HackLibraryDataContext" />
   <nestedChildShapes>
-    <classShape Id="38f6ae64-b005-4370-be98-b9e2aa8b8dc7" absoluteBounds="0.75, 8.875, 2, 1.9631982421875005">
+    <classShape Id="9c643522-f439-49f1-874d-e0926f9d7f0f" absoluteBounds="0.75, 8.875, 2, 1.9631982421875005">
       <DataClassMoniker Name="/HackLibraryDataContext/Author" />
       <nestedChildShapes>
-        <elementListCompartment Id="8e2fbf83-7392-453a-99c7-3c910854a9b6" absoluteBounds="0.765, 9.335, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="b1241047-0e4f-4e83-b159-751e15ee69e3" absoluteBounds="0.765, 9.335, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="998b4ad4-0077-42da-8b68-f51882b88544" absoluteBounds="3.75, 0.75, 2, 2.1554996744791666">
+    <classShape Id="832ca38b-aeae-4b07-86f1-f61901d3821f" absoluteBounds="3.75, 0.75, 2, 2.1554996744791666">
       <DataClassMoniker Name="/HackLibraryDataContext/User" />
       <nestedChildShapes>
-        <elementListCompartment Id="e2ba916e-ec39-4204-a974-5ba31efd3cdb" absoluteBounds="3.765, 1.21, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="7ce8ca64-27f1-4c83-877b-e50bb8a5a7ac" absoluteBounds="3.765, 1.21, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="36934a0a-907d-455c-b8a9-d4a26ceb8d73" absoluteBounds="3.5, 6.25, 2, 1.1939925130208344">
+    <classShape Id="5b0037f0-7bd2-4ccd-b9ee-d7e92fc4576e" absoluteBounds="3.5, 6.25, 2, 1.1939925130208344">
       <DataClassMoniker Name="/HackLibraryDataContext/AuthorBook" />
       <nestedChildShapes>
-        <elementListCompartment Id="9f43be22-5559-4e3d-a656-d01f743a81d7" absoluteBounds="3.515, 6.71, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="c78e1dbe-e740-4ac4-8c72-6396648716a4" absoluteBounds="3.515, 6.71, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="5fc458a9-9c55-4c9f-971e-21ca3c51e6f5" absoluteBounds="0.75, 5.75, 2, 2.1554996744791666">
+    <classShape Id="5846e790-c921-4e1d-8ea4-de9a0496e62d" absoluteBounds="0.75, 5.625, 2, 2.3478011067708344">
       <DataClassMoniker Name="/HackLibraryDataContext/Book" />
       <nestedChildShapes>
-        <elementListCompartment Id="b1d24ab3-d785-4fd1-b505-56fe3da6d041" absoluteBounds="0.765, 6.21, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="60980aa7-4c7d-4a73-935f-cd355ee187e0" absoluteBounds="0.765, 6.085, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="348daa10-b8e6-4518-81b5-e4d72d1b04cc" absoluteBounds="3.5, 4.25, 2, 1.1939925130208344">
+    <classShape Id="b9165898-3e57-4a12-bf03-70f442647e57" absoluteBounds="3.5, 4.25, 2, 1.1939925130208344">
       <DataClassMoniker Name="/HackLibraryDataContext/BookGenre" />
       <nestedChildShapes>
-        <elementListCompartment Id="b18f8cbe-8b5f-4898-9d3e-8f6eb4706394" absoluteBounds="3.515, 4.71, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="9382b313-92a7-4f19-baae-909db5d850c8" absoluteBounds="3.515, 4.71, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="46459204-c818-417d-85d0-4118ceb9c625" absoluteBounds="0.75, 3.25, 2, 1.193992513020834">
+    <classShape Id="b8cd246e-cd06-4f0a-8697-6d30166e3fa3" absoluteBounds="0.75, 3.25, 2, 1.193992513020834">
       <DataClassMoniker Name="/HackLibraryDataContext/Genre" />
       <nestedChildShapes>
-        <elementListCompartment Id="b630079d-8a73-4782-9497-a843e27d70d6" absoluteBounds="0.765, 3.71, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="6801bd99-0a1f-4fc5-9465-8ab5206fb6f8" absoluteBounds="0.765, 3.71, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="e8d8fb39-fdb7-4f3e-92e4-e7c93f8f1431" absoluteBounds="3.5, 9, 2, 1.5785953776041666">
+    <classShape Id="22ce50ad-7bdd-4f94-bf46-b0e82e0d5283" absoluteBounds="3.5, 9, 2, 1.5785953776041666">
       <DataClassMoniker Name="/HackLibraryDataContext/History" />
       <nestedChildShapes>
-        <elementListCompartment Id="05c7a685-e13c-4570-aa93-59746765e238" absoluteBounds="3.515, 9.46, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="4b78b30e-7cd0-4a71-abf4-5d4bc53e8a44" absoluteBounds="3.515, 9.46, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="fda66be1-e8a7-40c3-847e-a139cb068d91" absoluteBounds="6.5, 6, 2, 1.7708968098958327">
+    <classShape Id="6ea8aee6-fa81-4ae6-8e9b-932ce1547cee" absoluteBounds="6.5, 6, 2, 1.7708968098958327">
       <DataClassMoniker Name="/HackLibraryDataContext/Loan" />
       <nestedChildShapes>
-        <elementListCompartment Id="e6b31f39-d152-4993-9c16-532e761fda56" absoluteBounds="6.515, 6.46, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="737f8227-b1ea-4521-9bbd-1514ea159c64" absoluteBounds="6.515, 6.46, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
     <associationConnector edgePoints="[(2.75 : 8.875); (3.125 : 8.5); (3.125 : 6.84699625651042); (3.5 : 6.84699625651042)]" fixedFrom="NotFixed" fixedTo="Algorithm">
       <AssociationMoniker Name="/HackLibraryDataContext/Author/Author_AuthorBook" />
       <nodes>
-        <classShapeMoniker Id="38f6ae64-b005-4370-be98-b9e2aa8b8dc7" />
-        <classShapeMoniker Id="36934a0a-907d-455c-b8a9-d4a26ceb8d73" />
+        <classShapeMoniker Id="9c643522-f439-49f1-874d-e0926f9d7f0f" />
+        <classShapeMoniker Id="5b0037f0-7bd2-4ccd-b9ee-d7e92fc4576e" />
       </nodes>
     </associationConnector>
     <associationConnector edgePoints="[(2.75 : 6.48599812825521); (3.5 : 6.48599812825521)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/HackLibraryDataContext/Book/Book_AuthorBook" />
       <nodes>
-        <classShapeMoniker Id="5fc458a9-9c55-4c9f-971e-21ca3c51e6f5" />
-        <classShapeMoniker Id="36934a0a-907d-455c-b8a9-d4a26ceb8d73" />
+        <classShapeMoniker Id="5846e790-c921-4e1d-8ea4-de9a0496e62d" />
+        <classShapeMoniker Id="5b0037f0-7bd2-4ccd-b9ee-d7e92fc4576e" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 5.75153746153846); (3.125 : 5.37653746153846); (3.125 : 5.81990996880008); (3.50091745577925 : 5.44399251302083)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(2.75 : 5.62653746153846); (3.125 : 5.25153746153846); (3.125 : 5.81990996880008); (3.50091745577925 : 5.44399251302083)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/HackLibraryDataContext/Book/Book_BookGenre" />
       <nodes>
-        <classShapeMoniker Id="5fc458a9-9c55-4c9f-971e-21ca3c51e6f5" />
-        <classShapeMoniker Id="348daa10-b8e6-4518-81b5-e4d72d1b04cc" />
+        <classShapeMoniker Id="5846e790-c921-4e1d-8ea4-de9a0496e62d" />
+        <classShapeMoniker Id="b9165898-3e57-4a12-bf03-70f442647e57" />
       </nodes>
     </associationConnector>
     <associationConnector edgePoints="[(1.75 : 4.44399251302083); (1.75 : 4.84699625651042); (3.5 : 4.84699625651042)]" fixedFrom="Algorithm" fixedTo="NotFixed">
       <AssociationMoniker Name="/HackLibraryDataContext/Genre/Genre_BookGenre" />
       <nodes>
-        <classShapeMoniker Id="46459204-c818-417d-85d0-4118ceb9c625" />
-        <classShapeMoniker Id="348daa10-b8e6-4518-81b5-e4d72d1b04cc" />
+        <classShapeMoniker Id="b8cd246e-cd06-4f0a-8697-6d30166e3fa3" />
+        <classShapeMoniker Id="b9165898-3e57-4a12-bf03-70f442647e57" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 7.84396021294071); (3.06607443490112 : 8.16003464784182 : JumpStart); (3.18392556509888 : 8.27788577803958 : JumpEnd); (3.3125 : 8.4064602129407); (3.3125 : 9.78929768880208); (3.5 : 9.78929768880208)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.75 : 7.91126164523237); (3.06607443490112 : 8.22733608013349 : JumpStart); (3.18392556509888 : 8.34518721033125 : JumpEnd); (3.3125 : 8.47376164523237); (3.3125 : 9.78929768880208); (3.5 : 9.78929768880208)]" fixedFrom="NotFixed" fixedTo="Algorithm">
       <AssociationMoniker Name="/HackLibraryDataContext/Book/Book_History" />
       <nodes>
-        <classShapeMoniker Id="5fc458a9-9c55-4c9f-971e-21ca3c51e6f5" />
-        <classShapeMoniker Id="e8d8fb39-fdb7-4f3e-92e4-e7c93f8f1431" />
+        <classShapeMoniker Id="5846e790-c921-4e1d-8ea4-de9a0496e62d" />
+        <classShapeMoniker Id="22ce50ad-7bdd-4f94-bf46-b0e82e0d5283" />
       </nodes>
     </associationConnector>
     <associationConnector edgePoints="[(5.75 : 2.90396021294071); (6.125 : 3.27896021294071); (6.125 : 8.625); (5.875 : 8.625); (5.5 : 9)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/HackLibraryDataContext/User/User_History" />
       <nodes>
-        <classShapeMoniker Id="998b4ad4-0077-42da-8b68-f51882b88544" />
-        <classShapeMoniker Id="e8d8fb39-fdb7-4f3e-92e4-e7c93f8f1431" />
+        <classShapeMoniker Id="832ca38b-aeae-4b07-86f1-f61901d3821f" />
+        <classShapeMoniker Id="22ce50ad-7bdd-4f94-bf46-b0e82e0d5283" />
       </nodes>
     </associationConnector>
     <associationConnector edgePoints="[(2.75 : 7.63869466145833); (3.04166666666667 : 7.63869466145833 : JumpStart); (3.20833333333333 : 7.63869466145833 : JumpEnd); (6.04166666666667 : 7.63869466145833 : JumpStart); (6.20833333333333 : 7.63869466145833 : JumpEnd); (6.5 : 7.63869466145833)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/HackLibraryDataContext/Book/Book_Loan" />
       <nodes>
-        <classShapeMoniker Id="5fc458a9-9c55-4c9f-971e-21ca3c51e6f5" />
-        <classShapeMoniker Id="fda66be1-e8a7-40c3-847e-a139cb068d91" />
+        <classShapeMoniker Id="5846e790-c921-4e1d-8ea4-de9a0496e62d" />
+        <classShapeMoniker Id="6ea8aee6-fa81-4ae6-8e9b-932ce1547cee" />
       </nodes>
     </associationConnector>
     <associationConnector edgePoints="[(5.65625 : 2.90549967447917); (5.65625 : 6.09375); (6.04166666666667 : 6.09375 : JumpStart); (6.20833333333333 : 6.09375 : JumpEnd); (6.5 : 6.09375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/HackLibraryDataContext/User/User_Loan" />
       <nodes>
-        <classShapeMoniker Id="998b4ad4-0077-42da-8b68-f51882b88544" />
-        <classShapeMoniker Id="fda66be1-e8a7-40c3-847e-a139cb068d91" />
+        <classShapeMoniker Id="832ca38b-aeae-4b07-86f1-f61901d3821f" />
+        <classShapeMoniker Id="6ea8aee6-fa81-4ae6-8e9b-932ce1547cee" />
       </nodes>
     </associationConnector>
   </nestedChildShapes>

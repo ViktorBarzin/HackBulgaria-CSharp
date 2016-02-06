@@ -41,6 +41,7 @@
       <Column Name="AuthorId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="GenreId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Pages" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Copies" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="Book_AuthorBook" Member="AuthorBooks" ThisKey="ISBN" OtherKey="BookISBN" Type="AuthorBook" />
       <Association Name="Book_BookGenre" Member="BookGenres" ThisKey="ISBN" OtherKey="BookISBN" Type="BookGenre" />
       <Association Name="Book_History" Member="Histories" ThisKey="ISBN" OtherKey="BookISBN" Type="History" />

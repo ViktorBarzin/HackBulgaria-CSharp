@@ -10,8 +10,10 @@ namespace HackLibraryApplication
     {
         static void Main(string[] args)
         {
-            // TODO : Get all books contained in the library
+            // TODO : Get all types of genders a given author has written. 
+            // TODO : Get all books written by a given author
             string input = Console.ReadLine();
+            HackLibraryDataContextDataContext
             Application(input);
 
         }
