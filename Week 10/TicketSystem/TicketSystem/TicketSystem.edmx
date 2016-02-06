@@ -1,0 +1,426 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="TicketSystem.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="TicketSystemStoreContainer">
+    <EntitySet Name="CitySet" EntityType="TicketSystem.Store.CitySet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TainSet" EntityType="TicketSystem.Store.TainSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ScheduleSet" EntityType="TicketSystem.Store.ScheduleSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserSet" EntityType="TicketSystem.Store.UserSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TicketSet" EntityType="TicketSystem.Store.TicketSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DiscountCardSet" EntityType="TicketSystem.Store.DiscountCardSet" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="ScheduleCity" Association="TicketSystem.Store.ScheduleCity">
+      <End Role="Schedule" EntitySet="ScheduleSet" />
+      <End Role="City" EntitySet="CitySet" />
+    </AssociationSet>
+    <AssociationSet Name="ScheduleTain" Association="TicketSystem.Store.ScheduleTain">
+      <End Role="Schedule" EntitySet="ScheduleSet" />
+      <End Role="Tain" EntitySet="TainSet" />
+    </AssociationSet>
+    <AssociationSet Name="ScheduleTicket" Association="TicketSystem.Store.ScheduleTicket">
+      <End Role="Schedule" EntitySet="ScheduleSet" />
+      <End Role="Ticket" EntitySet="TicketSet" />
+    </AssociationSet>
+    <AssociationSet Name="UserDiscountCard" Association="TicketSystem.Store.UserDiscountCard">
+      <End Role="User" EntitySet="UserSet" />
+      <End Role="DiscountCard" EntitySet="DiscountCardSet" />
+    </AssociationSet>
+    <AssociationSet Name="TicketUser" Association="TicketSystem.Store.TicketUser">
+      <End Role="Ticket" EntitySet="TicketSet" />
+      <End Role="User" EntitySet="UserSet" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="CitySet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Schedule_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TainSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Seats" Type="int" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Schedule_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ScheduleSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StartCity" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="EndCity" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="TravelTime" Type="int" Nullable="false" />
+    <Property Name="TrainId" Type="int" Nullable="false" />
+    <Property Name="TicketPrice" Type="int" Nullable="false" />
+    <Property Name="TicketId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Username" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PasswordHash" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DiscountCardNumber" Type="bigint" Nullable="false" />
+    <Property Name="CreditCardNumberHash" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Address" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ZipCode" Type="int" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="TickedId" Type="int" Nullable="false" />
+    <Property Name="Ticket_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TicketSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TripDateAndTime" Type="datetime" Nullable="false" />
+    <Property Name="OriginlaPrice" Type="int" Nullable="false" />
+    <Property Name="PriceSold" Type="int" Nullable="false" />
+    <Property Name="UserSoldTo" Type="int" Nullable="false" />
+    <Property Name="SeatNumber" Type="int" Nullable="false" />
+    <Property Name="Schedule_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DiscountCardSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Type" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Discount" Type="int" Nullable="false" />
+    <Property Name="FirstClass" Type="bit" Nullable="false" />
+    <Property Name="User_Id" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <Association Name="ScheduleCity">
+    <End Role="Schedule" Type="TicketSystem.Store.ScheduleSet" Multiplicity="1" />
+    <End Role="City" Type="TicketSystem.Store.CitySet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Schedule">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="City">
+        <PropertyRef Name="Schedule_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ScheduleTain">
+    <End Role="Schedule" Type="TicketSystem.Store.ScheduleSet" Multiplicity="1" />
+    <End Role="Tain" Type="TicketSystem.Store.TainSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Schedule">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Tain">
+        <PropertyRef Name="Schedule_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ScheduleTicket">
+    <End Role="Schedule" Type="TicketSystem.Store.ScheduleSet" Multiplicity="1" />
+    <End Role="Ticket" Type="TicketSystem.Store.TicketSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Schedule">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Ticket">
+        <PropertyRef Name="Schedule_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserDiscountCard">
+    <End Role="User" Type="TicketSystem.Store.UserSet" Multiplicity="1" />
+    <End Role="DiscountCard" Type="TicketSystem.Store.DiscountCardSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DiscountCard">
+        <PropertyRef Name="User_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TicketUser">
+    <End Role="Ticket" Type="TicketSystem.Store.TicketSet" Multiplicity="1" />
+    <End Role="User" Type="TicketSystem.Store.UserSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ticket">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="Ticket_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="TicketSystem" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="TicketSystemContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CitySet" EntityType="TicketSystem.City" />
+          <EntitySet Name="TainSet" EntityType="TicketSystem.Tain" />
+          <EntitySet Name="ScheduleSet" EntityType="TicketSystem.Schedule" />
+          <EntitySet Name="UserSet" EntityType="TicketSystem.User" />
+          <EntitySet Name="TicketSet" EntityType="TicketSystem.Ticket" />
+          <EntitySet Name="DiscountCardSet" EntityType="TicketSystem.DiscountCard" />
+          <AssociationSet Name="ScheduleCity" Association="TicketSystem.ScheduleCity">
+            <End Role="Schedule" EntitySet="ScheduleSet" />
+            <End Role="City" EntitySet="CitySet" />
+          </AssociationSet>
+          <AssociationSet Name="ScheduleTain" Association="TicketSystem.ScheduleTain">
+            <End Role="Schedule" EntitySet="ScheduleSet" />
+            <End Role="Tain" EntitySet="TainSet" />
+          </AssociationSet>
+          <AssociationSet Name="ScheduleTicket" Association="TicketSystem.ScheduleTicket">
+            <End Role="Schedule" EntitySet="ScheduleSet" />
+            <End Role="Ticket" EntitySet="TicketSet" />
+          </AssociationSet>
+          <AssociationSet Name="UserDiscountCard" Association="TicketSystem.UserDiscountCard">
+            <End Role="User" EntitySet="UserSet" />
+            <End Role="DiscountCard" EntitySet="DiscountCardSet" />
+          </AssociationSet>
+          <AssociationSet Name="TicketUser" Association="TicketSystem.TicketUser">
+            <End Role="Ticket" EntitySet="TicketSet" />
+            <End Role="User" EntitySet="UserSet" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <NavigationProperty Name="Schedule" Relationship="TicketSystem.ScheduleCity" FromRole="City" ToRole="Schedule" />
+        </EntityType>
+        <EntityType Name="Tain">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Seats" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" Nullable="false" />
+          <NavigationProperty Name="Schedule" Relationship="TicketSystem.ScheduleTain" FromRole="Tain" ToRole="Schedule" />
+        </EntityType>
+        <EntityType Name="Schedule">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StartCity" Type="String" Nullable="false" />
+          <Property Name="EndCity" Type="String" Nullable="false" />
+          <Property Name="TravelTime" Type="Int32" Nullable="false" />
+          <Property Name="TrainId" Type="Int32" Nullable="false" />
+          <Property Name="TicketPrice" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="City" Relationship="TicketSystem.ScheduleCity" FromRole="Schedule" ToRole="City" />
+          <NavigationProperty Name="Tain" Relationship="TicketSystem.ScheduleTain" FromRole="Schedule" ToRole="Tain" />
+          <Property Name="TicketId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Ticket" Relationship="TicketSystem.ScheduleTicket" FromRole="Schedule" ToRole="Ticket" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" />
+          <Property Name="Username" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <Property Name="Email" Type="String" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" Nullable="false" />
+          <Property Name="DiscountCardNumber" Type="Int64" Nullable="false" />
+          <Property Name="CreditCardNumberHash" Type="String" Nullable="false" />
+          <Property Name="Address" Type="String" Nullable="false" />
+          <Property Name="ZipCode" Type="Int32" Nullable="false" />
+          <Property Name="FirstName" Type="String" Nullable="false" />
+          <Property Name="LastName" Type="String" Nullable="false" />
+          <Property Name="TickedId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="DiscountCard" Relationship="TicketSystem.UserDiscountCard" FromRole="User" ToRole="DiscountCard" />
+          <NavigationProperty Name="Ticket" Relationship="TicketSystem.TicketUser" FromRole="User" ToRole="Ticket" />
+        </EntityType>
+        <EntityType Name="Ticket">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TripDateAndTime" Type="DateTime" Nullable="false" />
+          <Property Name="OriginlaPrice" Type="Int32" Nullable="false" />
+          <Property Name="PriceSold" Type="Int32" Nullable="false" />
+          <Property Name="UserSoldTo" Type="Int32" Nullable="false" />
+          <Property Name="SeatNumber" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Schedule" Relationship="TicketSystem.ScheduleTicket" FromRole="Ticket" ToRole="Schedule" />
+          <NavigationProperty Name="User" Relationship="TicketSystem.TicketUser" FromRole="Ticket" ToRole="User" />
+        </EntityType>
+        <EntityType Name="DiscountCard">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" Nullable="false" />
+          <Property Name="Discount" Type="Int32" Nullable="false" />
+          <Property Name="FirstClass" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="TicketSystem.UserDiscountCard" FromRole="DiscountCard" ToRole="User" />
+        </EntityType>
+        <Association Name="ScheduleCity">
+          <End Type="TicketSystem.Schedule" Role="Schedule" Multiplicity="1" />
+          <End Type="TicketSystem.City" Role="City" Multiplicity="*" />
+        </Association>
+        <Association Name="ScheduleTain">
+          <End Type="TicketSystem.Schedule" Role="Schedule" Multiplicity="1" />
+          <End Type="TicketSystem.Tain" Role="Tain" Multiplicity="*" />
+        </Association>
+        <Association Name="ScheduleTicket">
+          <End Type="TicketSystem.Schedule" Role="Schedule" Multiplicity="1" />
+          <End Type="TicketSystem.Ticket" Role="Ticket" Multiplicity="*" />
+        </Association>
+        <Association Name="UserDiscountCard">
+          <End Type="TicketSystem.User" Role="User" Multiplicity="1" />
+          <End Type="TicketSystem.DiscountCard" Role="DiscountCard" Multiplicity="*" />
+        </Association>
+        <Association Name="TicketUser">
+          <End Type="TicketSystem.Ticket" Role="Ticket" Multiplicity="1" />
+          <End Type="TicketSystem.User" Role="User" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TicketSystemStoreContainer" CdmEntityContainer="TicketSystemContainer">
+    <EntitySetMapping Name="CitySet">
+      <EntityTypeMapping TypeName="IsTypeOf(TicketSystem.City)">
+        <MappingFragment StoreEntitySet="CitySet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TainSet">
+      <EntityTypeMapping TypeName="IsTypeOf(TicketSystem.Tain)">
+        <MappingFragment StoreEntitySet="TainSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Seats" ColumnName="Seats" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ScheduleSet">
+      <EntityTypeMapping TypeName="IsTypeOf(TicketSystem.Schedule)">
+        <MappingFragment StoreEntitySet="ScheduleSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="StartCity" ColumnName="StartCity" />
+          <ScalarProperty Name="EndCity" ColumnName="EndCity" />
+          <ScalarProperty Name="TravelTime" ColumnName="TravelTime" />
+          <ScalarProperty Name="TrainId" ColumnName="TrainId" />
+          <ScalarProperty Name="TicketPrice" ColumnName="TicketPrice" />
+          <ScalarProperty Name="TicketId" ColumnName="TicketId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserSet">
+      <EntityTypeMapping TypeName="IsTypeOf(TicketSystem.User)">
+        <MappingFragment StoreEntitySet="UserSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="DiscountCardNumber" ColumnName="DiscountCardNumber" />
+          <ScalarProperty Name="CreditCardNumberHash" ColumnName="CreditCardNumberHash" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="TickedId" ColumnName="TickedId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TicketSet">
+      <EntityTypeMapping TypeName="IsTypeOf(TicketSystem.Ticket)">
+        <MappingFragment StoreEntitySet="TicketSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TripDateAndTime" ColumnName="TripDateAndTime" />
+          <ScalarProperty Name="OriginlaPrice" ColumnName="OriginlaPrice" />
+          <ScalarProperty Name="PriceSold" ColumnName="PriceSold" />
+          <ScalarProperty Name="UserSoldTo" ColumnName="UserSoldTo" />
+          <ScalarProperty Name="SeatNumber" ColumnName="SeatNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DiscountCardSet">
+      <EntityTypeMapping TypeName="IsTypeOf(TicketSystem.DiscountCard)">
+        <MappingFragment StoreEntitySet="DiscountCardSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="FirstClass" ColumnName="FirstClass" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="ScheduleCity" TypeName="TicketSystem.ScheduleCity" StoreEntitySet="CitySet">
+      <EndProperty Name="Schedule">
+        <ScalarProperty Name="Id" ColumnName="Schedule_Id" />
+      </EndProperty>
+      <EndProperty Name="City">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ScheduleTain" TypeName="TicketSystem.ScheduleTain" StoreEntitySet="TainSet">
+      <EndProperty Name="Schedule">
+        <ScalarProperty Name="Id" ColumnName="Schedule_Id" />
+      </EndProperty>
+      <EndProperty Name="Tain">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ScheduleTicket" TypeName="TicketSystem.ScheduleTicket" StoreEntitySet="TicketSet">
+      <EndProperty Name="Schedule">
+        <ScalarProperty Name="Id" ColumnName="Schedule_Id" />
+      </EndProperty>
+      <EndProperty Name="Ticket">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="UserDiscountCard" TypeName="TicketSystem.UserDiscountCard" StoreEntitySet="DiscountCardSet">
+      <EndProperty Name="User">
+        <ScalarProperty Name="Id" ColumnName="User_Id" />
+      </EndProperty>
+      <EndProperty Name="DiscountCard">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="TicketUser" TypeName="TicketSystem.TicketUser" StoreEntitySet="UserSet">
+      <EndProperty Name="Ticket">
+        <ScalarProperty Name="Id" ColumnName="Ticket_Id" />
+      </EndProperty>
+      <EndProperty Name="User">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

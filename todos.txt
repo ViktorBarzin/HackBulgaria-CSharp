@@ -6,4 +6,4 @@ week 08 - finish panda saving to files
 
 week 09 - finish ado.net if ever get bored
 
-week 10 - complete UI for HackLibrary/ check todos
+week 10 - complete UI for HackLibrary/ check todos / populate db / dbconnection methods check

@@ -103,11 +103,8 @@ namespace HackLibraryApplication
         public Book GetBookInfo(string title)
         {
             return
-                this.context.Books.OrderBy(a => a.Title)
-                    .Select(x => x)
-                    .Where(y => y.Title.StartsWith(title) || y.Title.Contains(title) || y.Title.EndsWith(title))
-                    .Take(1)
-                    .SingleOrDefault();
+                this.context.Books.FirstOrDefault(y => y.Title.Contains(title))
+                
         }
 
         public bool Borrow(Loan loan)
