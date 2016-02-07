@@ -12,12 +12,21 @@ namespace TicketSystem
     using System;
     using System.Collections.Generic;
     
-    public partial class Tain
+    public partial class Train
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Train()
+        {
+            this.ScheduleSet = new HashSet<Schedule>();
+        }
+    
         public int Id { get; set; }
         public int Seats { get; set; }
         public string Description { get; set; }
+        public byte[] Free { get; set; }
     
         public virtual Schedule Schedule { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Schedule> ScheduleSet { get; set; }
     }
 }

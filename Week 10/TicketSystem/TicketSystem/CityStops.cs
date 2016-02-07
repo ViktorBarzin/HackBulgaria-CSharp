@@ -12,17 +12,12 @@ namespace TicketSystem
     using System;
     using System.Collections.Generic;
     
-    public partial class Ticket
+    public partial class CityStops
     {
         public int Id { get; set; }
-        public System.DateTime TripDateAndTime { get; set; }
-        public int OriginlaPrice { get; set; }
-        public int PriceSold { get; set; }
-        public Nullable<int> UserSoldTo { get; set; }
-        public int SeatNumber { get; set; }
-        public bool Bought { get; set; }
+        public string City { get; set; }
+        public int ScheduleId { get; set; }
     
         public virtual Schedule Schedule { get; set; }
-        public virtual User User { get; set; }
     }
 }

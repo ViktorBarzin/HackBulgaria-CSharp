@@ -5,17 +5,20 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="3ce2da1b486a4b23ba2c6c07bd2f3d6b" Name="Diagram1" ZoomLevel="97" >
-        <EntityTypeShape EntityType="TicketSystem.City" Width="1.375" PointX="1" PointY="1.25" />
-        <EntityTypeShape EntityType="TicketSystem.Tain" Width="1.5" PointX="3.875" PointY="4.125" />
+        <EntityTypeShape EntityType="TicketSystem.City" Width="1.375" PointX="1" PointY="0.5" />
+        <EntityTypeShape EntityType="TicketSystem.Train" Width="1.5" PointX="3.75" PointY="4.625" />
         <EntityTypeShape EntityType="TicketSystem.Schedule" Width="1.5" PointX="3.5" PointY="0.5" />
         <EntityTypeShape EntityType="TicketSystem.User" Width="2.125" PointX="8.875" PointY="2.875" />
         <EntityTypeShape EntityType="TicketSystem.Ticket" Width="1.5" PointX="6.375" PointY="1.375" />
         <EntityTypeShape EntityType="TicketSystem.DiscountCard" Width="1.5" PointX="9.375" PointY="0.5" />
         <AssociationConnector Association="TicketSystem.ScheduleCity" ></AssociationConnector>
-        <AssociationConnector Association="TicketSystem.ScheduleTain" />
+        <AssociationConnector Association="TicketSystem.ScheduleTrain" />
         <AssociationConnector Association="TicketSystem.ScheduleTicket" ></AssociationConnector>
-        <AssociationConnector Association="TicketSystem.UserDiscountCard" />
         <AssociationConnector Association="TicketSystem.TicketUser" />
+        <EntityTypeShape EntityType="TicketSystem.CityStops" Width="1.5" PointX="0.875" PointY="2.875" />
+        <AssociationConnector Association="TicketSystem.ScheduleCityStops" />
+        <AssociationConnector Association="TicketSystem.UserDiscountCard" />
+        <AssociationConnector Association="TicketSystem.FK_ScheduleTain" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

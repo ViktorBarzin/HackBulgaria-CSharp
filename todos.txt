@@ -1,5 +1,7 @@
 *week 05 - insert more algos
 
+week 05? - data structures fixes 
+
 week 08 - fix subtitles
 week 08	- sql Stored Procedures
 week 08 - finish panda saving to files

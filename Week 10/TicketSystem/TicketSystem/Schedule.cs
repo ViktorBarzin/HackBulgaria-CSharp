@@ -18,8 +18,8 @@ namespace TicketSystem
         public Schedule()
         {
             this.City = new HashSet<City>();
-            this.Tain = new HashSet<Tain>();
             this.Ticket = new HashSet<Ticket>();
+            this.CityStops = new HashSet<CityStops>();
         }
     
         public int Id { get; set; }
@@ -29,12 +29,15 @@ namespace TicketSystem
         public int TrainId { get; set; }
         public int TicketPrice { get; set; }
         public int TicketId { get; set; }
+        public int Tain_Id { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<City> City { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Tain> Tain { get; set; }
+        public virtual Train Train { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Ticket> Ticket { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CityStops> CityStops { get; set; }
+        public virtual Train TrainSet { get; set; }
     }
 }

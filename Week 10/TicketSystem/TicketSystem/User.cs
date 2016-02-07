@@ -17,10 +17,10 @@ namespace TicketSystem
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public User()
         {
-            this.DiscountCard = new HashSet<DiscountCard>();
+            this.Ticket = new HashSet<Ticket>();
         }
     
-        public string Id { get; set; }
+        public int Id { get; set; }
         public string Username { get; set; }
         public string Email { get; set; }
         public string PasswordHash { get; set; }
@@ -33,7 +33,7 @@ namespace TicketSystem
         public int TickedId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DiscountCard> DiscountCard { get; set; }
-        public virtual Ticket Ticket { get; set; }
+        public virtual ICollection<Ticket> Ticket { get; set; }
+        public virtual DiscountCard DiscountCard { get; set; }
     }
 }

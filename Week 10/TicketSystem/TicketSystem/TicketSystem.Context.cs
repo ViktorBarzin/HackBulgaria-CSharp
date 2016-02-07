@@ -26,10 +26,11 @@ namespace TicketSystem
         }
     
         public virtual DbSet<City> CitySet { get; set; }
-        public virtual DbSet<Tain> TainSet { get; set; }
+        public virtual DbSet<Train> TrainSet { get; set; }
         public virtual DbSet<Schedule> ScheduleSet { get; set; }
         public virtual DbSet<User> UserSet { get; set; }
         public virtual DbSet<Ticket> TicketSet { get; set; }
         public virtual DbSet<DiscountCard> DiscountCardSet { get; set; }
+        public virtual DbSet<CityStops> CityStopsSet { get; set; }
     }
 }
