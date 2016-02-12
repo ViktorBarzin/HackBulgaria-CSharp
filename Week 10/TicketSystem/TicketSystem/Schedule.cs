@@ -20,6 +20,7 @@ namespace TicketSystem
             this.City = new HashSet<City>();
             this.Ticket = new HashSet<Ticket>();
             this.CityStops = new HashSet<CityStops>();
+            this.CityStopsSet = new HashSet<CityStops>();
         }
     
         public int Id { get; set; }
@@ -39,5 +40,7 @@ namespace TicketSystem
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CityStops> CityStops { get; set; }
         public virtual Train TrainSet { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CityStops> CityStopsSet { get; set; }
     }
 }

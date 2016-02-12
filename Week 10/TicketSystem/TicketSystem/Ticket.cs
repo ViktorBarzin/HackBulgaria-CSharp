@@ -21,6 +21,7 @@ namespace TicketSystem
         public Nullable<int> UserSoldTo { get; set; }
         public int SeatNumber { get; set; }
         public bool Bought { get; set; }
+        public int OriginalPrice { get; set; }
     
         public virtual Schedule Schedule { get; set; }
         public virtual User User { get; set; }

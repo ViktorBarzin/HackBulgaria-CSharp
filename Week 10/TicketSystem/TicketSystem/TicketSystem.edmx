@@ -20,7 +20,6 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="City" Type="nvarchar(max)" Nullable="false" />
           <Property Name="ScheduleId" Type="int" Nullable="false" />
-          <Property Name="Schedule_Id" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="DiscountCardSet">
           <Key>
@@ -42,7 +41,6 @@
           <Property Name="TrainId" Type="int" Nullable="false" />
           <Property Name="TicketPrice" Type="int" Nullable="false" />
           <Property Name="TicketId" Type="int" Nullable="false" />
-          <Property Name="Tain_Id" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="TicketSet">
           <Key>
@@ -50,7 +48,7 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TripDateAndTime" Type="datetime" Nullable="false" />
-          <Property Name="OriginlaPrice" Type="int" Nullable="false" />
+          <Property Name="OriginalPrice" Type="int" Nullable="false" />
           <Property Name="PriceSold" Type="int" Nullable="false" />
           <Property Name="UserSoldTo" Type="int" />
           <Property Name="SeatNumber" Type="int" Nullable="false" />
@@ -83,6 +81,18 @@
           <Property Name="Ticket_Id" Type="int" Nullable="false" />
           <Property Name="DiscountCard_Id" Type="bigint" Nullable="false" />
         </EntityType>
+        <Association Name="FK_CityStopsSet_ScheduleSet">
+          <End Role="ScheduleSet" Type="Self.ScheduleSet" Multiplicity="1" />
+          <End Role="CityStopsSet" Type="Self.CityStopsSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ScheduleSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CityStopsSet">
+              <PropertyRef Name="ScheduleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_ScheduleCity">
           <End Role="ScheduleSet" Type="Self.ScheduleSet" Multiplicity="1" />
           <End Role="CitySet" Type="Self.CitySet" Multiplicity="*" />
@@ -92,30 +102,6 @@
             </Principal>
             <Dependent Role="CitySet">
               <PropertyRef Name="Schedule_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ScheduleCityStops">
-          <End Role="ScheduleSet" Type="Self.ScheduleSet" Multiplicity="1" />
-          <End Role="CityStopsSet" Type="Self.CityStopsSet" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ScheduleSet">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="CityStopsSet">
-              <PropertyRef Name="Schedule_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ScheduleTain">
-          <End Role="TrainSet" Type="Self.TrainSet" Multiplicity="1" />
-          <End Role="ScheduleSet" Type="Self.ScheduleSet" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TrainSet">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="ScheduleSet">
-              <PropertyRef Name="Tain_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -163,17 +149,13 @@
           <EntitySet Name="TicketSet" EntityType="Self.TicketSet" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TrainSet" EntityType="Self.TrainSet" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserSet" EntityType="Self.UserSet" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_ScheduleCity" Association="Self.FK_ScheduleCity">
-            <End Role="ScheduleSet" EntitySet="ScheduleSet" />
-            <End Role="CitySet" EntitySet="CitySet" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ScheduleCityStops" Association="Self.FK_ScheduleCityStops">
+          <AssociationSet Name="FK_CityStopsSet_ScheduleSet" Association="Self.FK_CityStopsSet_ScheduleSet">
             <End Role="ScheduleSet" EntitySet="ScheduleSet" />
             <End Role="CityStopsSet" EntitySet="CityStopsSet" />
           </AssociationSet>
-          <AssociationSet Name="FK_ScheduleTain" Association="Self.FK_ScheduleTain">
-            <End Role="TrainSet" EntitySet="TrainSet" />
+          <AssociationSet Name="FK_ScheduleCity" Association="Self.FK_ScheduleCity">
             <End Role="ScheduleSet" EntitySet="ScheduleSet" />
+            <End Role="CitySet" EntitySet="CitySet" />
           </AssociationSet>
           <AssociationSet Name="FK_ScheduleTicket" Association="Self.FK_ScheduleTicket">
             <End Role="ScheduleSet" EntitySet="ScheduleSet" />
@@ -228,6 +210,10 @@
             <End Role="Train" EntitySet="TrainSet" />
             <End Role="Schedule" EntitySet="ScheduleSet" />
           </AssociationSet>
+          <AssociationSet Name="FK_CityStopsSet_ScheduleSet" Association="TicketSystem.FK_CityStopsSet_ScheduleSet">
+            <End Role="Schedule" EntitySet="ScheduleSet" />
+            <End Role="CityStops" EntitySet="CityStopsSet" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="City">
           <Key>
@@ -265,6 +251,7 @@
           <NavigationProperty Name="CityStops" Relationship="TicketSystem.ScheduleCityStops" FromRole="Schedule" ToRole="CityStops" />
           <Property Name="Tain_Id" Type="Int32" Nullable="false" />
           <NavigationProperty Name="TrainSet" Relationship="TicketSystem.FK_ScheduleTain" FromRole="Schedule" ToRole="Train" />
+          <NavigationProperty Name="CityStopsSet" Relationship="TicketSystem.FK_CityStopsSet_ScheduleSet" FromRole="Schedule" ToRole="CityStops" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -297,6 +284,7 @@
           <NavigationProperty Name="Schedule" Relationship="TicketSystem.ScheduleTicket" FromRole="Ticket" ToRole="Schedule" />
           <NavigationProperty Name="User" Relationship="TicketSystem.TicketUser" FromRole="Ticket" ToRole="User" />
           <Property Name="Bought" Type="Boolean" Nullable="false" />
+          <Property Name="OriginalPrice" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="DiscountCard">
           <Key>
@@ -332,6 +320,7 @@
           <Property Name="City" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="ScheduleId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Schedule" Relationship="TicketSystem.ScheduleCityStops" FromRole="CityStops" ToRole="Schedule" />
+          <NavigationProperty Name="ScheduleSet" Relationship="TicketSystem.FK_CityStopsSet_ScheduleSet" FromRole="CityStops" ToRole="Schedule" />
         </EntityType>
         <Association Name="ScheduleCityStops">
           <End Type="TicketSystem.Schedule" Role="Schedule" Multiplicity="1" />
@@ -350,6 +339,18 @@
             </Principal>
             <Dependent Role="Schedule">
               <PropertyRef Name="Tain_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CityStopsSet_ScheduleSet">
+          <End Type="TicketSystem.Schedule" Role="Schedule" Multiplicity="1" />
+          <End Type="TicketSystem.CityStops" Role="CityStops" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Schedule">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CityStops">
+              <PropertyRef Name="ScheduleId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -380,7 +381,6 @@
     <EntitySetMapping Name="ScheduleSet">
       <EntityTypeMapping TypeName="IsTypeOf(TicketSystem.Schedule)">
         <MappingFragment StoreEntitySet="ScheduleSet">
-          <ScalarProperty Name="Tain_Id" ColumnName="Tain_Id" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="StartCity" ColumnName="StartCity" />
           <ScalarProperty Name="EndCity" ColumnName="EndCity" />
@@ -411,9 +411,9 @@
     <EntitySetMapping Name="TicketSet">
       <EntityTypeMapping TypeName="IsTypeOf(TicketSystem.Ticket)">
         <MappingFragment StoreEntitySet="TicketSet">
+                <ScalarProperty Name="OriginalPrice" ColumnName="OriginalPrice" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="TripDateAndTime" ColumnName="TripDateAndTime" />
-          <ScalarProperty Name="OriginlaPrice" ColumnName="OriginlaPrice" />
           <ScalarProperty Name="PriceSold" ColumnName="PriceSold" />
           <ScalarProperty Name="UserSoldTo" ColumnName="UserSoldTo" />
           <ScalarProperty Name="SeatNumber" ColumnName="SeatNumber" />
@@ -469,9 +469,6 @@
       </EndProperty>
     </AssociationSetMapping>
     <AssociationSetMapping Name="ScheduleCityStops" TypeName="TicketSystem.ScheduleCityStops" StoreEntitySet="CityStopsSet">
-      <EndProperty Name="Schedule">
-        <ScalarProperty Name="Id" ColumnName="Schedule_Id" />
-      </EndProperty>
       <EndProperty Name="CityStops">
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>

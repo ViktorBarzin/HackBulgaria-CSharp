@@ -11,6 +11,7 @@ namespace Application
     {
         static void Main(string[] args)
         {
+            // update model from db when db completed
         }
     }
 }

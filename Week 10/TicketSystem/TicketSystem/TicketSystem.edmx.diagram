@@ -19,6 +19,7 @@
         <AssociationConnector Association="TicketSystem.ScheduleCityStops" />
         <AssociationConnector Association="TicketSystem.UserDiscountCard" />
         <AssociationConnector Association="TicketSystem.FK_ScheduleTain" />
+        <AssociationConnector Association="TicketSystem.FK_CityStopsSet_ScheduleSet" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
