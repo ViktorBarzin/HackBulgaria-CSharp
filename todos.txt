@@ -13,3 +13,4 @@ week 10 - hacktrain company - check why db relationships fail
 sql - uniqueness of each row?
 
 week 11 - make calculator work and improve UI
+week 11 - calculator with wpf
