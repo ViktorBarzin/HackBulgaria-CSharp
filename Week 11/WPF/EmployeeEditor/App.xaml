@@ -1,9 +1,9 @@
-﻿<Application x:Class="StylishCalculator.App"
+﻿<Application x:Class="EmployeeEditor.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:StylishCalculator"
+             xmlns:local="clr-namespace:EmployeeEditor"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-        <ResourceDictionary Source="Resources/Black.xaml"/>
+         
     </Application.Resources>
 </Application>

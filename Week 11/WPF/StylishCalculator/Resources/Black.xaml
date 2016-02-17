@@ -3,6 +3,6 @@
                     xmlns:local="clr-namespace:StylishCalculator">
     <Style x:Key="BlackStyle" TargetType="Button">
         <Setter Property="FontSize" Value="70"></Setter>
-        <Setter Property="Background" Value="Black"></Setter>
+        <Setter Property="Background" Value="Red"></Setter>
     </Style>
 </ResourceDictionary>

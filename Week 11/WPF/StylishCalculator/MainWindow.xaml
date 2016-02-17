@@ -13,8 +13,9 @@
 		VerticalAlignment="Top"
 		Width="75"
         Click="ButtonBase_OnClick"
-        Style="{StaticResource Resources/Black.xaml}">
+            Style="{DynamicResource BlackStyle}">
             <TextBlock Text="Click me"/>
+            <!--<ResourceDictionary Source="Black.xaml"></ResourceDictionary>-->
         </Button>
     </Grid>
 </Window>
