@@ -20,6 +20,13 @@
         <AssociationConnector Association="TicketSystem.UserDiscountCard" />
         <AssociationConnector Association="TicketSystem.FK_ScheduleTain" />
         <AssociationConnector Association="TicketSystem.FK_CityStopsSet_ScheduleSet" />
+        <EntityTypeShape EntityType="TicketSystem.sysdiagrams" Width="1.5" PointX="0.75" PointY="6.75" />
+        <AssociationConnector Association="TicketSystem.FK_CityStopsSet_CitySet" />
+        <AssociationConnector Association="TicketSystem.FK_ScheduleSet_CitySet" />
+        <AssociationConnector Association="TicketSystem.FK_ScheduleSet_CitySet1" />
+        <AssociationConnector Association="TicketSystem.FK_UserDiscountCard" />
+        <AssociationConnector Association="TicketSystem.FK_ScheduleSet_TicketSet" />
+        <AssociationConnector Association="TicketSystem.FK_ScheduleSet_TrainSet" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

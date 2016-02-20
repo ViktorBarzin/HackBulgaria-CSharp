@@ -10,7 +10,8 @@ week 09 - finish ado.net if ever get bored
 
 week 10 - complete UI for HackLibrary/ check todos / populate db / dbconnection methods check
 week 10 - hacktrain company - check why db relationships fail
-sql - uniqueness of each row?
 
 week 11 - make calculator work and improve UI
 week 11 - calculator with wpf
+
+week 12 - web forms - Deploy the application as a new web application "ClickCounter" inside IIS

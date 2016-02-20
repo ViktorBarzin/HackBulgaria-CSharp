@@ -41,11 +41,18 @@
         </Grid>
 
         <Grid x:Name="EmployeeGrid" Grid.Row="1" Margin="15" DataContext="{StaticResource employeeViewSource}">
-            <DataGrid x:Name="dataGrid" ItemsSource="{Binding}">
+            <DataGrid x:Name="dataGrid" ItemsSource="{Binding}" IsReadOnly="True" AutoGenerateColumns="False">
                 <DataGrid.ItemContainerStyle>
                     <Style TargetType="DataGridRow">
                     </Style>
                 </DataGrid.ItemContainerStyle>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Name}" Header="Name" ></DataGridTextColumn>
+                    <DataGridTextColumn Binding="{Binding Email}" Header="Email" ></DataGridTextColumn>
+                    <DataGridTextColumn Binding="{Binding DateOfBirth}" Header="Date of birth" ></DataGridTextColumn>
+                    <DataGridTextColumn Binding="{Binding ManagerId}" Header="Manager ID" ></DataGridTextColumn>
+                    <DataGridTextColumn Binding="{Binding DepartamentId}" Header="Department ID" ></DataGridTextColumn>
+                </DataGrid.Columns>
             </DataGrid>
         </Grid>
         <Grid Grid.Row="2">

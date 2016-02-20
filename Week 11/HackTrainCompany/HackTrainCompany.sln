@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\DataAccess.csproj", "{2E2DFD38-8537-4B33-88A1-328ADB5CF4B9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserInterface", "UserInterface\UserInterface.csproj", "{0CB74A99-CC42-4466-B158-9E72AD7199AD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UIConsole", "UIConsole\UIConsole.csproj", "{5ECA2936-D6EE-4BD6-AE07-9400797AA56C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2E2DFD38-8537-4B33-88A1-328ADB5CF4B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E2DFD38-8537-4B33-88A1-328ADB5CF4B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E2DFD38-8537-4B33-88A1-328ADB5CF4B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E2DFD38-8537-4B33-88A1-328ADB5CF4B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0CB74A99-CC42-4466-B158-9E72AD7199AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CB74A99-CC42-4466-B158-9E72AD7199AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CB74A99-CC42-4466-B158-9E72AD7199AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CB74A99-CC42-4466-B158-9E72AD7199AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5ECA2936-D6EE-4BD6-AE07-9400797AA56C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5ECA2936-D6EE-4BD6-AE07-9400797AA56C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5ECA2936-D6EE-4BD6-AE07-9400797AA56C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5ECA2936-D6EE-4BD6-AE07-9400797AA56C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
