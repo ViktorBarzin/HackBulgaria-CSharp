@@ -29,7 +29,7 @@ namespace AspNetWebFormsProblems
                 allUsers.Append(string.Format("{0}:{1}", key.ToString(), Application[key.ToString()])).Append("<br/>");
             }
 
-            lblAllUserClicks.Text = allUsers.ToString().Replace(Environment.NewLine, "<br />"); ;
+            lblAllUserClicks.Text = allUsers.ToString().Replace(Environment.NewLine, "<br/>"); ;
         }
     }
 }

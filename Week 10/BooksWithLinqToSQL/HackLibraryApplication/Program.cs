@@ -10,7 +10,7 @@ namespace HackLibraryApplication
     {
         static void Main(string[] args)
         {
-            // TODO : finish UI when enough time
+            // TODO : finish UI
             string input = Console.ReadLine();
             Application(input);
 

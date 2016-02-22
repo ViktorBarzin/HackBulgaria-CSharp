@@ -32,7 +32,9 @@
             this.hackCompanyDataSet = ((EmployeeEditor.HackCompanyDataSet)(this.FindResource("hackCompanyDataSet")));
             // Load data into the table Employee. You can modify this code as needed.
             this.hackCompanyDataSetEmployeeTableAdapter = new EmployeeEditor.HackCompanyDataSetTableAdapters.EmployeeTableAdapter();
+
             hackCompanyDataSetEmployeeTableAdapter.Fill(hackCompanyDataSet.Employee);
+
             System.Windows.Data.CollectionViewSource employeeViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("employeeViewSource")));
             employeeViewSource.View.MoveCurrentToFirst();
         }

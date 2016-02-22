@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="aa3ca4e141da40bfb740c650cf681870" Name="Diagram1">
+        <EntityTypeShape EntityType="HackTrainCompanyModel.CitySet" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HackTrainCompanyModel.CityStopsSet" Width="1.5" PointX="3" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HackTrainCompanyModel.DiscountCardSet" Width="1.5" PointX="1.5" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HackTrainCompanyModel.ScheduleSet" Width="1.5" PointX="6" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="HackTrainCompanyModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HackTrainCompanyModel.TicketSet" Width="1.5" PointX="3.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="HackTrainCompanyModel.TrainSet" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HackTrainCompanyModel.UserSet" Width="1.5" PointX="1.5" PointY="6.5" IsExpanded="true" />
+        <AssociationConnector Association="HackTrainCompanyModel.FK_CityStopsSet_CitySet" ManuallyRouted="false" />
+        <AssociationConnector Association="HackTrainCompanyModel.FK_ScheduleSet_CitySet" ManuallyRouted="false" />
+        <AssociationConnector Association="HackTrainCompanyModel.FK_ScheduleSet_CitySet1" ManuallyRouted="false" />
+        <AssociationConnector Association="HackTrainCompanyModel.FK_CityStopsSet_ScheduleSet" ManuallyRouted="false" />
+        <AssociationConnector Association="HackTrainCompanyModel.FK_UserDiscountCard" ManuallyRouted="false" />
+        <AssociationConnector Association="HackTrainCompanyModel.FK_ScheduleSet_TicketSet" ManuallyRouted="false" />
+        <AssociationConnector Association="HackTrainCompanyModel.FK_ScheduleSet_TrainSet" ManuallyRouted="false" />
+        <AssociationConnector Association="HackTrainCompanyModel.FK_TicketSet_UserSet" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
