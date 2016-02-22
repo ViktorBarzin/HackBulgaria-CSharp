@@ -25,18 +25,55 @@ namespace HackTrainCompany
     {
         public UserLoggedIn()
         {
-            //this.DataContext = this;
             InitializeComponent();
+            this.CmbCityA.ItemsSource = DataAccess.DataAccess.GetAllCities().Select(x => x.Name);
+            this.CmbCityB.ItemsSource = DataAccess.DataAccess.GetAllCities().Select(x => x.Name);
         }
 
         private void BtnBuyTicket_OnClick(object sender, RoutedEventArgs e)
         {
+            // TODO : Buy tickets and admin panel
             throw new NotImplementedException();
         }
 
         private void BtnDisplayTrips_OnClick(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            if (this.CmbCityA.SelectedItem == null)
+            {
+                MessageBox.Show("Select the first city!");
+            }
+            if (this.CmbCityB.SelectedItem == null)
+            {
+                MessageBox.Show("Select the second city!");
+            }
+            else
+            {
+                //MessageBox.Show(CmbCityA.SelectedItem.ToString());
+                CitySet cityA = DataAccess.DataAccess.GetAllCities().FirstOrDefault(x => x.Name == CmbCityA.SelectedItem.ToString());
+
+                CitySet cityB = DataAccess.DataAccess.GetAllCities().FirstOrDefault(x => x.Name == CmbCityB.SelectedItem.ToString());
+
+                if (cityA == null || cityB == null)
+                {
+                    MessageBox.Show("Select a city first!");
+                }
+                else
+                {
+                    var allTripsFromAtoB = DataAccess.DataAccess.GetFullSchedule()
+                          .Where(x => x.StartCityId == cityA.Id)
+                          .Where(y => y.EndCityId == cityB.Id);
+
+                    StringBuilder allTrips = new StringBuilder();
+
+                    foreach (var trip in allTripsFromAtoB)
+                    {
+                        allTrips.Append(string.Format("trip id: {0}, trip start date: {1}, train id: {2}", trip.Id,trip.StartDate,trip.TrainId)).AppendLine();
+                    }
+
+                    MessageBox.Show(allTrips.ToString());
+                }
+                
+            }
         }
 
         private void BtnDisplaySchedule_OnClick(object sender, RoutedEventArgs e)
@@ -48,25 +85,17 @@ namespace HackTrainCompany
             }
             else
             {
-                // 14.10.2016
-                // TODO : check if filtering is correct
-                // TODO : continue from fixing the date of the trips
-                this.DtgDisplayGrid.DataContext = DataAccess.DataAccess.GetFullSchedule().Where(x => (x.StartDate as DateTime?).Value.Year == selectedTime.Value.Year)
-                    .Where(y => (y.StartDate as DateTime?).Value.Month == selectedTime.Value.Month);
+                this.DtgDisplayGrid.DataContext =
+                    DataAccess.DataAccess.GetFullSchedule()
+                              .Where(x => x.StartDate.Value.Date.ToShortDateString() == selectedTime.Value.Date.ToShortDateString());
             }
         }
 
-        //private void FillGrid()
-        //{
-        //    string ConString = ConfigurationManager.ConnectionStrings["ConString"].ConnectionString;
-        //    string CmdString = string.Empty;
-        //    using (SqlConnection con = new SqlConnection(ConString))
-        //    {
-        //        SqlDataAdapter sda = new SqlDataAdapter();
-        //    DataTable dt = new DataTable("ScheduleSet");
-        //    sda.Fill(dt);
-        //    this.DtgDisplayGrid.ItemsSource = dt.DefaultView;
-        //}
-    
+        private void BtnLogout_OnClick(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = new MainWindow();
+            this.Close();
+            mainWindow.ShowDialog();
+        }
     }
 }

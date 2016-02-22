@@ -1,5 +1,4 @@
 *week 05 - insert more algos
-
 week 05? - data structures fixes 
 
 week 08 - fix subtitles
@@ -9,9 +8,9 @@ week 08 - finish panda saving connections to file
 week 09 - finish ado.net if ever get bored
 
 week 10 - complete UI for HackLibrary/ check todos / populate db / dbconnection methods check
-week 10 - hacktrain company - check why db relationships fail
 
 week 11 - make calculator work and improve UI
 week 11 - calculator with wpf
+week 11 - hack train company ticket system - Buy tickets and admin panel
 
 week 12 - web forms - Deploy the application as a new web application "ClickCounter" inside IIS

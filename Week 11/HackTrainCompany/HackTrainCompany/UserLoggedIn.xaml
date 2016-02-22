@@ -12,7 +12,7 @@
                               Source="{Binding ScheduleSet, 
             Source={StaticResource HackTrainCompany}}"/>
     </Window.Resources>
-    
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -26,12 +26,12 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        
+
         <!--Display schedule for-->
         <Label Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Display schedule for:"></Label>
         <DatePicker x:Name="DpcDatePicker" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <Button x:Name="BtnDisplaySchedule" Grid.Row="0" Grid.Column="2" Margin="20 30 20 30" Content="Show" Click="BtnDisplaySchedule_OnClick"/>
-        
+
         <!--All trips from A to B-->
         <Label Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Show all trips from "/>
         <Grid Grid.Row="1" Grid.Column="1">
@@ -40,10 +40,10 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            
-            <ComboBox Grid.Column="0" Margin="5 32 5 32"/>
+
+            <ComboBox x:Name="CmbCityA" Grid.Column="0" Margin="5 32 5 32"/>
             <Label Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Content=" to "/>
-            <ComboBox Grid.Column="2" Margin="5 32 5 32"/>
+            <ComboBox  x:Name="CmbCityB" Grid.Column="2" Margin="5 32 5 32"/>
         </Grid>
         <Button x:Name="BtnDisplayTrips" Grid.Row="1" Grid.Column="2" Margin="20 30 20 30" Content="Show" Click="BtnDisplayTrips_OnClick"/>
 
@@ -55,9 +55,25 @@
                   Grid.Row="3"
                   Grid.RowSpan="2"
                   Grid.Column="0" 
-                  Grid.ColumnSpan="3" 
-                  ItemsSource="{Binding}"/>
+                  Grid.ColumnSpan="3"
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True"
+                  ItemsSource="{Binding}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding StartDate}" Header="Start Date" ></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding TrainId}" Header="Train ID" ></DataGridTextColumn>
+                <!--TODO : convert city id to city name?-->
+                <DataGridTextColumn Binding="{Binding StartCityId}" Header="Start City ID" ></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding EndCityId}" Header="End City ID" ></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding TravelTime}" Header="Travel time" ></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding TicketId}" Header="Ticket ID" ></DataGridTextColumn>
+
+            </DataGrid.Columns>
+        </DataGrid>
+        
+        <!--Logout-->
+        <Button x:Name="BtnLogout" Grid.Row="2" Grid.Column="2" Margin="20 30 20 30" Click="BtnLogout_OnClick" Content="Logout"></Button>
     </Grid>
-    
-    
+
+
 </Window>
