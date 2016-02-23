@@ -27,7 +27,7 @@
         <PasswordBox x:Name="TxtPassword" Grid.Row="2" Grid.Column="2" VerticalAlignment="Center" Margin="0 0 20 0"/>
 
         <Image Grid.Row="1" Grid.Column="0" Grid.RowSpan="2" Source="C:\Users\Viktor\Desktop\GitHub\HackBulgaria-CSharp\Week 11\WPF\EmployeeEditor\hackman.png"/>
-        <Button x:Name="BtnRegister" Grid.Row="3" Grid.Column="1" Margin="30 25 30 25" Content="Register" Click="Register"/>
-        <Button x:Name="BtnLogin" Grid.Row="3" Grid.Column="2" Margin="30 25 30 25" Content="Login" Click="Login"/>
+        <Button x:Name="BtnRegister" Grid.Row="3" Grid.Column="1" Margin="30 25 30 25" Content="Register" Click="BtnRegister_Click"/>
+        <Button x:Name="BtnLogin" Grid.Row="3" Grid.Column="2" Margin="30 25 30 25" Content="Login" Click="BtnLogin_Click"/>
     </Grid>
 </Window>

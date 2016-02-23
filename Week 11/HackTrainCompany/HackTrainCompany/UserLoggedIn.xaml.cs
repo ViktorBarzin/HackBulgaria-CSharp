@@ -14,9 +14,6 @@ using System.Windows.Shapes;
 
 namespace HackTrainCompany
 {
-    using System.Data;
-    using System.Data.SqlClient;
-    using System.Runtime.CompilerServices;
 
     /// <summary>
     /// Interaction logic for UserLoggedIn.xaml
@@ -32,8 +29,9 @@ namespace HackTrainCompany
 
         private void BtnBuyTicket_OnClick(object sender, RoutedEventArgs e)
         {
-            // TODO : Buy tickets and admin panel
-            throw new NotImplementedException();
+            BuyTicket windows = new BuyTicket();
+            this.Close();
+            windows.Show();
         }
 
         private void BtnDisplayTrips_OnClick(object sender, RoutedEventArgs e)
@@ -48,7 +46,6 @@ namespace HackTrainCompany
             }
             else
             {
-                //MessageBox.Show(CmbCityA.SelectedItem.ToString());
                 CitySet cityA = DataAccess.DataAccess.GetAllCities().FirstOrDefault(x => x.Name == CmbCityA.SelectedItem.ToString());
 
                 CitySet cityB = DataAccess.DataAccess.GetAllCities().FirstOrDefault(x => x.Name == CmbCityB.SelectedItem.ToString());
@@ -61,18 +58,19 @@ namespace HackTrainCompany
                 {
                     var allTripsFromAtoB = DataAccess.DataAccess.GetFullSchedule()
                           .Where(x => x.StartCityId == cityA.Id)
-                          .Where(y => y.EndCityId == cityB.Id);
+                          .Where(y => y.EndCityId == cityB.Id)
+                          .OrderBy(z => z.Id);
 
                     StringBuilder allTrips = new StringBuilder();
 
                     foreach (var trip in allTripsFromAtoB)
                     {
-                        allTrips.Append(string.Format("trip id: {0}, trip start date: {1}, train id: {2}", trip.Id,trip.StartDate,trip.TrainId)).AppendLine();
+                        allTrips.Append(string.Format("trip id: {0}, trip start date: {1}, train id: {2}", trip.Id, trip.StartDate, trip.TrainId)).AppendLine();
                     }
 
                     MessageBox.Show(allTrips.ToString());
                 }
-                
+
             }
         }
 
@@ -85,9 +83,9 @@ namespace HackTrainCompany
             }
             else
             {
-                this.DtgDisplayGrid.DataContext =
-                    DataAccess.DataAccess.GetFullSchedule()
+                var dataGridContext = DataAccess.DataAccess.GetFullSchedule()
                               .Where(x => x.StartDate.Value.Date.ToShortDateString() == selectedTime.Value.Date.ToShortDateString());
+                this.DtgDisplayGrid.DataContext = dataGridContext;
             }
         }
 

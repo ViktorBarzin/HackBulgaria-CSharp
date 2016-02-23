@@ -16,7 +16,7 @@ namespace DataAccess
     {
         private const string DbDoestNotContain = "Database does not contain the specified ";
 
-        public static HackTrainCompanyEntities Context { get; } = new HackTrainCompanyEntities();
+        private static HackTrainCompanyEntities Context { get; } = new HackTrainCompanyEntities();
 
         public static void SaveChanges()
         {

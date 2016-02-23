@@ -66,6 +66,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddCity.xaml.cs">
+      <DependentUpon>AddCity.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AdminLoggedIn.xaml.cs">
+      <DependentUpon>AdminLoggedIn.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BuyTicket.xaml.cs">
+      <DependentUpon>BuyTicket.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CitySet.cs">
       <DependentUpon>HackTrainCompany.tt</DependentUpon>
     </Compile>
@@ -106,6 +115,18 @@
     <Compile Include="UserSet.cs">
       <DependentUpon>HackTrainCompany.tt</DependentUpon>
     </Compile>
+    <Page Include="AddCity.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdminLoggedIn.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BuyTicket.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

@@ -1,0 +1,77 @@
+﻿<Window x:Class="HackTrainCompany.AdminLoggedIn"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HackTrainCompany"
+        mc:Ignorable="d"
+        Title="AdminLoggedIn" Height="497.975" Width="450.607">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Row="0" 
+               VerticalAlignment="Center" 
+               HorizontalAlignment="Center"
+               FontSize="20"
+               Content="Be careful what you do here!"/>
+        <TabControl Grid.Row="1" Grid.RowSpan="2">
+            <TabItem Header="City">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Button x:Name="BtnGetAllCities" 
+                            Grid.Row="0" 
+                            Grid.Column="0"
+                            Margin="30 55 30 55"
+                            Content="Get all cities"
+                            Click="BtnGetAllCities_OnClick"/>
+
+                    <Button x:Name="BtnAddCity" 
+                            Grid.Row="0" 
+                            Grid.Column="1"
+                            Margin="30 55 30 55"
+                            Content="Add new city"
+                            Click="BtnAddCity_OnClick"/>
+
+                    <Button x:Name="BtnDeleteCity" 
+                            Grid.Row="0" 
+                            Grid.Column="2"
+                            Margin="30 55 30 55"
+                            Content="Delete city"
+                            Click="BtnDeleteCity_OnClick"/>
+                    <DataGrid x:Name="DtgAllCities" 
+                              Grid.Row="1" 
+                              Grid.Column="0"
+                              Grid.ColumnSpan="3"
+                              AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn x:Name="DtGridTextColumnId" Binding="{Binding Id}" Header="Id"/>
+                            <DataGridTextColumn x:Name="DtGridTextColumnName" Binding="{Binding Name}" Header="Name"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Train">
+                
+            </TabItem>
+            <TabItem Header="Schedule">
+                
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

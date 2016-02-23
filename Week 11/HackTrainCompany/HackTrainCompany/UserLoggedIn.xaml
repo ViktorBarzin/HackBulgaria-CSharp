@@ -63,7 +63,7 @@
                 <DataGridTextColumn Binding="{Binding StartDate}" Header="Start Date" ></DataGridTextColumn>
                 <DataGridTextColumn Binding="{Binding TrainId}" Header="Train ID" ></DataGridTextColumn>
                 <!--TODO : convert city id to city name?-->
-                <DataGridTextColumn Binding="{Binding StartCityId}" Header="Start City ID" ></DataGridTextColumn>
+                <DataGridTextColumn x:Name="ClmStartCityId" Binding="{Binding StartCityId}" Header="Start City ID" ></DataGridTextColumn>
                 <DataGridTextColumn Binding="{Binding EndCityId}" Header="End City ID" ></DataGridTextColumn>
                 <DataGridTextColumn Binding="{Binding TravelTime}" Header="Travel time" ></DataGridTextColumn>
                 <DataGridTextColumn Binding="{Binding TicketId}" Header="Ticket ID" ></DataGridTextColumn>

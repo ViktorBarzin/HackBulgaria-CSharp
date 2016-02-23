@@ -44,14 +44,14 @@ namespace HackTrainCompany
 
         }
 
-        private void Register(object sender, RoutedEventArgs e)
+        private void BtnRegister_Click(object sender, RoutedEventArgs e)
         {
             Register register = new Register();
             this.Close();
             register.ShowDialog();
         }
 
-        private void Login(object sender, RoutedEventArgs e)
+        private void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
             var user = DataAccess.GetAllUsers().FirstOrDefault(x => x.Username.ToLower() == this.TxtUsername.Text.ToLower());
 
@@ -63,13 +63,15 @@ namespace HackTrainCompany
             {
                 if (user.IsAdmin)
                 {
-                    
+                    AdminLoggedIn window = new AdminLoggedIn();
+                    this.Close();
+                    window.Show();
                 }
                 else
                 {
-                    UserLoggedIn logedin = new UserLoggedIn();
+                    UserLoggedIn window = new UserLoggedIn();
                     this.Close();
-                    logedin.ShowDialog();
+                    window.ShowDialog();
                 }
             }
             else
