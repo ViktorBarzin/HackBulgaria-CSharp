@@ -49,10 +49,6 @@ namespace DataAccess
         {
             try
             {
-                if (!Context.CitySet.Contains(city))
-                {
-                    throw new ArgumentException(string.Format(DbDoestNotContain + "city"));
-                }
                 Context.CitySet.Remove(city);
                 Context.SaveChanges();
                 return true;

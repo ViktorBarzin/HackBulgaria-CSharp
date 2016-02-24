@@ -35,16 +35,20 @@ namespace HackTrainCompany
         {
             if (String.IsNullOrEmpty(this.TxtUsername.Text) 
                 || String.IsNullOrEmpty(this.TxtEmail.Text)
-                || String.IsNullOrEmpty(this.TxtPassword.Text))
+                || String.IsNullOrEmpty(this.TxtPassword.Password))
             {
                 MessageBox.Show("Username, email and password can not be empty!");
+            }
+            else if (this.TxtPassword.Password != this.TxtConfirmPassword.Password)
+            {
+                MessageBox.Show("Passwords are not the same!");
             }
             else
             {
                 UserSet userToAdd = new UserSet();
                 userToAdd.Username = this.TxtUsername.Text;
                 userToAdd.Email = this.TxtEmail.Text;
-                userToAdd.PasswordHash = DataAccess.PasswordHash.HashPassword(this.TxtPassword.Text);
+                userToAdd.PasswordHash = DataAccess.PasswordHash.HashPassword(this.TxtPassword.Password);
 
                 if (!String.IsNullOrEmpty(this.TxtCreditCardNumber.Text))
                 {

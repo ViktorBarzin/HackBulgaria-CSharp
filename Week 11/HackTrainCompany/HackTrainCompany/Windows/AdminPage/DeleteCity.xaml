@@ -1,11 +1,11 @@
-﻿<Window x:Class="HackTrainCompany.AddCity"
+﻿<Window x:Class="HackTrainCompany.Windows.DeleteCity"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:HackTrainCompany"
+        xmlns:local="clr-namespace:HackTrainCompany.Windows"
         mc:Ignorable="d"
-        Title="AddCity" Height="143.32" Width="323.077">
+        Title="DeleteCity"  Height="143.32" Width="323.077">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -15,26 +15,28 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        
+
         <Label Grid.Row="0" 
             Grid.Column="0"
                VerticalAlignment="Center"
                HorizontalAlignment="Center"
-               Content="Type city name:"></Label>
-        <TextBox x:Name="TxbName"
-            Grid.Row="0" 
-            Grid.Column="1"
-                 VerticalAlignment="Center"
-                 Margin="5 10 15 10"/>
+               Content="Select city to delete:"></Label>
+        <ComboBox x:Name="CmbCityName" Grid.Row="0"
+                  Grid.Column="1"
+                  VerticalAlignment="Center"
+                  HorizontalAlignment="Center">
+        </ComboBox>
         <Button Grid.Row="1"
                 Grid.Column="1"
             x:Name="BtnCancel" 
-                Content="Cancel"
+                Margin="10 10 10 10"
+                Content="Done"
                 Click="BtnCancel_OnClick"/>
         <Button Grid.Row="1"
                 Grid.Column="0"
-            x:Name="BtnInsert" 
-                Content="Insert"
-                Click="BtnInsert_OnClick"/>
+            x:Name="BtnDelete" 
+                Content="Delete"
+                Margin="10 10 10 10"
+                Click="BtnDelete_OnClick"/>
     </Grid>
 </Window>

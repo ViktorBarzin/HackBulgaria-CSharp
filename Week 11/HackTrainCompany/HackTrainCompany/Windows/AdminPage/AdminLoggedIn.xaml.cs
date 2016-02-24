@@ -16,6 +16,10 @@ namespace HackTrainCompany
 {
     using System.Data;
 
+    using DataAccess;
+
+    using HackTrainCompany.Windows;
+
     /// <summary>
     /// Interaction logic for AdminLoggedIn.xaml
     /// </summary>
@@ -23,23 +27,34 @@ namespace HackTrainCompany
     {
         public AdminLoggedIn()
         {
-            InitializeComponent();
+            this.InitializeComponent();
         }
 
         private void BtnGetAllCities_OnClick(object sender, RoutedEventArgs e)
         {
-            this.DtgAllCities.ItemsSource = DataAccess.DataAccess.GetAllCities();
+            this.DtgAllCities.ItemsSource = DataAccess.GetAllCities();
         }
 
         private void BtnAddCity_OnClick(object sender, RoutedEventArgs e)
         {
-            AddCity window = new AddCity();
+            AdminLoggedIn currentWindow = this;
+            AddCity window = new AddCity(ref currentWindow);
             window.Show();
         }
 
         private void BtnDeleteCity_OnClick(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            AdminLoggedIn currentWindow = this;
+            DeleteCity window = new DeleteCity(ref currentWindow);
+            window.Show();
+        }
+
+        /// <summary>
+        /// Refreshes datagrid items
+        /// </summary>
+        public void RefreshGrid()
+        {
+            this.DtgAllCities.ItemsSource = DataAccess.GetAllCities();
         }
     }
 }

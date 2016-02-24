@@ -19,14 +19,21 @@ namespace HackTrainCompany
     /// </summary>
     public partial class AddCity : Window
     {
+        private AdminLoggedIn parent;
+
         public AddCity()
         {
-            InitializeComponent();
+            this.InitializeComponent();
+        }
+        public AddCity(ref AdminLoggedIn parent)
+        {
+            this.InitializeComponent();
+            this.parent = parent;
         }
 
         private void BtnCancel_OnClick(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            this.Close();
         }
 
         private void BtnInsert_OnClick(object sender, RoutedEventArgs e)
@@ -40,6 +47,9 @@ namespace HackTrainCompany
                 try
                 {
                     DataAccess.DataAccess.AddCity(new CitySet() { Name = this.TxbName.Text });
+                    this.parent.RefreshGrid();
+                    MessageBox.Show(string.Format("Successfully inserted {0}", this.TxbName.Text));
+                    this.Close();
                 }
                 catch (Exception exception)
                 {

@@ -22,7 +22,7 @@ namespace HackTrainCompany
     {
         public UserLoggedIn()
         {
-            InitializeComponent();
+            this.InitializeComponent();
             this.CmbCityA.ItemsSource = DataAccess.DataAccess.GetAllCities().Select(x => x.Name);
             this.CmbCityB.ItemsSource = DataAccess.DataAccess.GetAllCities().Select(x => x.Name);
         }
@@ -32,6 +32,27 @@ namespace HackTrainCompany
             BuyTicket windows = new BuyTicket();
             this.Close();
             windows.Show();
+        }
+
+        private void BtnDisplaySchedule_OnClick(object sender, RoutedEventArgs e)
+        {
+            DateTime? selectedTime = this.DpcDatePicker.SelectedDate;
+            if (selectedTime == null)
+            {
+                MessageBox.Show("Select date first!");
+            }
+            else
+            {
+                //this.DtgDisplayGrid.DataContext = null;
+                this.DtgDisplayGrid.ItemsSource = null;
+                var dataGridContext = DataAccess.DataAccess.GetFullSchedule()
+                              .Where(x => x.StartDate.Value.Date.ToShortDateString() == selectedTime.Value.Date.ToShortDateString());
+                this.DtgDisplayGrid.ItemsSource = dataGridContext;
+                if (!dataGridContext.Any())
+                {
+                    MessageBox.Show("No results");
+                }
+            }
         }
 
         private void BtnDisplayTrips_OnClick(object sender, RoutedEventArgs e)
@@ -56,39 +77,34 @@ namespace HackTrainCompany
                 }
                 else
                 {
+                    this.DtgDisplayGrid.ItemsSource = null;
                     var allTripsFromAtoB = DataAccess.DataAccess.GetFullSchedule()
                           .Where(x => x.StartCityId == cityA.Id)
                           .Where(y => y.EndCityId == cityB.Id)
                           .OrderBy(z => z.Id);
 
-                    StringBuilder allTrips = new StringBuilder();
+                    this.DtgDisplayGrid.ItemsSource = allTripsFromAtoB;
 
-                    foreach (var trip in allTripsFromAtoB)
-                    {
-                        allTrips.Append(string.Format("trip id: {0}, trip start date: {1}, train id: {2}", trip.Id, trip.StartDate, trip.TrainId)).AppendLine();
-                    }
+                    //StringBuilder allTrips = new StringBuilder();
 
-                    MessageBox.Show(allTrips.ToString());
+                    //foreach (var trip in allTripsFromAtoB)
+                    //{
+                    //    allTrips.Append(string.Format("trip id: {0}, trip start date: {1}, train id: {2}", trip.Id, trip.StartDate, trip.TrainId)).AppendLine();
+                    //}
+                    //if (String.IsNullOrEmpty(allTrips.ToString()))
+                    //{
+                    //    MessageBox.Show("No matches");
+                    //}
+                    //else
+                    //{
+                    //MessageBox.Show(allTrips.ToString());
+
+                    //}
                 }
 
             }
         }
-
-        private void BtnDisplaySchedule_OnClick(object sender, RoutedEventArgs e)
-        {
-            DateTime? selectedTime = this.DpcDatePicker.SelectedDate;
-            if (selectedTime == null)
-            {
-                MessageBox.Show("Select date first!");
-            }
-            else
-            {
-                var dataGridContext = DataAccess.DataAccess.GetFullSchedule()
-                              .Where(x => x.StartDate.Value.Date.ToShortDateString() == selectedTime.Value.Date.ToShortDateString());
-                this.DtgDisplayGrid.DataContext = dataGridContext;
-            }
-        }
-
+        
         private void BtnLogout_OnClick(object sender, RoutedEventArgs e)
         {
             MainWindow mainWindow = new MainWindow();

@@ -1,0 +1,42 @@
+﻿<Window x:Class="HackTrainCompany.AddCity"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HackTrainCompany"
+        mc:Ignorable="d"
+        Title="AddCity" Height="143.32" Width="323.077">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        
+        <Label Grid.Row="0" 
+            Grid.Column="0"
+               VerticalAlignment="Center"
+               HorizontalAlignment="Center"
+               Content="Type city name:"></Label>
+        <TextBox x:Name="TxbName"
+            Grid.Row="0" 
+            Grid.Column="1"
+                 VerticalAlignment="Center"
+                 Margin="5 10 15 10"/>
+        <Button Grid.Row="1"
+                Grid.Column="1"
+            x:Name="BtnCancel" 
+                Margin="10 10 10 10"
+                Content="Cancel"
+                Click="BtnCancel_OnClick"/>
+        <Button Grid.Row="1"
+                Grid.Column="0"
+            x:Name="BtnInsert" 
+                Content="Insert"
+                Margin="10 10 10 10"
+                Click="BtnInsert_OnClick"/>
+    </Grid>
+</Window>

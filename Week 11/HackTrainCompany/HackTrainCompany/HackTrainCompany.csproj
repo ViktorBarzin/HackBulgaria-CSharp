@@ -66,13 +66,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AddCity.xaml.cs">
+    <Compile Include="Windows\AdminPage\AddCity.xaml.cs">
       <DependentUpon>AddCity.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AdminLoggedIn.xaml.cs">
+    <Compile Include="Windows\AdminPage\AdminLoggedIn.xaml.cs">
       <DependentUpon>AdminLoggedIn.xaml</DependentUpon>
     </Compile>
-    <Compile Include="BuyTicket.xaml.cs">
+    <Compile Include="Windows\UserPage\BuyTicket.xaml.cs">
       <DependentUpon>BuyTicket.xaml</DependentUpon>
     </Compile>
     <Compile Include="CitySet.cs">
@@ -94,7 +94,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>HackTrainCompanyDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Register.xaml.cs">
+    <Compile Include="Windows\AdminPage\DeleteCity.xaml.cs">
+      <DependentUpon>DeleteCity.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Register.xaml.cs">
       <DependentUpon>Register.xaml</DependentUpon>
     </Compile>
     <Compile Include="ScheduleSet.cs">
@@ -109,25 +112,29 @@
     <Compile Include="TrainSet.cs">
       <DependentUpon>HackTrainCompany.tt</DependentUpon>
     </Compile>
-    <Compile Include="UserLoggedIn.xaml.cs">
+    <Compile Include="Windows\UserPage\UserLoggedIn.xaml.cs">
       <DependentUpon>UserLoggedIn.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserSet.cs">
       <DependentUpon>HackTrainCompany.tt</DependentUpon>
     </Compile>
-    <Page Include="AddCity.xaml">
+    <Page Include="Windows\AdminPage\AddCity.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="AdminLoggedIn.xaml">
+    <Page Include="Windows\AdminPage\AdminLoggedIn.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="BuyTicket.xaml">
+    <Page Include="Windows\UserPage\BuyTicket.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainWindow.xaml">
+    <Page Include="Windows\AdminPage\DeleteCity.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -146,15 +153,15 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>HackTrainCompany.edmx</DependentUpon>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Register.xaml">
+    <Page Include="Windows\Register.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserLoggedIn.xaml">
+    <Page Include="Windows\UserPage\UserLoggedIn.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
