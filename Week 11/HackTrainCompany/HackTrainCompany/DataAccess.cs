@@ -11,6 +11,7 @@ namespace DataAccess
     using System.Data.Entity;
     using System.Runtime.CompilerServices;
     using System.Security.Cryptography;
+    using System.Windows;
 
     public class DataAccess
     {
@@ -40,7 +41,7 @@ namespace DataAccess
             }
             catch (Exception exception)
             {
-                Console.WriteLine(exception.Message);
+                MessageBox.Show(exception.Message);
                 return false;
             }
         }
@@ -55,7 +56,7 @@ namespace DataAccess
             }
             catch (Exception exception)
             {
-                Console.WriteLine(exception.Message);
+                MessageBox.Show(exception.Message);
                 return false;
             }
         }
@@ -76,7 +77,7 @@ namespace DataAccess
             }
             catch (Exception exception)
             {
-                Console.WriteLine(exception.Message);
+                MessageBox.Show(exception.Message);
                 return false;
             }
         }
@@ -85,10 +86,10 @@ namespace DataAccess
         {
             try
             {
-                if (!Context.TrainSet.Contains(train))
-                {
-                    throw new ArgumentException(string.Format(DbDoestNotContain + "train!"));
-                }
+                //if (!Context.TrainSet.Contains(train))
+                //{
+                //    throw new ArgumentException(string.Format(DbDoestNotContain + "train!"));
+                //}
 
                 Context.TrainSet.Remove(train);
                 Context.SaveChanges();
@@ -96,34 +97,31 @@ namespace DataAccess
             }
             catch (Exception exception)
             {
-                Console.WriteLine(exception.Message);
+                MessageBox.Show(exception.Message);
                 return false;
             }
         }
 
-        public static bool EditTrain(TrainSet train)
+        public static bool EditTrain(int oldTrainId,TrainSet newTrain)
         {
             try
             {
-                if (!Context.TrainSet.Contains(train))
+                TrainSet original = Context.TrainSet.FirstOrDefault(x => x.Id == oldTrainId);
+
+                if (original == null)
                 {
-                    throw new ArgumentException(string.Format(DbDoestNotContain + "train!"));
+                    return false;
                 }
 
-                var traintToEdit = Context.TrainSet.Find(train.Id);
-
-                if (traintToEdit != null)
-                {
-                    Context.Entry(traintToEdit).CurrentValues.SetValues(train);
-                    Context.SaveChanges();
-                    return true;
-                }
-
-                throw new ArgumentException(string.Format(DbDoestNotContain + "train!"));
+                original.IsFree = newTrain.IsFree;
+                original.Description = newTrain.Description;
+                original.Seats = newTrain.Seats;
+                Context.SaveChanges();
+                return true;
             }
             catch (Exception exception)
             {
-                Console.WriteLine(exception.Message);
+                MessageBox.Show(exception.Message);
                 return false;
             }
         }
@@ -167,7 +165,7 @@ namespace DataAccess
             }
             catch (Exception exception)
             {
-                Console.WriteLine(exception.Message);
+                MessageBox.Show(exception.Message);
                 return false;
             }
         }
@@ -187,7 +185,7 @@ namespace DataAccess
             }
             catch (Exception exception)
             {
-                Console.WriteLine(exception.Message);
+                MessageBox.Show(exception.Message);
                 return false;
             }
         }
@@ -224,7 +222,7 @@ namespace DataAccess
             }
             catch (Exception exception)
             {
-                Console.WriteLine(exception.Message);
+                MessageBox.Show(exception.Message);
                 return false;
             }
         }

@@ -47,7 +47,7 @@ namespace HackTrainCompany
                 try
                 {
                     DataAccess.DataAccess.AddCity(new CitySet() { Name = this.TxbName.Text });
-                    this.parent.RefreshGrid();
+                    this.parent.RefreshCityGrid();
                     MessageBox.Show(string.Format("Successfully inserted {0}", this.TxbName.Text));
                     this.Close();
                 }

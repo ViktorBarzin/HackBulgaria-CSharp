@@ -19,6 +19,8 @@ namespace HackTrainCompany
     using DataAccess;
 
     using HackTrainCompany.Windows;
+    using HackTrainCompany.Windows.AdminPage;
+    using HackTrainCompany.Windows.AdminPage.TrainTab;
 
     /// <summary>
     /// Interaction logic for AdminLoggedIn.xaml
@@ -30,6 +32,7 @@ namespace HackTrainCompany
             this.InitializeComponent();
         }
 
+        // City logic
         private void BtnGetAllCities_OnClick(object sender, RoutedEventArgs e)
         {
             this.DtgAllCities.ItemsSource = DataAccess.GetAllCities();
@@ -49,12 +52,44 @@ namespace HackTrainCompany
             window.Show();
         }
 
+        // Train logic
+        private void BtnGetAllTrains_OnClick(object sender, RoutedEventArgs e)
+        {
+            this.DtgAllTrains.ItemsSource = DataAccess.GetAllTrains();
+        }
+
+        private void BtnAddTrain_OnClick(object sender, RoutedEventArgs e)
+        {
+            AdminLoggedIn adminWindow = this;
+            AddTrain window = new AddTrain(ref adminWindow);
+            window.Show();
+        }
+
+        private void BtnEditTrain_OnClick(object sender, RoutedEventArgs e)
+        {
+            AdminLoggedIn parent = this;
+            EditTrain window = new EditTrain(ref parent);
+            window.Show();
+        }
+
+        private void BtnDeleteTrain_OnClick(object sender, RoutedEventArgs e)
+        {
+            AdminLoggedIn adminLogged = this;
+            DeleteTrain window = new DeleteTrain(ref adminLogged);
+            window.Show();
+        }
+
         /// <summary>
         /// Refreshes datagrid items
         /// </summary>
-        public void RefreshGrid()
+        public void RefreshCityGrid()
         {
             this.DtgAllCities.ItemsSource = DataAccess.GetAllCities();
+        }
+
+        public void RefreshTrainGrind()
+        {
+            this.DtgAllTrains.ItemsSource = DataAccess.GetAllTrains();
         }
     }
 }

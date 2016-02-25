@@ -1,0 +1,94 @@
+﻿<Window x:Class="HackTrainCompany.Windows.AdminPage.EditTrain"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HackTrainCompany.Windows.AdminPage"
+        mc:Ignorable="d"
+        Title="EditTrain" Height="358.427" Width="312.36">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        
+        <Label Grid.Row="0"
+               Grid.Column="0"
+               FontSize="14"
+               VerticalAlignment="Center"
+               HorizontalAlignment="Center"
+               Margin="10 10 10 10"
+               Content="Select train id:"/>
+        <ComboBox x:Name="CmbTrainId" 
+            Grid.Row="0"
+                  Grid.Column="1"
+                  Margin="0 23 0 22"
+                  Width="40"
+                  SelectionChanged="CmbTrainId_OnSelectionChanged"/>
+        
+        <Label Grid.Row="1"
+               Grid.Column="0"
+               FontSize="14"
+               VerticalAlignment="Center"
+               HorizontalAlignment="Center"
+               Margin="10 10 10 10"
+               Content="Seats:"/>
+        <TextBox x:Name="TxtSeats" 
+            Grid.Row="1"
+                 Grid.Column="1"
+                 VerticalAlignment="Center"
+                 HorizontalAlignment="Center"
+                 Margin="10 10 10 10"
+                 Width="40"/>
+        
+        <Label Grid.Row="2"
+               Grid.Column="0"
+               FontSize="14"
+               VerticalAlignment="Center"
+               HorizontalAlignment="Center"
+               Margin="10 10 10 10"
+               Content="Description:"/>
+        <TextBox x:Name="TxtDescription"
+                 Grid.Row="2"
+                 Grid.Column="1"
+                 VerticalAlignment="Center"
+                 HorizontalAlignment="Center"
+                 Margin="0 0 0 0"
+                TextWrapping="Wrap"
+                 Width="120"
+                 Height="40"/>
+
+        <Label Grid.Row="3"
+               Grid.Column="0"
+               FontSize="14"
+               VerticalAlignment="Center"
+               HorizontalAlignment="Center"
+               Margin="10 10 10 10"
+               Content="Is train free:"/>
+        <CheckBox x:Name="ChkIsFree"
+            Grid.Row="3"
+                  Grid.Column="1"
+                  Margin="70 22 60 25"/>
+
+        <Button x:Name="BtnCancel"
+            Grid.Row="4"
+                Grid.Column="0"
+                Margin="17 15 17 15"
+                Content="Cancel"
+                Click="BtnCancel_OnClick"/>
+        <Button x:Name="BtnEdit" 
+            Grid.Row="4"
+                Grid.Column="1"
+                Margin="17 15 17 15"
+                Content="Edit"
+                Click="BtnEdit_OnClick"/>
+
+    </Grid>
+</Window>

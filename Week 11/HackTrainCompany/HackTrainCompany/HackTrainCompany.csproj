@@ -66,11 +66,20 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Windows\AdminPage\AddCity.xaml.cs">
+    <Compile Include="Windows\AdminPage\CityTab\AddCity.xaml.cs">
       <DependentUpon>AddCity.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\AdminPage\AdminLoggedIn.xaml.cs">
       <DependentUpon>AdminLoggedIn.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\AdminPage\TrainTab\EditTrain.xaml.cs">
+      <DependentUpon>EditTrain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\AdminPage\TrainTab\AddTrain.xaml.cs">
+      <DependentUpon>AddTrain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\AdminPage\TrainTab\DeleteTrain.xaml.cs">
+      <DependentUpon>DeleteTrain.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\UserPage\BuyTicket.xaml.cs">
       <DependentUpon>BuyTicket.xaml</DependentUpon>
@@ -94,7 +103,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>HackTrainCompanyDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Windows\AdminPage\DeleteCity.xaml.cs">
+    <Compile Include="Windows\AdminPage\CityTab\DeleteCity.xaml.cs">
       <DependentUpon>DeleteCity.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\Register.xaml.cs">
@@ -118,7 +127,7 @@
     <Compile Include="UserSet.cs">
       <DependentUpon>HackTrainCompany.tt</DependentUpon>
     </Compile>
-    <Page Include="Windows\AdminPage\AddCity.xaml">
+    <Page Include="Windows\AdminPage\CityTab\AddCity.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -126,11 +135,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Windows\AdminPage\TrainTab\EditTrain.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\AdminPage\TrainTab\AddTrain.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\AdminPage\TrainTab\DeleteTrain.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\UserPage\BuyTicket.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\AdminPage\DeleteCity.xaml">
+    <Page Include="Windows\AdminPage\CityTab\DeleteCity.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

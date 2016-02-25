@@ -67,7 +67,56 @@
                 </Grid>
             </TabItem>
             <TabItem Header="Train">
-                
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Button x:Name="BtnGetAllTrains" 
+                            Grid.Row="0" 
+                            Grid.Column="0"
+                            Margin="15 55 15 55"
+                            Content="Get all cities"
+                            Click="BtnGetAllTrains_OnClick"/>
+
+                    <Button x:Name="BtnAddTrain" 
+                            Grid.Row="0" 
+                            Grid.Column="1"
+                            Margin="15 55 15 55"
+                            Content="Add new city"
+                            Click="BtnAddTrain_OnClick"/>
+
+                    <Button x:Name="BtnDeleteTrain" 
+                            Grid.Row="0" 
+                            Grid.Column="3"
+                            Margin="15 55 15 55"
+                            Content="Delete train"
+                            Click="BtnDeleteTrain_OnClick"/>
+                    <Button x:Name="BtnEditTrain"
+                            Grid.Row="0"
+                            Grid.Column="2"
+                            Margin="15 55 15 55"
+                            Content="Edit train"
+                            Click="BtnEditTrain_OnClick"/>
+                    <DataGrid x:Name="DtgAllTrains" 
+                              Grid.Row="1" 
+                              Grid.Column="0"
+                              Grid.ColumnSpan="4"
+                              AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding Id}" Header="Id"/>
+                            <DataGridTextColumn  Binding="{Binding Seats}" Header="Seats"/>
+                            <DataGridTextColumn  Binding="{Binding Description}" Header="Description"/>
+                            <DataGridTextColumn  Binding="{Binding IsFree}" Header="Is Free"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
             </TabItem>
             <TabItem Header="Schedule">
                 

@@ -19,8 +19,11 @@ namespace UserInterface
             // TODO : finish when ADO.NET gets useful if ever does
             string connectionString = ConfigurationManager.ConnectionStrings["HackCompany"].ConnectionString;
             DbConnection dbConnection = new DbConnection(connectionString);
-            var c1 = new Product(1,"prod 1",100,"SFT");
-            dbConnection.Insert(c1);
+            Category category = new Category("TST","NETEST");
+            dbConnection.Insert(category);
+
+            //var c1 = new Product(1,"prod 1",100,"SFT");
+            //dbConnection.Insert(c1);
 
             //string query = @"SELECT TOP 10 *
             //                FROM HackCompany.dbo.Customer c

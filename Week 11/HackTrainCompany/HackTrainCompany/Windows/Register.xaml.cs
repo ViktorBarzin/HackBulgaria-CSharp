@@ -21,7 +21,7 @@ namespace HackTrainCompany
     {
         public Register()
         {
-            InitializeComponent();
+            this.InitializeComponent();
         }
 
         private void Back(object sender, RoutedEventArgs e)

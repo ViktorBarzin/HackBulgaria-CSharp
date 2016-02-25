@@ -54,7 +54,7 @@ namespace HackTrainCompany.Windows
                                   .FirstOrDefault(x => x.Name == this.CmbCityName.SelectedItem.ToString());
                     if (DataAccess.DataAccess.DeleteCity(cityToDel))
                     {
-                        this.parent.RefreshGrid();
+                        this.parent.RefreshCityGrid();
                         MessageBox.Show(string.Format("Successfully deleted {0}", this.CmbCityName.SelectedItem));
                         this.CmbCityName.ItemsSource = DataAccess.DataAccess.GetAllCities().Select(x => x.Name);
                     }

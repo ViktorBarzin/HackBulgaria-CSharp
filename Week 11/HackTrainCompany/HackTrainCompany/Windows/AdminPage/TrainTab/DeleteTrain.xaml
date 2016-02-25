@@ -1,11 +1,11 @@
-﻿<Window x:Class="HackTrainCompany.Windows.DeleteCity"
+﻿<Window x:Class="HackTrainCompany.Windows.AdminPage.TrainTab.DeleteTrain"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:HackTrainCompany.Windows"
+        xmlns:local="clr-namespace:HackTrainCompany.Windows.AdminPage.TrainTab"
         mc:Ignorable="d"
-        Title="DeleteCity"  Height="143.32" Width="323.077">
+        Title="DeleteTrain" Height="143.32" Width="323.077">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -17,24 +17,25 @@
         </Grid.ColumnDefinitions>
 
         <Label Grid.Row="0" 
-            Grid.Column="0"
+               Grid.Column="0"
                VerticalAlignment="Center"
                HorizontalAlignment="Center"
-               Content="Select city to delete:"></Label>
-        <ComboBox x:Name="CmbCityName" Grid.Row="0"
+               Content="Select train to delete:"></Label>
+        <ComboBox x:Name="CmbTrainId" 
+                  Grid.Row="0"
                   Grid.Column="1"
                   VerticalAlignment="Center"
                   HorizontalAlignment="Center">
         </ComboBox>
         <Button Grid.Row="1"
-                Grid.Column="1"
-            x:Name="BtnCancel" 
+                Grid.Column="0"
+                x:Name="BtnCancel" 
                 Margin="10 10 10 10"
-                Content="Done"
+                Content="Cancel"
                 Click="BtnCancel_OnClick"/>
         <Button Grid.Row="1"
-                Grid.Column="0"
-            x:Name="BtnDelete" 
+                Grid.Column="1"
+                x:Name="BtnDelete" 
                 Content="Delete"
                 Margin="10 10 10 10"
                 Click="BtnDelete_OnClick"/>
