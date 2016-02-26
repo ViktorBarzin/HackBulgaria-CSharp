@@ -13,7 +13,7 @@ namespace DataAccess
     using System.Security.Cryptography;
     using System.Windows;
 
-    public class DataAccess
+    public static class DataAccess
     {
         private const string DbDoestNotContain = "Database does not contain the specified ";
 
@@ -137,10 +137,10 @@ namespace DataAccess
             try
             {
                 // TODO : check if C# joins correctly
-                if (!Context.TrainSet.Contains(trip.TrainSet))
-                {
-                    throw new ArgumentException(string.Format(DbDoestNotContain + "train!"));
-                }
+                //if (!Context.TrainSet.Contains(trip.TrainSet))
+                //{
+                //    throw new ArgumentException(string.Format(DbDoestNotContain + "train!"));
+                //}
 
                 // TODO : make trains not free only at the specified time, not all the time
                 //var trainsWithSchedule = Context.ScheduleSet.Where(x => x.TrainId == trip.TrainId).Where(y => y.)
@@ -152,16 +152,16 @@ namespace DataAccess
                 //        trainsWithSchedule
                 //    }
                 //}
-
-                if (trip.TrainSet.IsFree)
-                {
-                    trip.TrainSet.IsFree = false;
+                TrainSet train = DataAccess.GetAllTrains().FirstOrDefault(x => x.Id == trip.TrainId);
+                //if (train.IsFree)
+                //{
+                    train.IsFree = false;
                     Context.ScheduleSet.Add(trip);
                     Context.SaveChanges();
                     return true;
-                }
+                //}
 
-                throw new ArgumentException("Train is not free at the selected period");
+                //throw new ArgumentException("Train is not free at the selected period");
             }
             catch (Exception exception)
             {
@@ -174,11 +174,11 @@ namespace DataAccess
         {
             try
             {
-                if (!Context.ScheduleSet.Contains(trip))
-                {
-                    throw new ArgumentException(string.Format(DbDoestNotContain + "trip"));
-                }
-
+                //if (!Context.ScheduleSet.Contains(trip))
+                //{
+                //    throw new ArgumentException(string.Format(DbDoestNotContain + "trip"));
+                //}
+                RemoveCityStopsSet(trip.Id);
                 Context.ScheduleSet.Remove(trip);
                 Context.SaveChanges();
                 return true;
@@ -237,6 +237,38 @@ namespace DataAccess
 
             var userByEmail = Context.UserSet.FirstOrDefault(x => x.Email == user.Email);
             return userByEmail != null && userByEmail.PasswordHash == user.PasswordHash;
+        }
+
+        private static bool RemoveCityStopsSet(int scheduleId)
+        {
+            try
+            {
+                //List<CityStopsSet> cityStops = Context.CityStopsSet.Where(x => x.ScheduleId == scheduleId).ToList();
+                //while (cityStops.Count >= 0)
+                //{
+                    
+                //}
+                List<CityStopsSet> cityStopsToDel = Context.CityStopsSet.Where(x => x.ScheduleId == scheduleId).ToList();
+                for (int i = 0; i < cityStopsToDel.Count; i++)
+                {
+                    try
+                    {
+                        Context.CityStopsSet.Remove(cityStopsToDel[i]);
+                    }
+                    catch (Exception exception)
+                    {
+                        MessageBox.Show(exception.Message);
+                        return false;
+                    }
+                }
+
+                return true;
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+                return false;
+            }
         }
 
     }

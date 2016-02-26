@@ -30,10 +30,10 @@
         <!--Display schedule for-->
         <Label Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Display schedule for:"></Label>
         <DatePicker x:Name="DpcDatePicker" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <Button x:Name="BtnDisplaySchedule" Grid.Row="0" Grid.Column="2" Margin="20 30 20 30" Content="Show" Click="BtnDisplaySchedule_OnClick"/>
+        <Button x:Name="BtnDisplaySchedule" Grid.Row="0" Grid.Column="2" Margin="20 30 20 30" Content="ShowDialog" Click="BtnDisplaySchedule_OnClick"/>
 
         <!--All trips from A to B-->
-        <Label Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Show all trips from "/>
+        <Label Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Content="ShowDialog all trips from "/>
         <Grid Grid.Row="1" Grid.Column="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
@@ -45,7 +45,7 @@
             <Label Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Content=" to "/>
             <ComboBox  x:Name="CmbCityB" Grid.Column="2" Margin="5 32 5 32"/>
         </Grid>
-        <Button x:Name="BtnDisplayTrips" Grid.Row="1" Grid.Column="2" Margin="20 30 20 30" Content="Show" Click="BtnDisplayTrips_OnClick"/>
+        <Button x:Name="BtnDisplayTrips" Grid.Row="1" Grid.Column="2" Margin="20 30 20 30" Content="ShowDialog" Click="BtnDisplayTrips_OnClick"/>
 
         <!--Buy ticket-->
         <Button x:Name="BtnBuyTicket" Grid.Row="2" Grid.Column="0" Margin="20 30 20 30" Content="Buy Ticket" Click="BtnBuyTicket_OnClick"/>
@@ -70,10 +70,8 @@
 
             </DataGrid.Columns>
         </DataGrid>
-        
+
         <!--Logout-->
         <Button x:Name="BtnLogout" Grid.Row="2" Grid.Column="2" Margin="20 30 20 30" Click="BtnLogout_OnClick" Content="Logout"></Button>
     </Grid>
-
-
 </Window>

@@ -31,7 +31,7 @@ namespace HackTrainCompany
         {
             BuyTicket windows = new BuyTicket();
             this.Close();
-            windows.Show();
+            windows.ShowDialog();
         }
 
         private void BtnDisplaySchedule_OnClick(object sender, RoutedEventArgs e)
@@ -83,8 +83,15 @@ namespace HackTrainCompany
                           .Where(y => y.EndCityId == cityB.Id)
                           .OrderBy(z => z.Id);
 
-                    this.DtgDisplayGrid.ItemsSource = allTripsFromAtoB;
+                    if (!allTripsFromAtoB.Any())
+                    {
+                        MessageBox.Show("No results");
+                    }
+                    else
+                    {
+                        this.DtgDisplayGrid.ItemsSource = allTripsFromAtoB;
 
+                    }
                     //StringBuilder allTrips = new StringBuilder();
 
                     //foreach (var trip in allTripsFromAtoB)

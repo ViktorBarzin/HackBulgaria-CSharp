@@ -20,6 +20,7 @@ namespace HackTrainCompany
 
     using HackTrainCompany.Windows;
     using HackTrainCompany.Windows.AdminPage;
+    using HackTrainCompany.Windows.AdminPage.ScheduleTab;
     using HackTrainCompany.Windows.AdminPage.TrainTab;
 
     /// <summary>
@@ -42,14 +43,14 @@ namespace HackTrainCompany
         {
             AdminLoggedIn currentWindow = this;
             AddCity window = new AddCity(ref currentWindow);
-            window.Show();
+            window.ShowDialog();
         }
 
         private void BtnDeleteCity_OnClick(object sender, RoutedEventArgs e)
         {
             AdminLoggedIn currentWindow = this;
             DeleteCity window = new DeleteCity(ref currentWindow);
-            window.Show();
+            window.ShowDialog();
         }
 
         // Train logic
@@ -62,21 +63,21 @@ namespace HackTrainCompany
         {
             AdminLoggedIn adminWindow = this;
             AddTrain window = new AddTrain(ref adminWindow);
-            window.Show();
+            window.ShowDialog();
         }
 
         private void BtnEditTrain_OnClick(object sender, RoutedEventArgs e)
         {
             AdminLoggedIn parent = this;
             EditTrain window = new EditTrain(ref parent);
-            window.Show();
+            window.ShowDialog();
         }
 
         private void BtnDeleteTrain_OnClick(object sender, RoutedEventArgs e)
         {
             AdminLoggedIn adminLogged = this;
             DeleteTrain window = new DeleteTrain(ref adminLogged);
-            window.Show();
+            window.ShowDialog();
         }
 
         /// <summary>
@@ -90,6 +91,37 @@ namespace HackTrainCompany
         public void RefreshTrainGrind()
         {
             this.DtgAllTrains.ItemsSource = DataAccess.GetAllTrains();
+        }
+
+        private void BtnGetFullSchedule_OnClick(object sender, RoutedEventArgs e)
+        {
+            this.DtgAllSchedules.ItemsSource = DataAccess.GetFullSchedule();
+            this.DtgAllSchedules.Columns.Add(new DataGridTextColumn());
+        }
+
+        private void BtnAddSchedule_OnClick(object sender, RoutedEventArgs e)
+        {
+            AdminLoggedIn parent = this;
+            AddSchedule window = new AddSchedule(ref parent);
+            window.ShowDialog();
+        }
+
+        private void BtnDeleteSchedule_OnClick(object sender, RoutedEventArgs e)
+        {
+            AdminLoggedIn parent = this;
+            DeleteSchedule window = new DeleteSchedule(ref parent);
+            window.ShowDialog();
+        }
+
+        public void RefreshScheduleGrid()
+        {
+            this.DtgAllSchedules.ItemsSource = DataAccess.GetFullSchedule();
+        }
+
+        private void Hyperlink_OnClick(object sender, RoutedEventArgs e)
+        {
+           UserLoggedIn window = new UserLoggedIn();
+            window.ShowDialog();
         }
     }
 }

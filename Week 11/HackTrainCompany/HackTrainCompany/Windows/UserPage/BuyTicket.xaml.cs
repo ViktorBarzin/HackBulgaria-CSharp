@@ -28,7 +28,7 @@ namespace HackTrainCompany
         {
             UserLoggedIn windows = new UserLoggedIn();
             this.Close();
-            windows.Show();
+            windows.ShowDialog();
         }
 
         private void BtnReset_OnClick(object sender, RoutedEventArgs e)
@@ -47,7 +47,7 @@ namespace HackTrainCompany
                 MessageBox.Show("You have successfully bought a ticket!");
                 UserLoggedIn windows = new UserLoggedIn();
                 this.Close();
-                windows.Show();
+                windows.ShowDialog();
             }
         }
     }

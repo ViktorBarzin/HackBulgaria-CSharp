@@ -26,22 +26,8 @@ namespace HackTrainCompany
     {
         public MainWindow()
         {
-            //UserSet user = new UserSet
-            //{
-            //    Username = "Stamat",
-            //    Email = "Stamat@gmail.com",
-            //    PasswordHash = PasswordHash.HashPassword("mnsamgoten69;)"),
-            //    Address = "sofia bg",
-            //    IsAdmin = false,
-            //    CreditCardNumberHash = PasswordHash.HashPassword("1049694050301030"),
-            //    FirstName = "Doncho",
-            //    LastName = "Minkov",
-            //    ZipCode = 2000
-            //};
-            //DataAccess.AddUser(user);
-
-            InitializeComponent();
-
+           // TODO : continue from schedule
+            this.InitializeComponent();
         }
 
         private void BtnRegister_Click(object sender, RoutedEventArgs e)
@@ -65,7 +51,7 @@ namespace HackTrainCompany
                 {
                     AdminLoggedIn window = new AdminLoggedIn();
                     this.Close();
-                    window.Show();
+                    window.ShowDialog();
                 }
                 else
                 {

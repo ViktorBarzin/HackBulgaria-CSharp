@@ -24,6 +24,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -71,6 +72,12 @@
     </Compile>
     <Compile Include="Windows\AdminPage\AdminLoggedIn.xaml.cs">
       <DependentUpon>AdminLoggedIn.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\AdminPage\ScheduleTab\AddSchedule.xaml.cs">
+      <DependentUpon>AddSchedule.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\AdminPage\ScheduleTab\DeleteSchedule.xaml.cs">
+      <DependentUpon>DeleteSchedule.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\AdminPage\TrainTab\EditTrain.xaml.cs">
       <DependentUpon>EditTrain.xaml</DependentUpon>
@@ -132,6 +139,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\AdminPage\AdminLoggedIn.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\AdminPage\ScheduleTab\AddSchedule.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\AdminPage\ScheduleTab\DeleteSchedule.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

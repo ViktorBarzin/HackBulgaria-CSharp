@@ -6,121 +6,180 @@
         xmlns:local="clr-namespace:HackTrainCompany"
         mc:Ignorable="d"
         Title="AdminLoggedIn" Height="497.975" Width="450.607">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
 
-        <Label Grid.Row="0" 
+    <TabControl>
+        <TabItem Header="Admin Panel">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Row="0" 
                VerticalAlignment="Center" 
                HorizontalAlignment="Center"
                FontSize="20"
                Content="Be careful what you do here!"/>
-        <TabControl Grid.Row="1" Grid.RowSpan="2">
-            <TabItem Header="City">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
+                <TabControl Grid.Row="1" Grid.RowSpan="2">
+                    <TabItem Header="City">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
 
-                    <Button x:Name="BtnGetAllCities" 
+                            <!--City section-->
+                            <Button x:Name="BtnGetAllCities" 
                             Grid.Row="0" 
                             Grid.Column="0"
                             Margin="30 55 30 55"
                             Content="Get all cities"
                             Click="BtnGetAllCities_OnClick"/>
 
-                    <Button x:Name="BtnAddCity" 
+                            <Button x:Name="BtnAddCity" 
                             Grid.Row="0" 
                             Grid.Column="1"
                             Margin="30 55 30 55"
                             Content="Add new city"
                             Click="BtnAddCity_OnClick"/>
 
-                    <Button x:Name="BtnDeleteCity" 
+                            <Button x:Name="BtnDeleteCity" 
                             Grid.Row="0" 
                             Grid.Column="2"
                             Margin="30 55 30 55"
                             Content="Delete city"
                             Click="BtnDeleteCity_OnClick"/>
-                    <DataGrid x:Name="DtgAllCities" 
+                            <DataGrid x:Name="DtgAllCities" 
                               Grid.Row="1" 
                               Grid.Column="0"
                               Grid.ColumnSpan="3"
                               AutoGenerateColumns="False">
-                        <DataGrid.Columns>
-                            <DataGridTextColumn x:Name="DtGridTextColumnId" Binding="{Binding Id}" Header="Id"/>
-                            <DataGridTextColumn x:Name="DtGridTextColumnName" Binding="{Binding Name}" Header="Name"/>
-                        </DataGrid.Columns>
-                    </DataGrid>
-                </Grid>
-            </TabItem>
-            <TabItem Header="Train">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <Button x:Name="BtnGetAllTrains" 
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn x:Name="DtGridTextColumnId" Binding="{Binding Id}" Header="Id"/>
+                                    <DataGridTextColumn x:Name="DtGridTextColumnName" Binding="{Binding Name}" Header="Name"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </Grid>
+                    </TabItem>
+                    <!--Train Section-->
+                    <TabItem Header="Train">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Button x:Name="BtnGetAllTrains" 
                             Grid.Row="0" 
                             Grid.Column="0"
                             Margin="15 55 15 55"
-                            Content="Get all cities"
+                            Content="Get all trains"
                             Click="BtnGetAllTrains_OnClick"/>
 
-                    <Button x:Name="BtnAddTrain" 
+                            <Button x:Name="BtnAddTrain" 
                             Grid.Row="0" 
                             Grid.Column="1"
                             Margin="15 55 15 55"
-                            Content="Add new city"
+                            Content="Add new train"
                             Click="BtnAddTrain_OnClick"/>
 
-                    <Button x:Name="BtnDeleteTrain" 
+                            <Button x:Name="BtnDeleteTrain" 
                             Grid.Row="0" 
                             Grid.Column="3"
                             Margin="15 55 15 55"
                             Content="Delete train"
                             Click="BtnDeleteTrain_OnClick"/>
-                    <Button x:Name="BtnEditTrain"
+                            <Button x:Name="BtnEditTrain"
                             Grid.Row="0"
                             Grid.Column="2"
                             Margin="15 55 15 55"
                             Content="Edit train"
                             Click="BtnEditTrain_OnClick"/>
-                    <DataGrid x:Name="DtgAllTrains" 
+                            <DataGrid x:Name="DtgAllTrains" 
                               Grid.Row="1" 
                               Grid.Column="0"
                               Grid.ColumnSpan="4"
                               AutoGenerateColumns="False">
-                        <DataGrid.Columns>
-                            <DataGridTextColumn Binding="{Binding Id}" Header="Id"/>
-                            <DataGridTextColumn  Binding="{Binding Seats}" Header="Seats"/>
-                            <DataGridTextColumn  Binding="{Binding Description}" Header="Description"/>
-                            <DataGridTextColumn  Binding="{Binding IsFree}" Header="Is Free"/>
-                        </DataGrid.Columns>
-                    </DataGrid>
-                </Grid>
-            </TabItem>
-            <TabItem Header="Schedule">
-                
-            </TabItem>
-        </TabControl>
-    </Grid>
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Binding="{Binding Id}" Header="Id"/>
+                                    <DataGridTextColumn  Binding="{Binding Seats}" Header="Seats"/>
+                                    <DataGridTextColumn  Binding="{Binding Description}" Header="Description"/>
+                                    <DataGridTextColumn  Binding="{Binding IsFree}" Header="Is Free"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </Grid>
+                    </TabItem>
+                    <!--Schedule section-->
+                    <TabItem Header="Schedule">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+
+                            <Button x:Name="BtnGetFullSchedule" 
+                            Grid.Row="0" 
+                            Grid.Column="0"
+                            Margin="15 55 15 55"
+                            Content="Get full schedule"
+                            Click="BtnGetFullSchedule_OnClick"/>
+
+                            <Button x:Name="BtnAddSchedule" 
+                            Grid.Row="0" 
+                            Grid.Column="1"
+                            Margin="15 55 15 55"
+                            Content="Add new schedule"
+                            Click="BtnAddSchedule_OnClick"/>
+
+                            <Button x:Name="BtnDeleteSchedule" 
+                            Grid.Row="0" 
+                            Grid.Column="2"
+                            Margin="15 55 15 55"
+                            Content="Delete schedule"
+                            Click="BtnDeleteSchedule_OnClick"/>
+                            <DataGrid x:Name="DtgAllSchedules" 
+                              Grid.Row="1" 
+                              Grid.Column="0"
+                              Grid.ColumnSpan="3"
+                              AutoGenerateColumns="False">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Binding="{Binding Id}" Header="Id"/>
+                                    <DataGridTextColumn  Binding="{Binding TravelTime}" Header="Travel time"/>
+                                    <DataGridTextColumn  Binding="{Binding TrainId}" Header="Train Id"/>
+                                    <!--TODO : replace city id with city name-->
+                                    <DataGridTextColumn  Binding="{Binding StartCityId}" Header="Start city id"/>
+                                    <DataGridTextColumn  Binding="{Binding EndCityId}" Header="Destination city id"/>
+                                    <DataGridTextColumn  Binding="{Binding StartDate}" Header="Start date"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </Grid>
+                    </TabItem>
+                </TabControl>
+            </Grid>
+        </TabItem>
+        <TabItem Header="User Panel">
+            <Hyperlink x:Name="UriLink"
+                NavigateUri="../UserPage/UserLoggedIn.xaml"
+                       Click="Hyperlink_OnClick">Click to open user Panel</Hyperlink>
+        </TabItem>
+    </TabControl>
 </Window>
