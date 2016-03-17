@@ -47,11 +47,11 @@
                     </Style>
                 </DataGrid.ItemContainerStyle>
                 <DataGrid.Columns>
-                    <DataGridTextColumn Binding="{Binding Name}" Header="Name" ></DataGridTextColumn>
-                    <DataGridTextColumn Binding="{Binding Email}" Header="Email" ></DataGridTextColumn>
-                    <DataGridTextColumn Binding="{Binding DateOfBirth}" Header="Date of birth" ></DataGridTextColumn>
-                    <DataGridTextColumn Binding="{Binding ManagerId}" Header="Manager ID" ></DataGridTextColumn>
-                    <DataGridTextColumn Binding="{Binding DepartamentId}" Header="Department ID" ></DataGridTextColumn>
+                    <DataGridTextColumn Binding="{Binding Name}" Header="Name" />
+                    <DataGridTextColumn Binding="{Binding Email}" Header="Email" />
+                    <DataGridTextColumn Binding="{Binding DateOfBirth}" Header="Date of birth" />
+                    <DataGridTextColumn Binding="{Binding ManagerId}" Header="Manager ID" />
+                    <DataGridTextColumn Binding="{Binding DepartamentId}" Header="Department ID" />
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>
